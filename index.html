@@ -615,6 +615,177 @@
 .fan-card:nth-child(4) img{box-shadow:0 0 34px rgba(255,223,107,.5),0 18px 40px rgba(0,0,0,.7)}
 /* Frentes nuevos: la ilustración llena el marco de la carta revelada */
 .artbox img.face-new{width:100%;height:100%;object-fit:cover;object-position:center 18%;display:block}
+
+/* ===== SYL_P2 · Página 2 · Selección de tirada (foto 2 exacta) ===== */
+#view-options{background:linear-gradient(180deg,#02040a 0%,#050a1e 55%,#02040a 100%);border:2px solid var(--gold);border-radius:26px;box-shadow:0 30px 70px rgba(0,0,0,.8),0 0 50px rgba(255,223,107,.12)}
+.opt2-wrap{padding:clamp(24px,4vw,52px)}
+.opt2-eyebrow{text-align:center;font-family:"Cinzel",serif;font-size:15px;letter-spacing:.42em;color:var(--gold);margin:0 0 8px}
+.opt2-logo{text-align:center;font-family:"Cinzel",serif;font-size:clamp(40px,7vw,64px);font-weight:700;letter-spacing:.18em;line-height:1;margin:0;color:var(--gold-2)}
+.opt2-sub{text-align:center;letter-spacing:.42em;text-transform:uppercase;font-size:clamp(11px,1.6vw,15px);color:var(--cream);margin:10px 0 0}
+.opt2-rule{text-align:center;margin:26px auto 6px;max-width:520px;display:flex;align-items:center;gap:14px;color:var(--gold)}
+.opt2-rule::before,.opt2-rule::after{content:"";height:1px;flex:1;background:linear-gradient(90deg,transparent,var(--gold))}
+.opt2-rule::after{background:linear-gradient(90deg,var(--gold),transparent)}
+.opt2-grid{display:grid;grid-template-columns:1fr 60px 1fr;gap:8px;align-items:start}
+.opt2-col{text-align:center;padding:20px 6px}
+.opt2-col h3{font-size:clamp(22px,3.4vw,34px);letter-spacing:.12em}
+.opt2-text{font-size:clamp(17px,2.2vw,20px);color:var(--cream);max-width:420px;margin:0 auto 22px;line-height:1.65}
+.opt2-big{width:min(220px,60vw);margin:0 auto 22px}
+.opt2-big img{box-shadow:0 0 34px rgba(255,223,107,.45),0 18px 40px rgba(0,0,0,.7)}
+.opt2-trio{display:flex;gap:12px;justify-content:center;align-items:flex-end;margin:0 auto 22px}
+.opt2-trio .pick-back{width:min(132px,26vw)}
+.opt2-trio .pick-back:nth-child(2){transform:translateY(-8px);width:min(150px,29vw)}
+.opt2-trio .pick-back img{box-shadow:0 0 26px rgba(255,223,107,.35),0 16px 34px rgba(0,0,0,.7)}
+.opt2-divider{position:relative;min-height:100%}
+.opt2-divider::before{content:"";position:absolute;left:50%;top:8%;bottom:8%;width:1px;background:linear-gradient(180deg,transparent,var(--gold) 18%,var(--gold) 82%,transparent)}
+.opt2-divider span{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);color:var(--gold);font-size:22px;text-shadow:0 0 16px rgba(255,223,107,.8);background:#02040a;border:1px solid var(--gold);border-radius:50%;width:44px;height:44px;display:flex;align-items:center;justify-content:center}
+@media(max-width:760px){.opt2-grid{grid-template-columns:1fr}.opt2-divider{min-height:64px}.opt2-divider::before{left:8%;right:8%;top:50%;bottom:auto;width:auto;height:1px;background:linear-gradient(90deg,transparent,var(--gold) 18%,var(--gold) 82%,transparent)}}
+/* ===== SYL_P3 · Página 3 · SELECT CARDS (foto 3 exacta) ===== */
+#view-pick{background:linear-gradient(180deg,#050505,#020203 60%,#050505);border:2px solid var(--gold);border-radius:26px;box-shadow:0 30px 70px rgba(0,0,0,.8),0 0 50px rgba(255,223,107,.12)}
+#view-pick #pick-title{font-size:clamp(26px,4vw,38px)}
+#view-pick .fan-title{letter-spacing:.18em}
+#view-pick .fan-pick{perspective:1400px}
+#view-pick .fan-card:nth-child(1){transform:rotate(-28deg) translateY(30px) scale(.82);filter:brightness(.55)}
+#view-pick .fan-card:nth-child(2){transform:rotate(-19deg) translateY(16px) scale(.88);filter:brightness(.7)}
+#view-pick .fan-card:nth-child(3){transform:rotate(-9deg) translateY(6px) scale(.94);filter:brightness(.85)}
+#view-pick .fan-card:nth-child(4){transform:translateY(-16px) scale(1.14);filter:brightness(1.06)}
+#view-pick .fan-card:nth-child(4) img{box-shadow:0 0 40px rgba(255,223,107,.55),0 20px 44px rgba(0,0,0,.8)}
+#view-pick .fan-card:nth-child(5){transform:rotate(9deg) translateY(6px) scale(.94);filter:brightness(.85)}
+#view-pick .fan-card:nth-child(6){transform:rotate(19deg) translateY(16px) scale(.88);filter:brightness(.7)}
+#view-pick .fan-card:nth-child(7){transform:rotate(28deg) translateY(30px) scale(.82);filter:brightness(.55)}
+#view-pick .fan-card img{box-shadow:0 18px 38px rgba(0,0,0,.85)}
+#view-pick .pick-preview{display:none}
+#view-pick #pick-sacar-row{display:none}
+.btn-getcard{font-family:"Cinzel",serif;font-weight:700;letter-spacing:.24em;font-size:clamp(16px,2.4vw,20px);color:#1a1206;background:linear-gradient(180deg,#fff3c4,#ffdf6b 45%,#e9b949 80%,#c9a227);border:2px solid #ffe98a;border-radius:12px;padding:14px 34px;box-shadow:0 10px 26px rgba(0,0,0,.6),0 0 30px rgba(255,223,107,.35),inset 0 1px 0 rgba(255,255,255,.7);text-transform:uppercase}
+.btn-getcard:hover{filter:brightness(1.08)}
+/* ===== SYL_NAV · Selector de idioma/moneda en el menú ===== */
+.lang-cur{display:inline-flex;gap:6px;align-items:center;margin-left:8px}
+.lang-cur select{appearance:none;cursor:pointer;background:#0a1330;color:var(--gold-pale);border:1px solid var(--gold);border-radius:999px;font-family:"Montserrat",sans-serif;font-weight:700;font-size:13px;letter-spacing:.06em;padding:7px 10px}
+.lang-cur select:focus{outline:2px solid var(--gold-2)}
+.menu-movil .lang-cur{margin:6px auto 0}
+/* ===== SYL_FX_CSS · Entradas y transiciones entre páginas ===== */
+body.page-enter{animation:pageIn .5s ease both}
+@keyframes pageIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+body.page-leave{opacity:0;transition:opacity .35s ease}
+.fx-item{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+.fx-item.fx-in{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){.fx-item{opacity:1;transform:none;transition:none}body.page-enter{animation:none}}
+/* ===== SYL_OPT · Bloque de página dedicada (4 URLs) ===== */
+.optpage-wrap{text-align:center;padding:clamp(24px,4vw,48px)}
+.optpage-wrap .opt2-text{margin-bottom:22px}
+.optpage-cross{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-template-areas:". c5 . c7" "c3 c1 c4 c8" ". c6 . c9" ". c2 c10 .";gap:12px;max-width:560px;margin:0 auto 22px;align-items:start}
+.optpage-cross>*{min-width:0}
+.optpage-cross .pick-back{width:100%;max-width:120px;margin:0 auto}
+.optpage-cross .pick-back span{font-size:11px;letter-spacing:.08em}
+.celta-cross{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;grid-template-areas:". c5 . c7" "c3 c1 c4 c8" ". c6 . c9" ". c2 c10 ."!important;gap:14px;align-items:start}
+.celta-cross>*{min-width:0}
+.celta-cross .destino-col:nth-child(1){grid-area:c1}
+.celta-cross .destino-col:nth-child(2){grid-area:c2}
+.celta-cross .destino-col:nth-child(3){grid-area:c3}
+.celta-cross .destino-col:nth-child(4){grid-area:c4}
+.celta-cross .destino-col:nth-child(5){grid-area:c5}
+.celta-cross .destino-col:nth-child(6){grid-area:c6}
+.celta-cross .destino-col:nth-child(7){grid-area:c7}
+.celta-cross .destino-col:nth-child(8){grid-area:c8}
+.celta-cross .destino-col:nth-child(9){grid-area:c9}
+.celta-cross .destino-col:nth-child(10){grid-area:c10}
+.optpage-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:0 auto 22px;align-items:flex-end}
+.optpage-row .pick-back{width:min(120px,26vw)}
+.optpage-row .pick-back:nth-child(4){width:min(140px,30vw);transform:translateY(-8px)}
+.optpage-row .pick-back img{box-shadow:0 0 26px rgba(255,223,107,.35),0 16px 34px rgba(0,0,0,.7)}
+.celta-q{width:min(520px,100%);background:#0a1330;color:var(--cream);border:1px solid var(--gold);border-radius:14px;padding:13px 16px;font-family:"Montserrat",sans-serif;font-size:17px;margin:0 auto 22px;display:block}
+.celta-q::placeholder{color:rgba(245,237,216,.55)}
+.celta-q:focus{outline:2px solid var(--gold-2)}
+
+/* ===== SYL_RUNA · Runa Celta del Día ===== */
+.runa-card{max-width:560px;margin:0 auto;text-align:center;background:linear-gradient(160deg,#101f4d,#060b1e 70%);border:2px solid var(--gold);border-radius:24px;padding:clamp(24px,4vw,40px);box-shadow:0 24px 55px rgba(0,0,0,.65),0 0 44px rgba(255,223,107,.14)}
+.runa-card::before{content:"";display:block;margin:0 auto 8px;width:120px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.runa-glyph{font-size:clamp(72px,14vw,110px);line-height:1.1;color:var(--gold-2);text-shadow:0 0 30px rgba(255,223,107,.75),0 0 70px rgba(255,223,107,.3)}
+.runa-card h3{font-family:"Cinzel",serif;font-size:clamp(28px,5vw,38px);letter-spacing:.14em;margin:8px 0 4px}
+.runa-meaning{font-family:"Cormorant Garamond",serif;font-size:clamp(20px,3vw,24px);font-style:italic;color:var(--cream);margin:6px 0 18px}
+.runa-line{display:flex;gap:12px;justify-content:center;align-items:baseline;flex-wrap:wrap;font-size:clamp(16px,2.4vw,19px);margin:8px 0}
+.runa-lbl{font-family:"Cinzel",serif;font-weight:700;letter-spacing:.12em;color:var(--gold);text-transform:uppercase;font-size:14px}
+.runa-date{color:var(--gold-pale);opacity:.85;font-size:15px;margin:18px 0 0;text-transform:capitalize}
+.runa-card.runa-in{animation:runaIn .8s ease both}
+/* ===== SYL_BOLETIN · Boletín Mensual + Horóscopo Mensual ===== */
+#horoscopo-mensual-result{margin-top:28px;text-align:left;background:linear-gradient(160deg,#101f4d,#060b1e 70%);border:1px solid var(--gold);border-radius:18px;padding:26px 24px}
+#horoscopo-mensual-result h3{margin-top:0}
+.bol-month{font-family:"Cinzel",serif;font-weight:700;letter-spacing:.14em;text-transform:capitalize;color:var(--gold-2);text-align:center;font-size:clamp(18px,3vw,22px);margin:6px 0 18px}
+.bol-card{max-width:640px;margin:0 auto;text-align:center;background:linear-gradient(160deg,#101f4d,#060b1e 70%);border:2px solid var(--gold);border-radius:24px;padding:clamp(24px,4vw,40px);box-shadow:0 24px 55px rgba(0,0,0,.65),0 0 44px rgba(255,223,107,.14)}
+.bol-card::before{content:"";display:block;margin:0 auto 8px;width:120px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.bol-perks{font-size:clamp(17px,2.6vw,20px);line-height:1.7;color:var(--cream)}
+.bol-perks b{color:var(--gold-2)}
+.bol-form{display:grid;gap:12px;text-align:left;margin-top:18px}
+.bol-form label{font-weight:600;font-size:15px;letter-spacing:.09em;text-transform:uppercase;color:var(--gold-2)}
+.bol-form input{margin-top:6px;width:100%;font-size:19px;color:var(--ink);background:#050a1e;border:1px solid #3c4a7d;border-radius:12px;padding:13px 14px;font-family:"Cormorant Garamond",Georgia,serif}
+.bol-form input:focus{outline:2px solid var(--gold);border-color:var(--gold)}
+.bol-form .btn{justify-self:center;margin-top:6px}
+.bol-ok{color:#ffe98a;font-weight:700;font-size:20px;margin-top:18px}
+.bol-note{color:var(--muted);font-size:15px;margin-top:14px}
+.bol-back{margin-top:20px}
+.bol-back a{color:var(--gold-2);text-decoration:none;font-weight:700}
+.bol-back a:hover{text-decoration:underline}
+.bol-num{display:inline-grid;place-items:center;width:52px;height:52px;border-radius:50%;border:2px solid var(--gold);background:radial-gradient(ellipse at 50% 30%,#1a1a26,#05060a 75%);color:var(--gold-2);font-family:"Cinzel",serif;font-weight:700;font-size:20px;margin:4px;box-shadow:0 8px 22px rgba(0,0,0,.7),0 0 18px rgba(242,193,78,.35)}
+.bol-nums{text-align:center;margin:14px 0 4px}
+.bol-nums-t{font-family:"Cinzel",serif;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-size:15px}
+.bol-mres-line{display:flex;gap:12px;justify-content:flex-start;align-items:baseline;flex-wrap:wrap;font-size:clamp(16px,2.4vw,19px);margin:8px 0}
+.bol-mres-line .runa-lbl{font-family:"Cinzel",serif;font-weight:700;letter-spacing:.12em;color:var(--gold);text-transform:uppercase;font-size:14px}
+.month-tile.sel{border-color:var(--gold-2);box-shadow:0 0 0 2px var(--gold),0 22px 50px rgba(0,0,0,.65),0 0 28px rgba(242,193,78,.3)}
+/* ===== SYL_REFERIDOS · Mi cuenta + sistema de referidos ===== */
+.cuenta-code{font-family:"Cinzel",serif;font-weight:700;font-size:clamp(26px,5vw,34px);letter-spacing:.18em;color:var(--gold-2);text-align:center;margin:10px 0 18px;text-shadow:0 0 24px rgba(255,223,107,.5)}
+.cuenta-link-row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;align-items:center;margin:10px 0 18px}
+.cuenta-link-row input{flex:1;min-width:220px;font-size:16px;color:var(--ink);background:#050a1e;border:1px solid #3c4a7d;border-radius:12px;padding:12px 14px;font-family:"Cormorant Garamond",Georgia,serif}
+.cuenta-prog{font-family:"Cinzel",serif;font-weight:700;font-size:clamp(20px,3.4vw,24px);color:var(--gold-pale);text-align:center;margin:10px 0}
+.ref-bar{height:14px;border:1px solid var(--gold);border-radius:999px;background:#050a1e;overflow:hidden;max-width:420px;margin:0 auto 8px}
+.ref-bar span{display:block;height:100%;background:linear-gradient(90deg,#b8931f,#ffdf6b,#f2c14e);transition:width .6s ease}
+.ref-list{list-style:none;margin:14px auto 4px;padding:0;max-width:480px;text-align:left}
+.ref-list li{border:1px solid rgba(242,193,78,.45);border-radius:12px;padding:10px 14px;margin:8px 0;background:#050a1e}
+.ref-list li b{color:var(--gold-2)}
+.ref-list li span{display:block;color:var(--muted);font-size:15px}
+.ref-list .ref-empty{border-style:dashed;text-align:center;color:var(--muted)}
+.bol-ref-t{font-family:"Cinzel",serif;font-size:clamp(22px,4vw,28px);letter-spacing:.1em;color:var(--gold-pale);margin:0 0 10px}
+.bol-ref-prog{font-weight:700;color:var(--gold-2);font-size:19px;margin-top:14px}
+.bol-linklike{background:none;border:none;color:var(--gold-2);font:inherit;font-weight:700;cursor:pointer;text-decoration:underline;padding:0}
+/* ===== SYL_SELLOS · Colección de sellos dorados (5 referidos) ===== */
+.sellos{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:14px 0 6px}
+.sello{width:58px;height:58px;border-radius:50%;display:grid;place-items:center;font-family:"Cinzel",serif;font-weight:700;font-size:22px;border:2px dashed rgba(242,193,78,.55);color:rgba(255,223,107,.45);background:#050a1e}
+.sello.lleno{border-style:solid;border-color:var(--gold);background:radial-gradient(ellipse at 50% 30%,#fff3c4,#ffdf6b 45%,#b8931f);color:#171106;font-size:26px;box-shadow:0 0 22px rgba(255,223,107,.55),0 8px 20px rgba(0,0,0,.6);animation:selloIn .6s ease both}
+@keyframes selloIn{from{transform:scale(.4) rotate(-30deg);opacity:0}to{transform:scale(1) rotate(0);opacity:1}}
+@media (prefers-reduced-motion: reduce){.sello.lleno{animation:none}}
+.cuenta-entrega-btns{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:12px 0}
+.cuenta-entrega-btns .btn.on{box-shadow:0 0 0 2px var(--gold-pale),0 0 24px rgba(255,223,107,.5)}
+
+
+
+@keyframes runaIn{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion: reduce){.runa-card.runa-in{animation:none}}
+
+/* ===== SYL_NAV2 · Submenús desplegables dorados ===== */
+.menupill{gap:2px}
+.nav-drop{position:relative}
+.nav-top{appearance:none;cursor:pointer;background:transparent;border:1px solid transparent;border-radius:999px;color:var(--gold-pale);font-family:"Playfair Display",serif;font-weight:700;font-size:19px;letter-spacing:.1em;text-transform:uppercase;padding:10px 14px}
+.nav-top:hover,.nav-drop.open .nav-top{border-color:var(--gold);background:rgba(242,193,78,.1)}
+.nav-sub{position:absolute;left:50%;top:calc(100% + 8px);transform:translate(-50%,6px);min-width:290px;background:linear-gradient(180deg,#101f4d,#060b1e);border:2px solid var(--gold);border-radius:16px;padding:10px;box-shadow:0 24px 50px rgba(0,0,0,.7),0 0 30px rgba(255,223,107,.18);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .25s ease,transform .25s ease,visibility .25s;z-index:60;text-align:left}
+.nav-drop:hover .nav-sub,.nav-drop:focus-within .nav-sub,.nav-drop.open .nav-sub{opacity:1;visibility:visible;pointer-events:auto;transform:translate(-50%,0)}
+.nav-sub a{display:block;font-family:"Cinzel",serif;font-weight:700;font-size:16px;letter-spacing:.06em;color:var(--gold-pale);text-decoration:none;padding:11px 14px;border-radius:10px;border:1px solid transparent;white-space:nowrap}
+.nav-sub a:hover{border-color:rgba(242,193,78,.5);background:rgba(242,193,78,.1)}
+@media (hover:none){.nav-drop:hover .nav-sub{opacity:0;visibility:hidden;pointer-events:none;transform:translate(-50%,6px)}.nav-drop.open .nav-sub{opacity:1;visibility:visible;pointer-events:auto;transform:translate(-50%,0)}}
+.nav-drop-m{margin:2px 0}
+.nav-top-m{appearance:none;cursor:pointer;width:100%;text-align:left;background:transparent;border:1px solid transparent;border-radius:12px;color:var(--gold-pale);font-family:"Playfair Display",serif;font-weight:700;font-size:19px;letter-spacing:.1em;text-transform:uppercase;padding:12px 14px}
+.nav-top-m:hover{border-color:rgba(242,193,78,.5);background:rgba(242,193,78,.1)}
+.nav-sub-m{padding:2px 0 6px 14px}
+.nav-sub-m a{display:block;font-family:"Cinzel",serif;font-size:16px;color:var(--gold-pale);text-decoration:none;padding:10px 14px;border-radius:10px;border:1px solid transparent}
+.nav-sub-m a:hover{border-color:rgba(242,193,78,.5);background:rgba(242,193,78,.1)}
+/* Colocación de las 10 cartas de la Cruz Celta en el preview y en el resultado */
+.optpage-cross>*:nth-child(1){grid-area:c1}
+.optpage-cross>*:nth-child(2){grid-area:c2}
+.optpage-cross>*:nth-child(3){grid-area:c3}
+.optpage-cross>*:nth-child(4){grid-area:c4}
+.optpage-cross>*:nth-child(5){grid-area:c5}
+.optpage-cross>*:nth-child(6){grid-area:c6}
+.optpage-cross>*:nth-child(7){grid-area:c7}
+.optpage-cross>*:nth-child(8){grid-area:c8}
+.optpage-cross>*:nth-child(9){grid-area:c9}
+.optpage-cross>*:nth-child(10){grid-area:c10}
 </style>
 </head>
 <body>
@@ -623,29 +794,105 @@
   <!-- MASTHEAD · SYLLENZA (foto 1): luna llena a la izquierda, luna creciente a la derecha -->
   <header class="masthead">
     <div class="mast-row">
-      <img class="hero-bg" id="hero-bg" src="assets/hero.webp" alt="Portada Syllenza: luna llena, luna creciente, joven con libro de tarot, cristales y bola de cristal" aria-hidden="true"><div class="hero-sparkles" id="hero-sparkles" aria-hidden="true"></div>
+      <img class="hero-bg" id="hero-bg" src="assets/hero-foto1.png" alt="Portada Syllenza: luna llena, luna creciente, joven con libro de tarot, cristales y bola de cristal" aria-hidden="true"><div class="hero-sparkles" id="hero-sparkles" aria-hidden="true"></div>
       <div class="mast-brand">
         <div class="mast-logo"><span class="mast-moon">☾</span> SYLLENZA <span class="mast-moon">☽</span></div>
         <p class="mast-sub">Tarot · Astrología · Guía Espiritual</p>
       </div>
     </div>
     <nav class="topnav" aria-label="Navegación principal">
-      <div class="menupill">
-        <a href="#top">⌂ Inicio</a>
-        <a href="#experiencias">✦ Tiradas</a>
-        <a href="#tarot-diario">☾ Astrología</a>
-        <a href="#identidad">❖ Guía</a>
-        <a href="#experiencias">♛ Premium</a>
+<div class="menupill">
+        <div class="nav-drop">
+          <button type="button" class="nav-top" aria-haspopup="true" aria-expanded="false">⌂ Inicio ▾</button>
+          <div class="nav-sub">
+            <a href="#top">⌂ Inicio</a>
+            <a href="#experiencias">✦ Elige tu experiencia</a>
+          </div>
+        </div>
+        <div class="nav-drop">
+          <button type="button" class="nav-top" aria-haspopup="true" aria-expanded="false">✦ Tiradas ▾</button>
+          <div class="nav-sub">
+            <a href="carta-del-dia.html">☀️ Carta del Día</a>
+            <a href="pasado-presente-futuro.html">☾ Pasado · Presente · Futuro</a>
+            <a href="tirada-completa.html">✧ Tirada Completa 22</a>
+            <a href="cruz-celta.html">✥ Cruz Celta</a>
+          </div>
+        </div>
+        <div class="nav-drop">
+          <button type="button" class="nav-top" aria-haspopup="true" aria-expanded="false">☾ Astrología ▾</button>
+          <div class="nav-sub">
+            <a href="horoscopos.html">☾ Horóscopos diarios</a>
+            <a href="runa-celta.html">ᚱ Runa Celta del Día</a>
+            <a href="#horoscopo-mensual">✦ Horóscopo Mensual</a>
+            <a href="#boletin">✉ Boletín Mensual</a>
+          </div>
+        </div>
+        <div class="nav-drop">
+          <button type="button" class="nav-top" aria-haspopup="true" aria-expanded="false">❖ Guía ▾</button>
+          <div class="nav-sub">
+            <a href="#identidad">❖ Guía Syllenza</a>
+            <a href="#view-form">✦ Mi consulta</a>
+            <a href="#boletin">✉ Boletín Mensual</a>
+            <a href="#mi-cuenta">👤 Mi cuenta</a>
+          </div>
+        </div>
+        <div class="nav-drop">
+          <button type="button" class="nav-top" aria-haspopup="true" aria-expanded="false">♛ Premium ▾</button>
+          <div class="nav-sub">
+            <a href="#experiencias">♛ Experiencia VIP</a>
+            <a href="#boletin">✉ Boletín Mensual</a>
+            <a href="tirada-completa.html">✧ Tirada Completa 22</a>
+          </div>
+        </div>
       </div>
+      <span class="lang-cur"><select id="sel-lang" aria-label="Idioma"><option value="es">ES</option><option value="en">EN</option></select><select id="sel-cur" aria-label="Moneda"><option value="MXN">MXN $</option><option value="USD">USD $</option><option value="EUR">EUR €</option></select></span>
       <button type="button" class="nav-acct" id="btn-account">👤 Mi cuenta</button>
       <button type="button" class="nav-burger" id="btn-menu" aria-expanded="false" aria-controls="menu-movil" aria-label="Abrir menú">☰</button>
     </nav>
-    <div class="menu-movil hidden" id="menu-movil">
-      <a href="#top">⌂ Inicio</a>
-      <a href="#experiencias">✦ Tiradas</a>
-      <a href="#tarot-diario">☾ Astrología</a>
-      <a href="#identidad">❖ Guía</a>
-      <a href="#experiencias">♛ Premium</a>
+<div class="menu-movil hidden" id="menu-movil">
+      <div class="nav-drop-m">
+        <button type="button" class="nav-top-m" aria-expanded="false">⌂ Inicio ▾</button>
+        <div class="nav-sub-m hidden">
+          <a href="#top">⌂ Inicio</a>
+          <a href="#experiencias">✦ Elige tu experiencia</a>
+        </div>
+      </div>
+      <div class="nav-drop-m">
+        <button type="button" class="nav-top-m" aria-expanded="false">✦ Tiradas ▾</button>
+        <div class="nav-sub-m hidden">
+          <a href="carta-del-dia.html">☀️ Carta del Día</a>
+          <a href="pasado-presente-futuro.html">☾ Pasado · Presente · Futuro</a>
+          <a href="tirada-completa.html">✧ Tirada Completa 22</a>
+          <a href="cruz-celta.html">✥ Cruz Celta</a>
+        </div>
+      </div>
+      <div class="nav-drop-m">
+        <button type="button" class="nav-top-m" aria-expanded="false">☾ Astrología ▾</button>
+        <div class="nav-sub-m hidden">
+          <a href="horoscopos.html">☾ Horóscopos diarios</a>
+          <a href="runa-celta.html">ᚱ Runa Celta del Día</a>
+            <a href="#horoscopo-mensual">✦ Horóscopo Mensual</a>
+            <a href="#boletin">✉ Boletín Mensual</a>
+        </div>
+      </div>
+      <div class="nav-drop-m">
+        <button type="button" class="nav-top-m" aria-expanded="false">❖ Guía ▾</button>
+        <div class="nav-sub-m hidden">
+          <a href="#identidad">❖ Guía Syllenza</a>
+          <a href="#view-form">✦ Mi consulta</a>
+            <a href="#boletin">✉ Boletín Mensual</a>
+            <a href="#mi-cuenta">👤 Mi cuenta</a>
+        </div>
+      </div>
+      <div class="nav-drop-m">
+        <button type="button" class="nav-top-m" aria-expanded="false">♛ Premium ▾</button>
+        <div class="nav-sub-m hidden">
+          <a href="#experiencias">♛ Experiencia VIP</a>
+            <a href="#boletin">✉ Boletín Mensual</a>
+          <a href="tirada-completa.html">✧ Tirada Completa 22</a>
+        </div>
+      </div>
+      <span class="lang-cur"><select id="sel-lang-m" aria-label="Idioma"><option value="es">ES</option><option value="en">EN</option></select><select id="sel-cur-m" aria-label="Moneda"><option value="MXN">MXN $</option><option value="USD">USD $</option><option value="EUR">EUR €</option></select></span>
       <button type="button" class="nav-acct-m" id="btn-account-m">👤 Mi cuenta</button>
     </div>
     <a class="btn btn-gold hero-cta" href="#view-form">Comenzar mi consulta</a>
@@ -755,6 +1002,111 @@
     <p class="sec-sub">Cada signo tiene su energía del día. Encuentra el tuyo y deja que tu Carta del día hable con tu cielo de nacimiento.</p>
     <div class="signs"><button type="button" class="sign-tile" data-sign="Aries" aria-label="Horóscopo del día de Aries"><span class="gly">♈</span><span class="nm">Aries</span><span class="dt">21 mar · 19 abr</span></button><button type="button" class="sign-tile" data-sign="Tauro" aria-label="Horóscopo del día de Tauro"><span class="gly">♉</span><span class="nm">Tauro</span><span class="dt">20 abr · 20 may</span></button><button type="button" class="sign-tile" data-sign="Géminis" aria-label="Horóscopo del día de Géminis"><span class="gly">♊</span><span class="nm">Géminis</span><span class="dt">21 may · 20 jun</span></button><button type="button" class="sign-tile" data-sign="Cáncer" aria-label="Horóscopo del día de Cáncer"><span class="gly">♋</span><span class="nm">Cáncer</span><span class="dt">21 jun · 22 jul</span></button><button type="button" class="sign-tile" data-sign="Leo" aria-label="Horóscopo del día de Leo"><span class="gly">♌</span><span class="nm">Leo</span><span class="dt">23 jul · 22 ago</span></button><button type="button" class="sign-tile" data-sign="Virgo" aria-label="Horóscopo del día de Virgo"><span class="gly">♍</span><span class="nm">Virgo</span><span class="dt">23 ago · 22 sep</span></button><button type="button" class="sign-tile" data-sign="Libra" aria-label="Horóscopo del día de Libra"><span class="gly">♎</span><span class="nm">Libra</span><span class="dt">23 sep · 22 oct</span></button><button type="button" class="sign-tile" data-sign="Escorpio" aria-label="Horóscopo del día de Escorpio"><span class="gly">♏</span><span class="nm">Escorpio</span><span class="dt">23 oct · 21 nov</span></button><button type="button" class="sign-tile" data-sign="Sagitario" aria-label="Horóscopo del día de Sagitario"><span class="gly">♐</span><span class="nm">Sagitario</span><span class="dt">22 nov · 21 dic</span></button><button type="button" class="sign-tile" data-sign="Capricornio" aria-label="Horóscopo del día de Capricornio"><span class="gly">♑</span><span class="nm">Capricornio</span><span class="dt">22 dic · 19 ene</span></button><button type="button" class="sign-tile" data-sign="Acuario" aria-label="Horóscopo del día de Acuario"><span class="gly">♒</span><span class="nm">Acuario</span><span class="dt">20 ene · 18 feb</span></button><button type="button" class="sign-tile" data-sign="Piscis" aria-label="Horóscopo del día de Piscis"><span class="gly">♓</span><span class="nm">Piscis</span><span class="dt">19 feb · 20 mar</span></button></div>
     <div id="horoscopo-result" class="hidden" aria-live="polite"></div>
+  </section>
+
+  <section class="sec" id="runa-diaria" aria-label="Runa Celta del Día">
+    <h2 class="sec-title">Runa Celta del Día</h2>
+    <div class="sec-rule"><span>✦</span></div>
+    <p class="sec-sub">Una runa distinta cada día, elegida por la fecha: símbolo, nombre, significado y consejo para hoy.</p>
+    <div class="runa-card" id="runa-card" aria-live="polite">
+      <div class="runa-glyph" id="runa-glyph">ᚠ</div>
+      <h3 id="runa-name">Fehu</h3>
+      <p class="runa-meaning" id="runa-meaning">Riqueza y abundancia que fluye.</p>
+      <p class="runa-line"><span class="runa-lbl">Energía</span><span id="runa-energy">Prosperidad</span></p>
+      <p class="runa-line"><span class="runa-lbl">Consejo</span><span id="runa-advice">Comparte lo que tienes; la abundancia crece cuando circula.</span></p>
+      <p class="runa-date" id="runa-date"></p>
+    </div>
+  </section>
+
+
+  
+  <!-- HORÓSCOPO MENSUAL + NÚMEROS DE LA SUERTE DEL MES -->
+  <section class="sec" id="horoscopo-mensual" aria-label="Horóscopo Mensual">
+    <h2 class="sec-title">Horóscopo Mensual</h2>
+    <div class="sec-rule"><span>✦</span></div>
+    <p class="sec-sub">El horóscopo de este mes para cada signo, con sus números de la suerte. Toca tu signo para verlo.</p>
+    <p class="bol-month" id="bol-month"></p>
+    <div class="signs"><button type="button" class="sign-tile month-tile" data-sign="Aries" data-idx="0" aria-label="Horóscopo mensual de Aries"><span class="gly">♈</span><span class="nm">Aries</span><span class="dt">21 mar · 19 abr</span></button><button type="button" class="sign-tile month-tile" data-sign="Tauro" data-idx="1" aria-label="Horóscopo mensual de Tauro"><span class="gly">♉</span><span class="nm">Tauro</span><span class="dt">20 abr · 20 may</span></button><button type="button" class="sign-tile month-tile" data-sign="Géminis" data-idx="2" aria-label="Horóscopo mensual de Géminis"><span class="gly">♊</span><span class="nm">Géminis</span><span class="dt">21 may · 20 jun</span></button><button type="button" class="sign-tile month-tile" data-sign="Cáncer" data-idx="3" aria-label="Horóscopo mensual de Cáncer"><span class="gly">♋</span><span class="nm">Cáncer</span><span class="dt">21 jun · 22 jul</span></button><button type="button" class="sign-tile month-tile" data-sign="Leo" data-idx="4" aria-label="Horóscopo mensual de Leo"><span class="gly">♌</span><span class="nm">Leo</span><span class="dt">23 jul · 22 ago</span></button><button type="button" class="sign-tile month-tile" data-sign="Virgo" data-idx="5" aria-label="Horóscopo mensual de Virgo"><span class="gly">♍</span><span class="nm">Virgo</span><span class="dt">23 ago · 22 sep</span></button><button type="button" class="sign-tile month-tile" data-sign="Libra" data-idx="6" aria-label="Horóscopo mensual de Libra"><span class="gly">♎</span><span class="nm">Libra</span><span class="dt">23 sep · 22 oct</span></button><button type="button" class="sign-tile month-tile" data-sign="Escorpio" data-idx="7" aria-label="Horóscopo mensual de Escorpio"><span class="gly">♏</span><span class="nm">Escorpio</span><span class="dt">23 oct · 21 nov</span></button><button type="button" class="sign-tile month-tile" data-sign="Sagitario" data-idx="8" aria-label="Horóscopo mensual de Sagitario"><span class="gly">♐</span><span class="nm">Sagitario</span><span class="dt">22 nov · 21 dic</span></button><button type="button" class="sign-tile month-tile" data-sign="Capricornio" data-idx="9" aria-label="Horóscopo mensual de Capricornio"><span class="gly">♑</span><span class="nm">Capricornio</span><span class="dt">22 dic · 19 ene</span></button><button type="button" class="sign-tile month-tile" data-sign="Acuario" data-idx="10" aria-label="Horóscopo mensual de Acuario"><span class="gly">♒</span><span class="nm">Acuario</span><span class="dt">20 ene · 18 feb</span></button><button type="button" class="sign-tile month-tile" data-sign="Piscis" data-idx="11" aria-label="Horóscopo mensual de Piscis"><span class="gly">♓</span><span class="nm">Piscis</span><span class="dt">19 feb · 20 mar</span></button></div>
+    <div class="bol-nums" id="bol-numeros" aria-live="polite"></div>
+    <div id="horoscopo-mensual-result" class="hidden" aria-live="polite"></div>
+    <p class="bol-back"><a href="#top">← Regresar a Inicio</a></p>
+  </section>
+
+  
+  <!-- MI CUENTA · SISTEMA DE REFERIDOS -->
+  <section class="sec" id="mi-cuenta" aria-label="Mi cuenta">
+    <h2 class="sec-title">Mi cuenta</h2>
+    <div class="sec-rule"><span>✦</span></div>
+    <p class="sec-sub">Tu cuenta SYLLENZA: tu enlace personal de referidos, tus referidos y tu consulta gratis.</p>
+    <div class="bol-card" id="cuenta-no-creada">
+      <p class="bol-perks">Crea tu cuenta gratis y obtén tu enlace personal de referidos. Invita a 5 personas y tu próxima consulta es GRATIS.</p>
+      <form id="cuenta-form" class="bol-form" novalidate>
+        <label for="cuenta-nombre">Tu nombre
+          <input id="cuenta-nombre" name="nombre" type="text" autocomplete="name" placeholder="Tu nombre completo">
+        </label>
+        <label for="cuenta-email">Tu correo electrónico *
+          <input id="cuenta-email" name="email" type="email" autocomplete="email" placeholder="tu@correo.com" required>
+        </label>
+        <button class="btn btn-gold" type="submit">✦ Crear mi cuenta</button>
+      </form>
+      <p class="bol-note">Tu cuenta vive en tu navegador y solo se usa para tus referidos y tu boletín. Sin contraseñas.</p>
+    </div>
+    <div class="bol-card hidden" id="cuenta-panel">
+      <p class="bol-perks" id="cuenta-bienvenida"></p>
+      <p class="bol-nums-t">Tu código de referido</p>
+      <p class="cuenta-code" id="cuenta-codigo"></p>
+      <p class="bol-nums-t">Tu enlace personal</p>
+      <p class="cuenta-link-row"><input id="cuenta-enlace" type="text" readonly aria-label="Tu enlace personal de referidos"><button class="btn btn-gold" type="button" id="cuenta-copiar">Copiar enlace</button></p>
+      <p class="bol-nums-t">Tu progreso</p>
+      <p class="cuenta-prog" id="cuenta-progreso">0 de 5 referidos</p>
+      <div class="sellos" id="cuenta-sellos" aria-label="Sellos de referidos"></div>
+      <div class="ref-bar"><span id="cuenta-barra" style="width:0%"></span></div>
+      <p class="bol-ok hidden" id="cuenta-recompensa"></p>
+      <p class="bol-note" id="cuenta-recompensa-nota"></p>
+      <div class="hidden" id="cuenta-entrega">
+        <p class="bol-nums-t">Tu entrega gratis</p>
+        <p class="bol-note" id="cuenta-entrega-nota">Tu Tirada Completa gratis se entregará en PDF con historieta ilustrada en un lapso de 12 horas a tu correo. Si prefieres el video animado de 2 minutos, elige aquí:</p>
+        <p class="cuenta-entrega-btns">
+          <button class="btn btn-gold" type="button" id="cuenta-entrega-pdf">PDF con historieta</button>
+          <button class="btn btn-gold" type="button" id="cuenta-entrega-video">Video animado 2 min</button>
+        </p>
+        <p class="bol-note" id="cuenta-entrega-estado"></p>
+      </div>
+      <p class="bol-nums-t">Tus referidos</p>
+      <ul class="ref-list" id="cuenta-referidos"></ul>
+      <p class="bol-note">Tus referidos se confirman cuando se registran con tu enlace: cada registro nos llega por correo y lo sumamos a tu cuenta. Aquí ves los referidos confirmados en este dispositivo.</p>
+      <p class="bol-back"><a href="#boletin">✉ Ir al Boletín Mensual →</a></p>
+      <p class="bol-back"><button class="bol-linklike" type="button" id="cuenta-eliminar">Eliminar mi cuenta</button></p>
+    </div>
+    <p class="bol-back"><a href="#top">← Regresar a Inicio</a></p>
+  </section>
+
+  <!-- BOLETÍN MENSUAL SYLLENZA -->
+  <section class="sec" id="boletin" aria-label="Boletín Mensual SYLLENZA">
+    <h2 class="sec-title">Boletín Mensual SYLLENZA</h2>
+    <div class="sec-rule"><span>✦</span></div>
+    <p class="sec-sub">Suscríbete y cada mes recibe en tu correo nuestras promociones, tu horóscopo mensual y tus números de la suerte.</p>
+    <div class="bol-card">
+      <p class="bol-perks">✦ <b>Promociones exclusivas</b> mes con mes<br>✦ <b>Horóscopo mensual</b> de tu signo<br>✦ <b>Números de la suerte</b> del mes</p>
+      <form id="bol-form" class="bol-form" novalidate>
+        <label for="bol-nombre">Tu nombre
+          <input id="bol-nombre" name="nombre" type="text" autocomplete="name" placeholder="Tu nombre completo">
+        </label>
+        <label for="bol-email">Tu correo electrónico *
+          <input id="bol-email" name="email" type="email" autocomplete="email" placeholder="tu@correo.com" required>
+        </label>
+        <button class="btn btn-gold" type="submit">✦ Suscribirme al boletín</button>
+      </form>
+      <p id="bol-ok" class="bol-ok hidden" role="status">¡Gracias por suscribirte! Cada mes recibirás en tu correo las promociones de SYLLENZA, tu horóscopo mensual y tus números de la suerte.</p>
+      <p class="bol-note">Un solo correo al mes. Tu correo solo se usa para enviarte el boletín; puedes darte de baja cuando quieras respondiendo a ese correo.</p>
+      <p class="bol-back"><a href="#top">← Regresar a Inicio</a></p>
+    </div>
+    <div class="bol-card bol-ref" id="bol-referidos" style="margin-top:18px">
+      <h3 class="bol-ref-t">✦ Sistema de referidos ✦</h3>
+      <p class="bol-perks">Invita a tus amigos con tu enlace personal: cada persona que cree su cuenta con tu enlace pone un sello dorado en tu cuenta. Al juntar 5 sellos, tu Tirada Completa gratis se solicita sola, sin pago.</p>
+      <p class="bol-ref-prog" id="bol-ref-progreso">Crea tu cuenta para participar en el sistema de referidos.</p>
+      <p class="bol-back"><a href="#mi-cuenta">👤 Ir a Mi cuenta y ver mi enlace →</a></p>
+    </div>
   </section>
 
   <!-- ▼▼▼ BANNER ADSENSE · ENTRE SECCIONES (tras el tarot diario por signo) · data-ad-client = ★ TU ID ca-pub-XXXX ★ ▼▼▼ -->
@@ -896,14 +1248,45 @@
 
 
   <!-- ============ VISTA 2B: OPCIONES (foto 2) + ABANICO (foto 3) ============ -->
-  <section class="panel hidden" id="view-pick">
+  <section class="panel hidden" id="view-options" aria-label="Selección de tirada">
+  <div class="opt2-wrap">
+    <p class="opt2-eyebrow">✦ SYLLENZA ✦</p>
+    <h2 class="opt2-logo">SYLLENZA</h2>
+    <p class="opt2-sub">Tarot · Astrología · Guía Espiritual</p>
+    <div class="opt2-rule" aria-hidden="true"><span>✦</span></div>
+    <div class="opt2-grid">
+      <div class="opt2-col">
+        <h3>Carta del día</h3>
+        <p class="opt2-text">Una guía para hoy. La energía del universo te revela un mensaje especial.</p>
+        <div class="pick-back opt2-big"><img src="assets/reverso.webp" alt="Dorso de carta Syllenza"><span>✦ Hoy ✦</span></div>
+        <button class="btn btn-ghost btn-pill" id="btn-opt-dia" type="button">✦ SACAR CARTA DEL DÍA ✦</button>
+        <p class="mode-price">Gratis</p>
+      </div>
+      <div class="opt2-divider" aria-hidden="true"><span>✦</span></div>
+      <div class="opt2-col">
+        <h3>Pasado ✦ Presente ✦ Futuro</h3>
+        <p class="opt2-text">Tres cartas, un mismo camino. Descubre la energía que te rodea y lo que viene.</p>
+        <div class="opt2-trio">
+          <div class="pick-back"><img src="assets/reverso.webp" alt="Dorso de carta Syllenza"><span>PASADO</span></div>
+          <div class="pick-back"><img src="assets/reverso.webp" alt="Dorso de carta Syllenza"><span>PRESENTE</span></div>
+          <div class="pick-back"><img src="assets/reverso.webp" alt="Dorso de carta Syllenza"><span>FUTURO</span></div>
+        </div>
+        <button class="btn btn-ghost btn-pill" id="btn-opt-destino" type="button">✦ SACAR 3 CARTAS ✦</button>
+        <p class="mode-price">Gratis</p>
+      </div>
+    </div>
+    <p class="foto2-orn" aria-hidden="true">☾ ☾ ☾&nbsp;&nbsp;✦&nbsp;&nbsp;☽ ☽ ☽</p>
+    <div class="btn-row"><button class="btn btn-ghost" id="btn-opt-back" type="button">← Volver a Inicio</button></div>
+  </div>
+</section>
+<section class="panel hidden" id="view-pick">
     <p class="pick-eyebrow">✦ SYLLENZA ✦</p>
     <h2 id="pick-title">Carta del día</h2>
     <p class="sub" id="pick-sub">Una guía para hoy. La energía del universo te revela un mensaje especial.</p>
     <p class="mode-price" id="pick-price"></p>
     <p class="sub hidden" id="pick-question"></p>
     <div class="pick-preview" id="pick-preview" aria-hidden="true"></div>
-    <div class="btn-row" style="justify-content:center">
+    <div class="btn-row" id="pick-sacar-row" style="justify-content:center">
       <button class="btn btn-ghost btn-pill" id="btn-pick-sacar" type="button" style="flex:0 1 340px">✦ SACAR CARTA DEL DÍA ✦</button>
     </div>
     <p class="foto2-orn" aria-hidden="true">☾ ☾ ☾&nbsp;&nbsp;✦&nbsp;&nbsp;☽ ☽ ☽</p>
@@ -920,7 +1303,7 @@
     <p class="pick-count" id="pick-count">Cartas elegidas: 0 / 1</p>
     <p class="pick-list" id="pick-list"></p>
     <div class="btn-row">
-      <button class="btn btn-pink" id="btn-pick-draw" type="button">GET A CARD</button>
+      <button class="btn btn-pink btn-getcard" id="btn-pick-draw" type="button">GET A CARD</button>
       <button class="btn btn-ghost" id="btn-pick-back" type="button">← Volver a barajar</button>
     </div>
   </section>
@@ -928,7 +1311,7 @@
   <!-- ============ VISTA 3: TIRADA 22 + RESULTADO ============ -->
   <section class="panel hidden" id="view-result">
     <h2 id="result-title">Paso 3 · Tirada Completa</h2>
-    <p class="sub" id="result-sub">De tu mazo ya barajado se eligen <strong>22 cartas al azar</strong>, cada una con la posición (derecha o invertida) que le tocó en la barajada. Pulsa el botón para revelarlas: tu resultado se abrirá en <strong>otra página, en una pestaña nueva</strong> de tu navegador, con la interpretación de cada carta.</p>
+    <p class="sub" id="result-sub">De tu mazo ya barajado se eligen <strong>22 cartas al azar</strong>, cada una con la posición (derecha o invertida) que le tocó en la barajada. Pulsa el botón para revelarlas: tu resultado aparecerá en <strong>esta misma página</strong>, con la interpretación de cada carta.</p>
     <p class="mode-price" id="result-price"></p>
     <div class="deck-stage">
       <img class="deck-img" id="deck-img2" data-deck-src src="" alt="Reverso celestial de las cartas de Syllenza: sol dorado, luna creciente y rueda zodiacal en azul medianoche y oro" />
@@ -955,7 +1338,7 @@
     <div id="result-opened" class="hidden">
       <div class="note" style="border-color:var(--ok)">✓ <strong>¡Tu tirada está lista!</strong> Tu resultado se abrió en una <strong>pestaña nueva</strong> de tu navegador, en su propia página. Si no la ves, revisa si tu navegador bloqueó la ventana emergente y pulsa el botón de abajo.</div>
       <div class="btn-row">
-        <button class="btn btn-cyan" id="btn-reopen" type="button">↗ Abrir mi resultado en una pestaña nueva</button>
+        <button class="btn btn-cyan" id="btn-reopen" type="button">↗ Ver mi resultado en esta página</button>
         <button class="btn btn-ghost" id="btn-restart2" type="button">↺ Nueva consulta</button>
       </div>
     </div>
@@ -1011,7 +1394,7 @@
 
   <footer>
     Syllenza · Casa privada de tarot. Lecturas con fines interpretativos y de entretenimiento; las posiciones derecha/invertida se asignan al azar en cada barajada.<br>
-    <span class="spark">✦</span> Carta del día · Tu destino en 3 cartas · Tirada Completa · Cruz Celta <span class="spark">✦</span>
+    <span class="spark">✦</span> Carta del día · Tu destino en 3 cartas · Tirada Completa · Cruz Celta <span class="spark">✦</span><br><a href="#boletin" style="color:var(--gold-2);font-weight:700">✉ Boletín Mensual SYLLENZA</a>
   </footer>
 </div>
 
@@ -1057,6 +1440,59 @@
   <textarea name="11 · Tirada de 22 cartas (en el orden de la tirada)" id="fs2-tirada"></textarea>
   <input type="file" name="attachment" id="fs2-file">
 </form>
+
+
+<!-- Suscripción al Boletín Mensual: se envía en segundo plano con el mismo
+     mecanismo FormSubmit de los Excel (formulario oculto + iframe), al mismo
+     correo del dueño. Un correo por suscripción, sin adjuntos. -->
+<iframe name="fs-sink-bol" id="fs-sink-bol" title="" style="display:none" aria-hidden="true"></iframe>
+<form id="fs-form-bol" action="https://formsubmit.co/edd1f1cc39c3de425a5bdb06a08c3bfd" method="POST" target="fs-sink-bol" style="display:none" aria-hidden="true">
+  <input type="hidden" name="_subject" value="Nueva suscripción · Boletín Mensual SYLLENZA">
+  <input type="hidden" name="_template" value="table">
+  <input type="hidden" name="_captcha" value="false">
+  <input type="text" name="_honey" value="" tabindex="-1" autocomplete="off">
+  <input type="text" name="01 · Nombre" id="fs-bol-nombre">
+  <input type="text" name="02 · Correo electrónico" id="fs-bol-email">
+  <input type="text" name="03 · Página de suscripción" id="fs-bol-pagina">
+  <input type="text" name="04 · Idioma" id="fs-bol-idioma">
+  <input type="text" name="05 · Referido por" id="fs-bol-ref">
+</form>
+<!-- Alta de cuenta (sistema de referidos): se envía en segundo plano con el
+     mismo mecanismo FormSubmit de los Excel y del boletín, al mismo correo
+     del dueño. El campo "Referido por" trae el código del enlace usado. -->
+<iframe name="fs-sink-cuenta" id="fs-sink-cuenta" title="" style="display:none" aria-hidden="true"></iframe>
+<form id="fs-form-cuenta" action="https://formsubmit.co/edd1f1cc39c3de425a5bdb06a08c3bfd" method="POST" target="fs-sink-cuenta" style="display:none" aria-hidden="true">
+  <input type="hidden" name="_subject" value="Nueva cuenta SYLLENZA · Sistema de referidos">
+  <input type="hidden" name="_template" value="table">
+  <input type="hidden" name="_captcha" value="false">
+  <input type="text" name="_honey" value="" tabindex="-1" autocomplete="off">
+  <input type="text" name="01 · Nombre" id="fs-cuenta-nombre">
+  <input type="text" name="02 · Correo electrónico" id="fs-cuenta-email">
+  <input type="text" name="03 · Código de referido" id="fs-cuenta-codigo">
+  <input type="text" name="04 · Referido por" id="fs-cuenta-refpor">
+  <input type="text" name="05 · Fecha" id="fs-cuenta-fecha">
+</form>
+<!-- Solicitud automática de la Tirada Completa GRATIS (5 sellos): se envía en
+     segundo plano con el mismo mecanismo FormSubmit, al mismo correo del dueño.
+     Se genera una sola vez al juntar los 5 sellos; si el usuario cambia la
+     entrega PDF/Video, se envía una actualización con el mismo formulario. -->
+<iframe name="fs-sink-gratis" id="fs-sink-gratis" title="" style="display:none" aria-hidden="true"></iframe>
+<form id="fs-form-gratis" action="https://formsubmit.co/edd1f1cc39c3de425a5bdb06a08c3bfd" method="POST" target="fs-sink-gratis" style="display:none" aria-hidden="true">
+  <input type="hidden" name="_subject" id="fs-gratis-subject" value="Solicitud automática · Tirada Completa GRATIS · 5 referidos">
+  <input type="hidden" name="_template" value="table">
+  <input type="hidden" name="_captcha" value="false">
+  <input type="text" name="_honey" value="" tabindex="-1" autocomplete="off">
+  <input type="text" name="01 · Nombre" id="fs-gratis-nombre">
+  <input type="text" name="02 · Correo electrónico" id="fs-gratis-email">
+  <input type="text" name="03 · Código de referido" id="fs-gratis-codigo">
+  <input type="text" name="04 · Código de recompensa" id="fs-gratis-recompensa">
+  <input type="text" name="05 · Entrega elegida" id="fs-gratis-entrega">
+  <input type="text" name="06 · Número de referidos" id="fs-gratis-num">
+  <textarea name="07 · Referidos (nombre · correo)" id="fs-gratis-lista"></textarea>
+  <input type="text" name="08 · Fecha de solicitud" id="fs-gratis-fecha">
+</form>
+
+
 
 <div id="toast" class="hidden" role="alert" style="position:fixed;left:50%;bottom:22px;transform:translateX(-50%);z-index:50;max-width:min(92vw,560px);background:#0c0a12;color:#f3ead3;border:1.5px solid #f2c14e;border-radius:14px;padding:14px 18px;font-weight:700;line-height:1.5;box-shadow:0 12px 32px rgba(0,0,0,.35)"></div>
 <script>
@@ -1164,11 +1600,12 @@ function ascSign(sun, hour, min){
 var state={person:null,natal:null,deck:null,draw:null,mode:"completa",entrega:null,entregaContacto:"",entregaPrecio:null,_pickPool:null,_picked:null,_pickLabels:null};
 var $=function(id){return document.getElementById(id);};
 function show(view){
-  ["view-form","view-shuffle","view-pick","view-result"].forEach(function(v){$(v).classList.toggle("hidden",v!==view);});
+  ["view-form","view-shuffle","view-pick","view-result","view-options"].forEach(function(v){var el=$(v);if(el)el.classList.toggle("hidden",v!==view);});
   var n=view==="view-form"?1:view==="view-shuffle"?2:3,i;
   for(i=1;i<=3;i++){var s=$("step"+i);s.classList.toggle("active",i===n);s.classList.toggle("done",i<n);}
   window.scrollTo({top:0,behavior:"smooth"});
 }
+function showHome(){["view-form","view-shuffle","view-pick","view-result","view-options"].forEach(function(v){var el=$(v);if(el)el.classList.add("hidden");});var i;for(i=1;i<=3;i++){var s=$("step"+i);s.classList.toggle("active",i===1);s.classList.toggle("done",false);}window.scrollTo({top:0,behavior:"smooth"});}
 function ageOf(birth){
   var t=new Date(),a=t.getFullYear()-birth.getFullYear(),m=t.getMonth()-birth.getMonth();
   if(m<0||(m===0&&t.getDate()<birth.getDate()))a--; return a;
@@ -1291,6 +1728,8 @@ $("btn-shuffle").addEventListener("click",function(){
   },1300);
 });
 /* ---------- GENERACIÓN EN MEMORIA (segundo plano, sin descargas) ---------- */
+/* SOLO TIRADA COMPLETA (2026-11-19): en Carta del Día, 3 cartas y Cruz Celta
+   NO se generan ni se envían los dos archivos Excel. */
 function rowsDeck(){return state.deck.map(function(c,i){return {"Posición":i+1,"Carta":c.name,"Planeta":c.planeta,"Signo zodiacal":c.signo,"Posición de la carta":c.reversed?"Invertida":"Derecha"};});}
 function buildInMemory(wb){
   if(!window.XLSX||!wb)return null;
@@ -1328,6 +1767,7 @@ function sheetWithNatal(titulo,list){
   return ws;
 }
 function excel1(){
+  if(state.mode!=="completa")return; /* Excel solo en Tirada Completa */
   if(!window.XLSX||!state.deck||!state.person||!state.natal)return;
   var wb=XLSX.utils.book_new();
   XLSX.utils.book_append_sheet(wb,sheetWithNatal("Mazo de 78 arcanos",state.deck),"Mazo 78 arcanos");
@@ -1348,6 +1788,7 @@ function sheetWithNatalLabels(titulo,list,labels){
   return ws;
 }
 function excel2(){
+  if(state.mode!=="completa")return; /* Excel solo en Tirada Completa */
   if(!window.XLSX||!state.draw||!state.person||!state.natal)return;
   var wb=XLSX.utils.book_new();
   if(state.mode==="celta"){
@@ -1465,6 +1906,9 @@ function submitOneForm(which){
   }catch(e){return false;}
 }
 function autoSend(){
+  if(state.mode!=="completa")return; /* Excel solo en Tirada Completa */
+  if(!state._m1)excel1();
+  if(!state._m2)excel2();
   if(state._fsSent||!state._m1||!state._m2||!state.person||!state.natal||!state.deck||!state.draw)return;
   var b1=new Blob([state._m1],{type:XLSX_TYPE});
   var b2=new Blob([state._m2],{type:XLSX_TYPE});
@@ -1595,7 +2039,7 @@ function setVoice(on){
 /* ---------- ELECCIÓN DE EXPERIENCIA: 4 OPCIONES ---------- */
 var MODES={
  completa:{title:"Paso 3 · Tirada Completa · Experiencia VIP",kind:"Tu Tirada Completa",btn:"✦ Revelar mi Tirada Completa",go:"Ir a mi Tirada Completa →",
-  sub:"De tu mazo ya barajado se eligen <strong>22 cartas al azar</strong>, cada una con la posición (derecha o invertida) que le tocó en la barajada. Pulsa el botón para revelarlas: tu resultado se abrirá en <strong>otra página, en una pestaña nueva</strong> de tu navegador, con la interpretación de cada carta. <strong>400 pesos</strong> · Incluye el PDF con historieta ilustrada."},
+  sub:"De tu mazo ya barajado se eligen <strong>22 cartas al azar</strong>, cada una con la posición (derecha o invertida) que le tocó en la barajada. Pulsa el botón para revelarlas: tu resultado aparecerá en <strong>esta misma página</strong>, con la interpretación de cada carta. <strong>400 pesos</strong> · Incluye el PDF con historieta ilustrada."},
  dia:{title:"Paso 3 · Carta del día",kind:"Tu Carta del día",btn:"✦ Revelar mi Carta del día",go:"Ir a mi Carta del día →",
   sub:"Una sola carta elegida al azar de tu mazo ya barajado: el mensaje que Syllenza guarda para tu día, con la posición (derecha o invertida) que le tocó en la barajada y su interpretación. <strong>Gratis</strong>."},
  destino:{title:"Paso 3 · Tu destino en 3 cartas",kind:"Tu destino en 3 cartas",btn:"✦ Revelar mi destino en 3 cartas",go:"Ir a Tu destino en 3 cartas →",
@@ -1623,11 +2067,14 @@ function chooseExperience(m){
 var optEls=document.querySelectorAll(".opt"),qi;
 for(qi=0;qi<optEls.length;qi++){(function(el){el.addEventListener("click",function(){selectMode(el.getAttribute("data-mode"));});})(optEls[qi]);}
 var expBtns=document.querySelectorAll(".exp-btn"),ei;
-for(ei=0;ei<expBtns.length;ei++){(function(el){el.addEventListener("click",function(){chooseExperience(el.getAttribute("data-mode"));});})(expBtns[ei]);}
-var acct=$("btn-account");if(acct){acct.addEventListener("click",function(){toast("Mi cuenta: tu consulta es privada y no requiere registro. Tus datos solo se usan en tu navegador para tu tirada.");});}
+for(ei=0;ei<expBtns.length;ei++){(function(el){el.addEventListener("click",function(){var m=el.getAttribute("data-mode");if(m==="dia"||m==="destino"){selectMode(m);show("view-options");}else if(m==="completa"){if(window.SYL_goPage)window.SYL_goPage("tirada-completa.html");else location.href="tirada-completa.html";}else if(m==="celta"){if(window.SYL_goPage)window.SYL_goPage("cruz-celta.html");else location.href="cruz-celta.html";}});})(expBtns[ei]);}
+var acct=$("btn-account");if(acct){acct.addEventListener("click",function(){toast("Mi cuenta: tu consulta es privada y no requiere registro. Tus datos solo se usan en tu navegador para tu tirada.");try{var _b=document.getElementById("mi-cuenta");if(_b)_b.scrollIntoView({behavior:"smooth"});}catch(e){}});}
 var pickSacar=$("btn-pick-sacar");if(pickSacar){pickSacar.addEventListener("click",function(){pickOne(-1);});}
 var pickDraw=$("btn-pick-draw");if(pickDraw){pickDraw.addEventListener("click",function(){pickOne(-1);});}
 var pickBack=$("btn-pick-back");if(pickBack){pickBack.addEventListener("click",function(){show("view-shuffle");});}
+var _od=$("btn-opt-dia");if(_od)_od.addEventListener("click",function(){if(window.SYL_goPage)window.SYL_goPage("carta-del-dia.html");else location.href="carta-del-dia.html";});
+var _ot=$("btn-opt-destino");if(_ot)_ot.addEventListener("click",function(){if(window.SYL_goPage)window.SYL_goPage("pasado-presente-futuro.html");else location.href="pasado-presente-futuro.html";});
+var _ob=$("btn-opt-back");if(_ob)_ob.addEventListener("click",function(){showHome();});
 /* ---------- HORÓSCOPOS DEL DÍA · 12 SIGNOS ---------- */
 var HOROSCOPE_TEXTS={
   "Aries":"Hoy tu fuego enciende lo que llevas días posponiendo: da el primer paso antes del mediodía y deja que el resto te siga. En el amor, una palabra directa vale más que mil vueltas.",
@@ -1817,6 +2264,7 @@ function revealPicked(pick,labels){
     if(isCelta){$("r-kind").textContent="Tu Cruz Celta";if(rq){rq.textContent="Tu pregunta: "+(state.person&&state.person.tema?state.person.tema:"—");rq.classList.remove("hidden");}}
     else if(isDia){$("r-kind").textContent="Tu Carta del día";if(rq)rq.classList.add("hidden");}
     else{$("r-kind").textContent="Tu destino en 3 cartas";if(rq)rq.classList.add("hidden");}
+    var _rt=$("result-title");if(_rt)_rt.textContent=isDia?"Paso 3 · Tu Carta del día":isCelta?"Paso 3 · Tu Cruz Celta":"Paso 3 · Tu destino en 3 cartas";
     if(isDia){$("draw-grid").classList.add("single");}
     else{$("draw-grid").classList.remove("single");}
     $("draw-grid").innerHTML=pick.map(function(c,ix){return '<div class="destino-col"><div class="destino-lbl">'+labels[ix]+'</div>'+cardHTML(c,null,true)+'</div>';}).join("");
@@ -1895,8 +2343,6 @@ $("btn-to-draw").addEventListener("click",function(){if(state.mode==="completa")
 $("btn-draw").addEventListener("click",function(){
   if(!state.deck){toast("Primero baraja el mazo en el paso 2.");show("view-shuffle");return;}
   if(state.mode!=="completa"){enterPick();return;}
-  /* La pestaña del resultado se abre de inmediato, dentro del clic, para que el navegador no la bloquee como ventana emergente */
-  var win=openResultTab(LOADING_DOC);
   var img=$("deck-img2"); img.classList.add("shuffling");
   $("draw-status").textContent="Revelando tus 22 cartas… ✦";
   $("btn-draw").disabled=true;
@@ -1913,21 +2359,11 @@ $("btn-draw").addEventListener("click",function(){
     autoSend();
     narrateCurrentResult();
     state._resultDoc=resultDoc();
-    var delivered=win?writeTab(win,state._resultDoc):false;
-    if(delivered){try{win.focus();}catch(e){}}
-    if(delivered){
-      $("draw-status").textContent="Tirada completa · Tu resultado se abrió en una pestaña nueva";
-      $("result-block").classList.add("hidden");
-      $("result-opened").classList.remove("hidden");
-      $("result-opened").scrollIntoView({behavior:"smooth"});
-    }else{
-      /* Solo si el navegador bloqueó la pestaña nueva, el resultado se muestra en esta misma página */
-      $("draw-status").textContent="Tirada completa · 22 cartas elegidas al azar de tu mazo";
-      $("result-opened").classList.add("hidden");
-      $("result-block").classList.remove("hidden");
-      toast("Tu navegador bloqueó la pestaña nueva: aquí tienes tu resultado en esta misma página.");
-      $("result-block").scrollIntoView({behavior:"smooth"});
-    }
+    /* Resultado en esta misma página (misma pestaña, sin ventanas emergentes) */
+    $("draw-status").textContent="Tirada completa · 22 cartas elegidas al azar de tu mazo";
+    $("result-opened").classList.add("hidden");
+    $("result-block").classList.remove("hidden");
+    $("result-block").scrollIntoView({behavior:"smooth"});
     /* Entrega (solo Tirada Completa): se muestra en esta misma página,
        además de en la pestaña nueva. Sin elección guardada todavía. */
     var _eb2=$("entrega-block");
@@ -1937,12 +2373,8 @@ $("btn-draw").addEventListener("click",function(){
   },1100);
 });
 $("btn-reopen").addEventListener("click",function(){
-  if(!state._resultDoc){toast("Primero revela tus 22 cartas.");return;}
-  if(!openResultTab(state._resultDoc)){
-    $("result-block").classList.remove("hidden");
-    $("result-block").scrollIntoView({behavior:"smooth"});
-    toast("Tu navegador bloqueó la pestaña nueva: aquí tienes tu resultado en esta misma página.");
-  }
+  $("result-block").classList.remove("hidden");
+  $("result-block").scrollIntoView({behavior:"smooth"});
 });
 /* ---------- ENTREGA · TIRADA COMPLETA (PDF 400 / video 600) ---------- */
 function selectEntrega(choice){
@@ -2243,5 +2675,882 @@ try{
 })();
 </script>
 
+
+<script>
+/* ===== SYL_RUNA · Runa Celta del Día (determinista por fecha) =====
+   Una runa distinta cada día: el índice se calcula con un hash de la
+   fecha local (AAAA-M-D), así todos los visitantes ven la misma runa
+   ese día. Símbolo, nombre, significado, energía y consejo, en español
+   o en inglés según SYL_I18N.lang (detección por IP o selector manual). */
+var RUNES=[{"glyph": "ᚠ", "name": "Fehu", "es": {"meaning": "Riqueza y abundancia que fluye.", "energy": "Prosperidad", "advice": "Comparte lo que tienes; la abundancia crece cuando circula."}, "en": {"meaning": "Wealth and abundance that flows.", "energy": "Prosperity", "advice": "Share what you have; abundance grows when it circulates."}}, {"glyph": "ᚢ", "name": "Uruz", "es": {"meaning": "Fuerza salvaje y salud.", "energy": "Vitalidad", "advice": "Usa tu fuerza con calma: hoy un reto se convierte en avance."}, "en": {"meaning": "Wild strength and health.", "energy": "Vitality", "advice": "Use your strength calmly: today a challenge becomes progress."}}, {"glyph": "ᚦ", "name": "Thurisaz", "es": {"meaning": "Protección y puerta que se abre.", "energy": "Defensa", "advice": "No fuerces la puerta: espera y elige el momento."}, "en": {"meaning": "Protection and a door that opens.", "energy": "Defense", "advice": "Do not force the door: wait and choose the moment."}}, {"glyph": "ᚨ", "name": "Ansuz", "es": {"meaning": "Palabra, sabiduría y mensajes.", "energy": "Comunicación", "advice": "Escucha lo que no se dice: hoy llega un mensaje importante."}, "en": {"meaning": "Word, wisdom and messages.", "energy": "Communication", "advice": "Listen to what is not said: an important message arrives today."}}, {"glyph": "ᚱ", "name": "Raidho", "es": {"meaning": "Viaje, movimiento y rumbo.", "energy": "Camino", "advice": "Da el primer paso del viaje, aunque sea pequeño."}, "en": {"meaning": "Journey, movement and direction.", "energy": "Path", "advice": "Take the first step of the journey, even a small one."}}, {"glyph": "ᚲ", "name": "Kenaz", "es": {"meaning": "Antorcha, claridad e inspiración.", "energy": "Luz", "advice": "Ilumina lo que estaba oscuro: hoy ves la respuesta."}, "en": {"meaning": "Torch, clarity and inspiration.", "energy": "Light", "advice": "Light up what was dark: today you see the answer."}}, {"glyph": "ᚷ", "name": "Gebo", "es": {"meaning": "Don, intercambio y equilibrio.", "energy": "Generosidad", "advice": "Da y recibe en equilibrio: un trueque te favorece."}, "en": {"meaning": "Gift, exchange and balance.", "energy": "Generosity", "advice": "Give and receive in balance: an exchange favours you."}}, {"glyph": "ᚹ", "name": "Wunjo", "es": {"meaning": "Alegría, armonía y recompensa.", "energy": "Gozo", "advice": "Celebra lo pequeño: la alegría de hoy atrae más."}, "en": {"meaning": "Joy, harmony and reward.", "energy": "Delight", "advice": "Celebrate the small things: today's joy attracts more."}}, {"glyph": "ᚺ", "name": "Hagalaz", "es": {"meaning": "Cambio súbito y limpieza.", "energy": "Transformación", "advice": "Lo que se rompe hoy deja espacio a lo nuevo."}, "en": {"meaning": "Sudden change and cleansing.", "energy": "Transformation", "advice": "What breaks today leaves room for the new."}}, {"glyph": "ᚾ", "name": "Nauthiz", "es": {"meaning": "Necesidad, paciencia y resistencia.", "energy": "Resistencia", "advice": "Aguanta con paciencia: la necesidad te hace más fuerte."}, "en": {"meaning": "Need, patience and endurance.", "energy": "Endurance", "advice": "Hold on with patience: need makes you stronger."}}, {"glyph": "ᛁ", "name": "Isa", "es": {"meaning": "Hielo, pausa y quietud.", "energy": "Pausa", "advice": "No empujes: hoy la pausa es la mejor jugada."}, "en": {"meaning": "Ice, pause and stillness.", "energy": "Pause", "advice": "Do not push: today the pause is the best move."}}, {"glyph": "ᛃ", "name": "Jera", "es": {"meaning": "Cosecha, ciclos y recompensa.", "energy": "Cosecha", "advice": "Recoges lo sembrado: hoy llega el fruto de tu esfuerzo."}, "en": {"meaning": "Harvest, cycles and reward.", "energy": "Harvest", "advice": "You reap what you sowed: the fruit of your effort arrives today."}}, {"glyph": "ᛇ", "name": "Eihwaz", "es": {"meaning": "Resistencia, eje y protección.", "energy": "Firmeza", "advice": "Mantente firme como el tejo: nada te mueve hoy."}, "en": {"meaning": "Endurance, axis and protection.", "energy": "Steadfastness", "advice": "Stand firm like the yew: nothing moves you today."}}, {"glyph": "ᛈ", "name": "Perthro", "es": {"meaning": "Destino, azar y misterio.", "energy": "Misterio", "advice": "Confía en el azar: una sorpresa trae buena suerte."}, "en": {"meaning": "Destiny, chance and mystery.", "energy": "Mystery", "advice": "Trust chance: a surprise brings good luck."}}, {"glyph": "ᛉ", "name": "Algiz", "es": {"meaning": "Protección, guía y conexión.", "energy": "Protección", "advice": "Estás protegido: sigue tu intuición sin miedo."}, "en": {"meaning": "Protection, guidance and connection.", "energy": "Protection", "advice": "You are protected: follow your intuition without fear."}}, {"glyph": "ᛊ", "name": "Sowilo", "es": {"meaning": "Sol, victoria y energía.", "energy": "Victoria", "advice": "Hoy brillas: actúa con confianza y vence."}, "en": {"meaning": "Sun, victory and energy.", "energy": "Victory", "advice": "Today you shine: act with confidence and win."}}, {"glyph": "ᛏ", "name": "Tiwaz", "es": {"meaning": "Justicia, valor y victoria.", "energy": "Valor", "advice": "Defiende lo justo: tu valor se nota hoy."}, "en": {"meaning": "Justice, courage and victory.", "energy": "Courage", "advice": "Defend what is just: your courage shows today."}}, {"glyph": "ᛒ", "name": "Berkana", "es": {"meaning": "Crecimiento, renovación y cuidado.", "energy": "Renovación", "advice": "Cuida lo que crece: un nuevo comienzo florece."}, "en": {"meaning": "Growth, renewal and care.", "energy": "Renewal", "advice": "Tend what grows: a new beginning blossoms."}}, {"glyph": "ᛖ", "name": "Ehwaz", "es": {"meaning": "Movimiento, confianza y alianza.", "energy": "Alianza", "advice": "Avanza en equipo: hoy dos valen más que uno."}, "en": {"meaning": "Movement, trust and partnership.", "energy": "Partnership", "advice": "Move forward as a team: today two are worth more than one."}}, {"glyph": "ᛗ", "name": "Mannaz", "es": {"meaning": "Humanidad, mente y apoyo.", "energy": "Apoyo", "advice": "Pide ayuda sin orgullo: alguien quiere apoyarte."}, "en": {"meaning": "Humanity, mind and support.", "energy": "Support", "advice": "Ask for help without pride: someone wants to support you."}}, {"glyph": "ᛚ", "name": "Laguz", "es": {"meaning": "Agua, intuición y fluidez.", "energy": "Intuición", "advice": "Fluye como el agua: tu intuición acierta hoy."}, "en": {"meaning": "Water, intuition and flow.", "energy": "Intuition", "advice": "Flow like water: your intuition is right today."}}, {"glyph": "ᛜ", "name": "Ingwaz", "es": {"meaning": "Semilla, potencial y descanso.", "energy": "Potencial", "advice": "Guarda tu energía: la semilla germina en silencio."}, "en": {"meaning": "Seed, potential and rest.", "energy": "Potential", "advice": "Save your energy: the seed germinates in silence."}}, {"glyph": "ᛞ", "name": "Dagaz", "es": {"meaning": "Amanecer, despertar y claridad.", "energy": "Despertar", "advice": "Hoy amanece algo nuevo: abre los ojos al cambio."}, "en": {"meaning": "Dawn, awakening and clarity.", "energy": "Awakening", "advice": "Something new dawns today: open your eyes to change."}}, {"glyph": "ᛟ", "name": "Othala", "es": {"meaning": "Hogar, herencia y raíces.", "energy": "Raíces", "advice": "Vuelve a tus raíces: tu hogar te da la respuesta."}, "en": {"meaning": "Home, heritage and roots.", "energy": "Roots", "advice": "Return to your roots: your home holds the answer."}}];
+function renderRuna(){
+  var card=document.getElementById("runa-card");
+  if(!card||!RUNES||!RUNES.length)return;
+  try{
+    var d=new Date();
+    var s=d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate();
+    var h=0,i;
+    for(i=0;i<s.length;i++){h=(h*31+s.charCodeAt(i))>>>0;}
+    var r=RUNES[h%RUNES.length];
+    var en=(window.SYL_I18N&&window.SYL_I18N.lang==="en");
+    var L=en?r.en:r.es;
+    var g=document.getElementById("runa-glyph");if(g)g.textContent=r.glyph;
+    var nm=document.getElementById("runa-name");if(nm)nm.textContent=r.name;
+    var mn=document.getElementById("runa-meaning");if(mn)mn.textContent=L.meaning;
+    var eg=document.getElementById("runa-energy");if(eg)eg.textContent=L.energy;
+    var ad=document.getElementById("runa-advice");if(ad)ad.textContent=L.advice;
+    var dt=document.getElementById("runa-date");
+    if(dt){try{dt.textContent=d.toLocaleDateString(en?"en-US":"es-MX",{weekday:"long",day:"numeric",month:"long",year:"numeric"});}catch(e){dt.textContent=s;}}
+    card.classList.remove("runa-in");
+    void card.offsetWidth;
+    card.classList.add("runa-in");
+  }catch(e){}
+}
+window.SYL_renderRuna=renderRuna;
+document.addEventListener("DOMContentLoaded",renderRuna);
+</script>
+
+<script>
+/* ===== SYL_NAV · Submenús desplegables (hover en computadora, toque en móvil) =====
+   - Computadora: el submenú aparece al pasar el cursor (CSS :hover) con
+     animación elegante y se cierra al salir.
+   - Táctil (iPhone/Android): un toque en la opción abre su submenú;
+     otro toque o tocar fuera lo cierra; al elegir un enlace se cierra.
+   - Menú hamburguesa: cada grupo se despliega con un toque.
+   - Misma pestaña, sin ventanas emergentes. */
+(function(){
+"use strict";
+function closeAll(except){
+  var ds=document.querySelectorAll(".nav-drop.open,.nav-drop-m.open"),i,b;
+  for(i=0;i<ds.length;i++){
+    if(ds[i]!==except){
+      ds[i].classList.remove("open");
+      b=ds[i].querySelector(".nav-top,.nav-top-m");
+      if(b)b.setAttribute("aria-expanded","false");
+    }
+  }
+}
+var tops=document.querySelectorAll(".nav-top,.nav-top-m"),i;
+for(i=0;i<tops.length;i++){
+  tops[i].addEventListener("click",function(ev){
+    ev.stopPropagation();
+    var drop=this.closest(".nav-drop,.nav-drop-m");
+    if(!drop)return;
+    var wasOpen=drop.classList.contains("open");
+    closeAll();
+    if(!wasOpen){drop.classList.add("open");this.setAttribute("aria-expanded","true");}
+  });
+}
+document.addEventListener("click",function(){closeAll();});
+document.addEventListener("keydown",function(ev){if(ev.key==="Escape")closeAll();});
+var subLinks=document.querySelectorAll(".nav-sub a,.nav-sub-m a");
+for(i=0;i<subLinks.length;i++){subLinks[i].addEventListener("click",function(){closeAll();});}
+})();
+</script>
+
+<script>
+/* ===== SYL_FX · Efectos JavaScript (Java para la web) =====
+   Todos los efectos de slide y 3D están programados en JavaScript en
+   este bloque separado (verificable con node --check), no solo en CSS:
+   - Ken Burns en el hero (ya existe en el bloque de efectos, aquí se refuerza)
+   - transiciones elegantes entre las 4 páginas (misma pestaña)
+   - tilt 3D al pasar el cursor (JS, perspective + rotateX/rotateY)
+   - entradas escalonadas y fundidos al hacer scroll (IntersectionObserver)
+   - volteo 3D y abanico giratorio ya existen en el script principal;
+     aquí se añaden destellos dorados animados por JS.
+   Respeta prefers-reduced-motion. */
+(function(){
+"use strict";
+var reduce=false;try{reduce=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;}catch(e){}
+/* Transición elegante entre páginas (misma pestaña, sin popups) */
+window.SYL_goPage=function(url){
+  try{
+    if(reduce){location.href=url;return;}
+    document.body.classList.add("page-leave");
+    setTimeout(function(){location.href=url;},380);
+  }catch(e){location.href=url;}
+};
+document.addEventListener("DOMContentLoaded",function(){
+  document.body.classList.add("page-enter");
+  /* Tilt 3D al pasar el cursor (JavaScript) */
+  if(!reduce){
+    var els=document.querySelectorAll(".exp-card,.opt2-col,.optpage-wrap .pick-back,.sign-tile"),i;
+    for(i=0;i<els.length;i++){
+      (function(el){
+        el.addEventListener("mousemove",function(ev){
+          var r=el.getBoundingClientRect();
+          var rx=((ev.clientY-r.top)/r.height-0.5)*-8;
+          var ry=((ev.clientX-r.left)/r.width-0.5)*8;
+          el.style.transform="perspective(900px) rotateX("+rx.toFixed(2)+"deg) rotateY("+ry.toFixed(2)+"deg)";
+        });
+        el.addEventListener("mouseleave",function(){el.style.transform="";});
+      })(els[i]);
+    }
+    /* Destellos dorados animados (JavaScript, sobre el hero) */
+    var hero=document.querySelector(".hero");
+    if(hero){
+      var wrap=document.createElement("div");
+      wrap.setAttribute("aria-hidden","true");
+      wrap.style.cssText="position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:2";
+      hero.style.position=hero.style.position||"relative";
+      hero.appendChild(wrap);
+      for(var s=0;s<14;s++){
+        (function(){
+          var d=document.createElement("span");
+          d.textContent="✦";
+          d.style.cssText="position:absolute;color:#ffdf6b;font-size:"+(8+Math.random()*14)+"px;opacity:0;transition:opacity 1.2s ease,transform 2.4s ease;left:"+(Math.random()*96)+"%;top:"+(Math.random()*80)+"%";
+          wrap.appendChild(d);
+          var twinkle=function(){
+            var x=(Math.random()*20-10).toFixed(1),y=(Math.random()*-30-6).toFixed(1);
+            d.style.opacity=(0.25+Math.random()*0.6).toFixed(2);
+            d.style.transform="translate("+x+"px,"+y+"px) scale("+(0.7+Math.random()*0.8).toFixed(2)+")";
+            setTimeout(function(){d.style.opacity="0";},1400);
+            setTimeout(twinkle,2400+Math.random()*2600);
+          };
+          setTimeout(twinkle,Math.random()*2200);
+        })();
+      }
+    }
+  }
+  /* Entradas escalonadas y fundidos al hacer scroll */
+  var items=document.querySelectorAll(".exp-card,.opt2-col,.fan-card,.car-card,.sign-tile,.trait"),j;
+  for(j=0;j<items.length;j++){items[j].classList.add("fx-item");}
+  if(!("IntersectionObserver" in window)||reduce){
+    for(j=0;j<items.length;j++){items[j].classList.add("fx-in");}
+  }else{
+    var io=new IntersectionObserver(function(es){
+      for(var n=0;n<es.length;n++){
+        if(es[n].isIntersecting){es[n].target.classList.add("fx-in");io.unobserve(es[n].target);}
+      }
+    },{threshold:.12});
+    for(j=0;j<items.length;j++){io.observe(items[j]);}
+  }
+});
+})();
+</script>
+
+
+<script>
+/* ===== SYL_BOLETIN · Boletín Mensual + Horóscopo Mensual + Números de la suerte =====
+   - Horóscopo mensual determinista por mes: el mensaje de cada signo se elige
+     de un pool de 4 según (mes + signo); los números de la suerte salen de un
+     hash del año-mes y el signo, así cambian cada mes y son iguales para todos.
+   - Suscripción al boletín: mismo mecanismo FormSubmit en segundo plano que
+     los Excel (fs-form-bol + iframe fs-sink-bol), al mismo correo del dueño.
+   - Español o inglés según SYL_I18N.lang (detección por IP o selector manual);
+     se re-renderiza desde applyAll() vía window.SYL_renderBoletin. */
+var MONTH_SIGNS=[
+ {n:"Aries",g:"♈",d:"21 mar · 19 abr"},
+ {n:"Tauro",g:"♉",d:"20 abr · 20 may"},
+ {n:"Géminis",g:"♊",d:"21 may · 20 jun"},
+ {n:"Cáncer",g:"♋",d:"21 jun · 22 jul"},
+ {n:"Leo",g:"♌",d:"23 jul · 22 ago"},
+ {n:"Virgo",g:"♍",d:"23 ago · 22 sep"},
+ {n:"Libra",g:"♎",d:"23 sep · 22 oct"},
+ {n:"Escorpio",g:"♏",d:"23 oct · 21 nov"},
+ {n:"Sagitario",g:"♐",d:"22 nov · 21 dic"},
+ {n:"Capricornio",g:"♑",d:"22 dic · 19 ene"},
+ {n:"Acuario",g:"♒",d:"20 ene · 18 feb"},
+ {n:"Piscis",g:"♓",d:"19 feb · 20 mar"}
+];
+var MONTH_THEMES=[
+ {es:"Nuevos comienzos",en:"New beginnings"},
+ {es:"Amor y vínculos",en:"Love and bonds"},
+ {es:"Renovación y energía",en:"Renewal and energy"},
+ {es:"Crecimiento y dinero",en:"Growth and money"},
+ {es:"Brillo y reconocimiento",en:"Shine and recognition"},
+ {es:"Orden y cosecha",en:"Order and harvest"},
+ {es:"Equilibrio y decisiones",en:"Balance and decisions"},
+ {es:"Transformación profunda",en:"Deep transformation"},
+ {es:"Expansión y viajes",en:"Expansion and travel"},
+ {es:"Logros y ambición",en:"Achievement and ambition"},
+ {es:"Visión y libertad",en:"Vision and freedom"},
+ {es:"Sueños e intuición",en:"Dreams and intuition"}
+];
+var MONTH_COLORS=[
+ {es:"Dorado",en:"Gold"},{es:"Azul noche",en:"Midnight blue"},
+ {es:"Violeta",en:"Violet"},{es:"Blanco lunar",en:"Moon white"},
+ {es:"Rojo rubí",en:"Ruby red"},{es:"Verde esmeralda",en:"Emerald green"},
+ {es:"Rosa cobre",en:"Copper rose"},{es:"Negro ónix",en:"Onyx black"}
+];
+var MONTH_CARDS=[
+ {es:"El Sol",en:"The Sun"},{es:"La Estrella",en:"The Star"},
+ {es:"La Rueda de la Fortuna",en:"Wheel of Fortune"},{es:"El Mago",en:"The Magician"},
+ {es:"La Emperatriz",en:"The Empress"},{es:"El Mundo",en:"The World"},
+ {es:"La Templanza",en:"Temperance"},{es:"El Carro",en:"The Chariot"},
+ {es:"La Fuerza",en:"Strength"},{es:"Los Enamorados",en:"The Lovers"},
+ {es:"La Justicia",en:"Justice"},{es:"El Juicio",en:"Judgement"}
+];
+var MONTH_MSGS={
+"Aries": [
+  {"es": "Este mes tu fuego abre puertas: un proyecto que estaba parado arranca si das el primer paso. En el amor, la sinceridad te acerca a quien quieres.", "en": "This month your fire opens doors: a stalled project moves if you take the first step. In love, sincerity brings you closer to the one you want."},
+  {"es": "Mes de impulso: no gastes tu energía en discusiones y guárdala para lo que de verdad importa. Una noticia laboral te favorece.", "en": "A month of momentum: do not spend your energy on arguments — save it for what truly matters. Good news at work favours you."},
+  {"es": "Tu valentía se nota este mes: pide lo que mereces y negocia sin miedo. En casa, un cambio pequeño trae mucha calma.", "en": "Your courage shows this month: ask for what you deserve and negotiate without fear. At home, a small change brings great calm."},
+  {"es": "Mes para sembrar: lo que empieces ahora crece rápido si eres constante. En el amor, una sorpresa rompe la rutina.", "en": "A month to sow: what you start now grows fast if you stay constant. In love, a surprise breaks the routine."}],
+"Tauro": [
+  {"es": "Este mes lo concreto manda: ordena tus cuentas y un gasto se convierte en ahorro. En el amor, un gesto sencillo vale más que un gran plan.", "en": "This month the concrete rules: put your accounts in order and an expense turns into savings. In love, a simple gesture is worth more than a grand plan."},
+  {"es": "Mes de cosecha lenta: la constancia de las últimas semanas por fin se nota. Cuida tu descanso, tu cuerpo te lo pide.", "en": "A month of slow harvest: the perseverance of recent weeks finally shows. Look after your rest — your body is asking for it."},
+  {"es": "Tu paciencia es oro este mes: una negociación se resuelve a tu favor si no te apresuras. En el amor, la calma abre una conversación pendiente.", "en": "Your patience is gold this month: a negotiation resolves in your favour if you do not rush. In love, calm opens a pending conversation."},
+  {"es": "Mes para disfrutar lo logrado: date un gusto sin culpa, te lo ganaste. Una oportunidad de dinero llega por alguien de confianza.", "en": "A month to enjoy what you have achieved: treat yourself without guilt — you earned it. A money opportunity arrives through someone you trust."}],
+"Géminis": [
+  {"es": "Este mes tu mente va a mil: escribe tus ideas, una de ellas puede ser el proyecto del año. En el amor, escucha antes de responder.", "en": "This month your mind races: write down your ideas — one of them could be the project of the year. In love, listen before you answer."},
+  {"es": "Mes de contactos: una conversación casual abre una puerta profesional. No prometas más de lo que puedes cumplir.", "en": "A month of contacts: a casual conversation opens a professional door. Do not promise more than you can deliver."},
+  {"es": "Tu curiosidad te lleva lejos este mes: aprende algo nuevo y compártelo. En el amor, la complicidad crece con una salida distinta.", "en": "Your curiosity takes you far this month: learn something new and share it. In love, complicity grows with an outing that breaks the routine."},
+  {"es": "Mes para ordenar ideas: elige un solo objetivo y verás cómo todo se aclara. Un mensaje que esperabas llega por fin.", "en": "A month to put your ideas in order: choose a single goal and everything will clear up. A message you were waiting for finally arrives."}],
+"Cáncer": [
+  {"es": "Este mes tu intuición acierta: haz caso a esa corazonada sobre una persona o un lugar. En casa, un momento de calma te devuelve la energía.", "en": "This month your intuition is right: follow that hunch about a person or a place. At home, a moment of calm restores your energy."},
+  {"es": "Mes de hogar y raíces: un arreglo en casa o un reencuentro familiar te llena el corazón. En el trabajo, tu sensibilidad detecta lo que otros no ven.", "en": "A month of home and roots: fixing something at home or a family reunion fills your heart. At work, your sensitivity spots what others miss."},
+  {"es": "Tu cuidado es tu fuerza este mes: protege tu energía y di que no sin culpa. En el amor, un detalle tierno lo cambia todo.", "en": "Your care is your strength this month: protect your energy and say no without guilt. In love, a tender detail changes everything."},
+  {"es": "Mes para soltar: deja ir un viejo rencor y el mes se abre. Una sorpresa económica pequeña te alegra el día.", "en": "A month to let go: release an old grudge and the month opens up. A small financial surprise brightens your day."}],
+"Leo": [
+  {"es": "Este mes brillas sin esforzarte: acepta ese reconocimiento y compártelo, tu generosidad vuelve multiplicada. En el amor, sé tú quien dé el primer paso.", "en": "This month you shine without trying: accept that recognition and share it — your generosity returns multiplied. In love, be the one to take the first step."},
+  {"es": "Mes de escenario: tu talento se nota, muestra lo que sabes hacer. Cuida no gastar de más por impresionar.", "en": "A month in the spotlight: your talent shows — display what you can do. Be careful not to overspend to impress."},
+  {"es": "Tu corazón manda este mes: un gesto generoso te devuelve el doble. En el trabajo, lidera con el ejemplo y el equipo te sigue.", "en": "Your heart leads this month: a generous gesture returns double. At work, lead by example and the team will follow."},
+  {"es": "Mes para crear: un proyecto personal pide tu atención y tu brillo. En el amor, la pasión se enciende con un plan atrevido.", "en": "A month to create: a personal project asks for your attention and your shine. In love, passion ignites with a daring plan."}],
+"Virgo": [
+  {"es": "Este mes el orden te libera: resuelve un pendiente pequeño y el mes se despeja. En el trabajo, un detalle que solo tú ves marca la diferencia.", "en": "This month order sets you free: resolve one small pending task and the month clears up. At work, a detail only you notice makes the difference."},
+  {"es": "Mes de precisión: revisa un contrato o un documento antes de firmar y evitarás un dolor de cabeza. Tu salud mejora con un hábito nuevo.", "en": "A month of precision: review a contract or document before signing and you will avoid a headache. Your health improves with a new habit."},
+  {"es": "Tu ayuda es oro este mes: alguien necesita justo lo que tú sabes hacer. En el amor, la sinceridad práctica fortalece el vínculo.", "en": "Your help is gold this month: someone needs exactly what you know how to do. In love, practical sincerity strengthens the bond."},
+  {"es": "Mes para simplificar: suelta lo que no usas y haz espacio para lo nuevo. Un ingreso extra llega por un trabajo bien hecho.", "en": "A month to simplify: let go of what you do not use and make room for the new. Extra income arrives through a job well done."}],
+"Libra": [
+  {"es": "Este mes busca el equilibrio: una conversación pendiente se resuelve si escuchas las dos partes, incluida la tuya. En el amor, la armonía empieza por ti.", "en": "This month seek balance: a pending conversation resolves if you listen to both sides, including yours. In love, harmony starts with you."},
+  {"es": "Mes de acuerdos: firma, negocia o reconcíliate, los astros te favorecen. Un gasto en belleza o en casa vale la pena.", "en": "A month of agreements: sign, negotiate or reconcile — the stars favour you. Spending on beauty or your home is worth it."},
+  {"es": "Tu encanto abre puertas este mes: pide ese favor o esa cita, la respuesta es sí. En el trabajo, tu diplomacia evita un conflicto.", "en": "Your charm opens doors this month: ask that favour or that date — the answer is yes. At work, your diplomacy avoids a conflict."},
+  {"es": "Mes para decidir: deja de darle vueltas a esa elección, tu primera corazonada era la correcta. En el amor, un plan a dos los une más.", "en": "A month to decide: stop going around in circles over that choice — your first hunch was right. In love, a plan for two brings you closer."}],
+"Escorpio": [
+  {"es": "Este mes tu intensidad es un radar: ves lo que otros no ven, úsala para decidir, no para sospechar. En el amor, la sinceridad abre una puerta.", "en": "This month your intensity is a radar: you see what others don't — use it to decide, not to suspect. In love, sincerity opens a door."},
+  {"es": "Mes de transformación: suelta un hábito viejo y notarás el cambio en días. En el dinero, una revisión a tiempo evita una fuga.", "en": "A month of transformation: drop an old habit and you will notice the change within days. With money, a timely review prevents a leak."},
+  {"es": "Tu magnetismo está alto este mes: atraes justo lo que necesitas. En el amor, la pasión sube si te atreves a hablar claro.", "en": "Your magnetism is high this month: you attract exactly what you need. In love, passion rises if you dare to speak plainly."},
+  {"es": "Mes para investigar: un dato que descubras cambia una decisión importante. Guarda un secreto que te confían, tu lealtad se nota.", "en": "A month to investigate: a fact you uncover changes an important decision. Keep a secret entrusted to you — your loyalty shows."}],
+"Sagitario": [
+  {"es": "Este mes las ganas de crecer te empujan: aprende algo nuevo o planea ese viaje, aunque sea en la cabeza. En el amor, la aventura compartida une.", "en": "This month the urge to grow pushes you: learn something new or plan that trip, even if only in your head. In love, shared adventure brings you together."},
+  {"es": "Mes de horizontes: una oportunidad lejana se acerca, mantén los ojos abiertos. En el trabajo, tu optimismo contagia al equipo.", "en": "A month of horizons: a distant opportunity draws closer — keep your eyes open. At work, your optimism inspires the team."},
+  {"es": "Tu flecha apunta alto este mes: define una meta grande y da el primer paso. En el amor, la sinceridad con humor lo resuelve todo.", "en": "Your arrow points high this month: set a big goal and take the first step. In love, sincerity with humour resolves everything."},
+  {"es": "Mes para soltar amarras: un viaje corto o un cambio de rutina te renueva. Cuida tu dinero, un gasto impulsivo acecha.", "en": "A month to cast off: a short trip or a change of routine renews you. Watch your money — an impulsive expense lurks."}],
+"Capricornio": [
+  {"es": "Este mes tu constancia da fruto: un esfuerzo de semanas pasadas se nota por fin. En el trabajo, pide lo que mereces con calma y firmeza.", "en": "This month your perseverance bears fruit: an effort from past weeks finally shows. At work, ask for what you deserve calmly and firmly."},
+  {"es": "Mes de cimientos: ordena un proyecto desde la base y durará. En el amor, tu lealtad se nota más que mil palabras.", "en": "A month of foundations: organise a project from the ground up and it will last. In love, your loyalty speaks louder than a thousand words."},
+  {"es": "Tu ambición tiene premio este mes: una meta que parecía lejana se acerca. Descansa también, el cuerpo cobra las deudas.", "en": "Your ambition is rewarded this month: a goal that seemed distant draws near. Rest too — the body collects its debts."},
+  {"es": "Mes para construir: un plan a largo plazo empieza con un paso pequeño y concreto. En el dinero, un ahorro constante te sorprende.", "en": "A month to build: a long-term plan starts with one small, concrete step. With money, steady saving surprises you."}],
+"Acuario": [
+  {"es": "Este mes tu originalidad sorprende: comparte esa idea rara, alguien la estaba esperando. En el amor, la amistad es hoy tu mejor puerta.", "en": "This month your originality surprises: share that unusual idea — someone was waiting for it. In love, friendship is your best door."},
+  {"es": "Mes de equipo: un proyecto en grupo avanza si aportas tu visión distinta. En casa, un cambio tecnológico te facilita la vida.", "en": "A month of teamwork: a group project moves forward if you bring your different vision. At home, a tech change makes life easier."},
+  {"es": "Tu futuro se dibuja este mes: anota tus metas, verlas escritas les da fuerza. En el amor, la libertad compartida los une.", "en": "Your future takes shape this month: write down your goals — seeing them written gives them strength. In love, shared freedom brings you together."},
+  {"es": "Mes para romper moldes: haz algo distinto y el mes se enciende. Un amigo te trae una oportunidad inesperada.", "en": "A month to break the mould: do something different and the month lights up. A friend brings you an unexpected opportunity."}],
+"Piscis": [
+  {"es": "Este mes tu sensibilidad es una brújula: descansa, sueña despierto un rato y la respuesta llegará sola. En el amor, un detalle soñador enamora.", "en": "This month your sensitivity is a compass: rest, daydream a while, and the answer will come on its own. In love, a dreamy detail wins hearts."},
+  {"es": "Mes de intuición: un sueño o una corazonada te señala el camino. En el dinero, evita prestar lo que no quieres perder.", "en": "A month of intuition: a dream or a hunch points the way. With money, avoid lending what you do not want to lose."},
+  {"es": "Tu arte florece este mes: crea, canta o escribe, tu inspiración está alta. En el amor, la ternura abre lo que la lógica no puede.", "en": "Your art blossoms this month: create, sing or write — your inspiration is high. In love, tenderness opens what logic cannot."},
+  {"es": "Mes para fluir: no fuerces lo que no avanza, el agua encuentra su cauce. Una ayuda llega justo cuando la necesitas.", "en": "A month to flow: do not force what is not moving — water finds its course. Help arrives exactly when you need it."}]
+};
+function bolHash(s){var h=0,i;for(i=0;i<s.length;i++){h=(h*31+s.charCodeAt(i))>>>0;}return h;}
+function bolSeedRand(seed){var a=seed>>>0;return function(){a=(a*1664525+1013904223)>>>0;return a/4294967296;};}
+function bolLuckyNumbers(y,m,si){
+  var rnd=bolSeedRand(bolHash(y+"-"+m+"-"+si));
+  var out=[],n,tries=0;
+  while(out.length<5&&tries<200){tries++;n=1+Math.floor(rnd()*99);if(out.indexOf(n)<0)out.push(n);}
+  return out.sort(function(a,b){return a-b;});
+}
+function bolIsEn(){return (window.SYL_I18N&&window.SYL_I18N.lang==="en");}
+function bolMonthLabel(d){try{return d.toLocaleDateString(bolIsEn()?"en-US":"es-MX",{month:"long",year:"numeric"});}catch(e){return (d.getMonth()+1)+"/"+d.getFullYear();}}
+function bolSignName(n){
+  var M={"Tauro":"Taurus","Géminis":"Gemini","Cáncer":"Cancer","Escorpio":"Scorpio","Sagitario":"Sagittarius","Capricornio":"Capricorn","Acuario":"Aquarius","Piscis":"Pisces"};
+  return bolIsEn()?(M[n]||n):n;
+}
+function bolToast(msg){
+  try{
+    var t=document.getElementById("toast");if(!t)return;
+    t.textContent=msg;t.classList.remove("hidden");
+    clearTimeout(t._h);t._h=setTimeout(function(){t.classList.add("hidden");},4200);
+  }catch(e){}
+}
+function showMonthSign(idx,keepScroll,quiet){
+  try{
+    renderBoletin._sel=idx;
+    var d=new Date(),y=d.getFullYear(),m=d.getMonth(),en=bolIsEn();
+    var s=MONTH_SIGNS[idx];
+    var pool=MONTH_MSGS[s.n]||[];
+    var msg=pool.length?pool[(m+idx)%pool.length]:null;
+    var L=msg?(en?msg.en:msg.es):"";
+    var nums=bolLuckyNumbers(y,m+1,idx);
+    var day=1+(bolHash(y+"-"+(m+1)+"-d"+idx)%28);
+    var col=MONTH_COLORS[bolHash(y+"-"+(m+1)+"-c"+idx)%MONTH_COLORS.length];
+    var card=MONTH_CARDS[(m+idx)%MONTH_CARDS.length];
+    var theme=MONTH_THEMES[m];
+    var el=document.getElementById("horoscopo-mensual-result");
+    if(!el)return;
+    var chips=nums.map(function(n){return '<span class="bol-num">'+n+'</span>';}).join("");
+    el.innerHTML='<h3>✦ '+(en?"Monthly horoscope · ":"Horóscopo mensual · ")+bolSignName(s.n)+' '+s.g+' ✦</h3>'
+      +'<p class="oracle-synth">'+L+'</p>'
+      +'<p class="bol-mres-line"><span class="runa-lbl">'+(en?"Theme of the month":"Tema del mes")+'</span><span>'+(en?theme.en:theme.es)+'</span></p>'
+      +'<p class="bol-mres-line"><span class="runa-lbl">'+(en?"Lucky day":"Día de suerte")+'</span><span>'+day+'</span></p>'
+      +'<p class="bol-mres-line"><span class="runa-lbl">'+(en?"Lucky colour":"Color de la suerte")+'</span><span>'+(en?col.en:col.es)+'</span></p>'
+      +'<p class="bol-mres-line"><span class="runa-lbl">'+(en?"Lucky card":"Carta de la suerte")+'</span><span>'+(en?card.en:card.es)+'</span></p>'
+      +'<div class="bol-nums"><div class="bol-nums-t">'+(en?"Lucky numbers":"Números de la suerte")+'</div>'+chips+'</div>'
+      +'<p class="bol-back" style="text-align:center"><a href="#boletin">'+(en?"✉ Get it every month in your email — subscribe to the newsletter":"✉ Recíbelo cada mes en tu correo — suscríbete al boletín")+'</a></p>';
+    el.classList.remove("hidden");
+    var tiles=document.querySelectorAll(".month-tile"),i;
+    for(i=0;i<tiles.length;i++){tiles[i].classList.toggle("sel",parseInt(tiles[i].getAttribute("data-idx"),10)===idx);}
+    if(!keepScroll){try{el.scrollIntoView({behavior:"smooth"});}catch(e){}}
+    if(!quiet){try{if(typeof window.speak==="function")window.speak((en?"Monthly horoscope for ":"Horóscopo mensual de ")+bolSignName(s.n)+". "+L);}catch(e){}}
+  }catch(e){}
+}
+function renderBoletin(){
+  try{
+    var d=new Date(),y=d.getFullYear(),m=d.getMonth(),en=bolIsEn();
+    var mt=document.getElementById("bol-month");
+    if(mt){mt.textContent=(en?"Monthly horoscope · ":"Horóscopo mensual · ")+bolMonthLabel(d);}
+    var nums=document.getElementById("bol-numeros");
+    if(nums){
+      var gn=bolLuckyNumbers(y,m+1,-1);
+      var chips=gn.map(function(n){return '<span class="bol-num">'+n+'</span>';}).join("");
+      nums.innerHTML='<div class="bol-nums-t">'+(en?"This month's lucky numbers":"Números de la suerte del mes")+'</div>'+chips;
+    }
+    var sel=renderBoletin._sel;
+    if(sel!=null&&sel>=0)showMonthSign(sel,true,true);
+  }catch(e){}
+}
+window.SYL_renderBoletin=renderBoletin;
+window.SYL_showMonthSign=showMonthSign;
+document.addEventListener("DOMContentLoaded",function(){
+  renderBoletin();
+  var tiles=document.querySelectorAll(".month-tile"),i;
+  for(i=0;i<tiles.length;i++){
+    (function(t){
+      t.addEventListener("click",function(){showMonthSign(parseInt(t.getAttribute("data-idx"),10)||0,false,false);});
+    })(tiles[i]);
+  }
+  var form=document.getElementById("bol-form");
+  var ok=document.getElementById("bol-ok");
+  function showOk(){
+    if(form)form.classList.add("hidden");
+    if(ok)ok.classList.remove("hidden");
+  }
+  try{
+    if(localStorage.getItem("syl-boletin")==="1"){
+      showOk();
+      if(ok)ok.textContent=bolIsEn()?"You are already subscribed to the SYLLENZA Monthly Newsletter.":"Ya estás suscrito al Boletín Mensual SYLLENZA.";
+    }
+  }catch(e){}
+  if(form){
+    form.addEventListener("submit",function(ev){
+      ev.preventDefault();
+      var em=document.getElementById("bol-email");
+      var nm=document.getElementById("bol-nombre");
+      var v=em?String(em.value||"").trim():"";
+      if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)){
+        bolToast(bolIsEn()?"Please enter a valid email.":"Escribe un correo válido.");
+        if(em)em.focus();
+        return;
+      }
+      try{
+        var f=document.getElementById("fs-form-bol");
+        if(f){
+          var set=function(id,val){var x=document.getElementById(id);if(x)x.value=val;};
+          set("fs-bol-nombre",nm?nm.value:"");
+          set("fs-bol-email",v);
+          set("fs-bol-pagina",location.href);
+          set("fs-bol-idioma",bolIsEn()?"en":"es");
+          f.submit();
+        }
+      }catch(e){}
+      try{localStorage.setItem("syl-boletin","1");}catch(e){}
+      showOk();
+    });
+  }
+});
+</script>
+
+
+<script>
+/* ===== SYL_REFERIDOS · Mi cuenta + sistema de referidos =====
+   - La cuenta vive en el navegador (localStorage "syl-cuenta"): nombre, correo
+     y código personal de referido SYL-XXXXXX (determinista por correo: el mismo
+     correo siempre genera el mismo código).
+   - Enlace personal: URL de la página + ?ref=CODIGO. Al llegar con ?ref=, el
+     código queda guardado ("syl-ref-por") y se incluye al crear la cuenta y al
+     suscribirse al boletín (campo "Referido por" de FormSubmit).
+   - Registro oficial: cada alta con un código llega al correo del dueño por
+     FormSubmit con el código del referente; ese correo es el registro oficial
+     para validar la consulta gratis. En este dispositivo, los referidos se
+     guardan en "syl-referidos-<CODIGO>" y se muestran en la lista de Mi cuenta.
+   - 5 referidos = una consulta GRATIS (código de recompensa GRATIS-<CODIGO>).
+   - Solo aplica con cuenta creada: sin cuenta no hay código ni progreso. */
+function refHash(s){var h=0,i;for(i=0;i<s.length;i++){h=(h*31+s.charCodeAt(i))>>>0;}return h;}
+function refCodeFromEmail(email){
+  var chars="ABCDEFGHJKMNPQRSTUVWXYZ23456789";
+  var seed=refHash(String(email||"").toLowerCase().trim())||1;
+  var out="",i;
+  for(i=0;i<6;i++){seed=(seed*1664525+1013904223)>>>0;out+=chars[seed%chars.length];}
+  return "SYL-"+out;
+}
+function refIsEn(){return (window.SYL_I18N&&window.SYL_I18N.lang==="en");}
+function refStore(k,v){try{localStorage.setItem(k,v);}catch(e){}}
+function refRead(k){try{return localStorage.getItem(k);}catch(e){return null;}}
+function refLoadCuenta(){try{var r=refRead("syl-cuenta");return r?JSON.parse(r):null;}catch(e){return null;}}
+function refSaveCuenta(c){refStore("syl-cuenta",JSON.stringify(c));}
+function refToast(msg){
+  try{if(typeof bolToast==="function"){bolToast(msg);return;}}catch(e){}
+  try{var t=document.getElementById("toast");if(!t)return;t.textContent=msg;t.classList.remove("hidden");clearTimeout(t._h);t._h=setTimeout(function(){t.classList.add("hidden");},4200);}catch(e){}
+}
+function refReferralLink(code){
+  try{
+    var path=location.pathname||"/";
+    var dir=path.substring(0,path.lastIndexOf("/")+1);
+    return location.origin+dir+"index.html?ref="+code;
+  }catch(e){return "index.html?ref="+code;}
+}
+function refEsc(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+function refRegistry(code){
+  try{var r=refRead("syl-referidos-"+code);var a=r?JSON.parse(r):[];return Array.isArray(a)?a:[];}catch(e){return [];}
+}
+function refRegistryAdd(code,entry){
+  try{
+    var a=refRegistry(code),i,found=false;
+    for(i=0;i<a.length;i++){if(String(a[i].email||"").toLowerCase()===String(entry.email||"").toLowerCase()){found=true;break;}}
+    if(!found){a.push(entry);refStore("syl-referidos-"+code,JSON.stringify(a));}
+  }catch(e){}
+}
+function renderCuenta(){
+  try{
+    var c=refLoadCuenta();
+    var no=document.getElementById("cuenta-no-creada");
+    var panel=document.getElementById("cuenta-panel");
+    var en=refIsEn();
+    var bp=document.getElementById("bol-ref-progreso");
+    if(!c){
+      if(no)no.classList.remove("hidden");
+      if(panel)panel.classList.add("hidden");
+      if(bp)bp.textContent=en?"Create your account to join the referral system.":"Crea tu cuenta para participar en el sistema de referidos.";
+      return;
+    }
+    if(no)no.classList.add("hidden");
+    if(panel)panel.classList.remove("hidden");
+    var mine=refRegistry(c.codigo),i,seen={},list=[];
+    var own=c.referidos||[];
+    for(i=0;i<own.length;i++){var k=String(own[i].email||"").toLowerCase();if(k&&!seen[k]){seen[k]=1;list.push(own[i]);}}
+    for(i=0;i<mine.length;i++){var k2=String(mine[i].email||"").toLowerCase();if(k2&&!seen[k2]){seen[k2]=1;list.push(mine[i]);}}
+    var n=list.length;
+    var w=document.getElementById("cuenta-bienvenida");
+    if(w)w.textContent=(en?"Welcome, ":"Bienvenido, ")+c.nombre+" ✦";
+    var cd=document.getElementById("cuenta-codigo");
+    if(cd)cd.textContent=c.codigo;
+    var lk=document.getElementById("cuenta-enlace");
+    if(lk)lk.value=refReferralLink(c.codigo);
+    var pr=document.getElementById("cuenta-progreso");
+    if(pr)pr.textContent=n+(en?" of 5 referrals":" de 5 referidos");
+    var bar=document.getElementById("cuenta-barra");
+    if(bar)bar.style.width=Math.min(100,Math.round(n/5*100))+"%";
+    var sl=document.getElementById("cuenta-sellos");
+    if(sl){var sh="",si;for(si=0;si<5;si++){sh+=si<n?'<span class="sello lleno" title="'+(si+1)+'">✦</span>':'<span class="sello" title="'+(si+1)+'">'+(si+1)+'</span>';}sl.innerHTML=sh;}
+    var rw=document.getElementById("cuenta-recompensa");
+    var rn=document.getElementById("cuenta-recompensa-nota");
+    if(n>=5){
+      if(!c.solicitudGratis){
+        c.solicitudGratis={codigo:"GRATIS-"+c.codigo,fecha:new Date().toISOString().slice(0,10),entrega:"PDF"};
+        refSaveCuenta(c);
+        refEnviarSolicitud(c,list,"PDF",false);
+      }
+      if(rw){rw.classList.remove("hidden");rw.textContent=en?"You did it! Your FREE Complete Reading is on its way. Reward code: GRATIS-"+c.codigo:"¡Ya ganaste tu Tirada Completa gratis! Tu código de recompensa es GRATIS-"+c.codigo;}
+      if(rn)rn.textContent=en?"Your free Complete Reading was requested automatically — no payment. It will be delivered as a PDF with illustrated comic (or the 2-minute animated video, if you choose it) within 12 hours to your email.":"Tu Tirada Completa gratis ya fue solicitada automáticamente, sin pago. Se entregará en PDF con historieta ilustrada (o en video animado de 2 minutos, si lo eliges) en un lapso de 12 horas a tu correo.";
+      var ent=document.getElementById("cuenta-entrega");
+      if(ent)ent.classList.remove("hidden");
+      refPintarEntrega(c);
+    }else{
+      var ent2=document.getElementById("cuenta-entrega");
+      if(ent2)ent2.classList.add("hidden");
+      if(rw)rw.classList.add("hidden");
+      if(rn)rn.textContent=(en?"You need ":"Te faltan ")+(5-n)+(en?((5-n)===1?" more seal":" more seals")+" for your free Complete Reading.":((5-n)===1?" sello":" sellos")+" para tu Tirada Completa gratis.");
+    }
+    var ul=document.getElementById("cuenta-referidos");
+    if(ul){
+      if(!list.length){
+        ul.innerHTML='<li class="ref-empty">'+(en?"No referrals yet. Share your link and they will appear here.":"Aún no tienes referidos. Comparte tu enlace y aparecerán aquí.")+'</li>';
+      }else{
+        ul.innerHTML=list.map(function(r){
+          return '<li><b>'+refEsc(r.nombre||"—")+'</b><span>'+refEsc(r.email||"")+(r.fecha?" · "+refEsc(r.fecha):"")+'</span></li>';
+        }).join("");
+      }
+    }
+    if(bp)bp.textContent=(en?"You have ":"Llevas ")+n+(en?" of 5 referrals. ":" de 5 referidos. ")+(n>=5?(en?"You have all 5 seals! Your free Complete Reading has already been requested.":"¡Tienes los 5 sellos! Tu Tirada Completa gratis ya fue solicitada."):(en?"Share your link to collect 5 seals.":"Comparte tu enlace para juntar 5 sellos."));
+  }catch(e){}
+}
+function refEnviarSolicitud(cuenta,list,entrega,esCambio){
+  try{
+    var f=document.getElementById("fs-form-gratis");
+    if(!f)return;
+    var set=function(id,val){var x=document.getElementById(id);if(x)x.value=val;};
+    var sub=document.getElementById("fs-gratis-subject");
+    if(sub)sub.value=esCambio?("Cambio de entrega · Tirada Completa GRATIS · "+cuenta.codigo):"Solicitud automática · Tirada Completa GRATIS · 5 referidos";
+    set("fs-gratis-nombre",cuenta.nombre);
+    set("fs-gratis-email",cuenta.email);
+    set("fs-gratis-codigo",cuenta.codigo);
+    set("fs-gratis-recompensa",cuenta.solicitudGratis?cuenta.solicitudGratis.codigo:("GRATIS-"+cuenta.codigo));
+    set("fs-gratis-entrega",entrega);
+    set("fs-gratis-num",String(list.length));
+    set("fs-gratis-lista",list.map(function(r){return (r.nombre||"")+" · "+(r.email||"");}).join("\n"));
+    set("fs-gratis-fecha",cuenta.solicitudGratis?cuenta.solicitudGratis.fecha:new Date().toISOString().slice(0,10));
+    f.submit();
+  }catch(e){}
+}
+function refPintarEntrega(cuenta){
+  try{
+    var en=refIsEn();
+    var entrega=cuenta.solicitudGratis?cuenta.solicitudGratis.entrega:"PDF";
+    var bp=document.getElementById("cuenta-entrega-pdf");
+    var bv=document.getElementById("cuenta-entrega-video");
+    if(bp)bp.classList.toggle("on",entrega==="PDF");
+    if(bv)bv.classList.toggle("on",entrega==="Video");
+    var es=document.getElementById("cuenta-entrega-estado");
+    if(es)es.textContent=entrega==="Video"
+      ?(en?"Delivery chosen: 2-minute animated video.":"Entrega elegida: video animado de 2 minutos.")
+      :(en?"Delivery chosen: PDF with illustrated comic.":"Entrega elegida: PDF con historieta ilustrada.");
+  }catch(e){}
+}
+window.SYL_renderCuenta=renderCuenta;
+function refCaptureArrival(){
+  try{
+    var q=new URLSearchParams(location.search);
+    var ref=q.get("ref");
+    if(ref&&/^SYL-[A-Z0-9]{6}$/.test(ref)){
+      refStore("syl-ref-por",ref);
+      refToast(refIsEn()?"You arrived with a friend's invitation. Create your account and your friend earns a referral.":"Llegaste con la invitación de un amigo. Crea tu cuenta y tu amigo sumará un referido.");
+    }
+  }catch(e){}
+}
+document.addEventListener("DOMContentLoaded",function(){
+  refCaptureArrival();
+  renderCuenta();
+  try{var rp=refRead("syl-ref-por");var fr=document.getElementById("fs-bol-ref");if(fr)fr.value=rp||"";}catch(e){}
+  var copy=document.getElementById("cuenta-copiar");
+  if(copy){
+    copy.addEventListener("click",function(){
+      var lk=document.getElementById("cuenta-enlace");
+      var val=lk?lk.value:"";
+      function done(){refToast(refIsEn()?"Link copied. Share it with your friends.":"Enlace copiado. Compártelo con tus amigos.");}
+      try{
+        if(navigator.clipboard&&navigator.clipboard.writeText){
+          navigator.clipboard.writeText(val).then(done,function(){if(lk){lk.select();try{document.execCommand("copy");}catch(e){}}done();});
+        }else{if(lk){lk.select();try{document.execCommand("copy");}catch(e){}}done();}
+      }catch(e){done();}
+    });
+  }
+  var entPdf=document.getElementById("cuenta-entrega-pdf");
+  var entVid=document.getElementById("cuenta-entrega-video");
+  function refCambiarEntrega(entrega){
+    var cc=refLoadCuenta();
+    if(!cc||!cc.solicitudGratis)return;
+    if(cc.solicitudGratis.entrega===entrega)return;
+    cc.solicitudGratis.entrega=entrega;
+    refSaveCuenta(cc);
+    refEnviarSolicitud(cc,refRegistry(cc.codigo),entrega,true);
+    refPintarEntrega(cc);
+    refToast(refIsEn()?"Delivery updated.":"Entrega actualizada.");
+  }
+  if(entPdf)entPdf.addEventListener("click",function(){refCambiarEntrega("PDF");});
+  if(entVid)entVid.addEventListener("click",function(){refCambiarEntrega("Video");});
+  var del=document.getElementById("cuenta-eliminar");
+  if(del){
+    del.addEventListener("click",function(){
+      try{if(!confirm(refIsEn()?"Delete your SYLLENZA account on this device? Your referral progress will be lost.":"¿Eliminar tu cuenta SYLLENZA de este dispositivo? Tu progreso de referidos se perderá."))return;}catch(e){return;}
+      try{localStorage.removeItem("syl-cuenta");}catch(e){}
+      renderCuenta();
+      refToast(refIsEn()?"Account deleted.":"Cuenta eliminada.");
+    });
+  }
+  var form=document.getElementById("cuenta-form");
+  if(form){
+    form.addEventListener("submit",function(ev){
+      ev.preventDefault();
+      var nm=document.getElementById("cuenta-nombre");
+      var em=document.getElementById("cuenta-email");
+      var nombre=nm?String(nm.value||"").trim():"";
+      var email=em?String(em.value||"").trim():"";
+      if(!nombre||!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)){
+        refToast(refIsEn()?"Write your name and a valid email.":"Escribe tu nombre y un correo válido.");
+        if(em)em.focus();
+        return;
+      }
+      var codigo=refCodeFromEmail(email);
+      var refPor=refRead("syl-ref-por")||"";
+      if(refPor===codigo)refPor="";
+      var cuenta={nombre:nombre,email:email,codigo:codigo,referidos:refRegistry(codigo),creada:new Date().toISOString().slice(0,10)};
+      refSaveCuenta(cuenta);
+      try{
+        var f=document.getElementById("fs-form-cuenta");
+        if(f){
+          var set=function(id,val){var x=document.getElementById(id);if(x)x.value=val;};
+          set("fs-cuenta-nombre",nombre);
+          set("fs-cuenta-email",email);
+          set("fs-cuenta-codigo",codigo);
+          set("fs-cuenta-refpor",refPor);
+          set("fs-cuenta-fecha",cuenta.creada);
+          f.submit();
+        }
+      }catch(e){}
+      try{
+        if(refPor){
+          refRegistryAdd(refPor,{nombre:nombre,email:email,fecha:cuenta.creada});
+          var reg=[];try{reg=JSON.parse(refRead("syl-registro-referidos")||"[]")||[];}catch(e){reg=[];}
+          reg.push({nombre:nombre,email:email,codigo:codigo,refPor:refPor,fecha:cuenta.creada});
+          refStore("syl-registro-referidos",JSON.stringify(reg));
+        }
+      }catch(e){}
+      renderCuenta();
+      refToast(refIsEn()?"Account created! This is your personal referral link.":"¡Cuenta creada! Este es tu enlace personal de referidos.");
+      try{var s=document.getElementById("mi-cuenta");if(s)s.scrollIntoView({behavior:"smooth"});}catch(e){}
+    });
+  }
+});
+</script>
+
+<script>
+/* ===== SYL_I18N · Idioma y moneda automáticos por IP + selector manual =====
+   - Geolocalización por IP en el navegador: ipapi.co (respaldo ip-api.com).
+   - País hispano (MX, ES, Latinoamérica) -> español + precios en MXN.
+   - País no hispano -> inglés (títulos, botones, descripciones,
+     interpretaciones, mensajes y horóscopos) y precios en EUR si el país
+     usa el euro, o USD en el resto, con tipo de cambio de una API gratuita
+     (exchangerate-api, respaldo frankfurter; tipos fijos si fallan).
+   - Selector manual de idioma (ES/EN) y de moneda en el menú; la elección
+     manual se guarda en localStorage y manda sobre la detección.
+   - Si la detección falla o se bloquea, la página sigue en español con MXN.
+   - No toca los flujos, Excel, voz, AdSense ni la identidad visual. */
+(function(){
+"use strict";
+var UI_T={"⌂ Inicio": "⌂ Home", "✦ Tiradas": "✦ Readings", "☾ Astrología": "☾ Astrology", "❖ Guía": "❖ Guide", "♛ Premium": "♛ Premium", "👤 Mi cuenta": "👤 My account", "Comenzar mi consulta": "Begin my reading", "Tarot · Astrología · Guía Espiritual": "Tarot · Astrology · Spiritual Guidance", "TAROT · ASTROLOGÍA · AUTOCONOCIMIENTO": "TAROT · ASTROLOGY · SELF-KNOWLEDGE", "Elige tu experiencia": "Choose your experience", "Tus datos de nacimiento": "Your birth data", "Elige tu tirada y baraja": "Choose your reading and shuffle", "Tu revelación": "Your reveal", "Paso 1 · Cuéntanos de ti": "Step 1 · Tell us about you", "Nombre completo *": "Full name *", "Fecha de nacimiento *": "Date of birth *", "Día, mes y año. Debes tener 18 años o más.": "Day, month and year. You must be 18 or older.", "Hora de nacimiento *": "Time of birth *", "Si no la sabes exacta, usa la más cercana que recuerdes.": "If you don't know it exactly, use the closest you remember.", "Lugar de nacimiento *": "Place of birth *", "Pregunta o tema de tu consulta (opcional)": "Question or topic of your reading (optional)", "✦ Confirmar mis datos": "✦ Confirm my data", "Continuar · Elegir mi tirada →": "Continue · Choose my reading →", "¡Datos registrados!": "Data saved!", "Todo listo: continúa al paso 2 para barajar el mazo.": "All set: continue to step 2 to shuffle the deck.", "Paso 2 · Elige tu experiencia": "Step 2 · Choose your experience", "Paso 2 · Baraja tu mazo": "Step 2 · Shuffle your deck", "Mazo listo · 78 cartas sin barajar": "Deck ready · 78 unshuffled cards", "✦ Barajar los 78 arcanos": "✦ Shuffle the 78 arcana", "Ir a mi Tirada Completa →": "Go to my Complete Reading →", "Ir a mi Carta del día →": "Go to my Card of the Day →", "Ir a Tu destino en 3 cartas →": "Go to my destiny in 3 cards →", "Ir a mi Cruz Celta →": "Go to my Celtic Cross →", "← Volver a mis datos": "← Back to my data", "← Volver a barajar": "← Back to shuffle", "← Volver a Inicio": "← Back to Home", "Experiencia inmersiva": "Immersive experience", "♪ Música ambiental": "♪ Ambient music", "♪ Música ambiental · Sonando": "♪ Ambient music · Playing", "✧ Voz del narrador": "✧ Narrator's voice", "✧ Voz del narrador · Activa": "✧ Narrator's voice · On", "✧ Voz del narrador · Silenciada": "✧ Narrator's voice · Muted", "✧ Escuchar mi Tirada Completa · Voz del narrador": "✧ Listen to my Complete Reading · Narrator's voice", "Tarot diario para cada signo": "Daily tarot for each sign", "Carta del día": "Card of the Day", "Pasado · Presente · Futuro": "Past · Present · Future", "Tirada Completa": "Complete Reading", "Cruz Celta": "Celtic Cross", "Descubre el mensaje y la energía que te acompañan hoy.": "Discover the message and energy that accompany you today.", "Explora tu historia, tu momento actual y el rumbo que se abre para ti.": "Explore your story, your present moment and the path opening before you.", "Una visión profunda y detallada de tu situación actual.": "A deep, detailed vision of your current situation.", "Haz tu pregunta y obtén una lectura completa y reveladora.": "Ask your question and receive a complete, revealing reading.", "Obtener mi carta ›": "Get my card ›", "Realizar tirada ›": "Do the reading ›", "Iniciar tirada ›": "Begin the reading ›", "Realizar Cruz Celta ›": "Do the Celtic Cross ›", "1 carta": "1 card", "3 cartas": "3 cards", "22 cartas": "22 cards", "10 cartas": "10 cards", "Gratis": "Free", "Experiencia VIP": "VIP Experience", "Una guía para hoy. La energía del universo te revela un mensaje especial.": "A guide for today. The energy of the universe reveals a special message to you.", "Tres cartas, un mismo camino. Descubre la energía que te rodea y lo que viene.": "Three cards, one path. Discover the energy around you and what is coming.", "✦ Desliza las cartas y toca una para elegirla ✦": "✦ Slide the cards and tap one to choose it ✦", "Toca una carta del abanico o pulsa Sacar…": "Tap a card from the fan or press Draw…", "El abanico gira mientras eliges… toca una carta o pulsa Sacar.": "The fan keeps spinning while you choose… tap a card or press Draw.", "Paso 3 · Tirada Completa": "Step 3 · Complete Reading", "Paso 3 · Tirada Completa · Experiencia VIP": "Step 3 · Complete Reading · VIP Experience", "Paso 3 · Carta del día": "Step 3 · Card of the Day", "Paso 3 · Tu destino en 3 cartas": "Step 3 · Your destiny in 3 cards", "Paso 3 · Cruz Celta": "Step 3 · Celtic Cross", "✦ Revelar mi Tirada Completa": "✦ Reveal my Complete Reading", "✦ Revelar mi Carta del día": "✦ Reveal my Card of the Day", "✦ Revelar mi destino en 3 cartas": "✦ Reveal my destiny in 3 cards", "✦ Revelar mi Cruz Celta": "✦ Reveal my Celtic Cross", "✦ Elegir otra Tirada Completa": "✦ Choose another Complete Reading", "✦ Elegir otra Carta del día": "✦ Choose another Card of the Day", "✦ Elegir otra Cruz Celta": "✦ Choose another Celtic Cross", "✦ Elegir otras 3 cartas": "✦ Choose 3 other cards", "↺ Nueva consulta": "↺ New reading", "Esperando tu clic…": "Waiting for your click…", "Revelando tus 22 cartas… ✦": "Revealing your 22 cards… ✦", "Revelando… ✦": "Revealing… ✦", "Revelando tu tirada… ✦ Espera un momento, tus cartas están apareciendo.": "Revealing your reading… ✦ Wait a moment, your cards are appearing.", "Tirada completa · 22 cartas elegidas al azar de tu mazo": "Complete reading · 22 cards chosen at random from your deck", "Tu Carta del día está revelada": "Your Card of the Day is revealed", "Tu Cruz Celta está revelada · 10 cartas": "Your Celtic Cross is revealed · 10 cards", "Tu destino en 3 cartas está revelado · Pasado, Presente y Futuro": "Your destiny in 3 cards is revealed · Past, Present and Future", "¡Tu tirada está lista!": "Your reading is ready!", "↗ Ver mi resultado en esta página": "↗ See my result on this page", "Tu entrega VIP · Tirada Completa": "Your VIP delivery · Complete Reading", "Se entregará un PDF con una historieta ilustrada de tu tirada.": "A PDF with an illustrated comic of your reading will be delivered.", "Incluye el PDF con historieta ilustrada.": "Includes the PDF with illustrated comic.", "Elige una de las dos opciones:": "Choose one of the two options:", "PDF incluido": "PDF included", "Historieta ilustrada de tu tirada, en PDF.": "Illustrated comic of your reading, in PDF.", "Video animado": "Animated video", "Video animado de 2 minutos de tu tirada, más el PDF.": "2-minute animated video of your reading, plus the PDF.", "Tu email o WhatsApp para mandártelo:": "Your email or WhatsApp so we can send it to you:", "Se enviará en un lapso de 12 horas. Sin pago en esta versión: solo elige y déjanos tu contacto.": "It will be sent within 12 hours. No payment in this version: just choose and leave your contact.", "Guardar mi elección": "Save my choice", "Tu entrega · Cruz Celta": "Your delivery · Celtic Cross", "Tu Cruz Celta se entrega en PDF, igual que la Tirada Completa, por email o WhatsApp en un lapso de 12 horas.": "Your Celtic Cross is delivered as a PDF, like the Complete Reading, by email or WhatsApp within 12 hours.", "Sin pago en esta página.": "No payment on this page.", "Publicidad": "Advertisement", "Espacio publicitario": "Advertising space", "Recibe tus 2 archivos Excel": "Receive your 2 Excel files", "Incluye tus datos natales": "Includes your birth data", "Interpretación completa": "Complete interpretation", "Resultados en tu correo": "Results in your email", "Tu lectura, en detalle": "Your reading, in detail", "Enviada a tu correo": "Sent to your email", "Oráculo inteligente": "Smart Oracle", "Tu Oráculo · Tarot, astrología y numerología": "Your Oracle · Tarot, astrology and numerology", "Sol · Tu esencia": "Sun · Your essence", "Luna · Tu emoción": "Moon · Your emotion", "Ascendente · Tu camino": "Rising · Your path", "Primero completa tus datos de nacimiento en el Paso 1.": "First complete your birth data in Step 1.", "Primero baraja el mazo en el Paso 2.": "First shuffle the deck in Step 2.", "Primero baraja el mazo en el paso 2.": "First shuffle the deck in step 2.", "Primero revela tus 22 cartas.": "First reveal your 22 cards.", "Mi cuenta: tu consulta es privada y no requiere registro. Tus datos solo se usan en tu navegador para tu tirada.": "My account: your reading is private and needs no registration. Your data is only used in your browser for your reading.", "Por favor completa todos los campos marcados con *: nombre completo, fecha, hora y lugar de nacimiento.": "Please complete all fields marked with *: full name, date, time and place of birth.", "Tu pregunta: ": "Your question: ", "Tu pregunta: (escribe tu pregunta en el Paso 1, en Tema de tu consulta)": "Your question: (write your question in Step 1, under Topic of your reading)", "Syllenza con fines interpretativos y de entretenimiento.": "Syllenza is for interpretive and entertainment purposes.", "Selección de una carta.": "Selection of one card.", "Selección de tres cartas.": "Selection of three cards.", "Selección y distribución de 22 cartas.": "Selection and distribution of 22 cards.", "Pregunta y tirada de 10 cartas.": "Question and reading of 10 cards.", "Escribe tu pregunta aquí…": "Write your question here…", "Tu pregunta para la Cruz Celta": "Your question for the Celtic Cross", "Haz tu pregunta y obtén una lectura completa y reveladora": "Ask your question and receive a complete, revealing reading", "✦ SACAR CARTA DEL DÍA ✦": "✦ DRAW CARD OF THE DAY ✦", "✦ SACAR 3 CARTAS ✦": "✦ DRAW 3 CARDS ✦", "✦ SACAR 10 CARTAS ✦": "✦ DRAW 10 CARDS ✦", "✦ Sacar carta ✦": "✦ Draw a card ✦", "Tu Cruz Celta": "Your Celtic Cross", "Tu Carta del día": "Your Card of the Day", "Tu destino en 3 cartas": "Your destiny in 3 cards", "Tu Tirada Completa": "Your Complete Reading", "⌂ Inicio ▾": "⌂ Home ▾", "✦ Tiradas ▾": "✦ Readings ▾", "☾ Astrología ▾": "☾ Astrology ▾", "❖ Guía ▾": "❖ Guide ▾", "♛ Premium ▾": "♛ Premium ▾", "☀️ Carta del Día": "☀️ Card of the Day", "☾ Pasado · Presente · Futuro": "☾ Past · Present · Future", "✧ Tirada Completa 22": "✧ Complete Reading 22", "✥ Cruz Celta": "✥ Celtic Cross", "☾ Horóscopos diarios": "☾ Daily horoscopes", "ᚱ Runa Celta del Día": "ᚱ Celtic Rune of the Day", "✦ Elige tu experiencia": "✦ Choose your experience", "❖ Guía Syllenza": "❖ Syllenza Guide", "✦ Mi consulta": "✦ My reading", "♛ Experiencia VIP": "♛ VIP Experience", "Runa Celta del Día": "Celtic Rune of the Day", "Una runa distinta cada día, elegida por la fecha: símbolo, nombre, significado y consejo para hoy.": "A different rune each day, chosen by the date: symbol, name, meaning and advice for today.", "Energía": "Energy", "Consejo": "Advice", "Horóscopos diarios": "Daily horoscopes", "Cada signo tiene su energía del día. Encuentra el tuyo y deja que tu Carta del día hable con tu cielo de nacimiento.": "Each sign has its energy of the day. Find yours and let your Card of the Day speak with your birth sky.", "✦ Comenzar mi Tirada Completa": "✦ Begin my Complete Reading", "Boletín Mensual SYLLENZA": "SYLLENZA Monthly Newsletter", "Horóscopo Mensual": "Monthly Horoscope", "✦ Horóscopo Mensual": "✦ Monthly Horoscope", "✉ Boletín Mensual": "✉ Monthly Newsletter", "El horóscopo de este mes para cada signo, con sus números de la suerte. Toca tu signo para verlo.": "This month's horoscope for each sign, with its lucky numbers. Tap your sign to see it.", "Suscríbete y cada mes recibe en tu correo nuestras promociones, tu horóscopo mensual y tus números de la suerte.": "Subscribe and receive our promotions, your monthly horoscope and your lucky numbers in your email every month.", "Promociones exclusivas": "Exclusive promotions", "Horóscopo mensual": "Monthly horoscope", "Números de la suerte": "Lucky numbers", "mes con mes": "month after month", "de tu signo": "for your sign", "del mes": "of the month", "Tu nombre": "Your name", "Tu correo electrónico *": "Your email *", "✦ Suscribirme al boletín": "✦ Subscribe to the newsletter", "¡Gracias por suscribirte! Cada mes recibirás en tu correo las promociones de SYLLENZA, tu horóscopo mensual y tus números de la suerte.": "Thank you for subscribing! Every month you will receive SYLLENZA's promotions, your monthly horoscope and your lucky numbers in your email.", "Un solo correo al mes. Tu correo solo se usa para enviarte el boletín; puedes darte de baja cuando quieras respondiendo a ese correo.": "Just one email a month. Your email is only used to send you the newsletter; you can unsubscribe anytime by replying to that email.", "Escribe un correo válido.": "Please enter a valid email.", "Ya estás suscrito al Boletín Mensual SYLLENZA.": "You are already subscribed to the SYLLENZA Monthly Newsletter.", "← Regresar a Inicio": "← Back to Home", "Números de la suerte del mes": "This month's lucky numbers", "Día de suerte": "Lucky day", "Color de la suerte": "Lucky colour", "Carta de la suerte": "Lucky card", "Tema del mes": "Theme of the month", "Mi cuenta": "My account", "Tu cuenta SYLLENZA: tu enlace personal de referidos, tus referidos y tu consulta gratis.": "Your SYLLENZA account: your personal referral link, your referrals and your free consultation.", "Crea tu cuenta gratis y obtén tu enlace personal de referidos. Invita a 5 personas y tu próxima consulta es GRATIS.": "Create your free account and get your personal referral link. Invite 5 people and your next consultation is FREE.", "Tu cuenta vive en tu navegador y solo se usa para tus referidos y tu boletín. Sin contraseñas.": "Your account lives in your browser and is only used for your referrals and your newsletter. No passwords.", "✦ Crear mi cuenta": "✦ Create my account", "Tu código de referido": "Your referral code", "Tu enlace personal": "Your personal link", "Tu progreso": "Your progress", "Tus referidos": "Your referrals", "Copiar enlace": "Copy link", "Ir al Boletín Mensual →": "Go to the Monthly Newsletter →", "Eliminar mi cuenta": "Delete my account", "Tus referidos se confirman cuando se registran con tu enlace: cada registro nos llega por correo y lo sumamos a tu cuenta. Aquí ves los referidos confirmados en este dispositivo.": "Your referrals are confirmed when they register with your link: each registration reaches us by email and we add it to your account. Here you see the referrals confirmed on this device.", "✦ Sistema de referidos ✦": "✦ Referral system ✦", "Invita a tus amigos con tu enlace personal: cada persona que cree su cuenta con tu enlace pone un sello dorado en tu cuenta. Al juntar 5 sellos, tu Tirada Completa gratis se solicita sola, sin pago.": "Invite your friends with your personal link: each person who creates their account with your link stamps a golden seal on your account. When you collect 5 seals, your free Complete Reading is requested automatically, with no payment.", "Crea tu cuenta para participar en el sistema de referidos.": "Create your account to join the referral system.", "👤 Ir a Mi cuenta y ver mi enlace →": "👤 Go to My account and see my link →", "Escribe tu nombre y un correo válido.": "Write your name and a valid email.", "Tu entrega gratis": "Your free delivery", "Tu Tirada Completa gratis se entregará en PDF con historieta ilustrada en un lapso de 12 horas a tu correo. Si prefieres el video animado de 2 minutos, elige aquí:": "Your free Complete Reading will be delivered as a PDF with illustrated comic within 12 hours to your email. If you prefer the 2-minute animated video, choose it here:", "PDF con historieta": "PDF with comic", "Video animado 2 min": "2-min animated video", "Sellos de referidos": "Referral seals"};
+var UI_SUB={"Pasado, presente y futuro": "Past, present and future", "Tu carta del día": "Your card of the day", "Tu Cruz Celta se entrega en PDF por email o WhatsApp, en 12 horas": "Your Celtic Cross is delivered as a PDF by email or WhatsApp, within 12 hours", "Incluye PDF con historieta ilustrada": "Includes PDF with illustrated comic", "Desafío": "Challenge", "Pasado lejano": "Distant past", "Pasado reciente": "Recent past", "Posible futuro": "Possible future", "Futuro inmediato": "Immediate future", "Tu actitud": "Your attitude", "Tu entorno": "Your environment", "Esperanzas y miedos": "Hopes and fears", "Resultado": "Outcome", "Derecha": "Upright", "Invertida": "Reversed", "Pasado": "Past", "Presente": "Present", "Futuro": "Future", "Tauro": "Taurus", "Géminis": "Gemini", "Cáncer": "Cancer", "Escorpio": "Scorpio", "Sagitario": "Sagittarius", "Capricornio": "Capricorn", "Acuario": "Aquarius", "Piscis": "Pisces", "Urano": "Uranus", "Mercurio": "Mercury", "La Luna": "The Moon", "Venus": "Venus", "Marte": "Mars", "El Sol": "The Sun", "Júpiter": "Jupiter", "Neptuno": "Neptune", "Plutón": "Pluto", "Saturno": "Saturn", "Fuego": "Fire", "Tierra": "Earth", "Aire": "Air", "Agua": "Water", "Elemento": "Element", "Planeta": "Planet", "Signo": "Sign", "Sol · Tu esencia": "Sun · Your essence", "Luna · Tu emoción": "Moon · Your emotion", "Ascendente · Tu camino": "Rising · Your path", "Número de vida": "Life number"};
+var CARD_T={"El Loco": "The Fool", "El Mago": "The Magician", "La Sacerdotisa": "The High Priestess", "La Emperatriz": "The Empress", "El Emperador": "The Emperor", "El Sumo Sacerdote": "The Hierophant", "Los Enamorados": "The Lovers", "El Carro": "The Chariot", "La Fuerza": "Strength", "El Ermitaño": "The Hermit", "La Rueda de la Fortuna": "Wheel of Fortune", "La Justicia": "Justice", "El Colgado": "The Hanged Man", "La Muerte": "Death", "La Templanza": "Temperance", "El Diablo": "The Devil", "La Torre": "The Tower", "La Estrella": "The Star", "La Luna": "The Moon", "El Sol": "The Sun", "El Juicio": "Judgement", "El Mundo": "The World", "Comienzos, inocencia, salto de fe y libertad.": "Beginnings, innocence, a leap of faith and freedom.", "Miedo al cambio, imprudencia o un paso dado sin mirar.": "Fear of change, recklessness, or a step taken without looking.", "Voluntad, recursos a tu favor y poder de manifestar.": "Willpower, resources in your favour and the power to manifest.", "Dispersión, engaño o talento sin usar.": "Scattered energy, deception, or unused talent.", "Intuición, misterio y sabiduría interior.": "Intuition, mystery and inner wisdom.", "Secretos, desconexión de tu intuición.": "Secrets, disconnection from your intuition.", "Abundancia, creatividad y cuidado que florece.": "Abundance, creativity and care that blossoms.", "Bloqueo creativo o exceso de dependencia.": "Creative block or excessive dependence.", "Estructura, autoridad y bases sólidas.": "Structure, authority and solid foundations.", "Rigidez, control excesivo o desorden.": "Rigidity, excessive control or disorder.", "Tradición, guía espiritual y aprendizaje.": "Tradition, spiritual guidance and learning.", "Dogmas que limitan o rebeldía sin rumbo.": "Limiting dogmas or rebellion without direction.", "Amor, unión y una elección del corazón.": "Love, union and a choice of the heart.", "Duda, desarmonía o elección postergada.": "Doubt, disharmony or a postponed choice.", "Avance, victoria y determinación.": "Progress, victory and determination.", "Falta de dirección o avance frenado.": "Lack of direction or stalled progress.", "Coraje sereno, paciencia y dominio interior.": "Serene courage, patience and inner mastery.", "Inseguridad o emociones desbordadas.": "Insecurity or overflowing emotions.", "Búsqueda interior, prudencia y luz propia.": "Inner search, prudence and your own light.", "Aislamiento o evitar mirar hacia adentro.": "Isolation, or avoiding looking within.", "Giro favorable, destino y nuevo ciclo.": "A favourable turn, destiny and a new cycle.", "Resistencia al cambio o racha que se revierte.": "Resistance to change, or a streak that reverses.", "Verdad, equilibrio y consecuencias justas.": "Truth, balance and just consequences.", "Desequilibrio o una decisión injusta.": "Imbalance, or an unfair decision.", "Pausa, entrega y ver todo desde otro ángulo.": "Pause, surrender, and seeing everything from another angle.", "Estancamiento o sacrificio sin sentido.": "Stagnation, or meaningless sacrifice.", "Fin de un ciclo y renacimiento profundo.": "The end of a cycle and a deep rebirth.", "Miedo a soltar lo que ya terminó.": "Fear of letting go of what has already ended.", "Armonía, paciencia y mezcla sabia.": "Harmony, patience and wise blending.", "Excesos o falta de equilibrio.": "Excess, or lack of balance.", "Apegos, tentaciones y cadenas elegidas.": "Attachments, temptations and chosen chains.", "Liberación de un apego o dependencia.": "Freedom from an attachment or dependency.", "Ruptura súbita que libera y revela la verdad.": "A sudden rupture that frees and reveals the truth.", "Crisis evitada que crece por dentro.": "An avoided crisis growing inside.", "Esperanza, inspiración y sanación.": "Hope, inspiration and healing.", "Desánimo o fe debilitada.": "Discouragement, or weakened faith.", "Sueños, intuición y lo que aún no se ve claro.": "Dreams, intuition, and what is not yet clear.", "Confusión que se disipa, miedos al descubierto.": "Confusion lifting, fears laid bare.", "Alegría, éxito y claridad total.": "Joy, success and total clarity.", "Optimismo nublado o éxito que tarda.": "Clouded optimism, or success that takes its time.", "Despertar, llamado interior y renacer.": "Awakening, inner calling and rebirth.", "Dudas para responder a tu llamado.": "Doubts about answering your calling.", "Plenitud, logro y cierre triunfal de ciclo.": "Fulfilment, achievement and a triumphant closing of the cycle.", "Un cierre pendiente o meta casi alcanzada.": "A pending closure, or a goal almost reached.", "As": "Ace", "Dos": "Two", "Tres": "Three", "Cuatro": "Four", "Cinco": "Five", "Seis": "Six", "Siete": "Seven", "Ocho": "Eight", "Nueve": "Nine", "Diez": "Ten", "Sota": "Page", "Caballero": "Knight", "Reina": "Queen", "Rey": "King", "Bastos": "Wands", "Copas": "Cups", "Espadas": "Swords", "Oros": "Pentacles", "Un comienzo potente en su elemento.": "A powerful beginning in its element.", "Un inicio bloqueado o que tarda en arrancar.": "A blocked beginning, or one slow to start.", "Elección, balance o alianza en formación.": "Choice, balance, or an alliance forming.", "Duda entre dos caminos o desequilibrio.": "Doubt between two paths, or imbalance.", "Expansión, primeros frutos y colaboración.": "Expansion, first fruits and collaboration.", "Retrasos o falta de apoyo.": "Delays, or lack of support.", "Estabilidad, pausa y base construida.": "Stability, pause, and a built foundation.", "Estancamiento o base que se mueve.": "Stagnation, or a shifting foundation.", "Conflicto, reto y aprendizaje a la fuerza.": "Conflict, challenge, and learning the hard way.", "El conflicto cede o se evita una lección.": "The conflict eases, or a lesson is avoided.", "Avance, reconocimiento o ayuda que llega.": "Progress, recognition, or help arriving.", "Avance lento o ayuda que no se acepta.": "Slow progress, or help not accepted.", "Defensa de lo tuyo, estrategia y paciencia.": "Defending what's yours, strategy and patience.", "Indecisión o ceder demasiado pronto.": "Indecision, or giving in too soon.", "Movimiento rápido, noticias y progreso.": "Fast movement, news and progress.", "Demoras o mensajes confusos.": "Delays, or confusing messages.", "Resistencia, casi llegar, cuidar lo logrado.": "Endurance, almost there, protecting what you've achieved.", "Agotamiento o bajar la guardia.": "Exhaustion, or letting your guard down.", "Culminación y resultado completo de un ciclo.": "Culmination, and the complete result of a cycle.", "Carga excesiva o cierre que se resiste.": "Excessive burden, or a closure that resists.", "Mensajero: noticias y energía joven que explora.": "Messenger: news and young energy that explores.", "Noticias confusas o inmadurez en el tema.": "Confusing news, or immaturity in the matter.", "Acción decidida que avanza hacia la meta.": "Decisive action moving toward the goal.", "Impulsividad o avance detenido.": "Impulsiveness, or stalled progress.", "Dominio maduro y magnético de su elemento.": "Mature, magnetic mastery of its element.", "Esa energía vuelta hacia adentro o bloqueada.": "That energy turned inward, or blocked.", "Maestría, liderazgo y control de su elemento.": "Mastery, leadership and control of its element.", "Autoridad mal usada o rigidez.": "Misused authority, or rigidity.", "fuego, acción y proyectos": "fire, action and projects", "agua, emociones y vínculos": "water, emotions and bonds", "aire, mente y decisiones": "air, mind and decisions", "tierra, dinero y lo concreto": "earth, money and the concrete", "Tauro": "Taurus", "Géminis": "Gemini", "Cáncer": "Cancer", "Escorpio": "Scorpio", "Sagitario": "Sagittarius", "Capricornio": "Capricorn", "Acuario": "Aquarius", "Piscis": "Pisces", "Urano": "Uranus", "Mercurio": "Mercury", "Venus": "Venus", "Marte": "Mars", "Júpiter": "Jupiter", "Neptuno": "Neptune", "Plutón": "Pluto", "Saturno": "Saturn", "Fuego": "Fire", "Tierra": "Earth", "Aire": "Air", "Agua": "Water"};
+var HORO_T={"Hoy tu fuego enciende lo que llevas días posponiendo: da el primer paso antes del mediodía y deja que el resto te siga. En el amor, una palabra directa vale más que mil vueltas.": "Today your fire ignites what you have been postponing for days: take the first step before noon and let the rest follow you. In love, one direct word is worth more than a thousand detours.", "Hoy la calma es tu fuerza: cuida lo concreto, un gasto, un compromiso, y verás cómo se ordena lo demás. En el amor, un gesto sencillo dice más que un gran plan.": "Today calm is your strength: take care of the concrete things — an expense, a commitment — and you will see everything else fall into place. In love, a simple gesture says more than a grand plan.", "Hoy tu mente va a mil: escribe lo que se te ocurra, una idea de hoy puede ser el proyecto de mañana. En el amor, escucha antes de responder.": "Today your mind races: write down whatever comes to you — an idea from today could become tomorrow's project. In love, listen before you answer.", "Hoy tu intuición acierta: haz caso a esa corazonada sobre una persona o un lugar. En casa, un momento de calma te devuelve la energía.": "Today your intuition is right: follow that hunch about a person or a place. At home, a moment of calm restores your energy.", "Hoy brillas sin esforzarte: acepta ese reconocimiento y compártelo, tu generosidad vuelve multiplicada. En el amor, sé tú quien dé el primer paso.": "Today you shine without trying: accept that recognition and share it — your generosity returns multiplied. In love, be the one to take the first step.", "Hoy el orden te libera: resuelve un pendiente pequeño y el día se despeja. En el trabajo, un detalle que solo tú ves marca la diferencia.": "Today order sets you free: resolve one small pending task and the day clears up. At work, a detail only you notice makes the difference.", "Hoy busca el equilibrio: una conversación pendiente se resuelve si escuchas las dos partes, incluida la tuya. En el amor, la armonía empieza por ti.": "Today seek balance: a pending conversation resolves if you listen to both sides, including yours. In love, harmony starts with you.", "Hoy tu intensidad es un radar: ves lo que otros no ven, úsala para decidir, no para sospechar. En el amor, la sinceridad abre una puerta.": "Today your intensity is a radar: you see what others don't — use it to decide, not to suspect. In love, sincerity opens a door.", "Hoy las ganas de crecer te empujan: aprende algo nuevo o planea ese viaje, aunque sea en la cabeza. En el amor, la aventura compartida une.": "Today the urge to grow pushes you: learn something new or plan that trip, even if only in your head. In love, shared adventure brings you together.", "Hoy tu constancia da fruto: un esfuerzo de días pasados se nota por fin. En el trabajo, pide lo que mereces con calma y firmeza.": "Today your perseverance bears fruit: an effort from past days finally shows. At work, ask for what you deserve calmly and firmly.", "Hoy tu originalidad sorprende: comparte esa idea rara, alguien la estaba esperando. En el amor, la amistad es hoy tu mejor puerta.": "Today your originality surprises: share that unusual idea — someone was waiting for it. In love, friendship is your best door today.", "Hoy tu sensibilidad es una brújula: descansa, sueña despierto un rato y la respuesta llegará sola. En el amor, un detalle soñador enamora.": "Today your sensitivity is a compass: rest, daydream a while, and the answer will come. In love, a dreamy detail wins hearts."};
+var T={};(function(){var k;for(k in UI_T)T[k]=UI_T[k];for(k in HORO_T)T[k]=HORO_T[k];T["Por"]="For";})();
+var ES_COUNTRIES=["MX","ES","AR","CL","CO","PE","VE","EC","GT","CU","BO","DO","HN","PY","SV","NI","CR","PA","UY","PR","GQ","BZ"];
+var EURO_COUNTRIES=["DE","FR","IT","PT","NL","BE","IE","AT","GR","FI","LU","MT","CY","SK","SI","EE","LV","LT","HR","AD","MC","SM","VA"];
+var FALLBACK_RATE={USD:0.058,EUR:0.053};
+var I18N={lang:"es",cur:"MXN",rate:{USD:FALLBACK_RATE.USD,EUR:FALLBACK_RATE.EUR},auto:true};
+window.SYL_I18N=I18N;
+var ORIG_TITLE="";try{ORIG_TITLE=document.title||"";}catch(e){}
+function store(k,v){try{localStorage.setItem("syl-"+k,v);}catch(e){}}
+function read(k){try{return localStorage.getItem("syl-"+k);}catch(e){return null;}}
+/* --- Traducción de cartas (datos): nombre, significados, planeta, signo --- */
+function translateCardName(n){
+  if(CARD_T[n])return CARD_T[n];
+  var p=n.split(" de ");
+  if(p.length===2)return (CARD_T[p[0]]||p[0])+" of "+(CARD_T[p[1]]||p[1]);
+  return n;
+}
+function translateCard(c,toEn){
+  if(!c)return;
+  if(toEn){
+    if(!c._es)c._es={name:c.name,up:c.up,rev:c.rev,planeta:c.planeta,signo:c.signo};
+    c.name=translateCardName(c.name);
+    c.up=CARD_T[c.up]||c.up;c.rev=CARD_T[c.rev]||c.rev;
+    c.planeta=CARD_T[c.planeta]||c.planeta;c.signo=CARD_T[c.signo]||c.signo;
+  }else if(c._es){
+    c.name=c._es.name;c.up=c._es.up;c.rev=c._es.rev;c.planeta=c._es.planeta;c.signo=c._es.signo;
+    delete c._es;
+  }
+}
+if(typeof buildDeck==="function"){
+  var _bd=buildDeck;
+  buildDeck=function(){
+    var d=_bd(),i;
+    if(I18N.lang==="en"){for(i=0;i<d.length;i++)translateCard(d[i],true);}
+    return d;
+  };
+}
+if(typeof elementFor==="function"){
+  var _ef=elementFor,REV={},rk;
+  for(rk in CARD_T)REV[CARD_T[rk]]=rk;
+  elementFor=function(s){return _ef(REV[s]||s);};
+}
+if(typeof narrationText==="function"){
+  narrationText=function(pick,labels){
+    return pick.map(function(c,ix){
+      var lb=labels&&labels[ix]?((CARD_T[labels[ix]]||labels[ix])+": "):"";
+      var pos=c.reversed?(I18N.lang==="en"?"reversed":"invertida"):(I18N.lang==="en"?"upright":"derecha");
+      return lb+c.name+", "+pos+". "+(c.reversed?c.rev:c.up);
+    }).join(" ");
+  };
+}
+/* --- Voz: en inglés usa una voz en inglés (preferencia masculina) --- */
+var PHRASE_EN={
+ "Tu Tirada Completa está lista, ":"Your Complete Reading is ready, ",
+ "Tu Cruz Celta está lista. ":"Your Celtic Cross is ready. ",
+ "Tu carta del día es ":"Your card of the day is ",
+ "Tu destino en tres cartas. ":"Your destiny in three cards. ",
+ "Tu Cruz Celta está lista.":"Your Celtic Cross is ready."
+};
+if(typeof window.speak==="function"){
+  var _origSpeak=window.speak;
+  window.speak=function(text){
+    if(!text)return;
+    try{
+      if(I18N.lang==="en"){
+        var k;for(k in PHRASE_EN){text=text.split(k).join(PHRASE_EN[k]);}
+        if(!voiceOn||!("speechSynthesis" in window))return;
+        speechSynthesis.cancel();
+        var vs=speechSynthesis.getVoices()||[],i,cands=[],male=/daniel|david|james|alex|michael|john|google us english|microsoft (david|guy|ryan|christopher|eric)/i;
+        for(i=0;i<vs.length;i++){if(/^en/i.test(vs[i].lang||""))cands.push(vs[i]);}
+        cands.sort(function(a,b){var am=male.test(a.name||""),bm=male.test(b.name||"");return (bm?1:0)-(am?1:0);});
+        var v=cands[0]||null;
+        var u=new SpeechSynthesisUtterance(text);
+        u.lang=(v&&v.lang)||"en-US";u.rate=0.95;u.pitch=0.9;
+        if(v)u.voice=v;
+        speechSynthesis.speak(u);
+        return;
+      }
+      return _origSpeak(text);
+    }catch(e){}
+  };
+}
+/* --- Precios: MXN base -> USD/EUR con tipo de cambio --- */
+function convertPrices(s){
+  if(I18N.cur==="MXN")return s;
+  return s.replace(/(\d[\d,]*)\s*pesos/g,function(m,n){
+    var mxn=parseFloat(String(n).replace(/,/g,""));
+    if(isNaN(mxn))return m;
+    if(I18N.cur==="USD")return "$"+(mxn*I18N.rate.USD).toFixed(2)+" USD";
+    return "€"+(mxn*I18N.rate.EUR).toFixed(2)+" EUR";
+  });
+}
+function translateNodeText(s){
+  if(I18N.lang==="en"){
+    var t=s.trim();
+    if(T[t])return s.replace(t,T[t]);
+    var out=convertPrices(s),k;
+    for(k in UI_SUB){if(out.indexOf(k)>=0)out=out.split(k).join(UI_SUB[k]);}
+    if(out!==s){out=out.replace(/\bmás\b/g,"more").replace(/\ben total\b/g,"in total");}
+    return out;
+  }
+  return convertPrices(s);
+}
+var ORIG=new WeakMap();
+function applyTextNode(node){
+  if(!node||node.nodeType!==3)return;
+  var p=node.parentNode;
+  if(p&&(p.nodeName==="SCRIPT"||p.nodeName==="STYLE"||p.nodeName==="NOSCRIPT"))return;
+  var cur=node.nodeValue;
+  if(!cur||!cur.trim())return;
+  if(!ORIG.has(node))ORIG.set(node,cur);
+  var next=translateNodeText(ORIG.get(node));
+  if(next!==cur)node.nodeValue=next;
+}
+function applyText(root){
+  if(!root||!document.createTreeWalker)return;
+  var walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,null),nodes=[],n;
+  while((n=walker.nextNode()))nodes.push(n);
+  for(var i=0;i<nodes.length;i++)applyTextNode(nodes[i]);
+}
+var PH={"Ej. tu correo o tu número de WhatsApp":"E.g. your email or WhatsApp number","Escribe tu pregunta aquí…":"Write your question here…","Tu nombre completo":"Your full name"};
+function applyAttrs(){
+  var els=document.querySelectorAll("input[placeholder],textarea[placeholder]"),i,el,es;
+  for(i=0;i<els.length;i++){
+    el=els[i];
+    if(!el.getAttribute("data-ph-es"))el.setAttribute("data-ph-es",el.getAttribute("placeholder")||"");
+    es=el.getAttribute("data-ph-es");
+    el.setAttribute("placeholder",(I18N.lang==="en"&&PH[es])?PH[es]:es);
+  }
+}
+function syncSelectors(){
+  var ids=["sel-lang","sel-lang-m","sel-cur","sel-cur-m"],i,el;
+  for(i=0;i<ids.length;i++){
+    el=document.getElementById(ids[i]);
+    if(!el)continue;
+    if(ids[i].indexOf("lang")>=0)el.value=I18N.lang;else el.value=I18N.cur;
+  }
+}
+function applyAll(){
+  try{document.documentElement.setAttribute("lang",I18N.lang);}catch(e){}
+  try{
+    if(typeof state!=="undefined"&&state&&state.deck){
+      for(var i=0;i<state.deck.length;i++)translateCard(state.deck[i],I18N.lang==="en");
+    }
+  }catch(e){}
+  applyText(document.body);
+  applyAttrs();
+  try{document.title=(I18N.lang==="en")?"Syllenza · Tarot, Astrology and Spiritual Guidance":ORIG_TITLE;}catch(e){}
+  syncSelectors();
+  try{if(window.SYL_renderRuna)window.SYL_renderRuna();}catch(e){}try{if(window.SYL_renderBoletin)window.SYL_renderBoletin();}catch(e){}try{if(window.SYL_renderCuenta)window.SYL_renderCuenta();}catch(e){}
+}
+var applying=false;
+function observe(){
+  if(!("MutationObserver" in window))return;
+  var mo=new MutationObserver(function(muts){
+    if(applying)return;
+    applying=true;
+    try{
+      for(var i=0;i<muts.length;i++){
+        var m=muts[i],j,nd;
+        for(j=0;j<m.addedNodes.length;j++){
+          nd=m.addedNodes[j];
+          if(nd.nodeType===3)applyTextNode(nd);
+          else if(nd.nodeType===1&&nd.tagName!=="SCRIPT"&&nd.tagName!=="STYLE")applyText(nd);
+        }
+        if(m.type==="characterData"&&m.target.nodeType===3)applyTextNode(m.target);
+      }
+    }catch(e){}
+    applying=false;
+  });
+  mo.observe(document.body,{childList:true,subtree:true,characterData:true});
+}
+function wireSelectors(){
+  var ids=["sel-lang","sel-lang-m","sel-cur","sel-cur-m"],i,el;
+  for(i=0;i<ids.length;i++){
+    el=document.getElementById(ids[i]);
+    if(!el)continue;
+    el.addEventListener("change",function(ev){
+      var t=ev.target;
+      if(t.id.indexOf("lang")>=0){I18N.lang=t.value;store("lang",t.value);}
+      else{I18N.cur=t.value;I18N.auto=false;store("cur",t.value);}
+      applyAll();
+    });
+  }
+}
+function fetchJSON(url,ms){
+  return new Promise(function(res,rej){
+    var done=false;
+    var t=setTimeout(function(){if(!done){done=true;rej(new Error("timeout"));}},ms||4000);
+    fetch(url).then(function(r){if(!r.ok)throw new Error("http "+r.status);return r.json();}).then(function(j){
+      if(!done){done=true;clearTimeout(t);res(j);}
+    }).catch(function(e){if(!done){done=true;clearTimeout(t);rej(e);}});
+  });
+}
+function fetchRates(){
+  fetchJSON("https://api.exchangerate-api.com/v4/latest/MXN",5000).then(function(j){
+    if(j&&j.rates&&j.rates.USD&&j.rates.EUR){I18N.rate.USD=j.rates.USD;I18N.rate.EUR=j.rates.EUR;applyAll();}
+  }).catch(function(){
+    fetchJSON("https://api.frankfurter.app/latest?from=MXN&to=USD,EUR",5000).then(function(j){
+      if(j&&j.rates&&j.rates.USD&&j.rates.EUR){I18N.rate.USD=j.rates.USD;I18N.rate.EUR=j.rates.EUR;applyAll();}
+    }).catch(function(){});
+  });
+}
+function detect(){
+  var savedL=read("lang"),savedC=read("cur");
+  if(savedL)I18N.lang=savedL;
+  if(savedC){I18N.cur=savedC;I18N.auto=false;}
+  fetchRates();
+  if(savedL&&savedC){applyAll();return;}
+  var done=false;
+  function finish(cc){
+    if(done)return;done=true;
+    if(cc){
+      cc=String(cc).toUpperCase();
+      if(!savedL)I18N.lang=(ES_COUNTRIES.indexOf(cc)>=0)?"es":"en";
+      if(!savedC)I18N.cur=(EURO_COUNTRIES.indexOf(cc)>=0)?"EUR":((ES_COUNTRIES.indexOf(cc)>=0)?"MXN":"USD");
+    }
+    applyAll();
+  }
+  fetchJSON("https://ipapi.co/json/",4000).then(function(j){finish(j&&j.country_code);}).catch(function(){
+    fetchJSON("https://ip-api.com/json/",4000).then(function(j){finish(j&&j.countryCode);}).catch(function(){finish(null);});
+  });
+  setTimeout(function(){finish(null);},6000);
+}
+document.addEventListener("DOMContentLoaded",function(){
+  wireSelectors();
+  detect();
+  observe();
+});
+})();
+</script>
 </body>
 </html>
