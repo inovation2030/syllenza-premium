@@ -819,6 +819,16 @@ body.page-leave{opacity:0;transition:opacity .35s ease}
 .bol-nums-text{flex:1 1 100%;font-family:"Cinzel",serif;font-weight:700;font-size:20px;color:var(--gold-2);letter-spacing:.1em;text-align:center;margin:8px 0 0;text-shadow:1px 0 0 #000,-1px 0 0 #000,0 1px 0 #000,0 -1px 0 #000,1px 1px 0 #000,-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000}
 .opt2-col .pick-back,.optpage-wrap .pick-back{cursor:pointer}
 
+
+/* ===== SYL_SUBMENU · Contraste del submenú (2026-11-19) =====
+   El texto del submenú quedaba oscuro sobre azul oscuro: la regla
+   .topnav a de SYL_TIPO le ponía degradado dorado con color transparente
+   a los enlaces del submenú. Aquí el texto del submenú es dorado claro
+   sólido, sin degradado, sobre un fondo más oscuro, para que se lea con
+   claridad en computadora y en iPhone. */
+.topnav .nav-drop .nav-sub a,.menu-movil .nav-sub-m a{background:none;-webkit-background-clip:initial;background-clip:initial;color:#ffe98a;-webkit-text-stroke:0;text-shadow:1px 0 0 #000,-1px 0 0 #000,0 1px 0 #000,0 -1px 0 #000,1px 1px 0 #000,-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000}
+.topnav .nav-drop .nav-sub a:hover,.menu-movil .nav-sub-m a:hover{color:#fff3c4;border-color:rgba(242,193,78,.6);background:rgba(242,193,78,.14)}
+.nav-sub,.menu-movil{background:linear-gradient(180deg,#0a1330,#04060f)}
 </style>
 </head>
 <body>
@@ -2334,7 +2344,7 @@ function revealPicked(pick,labels){
     if(isDia){$("draw-status").textContent="Tu Carta del día está revelada";$("btn-draw").textContent="✦ Elegir otra Carta del día";}
     else if(isCelta){$("draw-status").textContent="Tu Cruz Celta está revelada · 10 cartas";$("btn-draw").textContent="✦ Elegir otra Cruz Celta";}
     else{$("draw-status").textContent="Tu destino en 3 cartas está revelado · Pasado, Presente y Futuro";$("btn-draw").textContent="✦ Elegir otras 3 cartas";}
-    excel2();autoSend();
+    excel2(); /* Solo se genera: el envío de los 2 Excel espera a GUARDAR (saveEntrega). */
     if(isDia){speak("Tu carta del día es "+narrationText(pick,[""]));}
     else if(isCelta){speak("Tu Cruz Celta está lista. "+narrationText(pick,CELTA_LABELS));}
     else{speak("Tu destino en tres cartas. "+narrationText(pick,["Pasado","Presente","Futuro"]));}
@@ -2416,8 +2426,10 @@ $("btn-draw").addEventListener("click",function(){
     $("r-kind").textContent="Tu Tirada Completa";
     $("draw-grid").innerHTML=state.draw.map(function(c,i){return cardHTML(c,i,true);}).join("");
     excel2();
-    autoSend();
-    pollExcelSent();
+    /* Los 2 Excel NO se envían al revelar: solo se generan y quedan
+       listos. El envío y su confirmación esperan a GUARDAR MI ELECCIÓN
+       con un contacto válido (saveEntrega), para no afirmar un envío
+       sin destinatario. */
     narrateCurrentResult();
     state._resultDoc=resultDoc();
     /* Resultado en esta misma página (misma pestaña, sin ventanas emergentes) */
@@ -2459,6 +2471,12 @@ function saveEntrega(){
   try{var f2=$("fs2-tirada");if(f2&&f2.value.indexOf("Entrega Tirada Completa")<0){f2.value+="\n\nEntrega Tirada Completa: "+(state.entrega==="video"?"Video animado · 600 pesos en total":"PDF incluido · 400 pesos")+" · Contacto: "+contact;}}catch(e){}
   var ok=$("entrega-ok");
   if(ok){ok.textContent="✓ Elección guardada: "+(state.entrega==="video"?"Video animado · 600 pesos en total":"PDF incluido · 400 pesos")+". Te lo enviaremos en un lapso de 12 horas a "+contact+".";ok.classList.remove("hidden");}
+  /* Excel (solo Tirada Completa): con el contacto ya validado, se
+     generan y envían los 2 archivos; la confirmación "✓ Tus 2 archivos
+     Excel fueron enviados." solo aparece cuando el envío se completa
+     (pollExcelSent muestra antes "Enviando tus 2 archivos Excel…"). */
+  autoSend();
+  pollExcelSent();
 }
 var entregaOpts=document.querySelectorAll(".entrega-opt"),ei2;
 for(ei2=0;ei2<entregaOpts.length;ei2++){(function(el){el.addEventListener("click",function(){selectEntrega(el.getAttribute("data-entrega"));});})(entregaOpts[ei2]);}
