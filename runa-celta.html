@@ -537,7 +537,7 @@
 /* ===== SYLLENZA NUEVA · Presentación fotos 1-3 (2026-11-19) =====
    Solo presentación: masthead con lunas, marco ornamental en las 4
    tarjetas, ilustraciones con el reverso uniforme (assets/reverso.webp),
-   vista de opciones (foto 2) y abanico SELECT CARDS (foto 3).
+   vista de opciones y abanico SELECT CARDS.
    No cambia textos de flujos, IDs, precios, Excel, voz ni AdSense. */
 .masthead{margin:2px 0 0;text-align:center}
 .mast-row{display:flex;align-items:center;justify-content:center;gap:clamp(18px,5vw,54px);margin:4px 0 18px}
@@ -558,16 +558,37 @@
 @media(max-width:860px){.menupill{display:none}.topnav .nav-burger{display:inline-flex}.topnav{justify-content:space-between}.moon-full{width:74px;height:74px}.moon-cres{font-size:60px}}
 @media(max-width:620px){.moon-full{width:56px;height:56px}.moon-cres{font-size:46px}.mast-row{gap:14px;margin-bottom:12px}.topnav .nav-acct{font-size:15px;padding:8px 12px}}
 
-/* ===== PORTADA FOTO 1 - hero.webp a todo lo ancho (2026-11-19) =====
-   La imagen completa (luna, joven anime, libro, cristales, bola de cristal)
-   es el fondo de la portada; logo y subtitulo van centrados sobre ella y el
-   menu pill dorado va sobre la portada, como en la foto 1. Las lunas CSS
-   anteriores se ocultan porque las lunas ya estan en la imagen. */
+/* ===== PORTADA · cielo construido con CSS real (2026-11-19) =====
+   Las fotos de referencia son SOLO referencia: ninguna se pega.
+   El cielo, las lunas y las esquinas son CSS real; el logo, el
+   subtítulo y el menú son texto real sobre ese cielo. */
 .masthead{position:relative;overflow:hidden;border:3px solid var(--gold);outline:2px solid rgba(242,193,78,.45);outline-offset:6px;border-radius:26px;box-shadow:0 36px 80px rgba(0,0,0,.75),0 0 60px rgba(255,223,107,.18);padding:30px 18px 34px;background:#05070f}
-.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;z-index:0;will-change:transform}
+/* ===== SYL_HERO_REAL · Portada construida con CSS real (2026-11-19) =====
+   Las fotos de referencia son SOLO referencia de diseño: ninguna se pega
+   como fondo ni como <img>. El cielo nocturno (nebulosas violeta/azul y
+   estrellas), las lunas y las esquinas ornamentales doradas se construyen
+   con CSS. Las ilustraciones decorativas inferiores (joven anime, libro
+   con bola de cristal y cristales) son imágenes SEPARADAS generadas en el
+   estilo aprobado del mazo (assets/hero-joven.webp, assets/hero-libro.webp).
+   El JS de Ken Burns/parallax sigue funcionando: transforma #hero-bg,
+   que ahora es el div del cielo. */
+.masthead .hero-sky{position:absolute;inset:-4%;z-index:0;will-change:transform;background-color:#04060f;background-image:radial-gradient(ellipse 62% 46% at 10% 18%,rgba(138,111,216,.6),rgba(138,111,216,0) 70%),radial-gradient(ellipse 55% 42% at 90% 16%,rgba(88,110,220,.55),rgba(88,110,220,0) 70%),radial-gradient(ellipse 75% 55% at 50% 88%,rgba(120,80,200,.45),rgba(120,80,200,0) 70%),radial-gradient(ellipse 42% 34% at 82% 68%,rgba(60,90,200,.4),rgba(60,90,200,0) 70%),radial-gradient(ellipse 45% 32% at 18% 72%,rgba(138,111,216,.38),rgba(138,111,216,0) 70%),radial-gradient(ellipse 85% 32% at 50% 0%,rgba(255,223,107,.14),rgba(255,223,107,0) 70%),radial-gradient(circle 1.6px at 6% 10%,#fff,transparent 2.5px),radial-gradient(circle 1.2px at 14% 32%,#ffe98a,transparent 2.2px),radial-gradient(circle 1.8px at 22% 8%,#fff,transparent 2.6px),radial-gradient(circle 1.2px at 30% 22%,#fff,transparent 2.2px),radial-gradient(circle 1.5px at 38% 6%,#fff3c4,transparent 2.4px),radial-gradient(circle 1.2px at 47% 16%,#fff,transparent 2.2px),radial-gradient(circle 1.7px at 55% 9%,#fff,transparent 2.5px),radial-gradient(circle 1.2px at 63% 26%,#ffe98a,transparent 2.2px),radial-gradient(circle 1.5px at 71% 12%,#fff,transparent 2.4px),radial-gradient(circle 1.2px at 79% 30%,#fff,transparent 2.2px),radial-gradient(circle 1.8px at 86% 7%,#fff3c4,transparent 2.6px),radial-gradient(circle 1.2px at 93% 22%,#fff,transparent 2.2px),radial-gradient(circle 1.3px at 4% 52%,#fff,transparent 2.3px),radial-gradient(circle 1.6px at 96% 48%,#ffe98a,transparent 2.5px),radial-gradient(circle 1.2px at 10% 84%,#fff,transparent 2.2px),radial-gradient(circle 1.4px at 90% 82%,#fff,transparent 2.4px)}
+.masthead .hero-corners{position:absolute;inset:14px;z-index:3;pointer-events:none}
+.masthead .hero-corners .hc{position:absolute;width:64px;height:64px;border:0 solid var(--gold);filter:drop-shadow(0 0 6px rgba(255,223,107,.55))}
+.masthead .hero-corners .hc.tl{top:0;left:0;border-top-width:3px;border-left-width:3px;border-top-left-radius:22px}
+.masthead .hero-corners .hc.tr{top:0;right:0;border-top-width:3px;border-right-width:3px;border-top-right-radius:22px}
+.masthead .hero-corners .hc.bl{bottom:0;left:0;border-bottom-width:3px;border-left-width:3px;border-bottom-left-radius:22px}
+.masthead .hero-corners .hc.br{bottom:0;right:0;border-bottom-width:3px;border-right-width:3px;border-bottom-right-radius:22px}
+.hero-illus{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;margin:26px auto 0;max-width:1060px}
+.hero-illus figure{margin:0;flex:0 0 auto}
+.hi-left img{width:230px;height:300px;object-fit:cover;object-position:center 18%;display:block;border:2px solid var(--gold);border-radius:16px;box-shadow:0 18px 44px rgba(0,0,0,.7),0 0 34px rgba(255,223,107,.3)}
+.hi-right img{width:420px;height:300px;object-fit:cover;object-position:center 42%;display:block;border:2px solid var(--gold);border-radius:16px;box-shadow:0 18px 44px rgba(0,0,0,.7),0 0 34px rgba(255,223,107,.3)}
+.hi-mid{flex:1 1 auto;display:flex;flex-direction:column;align-items:center;gap:10px;padding-bottom:18px}
+.hi-ring{width:112px;height:112px;border:2px solid var(--gold);border-radius:50%;display:grid;place-items:center;font-size:44px;line-height:1;color:var(--gold-2);text-shadow:0 0 22px rgba(255,223,107,.8);box-shadow:0 0 30px rgba(255,223,107,.3),inset 0 0 24px rgba(255,223,107,.18)}
+.hi-moons{font-size:24px;letter-spacing:.5em;color:var(--gold-2);text-shadow:0 0 16px rgba(255,223,107,.7)}
 .masthead::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(5,7,15,.55) 0%,rgba(5,7,15,.08) 30%,rgba(5,7,15,.12) 62%,rgba(5,7,15,.82) 100%);pointer-events:none}
 .masthead>*{position:relative;z-index:2}
-.masthead .moon-full,.masthead .moon-cres{display:none}
+
 .masthead .mast-logo{text-shadow:0 2px 0 rgba(0,0,0,.55),0 0 34px rgba(255,223,107,.65),0 6px 22px rgba(0,0,0,.8)}
 .masthead .mast-sub{text-shadow:0 2px 10px rgba(0,0,0,.9),0 0 22px rgba(255,223,107,.5)}
 .masthead .topnav{background:linear-gradient(180deg,rgba(10,14,32,.88),rgba(5,7,15,.88))}
@@ -616,7 +637,7 @@
 /* Frentes nuevos: la ilustración llena el marco de la carta revelada */
 .artbox img.face-new{width:100%;height:100%;object-fit:cover;object-position:center 18%;display:block}
 
-/* ===== SYL_P2 · Página 2 · Selección de tirada (foto 2 exacta) ===== */
+/* ===== SYL_P2 · Página 2 · Selección de tirada ===== */
 #view-options{background:linear-gradient(180deg,#02040a 0%,#050a1e 55%,#02040a 100%);border:2px solid var(--gold);border-radius:26px;box-shadow:0 30px 70px rgba(0,0,0,.8),0 0 50px rgba(255,223,107,.12)}
 .opt2-wrap{padding:clamp(24px,4vw,52px)}
 .opt2-eyebrow{text-align:center;font-family:"Cinzel",serif;font-size:15px;letter-spacing:.42em;color:var(--gold);margin:0 0 8px}
@@ -639,7 +660,7 @@
 .opt2-divider::before{content:"";position:absolute;left:50%;top:8%;bottom:8%;width:1px;background:linear-gradient(180deg,transparent,var(--gold) 18%,var(--gold) 82%,transparent)}
 .opt2-divider span{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);color:var(--gold);font-size:22px;text-shadow:0 0 16px rgba(255,223,107,.8);background:#02040a;border:1px solid var(--gold);border-radius:50%;width:44px;height:44px;display:flex;align-items:center;justify-content:center}
 @media(max-width:760px){.opt2-grid{grid-template-columns:1fr}.opt2-divider{min-height:64px}.opt2-divider::before{left:8%;right:8%;top:50%;bottom:auto;width:auto;height:1px;background:linear-gradient(90deg,transparent,var(--gold) 18%,var(--gold) 82%,transparent)}}
-/* ===== SYL_P3 · Página 3 · SELECT CARDS (foto 3 exacta) ===== */
+/* ===== SYL_P3 · Página 3 · SELECT CARDS ===== */
 #view-pick{background:linear-gradient(180deg,#050505,#020203 60%,#050505);border:2px solid var(--gold);border-radius:26px;box-shadow:0 30px 70px rgba(0,0,0,.8),0 0 50px rgba(255,223,107,.12)}
 #view-pick #pick-title{font-size:clamp(26px,4vw,38px)}
 #view-pick .fan-title{letter-spacing:.18em}
@@ -801,12 +822,12 @@ body.page-leave{opacity:0;transition:opacity .35s ease}
 .exp-sub,.mode-price,.ad-banner .ad-label,.ad-fallback,.sign-tile .gly,.exp-nav button,.entrega-ok,.bol-ok{color:#d9b45b}
 .sello{text-shadow:1px 0 0 #000,-1px 0 0 #000,0 1px 0 #000,0 -1px 0 #000,1px 1px 0 #000,-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000}
 /* ===== CORRECCIONES 2026-11-19 · solapamientos, abanico y números de la suerte =====
-   - La foto 1 ya es el fondo completo: la marca va DEBAJO de la foto, no encima.
+   - La portada ya no usa ninguna foto: cielo, lunas y esquinas son CSS real; la marca va sobre el cielo construido.
    - El menú sale del masthead: el submenú ya no se recorta ni tapa el CTA.
    - El abanico ya no gira 360° (barría toda la pantalla y tapaba el texto):
      ahora se mece ±6° sin parar, sin cubrir nada. */
-.masthead>.mast-row{position:static;display:block;margin:16px 0 18px}
-.masthead .hero-bg{position:static;display:block;width:100%;height:auto;object-fit:cover;border-radius:20px;will-change:transform}
+.masthead>.mast-row{display:flex;align-items:center;justify-content:center;gap:clamp(18px,5vw,54px);margin:4px 0 18px}
+
 .masthead .mast-brand{position:relative;z-index:2}
 .masthead .hero-cta{margin-top:8px}
 .nav-sub{max-width:calc(100vw - 24px)}
@@ -829,22 +850,146 @@ body.page-leave{opacity:0;transition:opacity .35s ease}
 .topnav .nav-drop .nav-sub a,.menu-movil .nav-sub-m a{background:none;-webkit-background-clip:initial;background-clip:initial;color:#ffe98a;-webkit-text-stroke:0;text-shadow:1px 0 0 #000,-1px 0 0 #000,0 1px 0 #000,0 -1px 0 #000,1px 1px 0 #000,-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000}
 .topnav .nav-drop .nav-sub a:hover,.menu-movil .nav-sub-m a:hover{color:#fff3c4;border-color:rgba(242,193,78,.6);background:rgba(242,193,78,.14)}
 .nav-sub,.menu-movil{background:linear-gradient(180deg,#0a1330,#04060f)}
+
+/* ===== SYL_TIPO_XL · Letras más grandes y legibles (2026-11-19) =====
+   El usuario pidió letras más grandes: todos los textos suben ~25%
+   sobre su tamaño anterior, manteniendo el dorado sin brillo con
+   contorno negro. Este bloque va al final del <style> para prevalecer
+   sobre las reglas anteriores. En móvil los mínimos se ajustan para
+   que nada se tape ni se corte. */
+body{font-size:29px}
+.mast-logo{font-size:clamp(46px,10vw,106px)}
+.mast-sub{font-size:clamp(17px,2.8vw,24px);letter-spacing:.38em}
+.topnav a{font-size:23px}
+.topnav .nav-top{font-size:23px}
+.topnav .nav-acct{font-size:22px}
+.topnav .brand{font-size:30px}
+.menu-movil a{font-size:23px}
+.menu-movil .nav-top-m{font-size:22px}
+.menu-movil .nav-acct-m{font-size:22px}
+.nav-burger{font-size:30px}
+.sec-title{font-size:clamp(46px,7.6vw,72px)}
+.sec-sub{font-size:33px}
+.sec-rule{font-size:20px}
+.hero h1{font-size:clamp(72px,10vw,118px)}
+.hero p{font-size:clamp(31px,3.8vw,37px)}
+.hero-feats b{font-size:34px}
+.hero-feats span{font-size:19px}
+.hero-rule{font-size:21px}
+.badge{font-size:20px}
+.btn{font-size:24px}
+.btn-gold{font-size:24px}
+.btn-pill{font-size:22px}
+.btn-getcard{font-size:clamp(20px,3vw,25px)}
+.panel h2{font-size:clamp(40px,6vw,54px)}
+.panel h3{font-size:33px}
+.sub{font-size:31px}
+label{font-size:23px}
+input,select{font-size:26px}
+.hint{font-size:22px}
+.error{font-size:25px}
+.step{font-size:24px}
+.step .num{font-size:23px}
+.natal-card .big{font-size:54px}
+.natal-card .sign{font-size:36px}
+.natal-card .lbl{font-size:20px}
+.natal-card p{font-size:24px}
+.opt-num{font-size:22px}
+.opt-name{font-size:36px}
+.opt-desc{font-size:30px}
+.opt-tag{font-size:20px}
+.count-pill{font-size:20px}
+.destino-lbl{font-size:26px}
+.arc-num span{font-size:34px}
+.a-col .gly{font-size:40px}
+.a-col .a-name{font-size:23px}
+.a-col .a-lbl{font-size:16px}
+.tcard .pos{font-size:19px}
+.tcard .name{font-size:37px;min-height:64px}
+.orient{font-size:19px}
+.tcard .meaning{font-size:32px}
+.note{font-size:26px}
+footer{font-size:23px}
+.immersive .im-label{font-size:20px}
+.im-btn{font-size:21px}
+.exp-card h3{font-size:33px;white-space:normal}
+.exp-card p{font-size:30px}
+.exp-sub{font-size:22px}
+.exp-price{font-size:22px}
+.exp-med{font-size:44px}
+.exp-ico{font-size:46px}
+.exp-bottom p{font-size:24px}
+.pick-status{font-size:32px}
+.pick-back span{font-size:21px}
+.car-hint{font-size:26px}
+.car-arrow{font-size:40px}
+.fan-title{font-size:clamp(42px,6.5vw,60px)}
+#view-pick #pick-title{font-size:clamp(34px,5vw,48px)}
+.entrega-block p{font-size:31px}
+.entrega-opt b{font-size:28px}
+.entrega-opt span{font-size:24px}
+.entrega-opt .precio{font-size:21px}
+.entrega-note{font-size:25px !important}
+.sign-tile .gly{font-size:58px}
+.sign-tile .nm{font-size:28px}
+.sign-tile .dt{font-size:20px}
+.trait .t-num{font-size:20px}
+.trait h3{font-size:34px}
+.trait p{font-size:29px}
+.oracle-synth{font-size:31px}
+.life-pill{font-size:23px}
+.ad-banner .ad-label{font-size:17px}
+.ad-fallback{font-size:23px}
+.pick-eyebrow{font-size:22px}
+.opt2-eyebrow{font-size:19px}
+.opt2-logo{font-size:clamp(50px,8.5vw,78px)}
+.opt2-sub{font-size:clamp(14px,2vw,19px)}
+.opt2-col h3{font-size:clamp(28px,4.2vw,42px)}
+.opt2-text{font-size:clamp(21px,2.8vw,25px)}
+.foto2-orn{font-size:24px}
+.bol-nums-text{font-size:24px}
+.bol-nums .bol-num{font-size:22px}
+.lang-cur select{font-size:16px}
+.moon-cres{font-size:110px}
+.cuenta-code{font-size:26px}
+.runa-glyph{font-size:72px}
+@media(max-width:860px){.moon-cres{font-size:72px}.hi-left img{width:190px;height:250px}.hi-right img{width:330px;height:250px}}
+@media(max-width:620px){
+.moon-full{width:48px;height:48px}
+.moon-cres{font-size:40px}
+.mast-row{gap:10px}
+.mast-logo{font-size:clamp(38px,10.5vw,60px)}
+.mast-sub{font-size:15px;letter-spacing:.3em}
+.sec-title{font-size:clamp(34px,8.5vw,52px)}
+.panel h2{font-size:clamp(32px,7vw,44px)}
+.exp-card h3{font-size:29px}
+.opt2-col h3{font-size:clamp(26px,6vw,34px)}
+.hero-illus{gap:10px;margin-top:18px}
+.hi-left img{width:120px;height:160px}
+.hi-right img{width:190px;height:160px}
+.hi-mid{display:none}
+.hero-corners .hc{width:44px;height:44px}
+}
+
 </style>
 <style>#tarot-diario{display:none}</style>
 </head>
 <body>
 <div class="wrap" id="top">
-  <!-- NAV · SYLLENZA (foto 1) -->
-  <!-- MASTHEAD · SYLLENZA (foto 1): luna llena a la izquierda, luna creciente a la derecha -->
+  <!-- NAV · SYLLENZA -->
+  <!-- MASTHEAD · SYLLENZA: cielo, lunas y esquinas construidos con CSS real -->
   <header class="masthead">
+    <div class="hero-sky" id="hero-bg" aria-hidden="true"></div><div class="hero-sparkles" id="hero-sparkles" aria-hidden="true"></div><div class="hero-corners" aria-hidden="true"><i class="hc tl"></i><i class="hc tr"></i><i class="hc bl"></i><i class="hc br"></i></div>
     <div class="mast-row">
-      <img class="hero-bg" id="hero-bg" src="assets/hero-foto1.png" alt="Portada Syllenza: luna llena, luna creciente, joven con libro de tarot, cristales y bola de cristal" aria-hidden="true"><div class="hero-sparkles" id="hero-sparkles" aria-hidden="true"></div>
+      <div class="moon-full" aria-hidden="true"></div>
       <div class="mast-brand">
         <div class="mast-logo"><span class="mast-moon">☾</span> SYLLENZA <span class="mast-moon">☽</span></div>
         <p class="mast-sub">Tarot · Astrología · Guía Espiritual</p>
       </div>
+      <div class="moon-cres" aria-hidden="true">☾</div>
     </div>
     <a class="btn btn-gold hero-cta" href="index.html#view-form">Comenzar mi consulta</a>
+    <div class="hero-illus" aria-hidden="true"><figure class="hi-left"><img src="assets/hero-joven.webp" alt="" decoding="async"></figure><div class="hi-mid"><span class="hi-ring">✦</span><span class="hi-moons">☾ ☽</span></div><figure class="hi-right"><img src="assets/hero-libro.webp" alt="" decoding="async"></figure></div>
   </header>
     <nav class="topnav" aria-label="Navegación principal">
 <div class="menupill">
@@ -961,7 +1106,7 @@ body.page-leave{opacity:0;transition:opacity .35s ease}
   </div>
 
 
-  <!-- ELIGE TU EXPERIENCIA · 4 TARJETAS (foto 1) -->
+  <!-- ELIGE TU EXPERIENCIA · 4 TARJETAS -->
   <section class="sec" id="experiencias" aria-label="Elige tu experiencia">
     <h2 class="sec-title">Elige tu experiencia</h2>
     <div class="sec-rule"><span>✦</span></div>
@@ -1006,7 +1151,7 @@ body.page-leave{opacity:0;transition:opacity .35s ease}
     </div>
     <div class="exp-nav"><button type="button" id="exp-prev" aria-label="Ver experiencia anterior">‹</button><button type="button" id="exp-next" aria-label="Ver experiencia siguiente">›</button></div>
   </section>
-  <!-- TAROT · ASTROLOGÍA · AUTOCONOCIMIENTO (foto 1, parte inferior) -->
+  <!-- TAROT · ASTROLOGÍA · AUTOCONOCIMIENTO -->
   <div class="sec">
     <h2 class="sec-title" style="font-size: clamp(28.3px,4.4vw,41.2px)">Tarot · Astrología · Autoconocimiento</h2>
     <div class="sec-rule"><span>✦</span></div>
