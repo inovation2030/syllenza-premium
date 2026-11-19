@@ -697,10 +697,10 @@ body.page-leave{opacity:0;transition:opacity .35s ease}
 .optpage-cross>*{min-width:0}
 .optpage-cross .pick-back{width:100%;max-width:120px;margin:0 auto}
 .optpage-cross .pick-back span{font-size:11px;letter-spacing:.08em}
-.celta-cross{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;grid-template-areas:". c5 . c7" "c3 c1 c4 c8" ". c6 . c9" ". c2 c10 ."!important;gap:14px;align-items:start}
+.celta-cross{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;grid-template-areas:". c5 . c10" "c4 c1 c6 c9" ". c3 . c8" ". . . c7"!important;gap:14px;align-items:start}
 .celta-cross>*{min-width:0}
 .celta-cross .destino-col:nth-child(1){grid-area:c1}
-.celta-cross .destino-col:nth-child(2){grid-area:c2}
+.celta-cross .destino-col:nth-child(2){grid-area:c1}
 .celta-cross .destino-col:nth-child(3){grid-area:c3}
 .celta-cross .destino-col:nth-child(4){grid-area:c4}
 .celta-cross .destino-col:nth-child(5){grid-area:c5}
@@ -969,6 +969,45 @@ footer{font-size:23px}
 .hi-right img{width:190px;height:160px}
 .hi-mid{display:none}
 .hero-corners .hc{width:44px;height:44px}
+}
+/* ===== SYL_CELTA · Cruz Celta real: cruz de 6 + bastón vertical de 4 ===== */
+.celta-cross .destino-col:nth-child(2){z-index:3}
+.celta-cross .destino-col:nth-child(2){background:transparent;border:0;box-shadow:none;padding:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.celta-cross .destino-col:nth-child(2) .destino-lbl{order:2;margin-top:10px}
+.celta-cross .destino-col:nth-child(2) .tcard .name,.celta-cross .destino-col:nth-child(2) .tcard .astro,.celta-cross .destino-col:nth-child(2) .tcard .orient{display:none}
+.celta-cross .destino-col:nth-child(2) .destino-lbl{background:#060b1e;border:1px solid var(--gold);border-radius:999px;padding:4px 14px}
+.celta-cross .destino-col:nth-child(2) .destino-lbl{display:none}
+.celta-cross .destino-col:nth-child(2) .tcard{animation:none!important;transform:rotate(90deg) scale(.62)}
+.celta-cross .tcard{padding:20px 12px 14px}
+.celta-cross .tcard .name{font-size:24px;min-height:0}
+.celta-cross .arc-num{width:52px;height:36px;margin-bottom:-14px}
+.celta-cross .arc-num span{font-size:22px}
+.celta-cross .tcard .pos{font-size:15px}
+.celta-cross .astro{padding:10px 4px;gap:4px;margin-top:10px}
+.celta-cross .a-col .gly{font-size:24px}
+.celta-cross .a-col .a-name{font-size:15px}
+.celta-cross .a-col .a-lbl{font-size:11px}
+.celta-cross .orient{font-size:13px}
+.celta-cross .destino-lbl{font-size:20px}
+.celta-interp{margin-top:30px;text-align:left}
+.celta-interp h4{font-family:"Cinzel",serif;font-size:clamp(24px,3.4vw,32px);letter-spacing:.12em;color:var(--gold-pale);text-align:center;margin:0 0 18px}
+.celta-interp ol{list-style:none;padding:0;margin:0;display:grid;gap:14px}
+.celta-interp li{background:linear-gradient(160deg,#101f4d,#060b1e 70%);border:1px solid var(--gold);border-radius:16px;padding:18px 20px}
+.celta-interp li strong{font-family:"Cinzel",serif;font-size:21px;color:var(--gold-pale);letter-spacing:.04em}
+.celta-interp li p{margin:10px 0 0;font-size:22px;line-height:1.55;color:var(--cream)}
+@media(max-width:620px){
+.celta-cross{gap:6px}
+.celta-cross .tcard{padding:10px 5px 8px}
+.celta-cross .tcard .name{font-size:13px}
+.celta-cross .arc-num{width:34px;height:24px;margin-bottom:-10px}
+.celta-cross .arc-num span{font-size:14px}
+.celta-cross .tcard .pos{font-size:10px}
+.celta-cross .astro{display:none}
+.celta-cross .orient{font-size:9px;padding:2px 6px}
+.celta-cross .destino-lbl{font-size:11px;letter-spacing:1px}
+.celta-cross .destino-col:nth-child(2) .tcard{transform:rotate(90deg) scale(.62)}
+.celta-interp li strong{font-size:17px}
+.celta-interp li p{font-size:19px}
 }
 
 </style>
@@ -1464,6 +1503,7 @@ footer{font-size:23px}
       <h3>✦ <span id="r-kind">Tu Tirada Completa</span> para <span id="r-name"></span></h3>
       <p class="sub hidden" id="r-question"></p>
       <div class="cards" id="draw-grid"></div>
+      <div id="celta-interp" class="celta-interp hidden" aria-label="Interpretación de tu Cruz Celta"></div>
 
       <div class="btn-row">
         <button class="btn btn-ghost" id="btn-restart" type="button">↺ Nueva consulta</button>
@@ -2340,6 +2380,8 @@ function enterResult(){
   $("result-block").classList.add("hidden"); $("result-opened").classList.add("hidden");
   var _eb=$("entrega-block");if(_eb)_eb.classList.add("hidden");var _ec0=$("entrega-celta");if(_ec0)_ec0.classList.add("hidden");
   $("draw-grid").classList.remove("single");
+  $("draw-grid").classList.remove("celta-cross");
+  var _ci0=$("celta-interp");if(_ci0){_ci0.innerHTML="";_ci0.classList.add("hidden");}
   show("view-result");
 }
 /* ---------- ELEGIR CARTAS · OPCIONES (foto 2) + ABANICO (foto 3) ---------- */
@@ -2482,7 +2524,18 @@ function revealPicked(pick,labels){
     var _rs2=$("result-sub");if(_rs2)_rs2.innerHTML=MODES[state.mode].sub;
     if(isDia){$("draw-grid").classList.add("single");}
     else{$("draw-grid").classList.remove("single");}
-    $("draw-grid").innerHTML=pick.map(function(c,ix){return '<div class="destino-col"><div class="destino-lbl">'+labels[ix]+'</div>'+cardHTML(c,ix,true)+'</div>';}).join("");
+    if(isCelta){$("draw-grid").classList.add("celta-cross");}else{$("draw-grid").classList.remove("celta-cross");}
+    if(isCelta){
+      /* Cruz Celta real: la cruz de 6 (Desafío cruzado sobre el Presente) y el
+         bastón vertical a la derecha; la interpretación completa va en la
+         lista ordenada debajo de la cruz, no dentro de cada carta. */
+      $("draw-grid").innerHTML=pick.map(function(c,ix){return '<div class="destino-col"><div class="destino-lbl">'+(ix+1)+' · '+labels[ix]+'</div>'+cardHTML(c,ix,false)+'</div>';}).join("");
+      var _ci=$("celta-interp");
+      if(_ci){_ci.innerHTML='<h4>Interpretación de tu Cruz Celta</h4><ol>'+pick.map(function(c,ix){return '<li><strong>'+(ix+1)+' · '+esc(labels[ix])+' — '+esc(c.name)+'</strong> <span class="orient '+(c.reversed?'rev':'up')+'">'+(c.reversed?'▽ Invertida':'△ Derecha')+'</span><p>'+esc(c.reversed?c.rev:c.up)+'</p></li>';}).join('')+'</ol>';_ci.classList.remove("hidden");}
+    }else{
+      $("draw-grid").innerHTML=pick.map(function(c,ix){return '<div class="destino-col"><div class="destino-lbl">'+labels[ix]+'</div>'+cardHTML(c,ix,true)+'</div>';}).join("");
+      var _ci2=$("celta-interp");if(_ci2){_ci2.innerHTML="";_ci2.classList.add("hidden");}
+    }
     var eb=$("entrega-block");if(eb)eb.classList.add("hidden");var _ec=$("entrega-celta");if(_ec){if(isCelta)_ec.classList.remove("hidden");else _ec.classList.add("hidden");}
     $("result-opened").classList.add("hidden");
     $("result-block").classList.remove("hidden");
@@ -2569,6 +2622,8 @@ $("btn-draw").addEventListener("click",function(){
     state.draw=pick;
     $("r-name").textContent=state.person.nombre;
     $("r-kind").textContent="Tu Tirada Completa";
+    $("draw-grid").classList.remove("celta-cross");
+    var _ci3=$("celta-interp");if(_ci3){_ci3.innerHTML="";_ci3.classList.add("hidden");}
     $("draw-grid").innerHTML=state.draw.map(function(c,i){return cardHTML(c,i,true);}).join("");
     excel2();
     /* Los 2 Excel NO se envían al revelar: solo se generan y quedan
@@ -2641,6 +2696,8 @@ function resetAll(){
 $("shuffle-actions").classList.add("hidden");
   selectMode(PAGE_MODE);
   $("draw-grid").classList.remove("single");
+  $("draw-grid").classList.remove("celta-cross");
+  var _ci4=$("celta-interp");if(_ci4){_ci4.innerHTML="";_ci4.classList.add("hidden");}
   $("deck-status").textContent="Mazo listo · 78 cartas sin barajar";
   $("result-block").classList.add("hidden"); $("result-opened").classList.add("hidden"); var _eb3=$("entrega-block");if(_eb3)_eb3.classList.add("hidden");var _ec3=$("entrega-celta");if(_ec3)_ec3.classList.add("hidden"); var _rq=$("r-question");if(_rq)_rq.classList.add("hidden"); $("draw-status").textContent="Esperando tu clic…";
   $("btn-draw").disabled=false; $("btn-draw").textContent="✦ Revelar mi Tirada Completa";
