@@ -1015,7 +1015,31 @@ footer{font-size:23px}
 .celta-interp li p{font-size:19px}
 }
 
+
+/* ===== SYL_SUBMENUBAR · barra de submenú con las 12 páginas (foto 1) ===== */
+.submenubar{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:4px 10px;max-width:1180px;margin:0 auto 22px;padding:10px 16px;background:linear-gradient(120deg,#0d1a42,#060b1e);border:1px solid var(--gold);border-radius:999px;box-shadow:0 14px 34px rgba(0,0,0,.5),0 0 24px rgba(242,193,78,.12);font-family:'Cinzel',serif}
+.submenubar a{color:#f6d47a;text-decoration:none;font-weight:700;font-size:15.5px;letter-spacing:.04em;white-space:nowrap;padding:6px 8px;border-radius:999px;text-shadow:1px 0 0 #000,-1px 0 0 #000,0 1px 0 #000,0 -1px 0 #000,1px 1px 0 #000,-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000}
+.submenubar a:hover{color:#fff3c4;background:rgba(242,193,78,.14)}
+.submenubar a.on{color:#171106;background:linear-gradient(135deg,#ffe98a,#f2c14e 55%,#b8931f);text-shadow:none}
+.submenubar .smb-sep{color:var(--gold);font-size:12px}
+@media(max-width:720px){.submenubar{flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;border-radius:16px;-webkit-overflow-scrolling:touch}.submenubar a{flex:none}}
+/* ===== SYL_LOGO · logo animado de Syllenza con la runa Fehu ===== */
+.syl-logo-anim{display:flex;justify-content:center}
+.syl-logo-svg{width:min(440px,86vw);height:auto;overflow:visible}
+.syl-logo-svg .syl-rays{animation:syl-spin 48s linear infinite;transform-box:fill-box;transform-origin:center}
+.syl-logo-svg .syl-star{animation:syl-twinkle 2.6s ease-in-out infinite}
+.syl-logo-svg .syl-moon{animation:syl-glow 4s ease-in-out infinite}
+.syl-logo-svg .syl-fehu{animation:syl-fehu-glow 3.5s ease-in-out infinite}
+.syl-logo-svg .syl-word{animation:syl-word-glow 6s ease-in-out infinite}
+@keyframes syl-spin{to{transform:rotate(360deg)}}
+@keyframes syl-twinkle{0%,100%{opacity:.25}50%{opacity:1}}
+@keyframes syl-glow{0%,100%{filter:drop-shadow(0 0 2px rgba(255,223,107,.35))}50%{filter:drop-shadow(0 0 10px rgba(255,223,107,.8))}}
+@keyframes syl-fehu-glow{0%,100%{filter:drop-shadow(0 0 3px rgba(242,193,78,.5))}50%{filter:drop-shadow(0 0 14px rgba(255,223,107,.95))}}
+@keyframes syl-word-glow{0%,100%{filter:drop-shadow(0 0 2px rgba(242,193,78,.3))}50%{filter:drop-shadow(0 0 9px rgba(255,223,107,.7))}}
+@media (prefers-reduced-motion: reduce){.syl-logo-anim *{animation:none!important}}
 </style>
+
+
 </head>
 <body>
 <div class="wrap" id="top">
@@ -1026,7 +1050,7 @@ footer{font-size:23px}
     <div class="mast-row">
       <div class="moon-full" aria-hidden="true"></div>
       <div class="mast-brand">
-        <div class="mast-logo"><span class="mast-moon">☾</span> SYLLENZA <span class="mast-moon">☽</span></div>
+        <div class="mast-logo syl-logo-anim"><svg class="syl-logo-svg" viewBox="0 0 380 132" role="img" aria-label="Syllenza — Tarot, Astrología y Guía Espiritual"><defs><linearGradient id="sylGold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffe98a"/><stop offset=".55" stop-color="#f2c14e"/><stop offset="1" stop-color="#b8931f"/></linearGradient></defs><text class="syl-moon" x="52" y="62" text-anchor="middle" font-size="54" fill="url(#sylGold)">☾</text><g class="syl-fehu"><circle cx="190" cy="44" r="36" fill="#0d1a42" fill-opacity=".45" stroke="url(#sylGold)" stroke-width="2.5"/><path d="M190 68 V20 M190 32 L208 22 M190 46 L208 36" fill="none" stroke="url(#sylGold)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></g><g class="syl-sun"><circle cx="330" cy="44" r="11" fill="url(#sylGold)"/><g class="syl-rays" stroke="url(#sylGold)" stroke-width="3" stroke-linecap="round"><line x1="345" y1="44" x2="353" y2="44"/><line x1="341" y1="55" x2="346" y2="60"/><line x1="330" y1="59" x2="330" y2="67"/><line x1="319" y1="55" x2="314" y2="60"/><line x1="315" y1="44" x2="307" y2="44"/><line x1="319" y1="33" x2="314" y2="28"/><line x1="330" y1="29" x2="330" y2="21"/><line x1="341" y1="33" x2="346" y2="28"/></g></g><path class="syl-star" style="animation-delay:.2s" d="M110 14 L112 20 L118 22 L112 24 L110 30 L108 24 L102 22 L108 20 Z" fill="url(#sylGold)"/><path class="syl-star" style="animation-delay:1.1s" d="M270 12 L272 18 L278 20 L272 22 L270 28 L268 22 L262 20 L268 18 Z" fill="url(#sylGold)"/><path class="syl-star" style="animation-delay:1.8s" d="M120 66 L122 72 L128 74 L122 76 L120 82 L118 76 L112 74 L118 72 Z" fill="url(#sylGold)"/><path class="syl-star" style="animation-delay:.7s" d="M268 68 L270 74 L276 76 L270 78 L268 84 L266 78 L260 76 L266 74 Z" fill="url(#sylGold)"/><text class="syl-word" x="190" y="118" text-anchor="middle" font-family="Cinzel, 'Times New Roman', serif" font-size="38" letter-spacing="7" fill="url(#sylGold)">SYLLENZA</text></svg></div>
         <p class="mast-sub">Tarot · Astrología · Guía Espiritual</p>
       </div>
       <div class="moon-cres" aria-hidden="true">☾</div>
@@ -1067,7 +1091,7 @@ footer{font-size:23px}
             <a href="guia.html">❖ Guía Syllenza</a>
             <a href="experiencias.html">✦ Mi consulta</a>
             <a href="boletin.html">✉ Boletín Mensual</a>
-            <a href="mi-cuenta.html">👤 Mi cuenta</a>
+            <a href="mi-cuenta.html" class="on">👤 Mi cuenta</a>
           </div>
         </div>
         <div class="nav-drop">
@@ -1084,6 +1108,9 @@ footer{font-size:23px}
       <button type="button" class="nav-acct" id="btn-account">👤 Mi cuenta</button>
       <button type="button" class="nav-burger" id="btn-menu" aria-expanded="false" aria-controls="menu-movil" aria-label="Abrir menú">☰</button>
     </nav>
+<nav class="submenubar" aria-label="Todas las páginas de Syllenza">
+<a href="index.html">⌂ Inicio</a><span class="smb-sep">✦</span><a href="experiencias.html">✦ Elige tu experiencia</a><span class="smb-sep">✦</span><a href="carta-del-dia.html">☀️ Carta del Día</a><span class="smb-sep">✦</span><a href="pasado-presente-futuro.html">☾ Pasado · Presente · Futuro</a><span class="smb-sep">✦</span><a href="tirada-completa.html">✧ Tirada Completa</a><span class="smb-sep">✦</span><a href="cruz-celta.html">✥ Cruz Celta</a><span class="smb-sep">✦</span><a href="horoscopos.html">☾ Horóscopos</a><span class="smb-sep">✦</span><a href="runa-celta.html">ᚱ Runa Celta</a><span class="smb-sep">✦</span><a href="mi-cuenta.html" class="on">👤 Mi cuenta</a><span class="smb-sep">✦</span><a href="boletin.html">✉ Boletín</a><span class="smb-sep">✦</span><a href="guia.html">❖ Guía</a><span class="smb-sep">✦</span><a href="tarjetas-regalo.html">🎁 Tarjetas de regalo</a>
+</nav>
 <div class="menu-movil hidden" id="menu-movil">
       <div class="nav-drop-m">
         <button type="button" class="nav-top-m" aria-expanded="false">⌂ Inicio ▾</button>
