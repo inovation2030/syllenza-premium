@@ -1083,7 +1083,7 @@ body.syl-fan-full #view-pick #fan-pick{width:100%;max-width:1180px;height:min(52
 body.syl-fan-full #view-pick .fan-card{position:relative;left:auto;bottom:auto;width:110px;margin:0 -96px;transform-origin:50% 88%;transform:rotate(var(--fan-rot,0deg)) translateY(var(--fan-lift,0px))}
 body.syl-fan-full #view-pick .fan-card:hover{transform:rotate(var(--fan-rot,0deg)) translateY(calc(var(--fan-lift,0px) - 16px)) scale(1.05)!important}
 body.syl-fan-full #view-pick .fan-title{position:relative;z-index:5}
-body.syl-fan-full #view-pick .fan-menu{display:flex!important;justify-content:center;gap:6px;flex-wrap:nowrap;overflow-x:auto;max-width:100%;padding:8px 10px;margin:0 0 4px;border:1px solid rgba(252,166,17,.55);border-radius:999px;background:rgba(0,0,0,.72);scrollbar-width:none}
+body.syl-fan-full #view-pick .fan-menu{display:flex!important;justify-content:center;gap:6px;flex-wrap:nowrap;overflow:hidden;max-width:100%;padding:8px 10px;margin:0 0 4px;border:1px solid rgba(252,166,17,.55);border-radius:999px;background:rgba(0,0,0,.72);scrollbar-width:none}
 body.syl-fan-full #view-pick .fan-menu a{color:var(--gold-pale);text-decoration:none;font-family:"Cinzel Decorative","Cinzel",serif;font-size:13px;letter-spacing:.12em;white-space:nowrap;padding:6px 10px;border-radius:999px}
 body.syl-fan-full #view-pick .fan-menu a.on{background:var(--gold);color:#1a1206}
 @media(max-width:620px){body.syl-fan-full #view-pick #fan-pick{height:min(50vh,400px)}body.syl-fan-full #view-pick .fan-card{width:64px;margin:0 -56px}body.syl-fan-full #view-pick .fan-menu a{font-size:12px;padding:5px 8px}}
@@ -1112,7 +1112,7 @@ body.syl-destino3d #view-pick .fan-title{margin-bottom:8px}
 
 /* ===== SYL_MENU_NUEVO · Menú único arriba, horizontal, enlaces directos (2026-11-19) ===== */
 .syl-top{position:sticky;top:0;z-index:50;background:#04060f;box-shadow:0 10px 30px rgba(0,0,0,.55)}
-.syl-menu{display:flex;align-items:center;gap:2px;overflow-x:auto;scrollbar-width:thin;background:linear-gradient(120deg,#101f4d,#060b1e 60%,#0d1a42);border:2px solid var(--gold);border-radius:999px;padding:10px 16px;margin:10px 0;white-space:nowrap}
+.syl-menu{display:flex;align-items:center;gap:2px;overflow:hidden;background:linear-gradient(120deg,#101f4d,#060b1e 60%,#0d1a42);border:2px solid var(--gold);border-radius:999px;padding:10px 16px;margin:10px 0;white-space:nowrap}
 .syl-menu a{font-family:"Cinzel Decorative","Cinzel",serif;font-weight:700;font-size:17px;letter-spacing:.06em;color:var(--gold-pale);text-decoration:none;padding:9px 13px;border-radius:999px;border:1px solid transparent;flex:0 0 auto}
 .syl-menu a:hover{border-color:var(--gold);background:rgba(252,166,17,.1)}
 .syl-menu a.on{background:linear-gradient(180deg,#fca611,#b96a00);color:#1a1000}
@@ -1148,6 +1148,33 @@ body.syl-fan-full .syl-bot-btn,body.syl-fan-full .syl-bot,body.syl-cruz-full .sy
 @media(max-width:620px){.syl-bot-btn{right:12px;bottom:12px;width:54px;height:54px}.syl-bot{right:12px;bottom:78px}}
 /* SYL_LOGO_SOLO: en las demás páginas solo el logo arriba */
 .masthead.masthead-logo-only{padding:16px 12px 18px}
+/* SYL_CARRUSEL · seleccion de cartas estilo SELECT CARDS, carrusel 3D CSS (2026-11-20) */
+body.syl-fan-full.syl-carrusel #view-pick #fan-pick,body.syl-fan-full.syl-carrusel #view-pick .car-wrap,body.syl-fan-full.syl-carrusel #view-pick .car-hint,body.syl-fan-full.syl-carrusel #view-pick #pick-preview,body.syl-fan-full.syl-carrusel #view-pick #btn-pick-draw,body.syl-fan-full.syl-carrusel #view-pick #btn-pick-sacar,body.syl-fan-full.syl-carrusel #view-pick #btn-pick-back,body.syl-fan-full.syl-carrusel #view-pick #destino3d,body.syl-fan-full.syl-carrusel #view-pick #celta3d,body.syl-fan-full.syl-carrusel #destino3d-full,body.syl-fan-full.syl-carrusel #celta3d-full{display:none!important}
+body.syl-carrusel #view-pick .fan-title{font-size:clamp(22px,4.5vw,30px);margin:8px 0 2px;letter-spacing:.18em}
+.syl-car-box{display:none}
+body.syl-carrusel .syl-car-box{display:flex;flex-direction:column;flex:1 1 auto;min-height:0}
+.syl-car-stagewrap{position:relative;flex:1 1 auto;min-height:320px}
+.syl-car-stage{position:absolute;inset:0;perspective:1300px;overflow:hidden;border-radius:18px;background:radial-gradient(ellipse at 50% 28%,#101a3a 0%,#05060f 72%);border:1px solid rgba(252,166,17,.35);touch-action:pan-y}
+.syl-car-card{position:absolute;left:50%;top:50%;width:min(66vw,300px);aspect-ratio:13/20;cursor:pointer;will-change:transform,filter;transition:transform .7s cubic-bezier(.22,.8,.3,1),filter .7s ease}
+.syl-car-flip{position:absolute;inset:0;transform-style:preserve-3d;transition:transform .7s cubic-bezier(.3,.7,.3,1)}
+.syl-car-card.flipped .syl-car-flip{transform:rotateY(180deg)}
+.syl-car-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:12px;overflow:hidden;border:2px solid rgba(252,166,17,.55);box-shadow:0 14px 40px rgba(0,0,0,.65)}
+.syl-car-face img{width:100%;height:100%;object-fit:cover;display:block}
+.syl-car-front{transform:rotateY(180deg)}
+.syl-car-card.is-center .syl-car-face{border-color:#fca611;animation:syl-car-glow 2.4s ease-in-out infinite}
+@keyframes syl-car-glow{0%,100%{box-shadow:0 0 0 2px #fca611,0 0 22px rgba(252,166,17,.55),0 18px 50px rgba(0,0,0,.7)}50%{box-shadow:0 0 0 2px #fca611,0 0 46px rgba(252,166,17,.95),0 18px 50px rgba(0,0,0,.7)}}
+.syl-car-pick{display:block;margin:14px auto 0;padding:15px 34px;font-family:"Cinzel Decorative","Cinzel",serif;font-weight:700;font-size:clamp(16px,2.4vw,20px);letter-spacing:.12em;color:#1a1000;background:linear-gradient(180deg,#fca611,#b96a00);border:2px solid #fcda59;border-radius:999px;cursor:pointer;box-shadow:0 10px 30px rgba(252,166,17,.45)}
+.syl-car-row{display:flex;gap:12px;justify-content:center;margin-top:12px}
+.syl-car-mini{padding:10px 18px;font-family:"Cinzel Decorative","Cinzel",serif;font-weight:700;font-size:14px;color:var(--gold-pale);background:#0a1330;border:1px solid var(--gold);border-radius:999px;cursor:pointer}
+.syl-car-hint{text-align:center;color:var(--gold-pale);font-size:14px;letter-spacing:.08em;margin:12px 0 0}
+.syl-car-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:200;width:46px;height:46px;border-radius:50%;border:2px solid var(--gold);background:rgba(10,19,48,.85);color:var(--gold-pale);font-size:24px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.syl-car-prev{left:10px}.syl-car-next{right:10px}
+@media(max-width:620px){.syl-car-stagewrap{min-height:300px}.syl-car-arrow{width:40px;height:40px;font-size:20px}}
+/* SYL_MENU_MARQUEE · menú en marquesina de izquierda a derecha, 25 s por ciclo (2026-11-20) */
+.syl-menu-view{flex:1 1 auto;min-width:0;overflow:hidden;display:flex;align-items:center}
+.syl-menu-track{display:flex;align-items:center;width:max-content;animation:syl-menu-marquee 25s linear infinite;will-change:transform}
+.syl-menu-set{display:flex;align-items:center;gap:2px;white-space:nowrap;flex:0 0 auto}
+@keyframes syl-menu-marquee{from{transform:translateX(-50%)}to{transform:translateX(0)}}
 </style>
 
 
@@ -1179,7 +1206,7 @@ body.syl-fan-full .syl-bot-btn,body.syl-fan-full .syl-bot,body.syl-cruz-full .sy
       try{location.reload();}catch(e){}
     });
   }catch(e){}})();
-  </script><nav class="syl-menu" aria-label="Menú principal de Syllenza"><a href="index.html">⌂ Inicio</a><span class="syl-sep">✦</span><a href="experiencias.html">✦ Elige tu experiencia</a><span class="syl-sep">✦</span><a href="carta-del-dia.html">☀️ Carta del Día</a><span class="syl-sep">✦</span><a href="pasado-presente-futuro.html" class="on">☾ 3 Cartas</a><span class="syl-sep">✦</span><a href="tirada-completa.html">✧ Tirada Completa</a><span class="syl-sep">✦</span><a href="cruz-celta.html">✥ Cruz Celta</a><span class="syl-sep">✦</span><a href="horoscopos.html">☾ Horóscopo del Día</a><span class="syl-sep">✦</span><a href="runa-celta.html">ᚱ Runa del Día</a><span class="syl-sep">✦</span><a href="numerologia.html">🔢 Numerología</a><span class="syl-sep">✦</span><a href="compatibilidad.html">💕 Compatibilidad</a><span class="syl-sep">✦</span><a href="contacto.html">✉ Contacto</a><span class="syl-sep">✦</span><a href="tarjetas-regalo.html">🎁 Syllenza Pass</a><span class="syl-sep">✦</span><a href="mi-cuenta.html">👤 Mi cuenta</a><span class="lang-cur"><select id="sel-lang" aria-label="Idioma"><option value="es">ES</option><option value="en">EN</option></select><select id="sel-cur" aria-label="Moneda"><option value="MXN">MXN $</option><option value="USD">USD $</option><option value="EUR">EUR €</option></select></span></nav></div>
+  </script><nav class="syl-menu" aria-label="Menú principal de Syllenza"><div class="syl-menu-view"><div class="syl-menu-track"><div class="syl-menu-set"><a href="index.html">⌂ Inicio</a><span class="syl-sep">✦</span><a href="experiencias.html">✦ Elige tu experiencia</a><span class="syl-sep">✦</span><a href="carta-del-dia.html">☀️ Carta del Día</a><span class="syl-sep">✦</span><a href="pasado-presente-futuro.html" class="on">☾ 3 Cartas</a><span class="syl-sep">✦</span><a href="tirada-completa.html">✧ Tirada Completa</a><span class="syl-sep">✦</span><a href="cruz-celta.html">✥ Cruz Celta</a><span class="syl-sep">✦</span><a href="horoscopos.html">☾ Horóscopo del Día</a><span class="syl-sep">✦</span><a href="runa-celta.html">ᚱ Runa del Día</a><span class="syl-sep">✦</span><a href="numerologia.html">🔢 Numerología</a><span class="syl-sep">✦</span><a href="compatibilidad.html">💕 Compatibilidad</a><span class="syl-sep">✦</span><a href="contacto.html">✉ Contacto</a><span class="syl-sep">✦</span><a href="tarjetas-regalo.html">🎁 Syllenza Pass</a><span class="syl-sep">✦</span><a href="mi-cuenta.html">👤 Mi cuenta</a><span class="syl-sep">✦</span></div><div class="syl-menu-set" aria-hidden="true"><a tabindex="-1" href="index.html">⌂ Inicio</a><span class="syl-sep">✦</span><a tabindex="-1" href="experiencias.html">✦ Elige tu experiencia</a><span class="syl-sep">✦</span><a tabindex="-1" href="carta-del-dia.html">☀️ Carta del Día</a><span class="syl-sep">✦</span><a tabindex="-1" href="pasado-presente-futuro.html" class="on">☾ 3 Cartas</a><span class="syl-sep">✦</span><a tabindex="-1" href="tirada-completa.html">✧ Tirada Completa</a><span class="syl-sep">✦</span><a tabindex="-1" href="cruz-celta.html">✥ Cruz Celta</a><span class="syl-sep">✦</span><a tabindex="-1" href="horoscopos.html">☾ Horóscopo del Día</a><span class="syl-sep">✦</span><a tabindex="-1" href="runa-celta.html">ᚱ Runa del Día</a><span class="syl-sep">✦</span><a tabindex="-1" href="numerologia.html">🔢 Numerología</a><span class="syl-sep">✦</span><a tabindex="-1" href="compatibilidad.html">💕 Compatibilidad</a><span class="syl-sep">✦</span><a tabindex="-1" href="contacto.html">✉ Contacto</a><span class="syl-sep">✦</span><a tabindex="-1" href="tarjetas-regalo.html">🎁 Syllenza Pass</a><span class="syl-sep">✦</span><a tabindex="-1" href="mi-cuenta.html">👤 Mi cuenta</a><span class="syl-sep">✦</span></div></div></div><span class="lang-cur"><select id="sel-lang" aria-label="Idioma"><option value="es">ES</option><option value="en">EN</option></select><select id="sel-cur" aria-label="Moneda"><option value="MXN">MXN $</option><option value="USD">USD $</option><option value="EUR">EUR €</option></select></span></nav></div>
   <header class="masthead masthead-logo-only">
     <div class="mast-row">
       <div class="mast-brand">
@@ -1356,7 +1383,7 @@ body.syl-fan-full .syl-bot-btn,body.syl-fan-full .syl-bot,body.syl-cruz-full .sy
 
   <!-- ============ VISTA 2B: OPCIONES (foto 2) + ABANICO (foto 3) ============ -->
   
-<section class="panel hidden" id="view-pick"><nav class="fan-menu" aria-label="Menú"><a href="index.html">⌂ Inicio</a><a href="experiencias.html">✦ Elige tu experiencia</a><a href="carta-del-dia.html">☀️ Carta del Día</a><a href="pasado-presente-futuro.html" class="on">☾ 3 Cartas</a><a href="tirada-completa.html">✧ Tirada Completa</a><a href="cruz-celta.html">✥ Cruz Celta</a><a href="horoscopos.html">☾ Horóscopo del Día</a><a href="runa-celta.html">ᚱ Runa del Día</a><a href="numerologia.html">🔢 Numerología</a><a href="compatibilidad.html">💕 Compatibilidad</a><a href="contacto.html">✉ Contacto</a><a href="tarjetas-regalo.html">🎁 Syllenza Pass</a><a href="mi-cuenta.html">👤 Mi cuenta</a></nav>
+<section class="panel hidden" id="view-pick"><nav class="fan-menu" aria-label="Menú"><div class="syl-menu-view"><div class="syl-menu-track"><div class="syl-menu-set"><a href="index.html">⌂ Inicio</a><a href="experiencias.html">✦ Elige tu experiencia</a><a href="carta-del-dia.html">☀️ Carta del Día</a><a href="pasado-presente-futuro.html" class="on">☾ 3 Cartas</a><a href="tirada-completa.html">✧ Tirada Completa</a><a href="cruz-celta.html">✥ Cruz Celta</a><a href="horoscopos.html">☾ Horóscopo del Día</a><a href="runa-celta.html">ᚱ Runa del Día</a><a href="numerologia.html">🔢 Numerología</a><a href="compatibilidad.html">💕 Compatibilidad</a><a href="contacto.html">✉ Contacto</a><a href="tarjetas-regalo.html">🎁 Syllenza Pass</a><a href="mi-cuenta.html">👤 Mi cuenta</a></div><div class="syl-menu-set" aria-hidden="true"><a tabindex="-1" href="index.html">⌂ Inicio</a><a tabindex="-1" href="experiencias.html">✦ Elige tu experiencia</a><a tabindex="-1" href="carta-del-dia.html">☀️ Carta del Día</a><a tabindex="-1" href="pasado-presente-futuro.html" class="on">☾ 3 Cartas</a><a tabindex="-1" href="tirada-completa.html">✧ Tirada Completa</a><a tabindex="-1" href="cruz-celta.html">✥ Cruz Celta</a><a tabindex="-1" href="horoscopos.html">☾ Horóscopo del Día</a><a tabindex="-1" href="runa-celta.html">ᚱ Runa del Día</a><a tabindex="-1" href="numerologia.html">🔢 Numerología</a><a tabindex="-1" href="compatibilidad.html">💕 Compatibilidad</a><a tabindex="-1" href="contacto.html">✉ Contacto</a><a tabindex="-1" href="tarjetas-regalo.html">🎁 Syllenza Pass</a><a tabindex="-1" href="mi-cuenta.html">👤 Mi cuenta</a></div></div></div></nav>
     <p class="pick-eyebrow">✦ SYLLENZA ✦</p>
     <h2 id="pick-title">Pasado ✦ Presente ✦ Futuro</h2>
     <p class="sub" id="pick-sub">Tres cartas, un mismo camino. Descubre la energía que te rodea y lo que viene.</p>
@@ -1369,6 +1396,19 @@ body.syl-fan-full .syl-bot-btn,body.syl-fan-full .syl-bot,body.syl-cruz-full .sy
     <p class="foto2-orn" aria-hidden="true">☾ ☾ ☾&nbsp;&nbsp;✦&nbsp;&nbsp;☽ ☽ ☽</p>
     <h3 class="fan-title">Selecciona tu carta</h3>
     <div class="fan-pick" id="fan-pick" role="group" aria-label="Abanico de cartas boca abajo"></div>
+<div id="syl-carrusel" class="syl-car-box" aria-label="Selección de cartas">
+      <div class="syl-car-stagewrap">
+        <div class="syl-car-stage" id="syl-car-stage"></div>
+        <button type="button" class="syl-car-arrow syl-car-prev" id="syl-car-prev" aria-label="Carta anterior">‹</button>
+        <button type="button" class="syl-car-arrow syl-car-next" id="syl-car-next" aria-label="Carta siguiente">›</button>
+      </div>
+      <button type="button" class="syl-car-pick" id="syl-car-pick">✦ SELECCIONAR ESTA CARTA ✦</button>
+      <div class="syl-car-row">
+        <button type="button" class="syl-car-mini" id="syl-car-reset">↺ Nuevas cartas</button>
+        <button type="button" class="syl-car-mini syl-car-ver hidden" id="syl-car-ver">✦ Ver mi interpretación ↓</button>
+      </div>
+      <p class="syl-car-hint" id="syl-car-hint">✦ Toca una carta para elegirla ✦</p>
+    </div>
 <div class="destino3d" id="destino3d" aria-label="Mazo tridimensional de 78 cartas">
   <div class="destino3d-gl" id="destino3d-gl"></div>
   <div class="destino3d-hint" id="destino3d-hint">✦ Toca una carta del mazo para tu PASADO ✦</div>
@@ -2693,6 +2733,172 @@ function sylDestino3DReset(){
 }
 
 
+/* SYL_CARRUSEL: seleccion de cartas estilo SELECT CARDS (foto de referencia).
+   Carrusel 3D con CSS (perspective + rotateY): las cartas pasan una a una de
+   izquierda a derecha, la del centro es mas grande y brilla en dorado.
+   Tocar una carta (o SELECCIONAR ESTA CARTA) la voltea 180 grados, muestra su
+   frente y la registra. Sin repeticiones: la carta tocada ES state.deck[i]. */
+var SYL_CAR=null;
+function sylCarStart(){
+  try{document.body.classList.add("syl-carrusel");}catch(e){}
+  var pt=$("pick-title");
+  if(pt&&state.mode!=="dia")pt.textContent="TAROT MÍSTICO 3D";
+  var ps=$("pick-sub");
+  if(ps)ps.textContent="Las cartas pasan una a una de izquierda a derecha. Toca la tuya cuando llegue al centro.";
+  sylCarBuild();
+}
+function sylCarStop(){var S=SYL_CAR;if(S&&S.timer){try{clearInterval(S.timer);}catch(e){}S.timer=null;}}
+function sylCarBuild(){
+  var stage=$("syl-car-stage");
+  if(!stage||!state.deck)return;
+  sylCarStop();
+  var n=state.deck.length;
+  var back="assets/reverso.webp";
+  try{var b=deckBackSrc();if(b)back=b;}catch(e){}
+  stage.innerHTML="";
+  var S={order:[],active:0,timer:null,paused:false,picking:false,holdUntil:0};
+  for(var i=0;i<n;i++)S.order.push(i);
+  SYL_CAR=S;window.SYL_CAR=S;
+  for(var k=0;k<n;k++){
+    var d=document.createElement("div");
+    d.className="syl-car-card";d.setAttribute("data-deck",String(k));
+    d.innerHTML='<div class="syl-car-flip"><div class="syl-car-face syl-car-back"><img alt="Reverso de carta" src="'+back+'"></div><div class="syl-car-face syl-car-front"><img alt=""></div></div>';
+    d.addEventListener("click",function(){sylCarTap(this);});
+    stage.appendChild(d);
+  }
+  var pk=$("syl-car-pick");if(pk)pk.onclick=function(){sylCarPickCenter();};
+  var rs=$("syl-car-reset");if(rs)rs.onclick=function(){sylCarReset();};
+  var vb=$("syl-car-ver");
+  if(vb){vb.classList.add("hidden");vb.onclick=function(){try{revealPicked(state._picked.slice(),state._pickLabels.slice());}catch(e){}};}
+  var pv=$("syl-car-prev");if(pv)pv.onclick=function(){sylCarStep(1,true);};
+  var nx=$("syl-car-next");if(nx)nx.onclick=function(){sylCarStep(-1,true);};
+  sylCarHint();
+  sylCarLayout();
+  if(!stage._carObserved){stage._carObserved=true;
+    if(window.ResizeObserver){try{new ResizeObserver(function(){sylCarLayout();}).observe(stage);}catch(e){}}
+    window.addEventListener("resize",sylCarLayout);
+  }
+  setTimeout(function(){sylCarLayout();},80);
+  S.timer=setInterval(function(){
+    if(!S.paused&&!S.picking&&Date.now()>=(S.holdUntil||0))sylCarStep(-1,false);
+  },2400);
+}
+function sylCarLayout(){
+  var S=SYL_CAR;if(!S)return;
+  var stage=$("syl-car-stage");if(!stage)return;
+  var cards=stage.children;
+  var n=S.order.length;if(!n)return;
+  var cw=stage.clientWidth||window.innerWidth||360;
+  var step=Math.min(cw*0.42,190);
+  for(var j=0;j<cards.length;j++){
+    var el=cards[j];
+    var deckIdx=parseInt(el.getAttribute("data-deck"),10);
+    var pos=S.order.indexOf(deckIdx);
+    if(pos<0){el.style.display="none";continue;}
+    el.style.display="";
+    var off=pos-S.active;
+    if(off>n/2)off-=n;else if(off<-n/2)off+=n;
+    var a=Math.abs(off);
+    if(a>3){el.style.visibility="hidden";el.style.pointerEvents="none";continue;}
+    el.style.visibility="visible";el.style.pointerEvents="";
+    var x=off*step;
+    var ry=off*-26;
+    var z=-a*60;
+    var sc=off===0?1.06:1-a*0.10;
+    var br=1-a*0.13;
+    el.style.zIndex=String(100-a);
+    el.style.transform="translate(-50%,-50%) translateX("+x.toFixed(1)+"px) translateZ("+z+"px) rotateY("+ry+"deg) scale("+sc.toFixed(3)+")";
+    el.style.filter="brightness("+br.toFixed(2)+")";
+    if(off===0)el.classList.add("is-center");else el.classList.remove("is-center");
+  }
+}
+function sylCarStep(dir,manual){
+  var S=SYL_CAR;if(!S||S.picking)return;
+  var n=S.order.length;if(n<=1)return;
+  S.active=((S.active+dir)%n+n)%n;
+  if(manual)S.holdUntil=Date.now()+5000;
+  sylCarLayout();
+}
+function sylCarHint(){
+  var hn=$("syl-car-hint");if(!hn)return;
+  var n=pickCountFor(state.mode);
+  var done=state._picked?state._picked.length:0;
+  if(done>=n){hn.textContent="✦ Tu tirada está completa ✦";return;}
+  var lbl=(state._pickLabels&&state._pickLabels[done])||"";
+  hn.textContent=lbl?("✦ Toca una carta para tu "+String(lbl).toUpperCase()+" ✦"):"✦ Toca una carta para elegirla ✦";
+}
+function sylCarTap(el){
+  var S=SYL_CAR;if(!S||S.picking)return;
+  var deckIdx=parseInt(el.getAttribute("data-deck"),10);
+  sylCarPick(deckIdx,el);
+}
+function sylCarPickCenter(){
+  var S=SYL_CAR;if(!S||S.picking||!S.order.length)return;
+  var deckIdx=S.order[S.active];
+  var st=$("syl-car-stage");
+  var el=st?st.querySelector('.syl-car-card[data-deck="'+deckIdx+'"]'):null;
+  sylCarPick(deckIdx,el);
+}
+function sylCarPick(deckIdx,el){
+  var S=SYL_CAR;if(!S||S.picking)return;
+  if(!state._pickPool||state._picked.length>=pickCountFor(state.mode))return;
+  var card=state.deck[deckIdx];if(!card)return;
+  var pi=state._pickPool.indexOf(card);
+  if(pi<0)return;
+  var n=pickCountFor(state.mode);
+  var isLast=(state._picked.length===n-1);
+  if(isLast){window.SYL_revealDelay=60000;}else{window.SYL_revealDelay=900;}
+  S.picking=true;S.paused=true;
+  var cardEl=el||null;
+  if(!cardEl){var st=$("syl-car-stage");if(st)cardEl=st.querySelector('.syl-car-card[data-deck="'+deckIdx+'"]');}
+  if(cardEl){
+    var frontImg=cardEl.querySelector(".syl-car-front img");
+    if(frontImg&&!frontImg.getAttribute("src")){frontImg.src="assets/"+(SYL_FRONTS[card.name]||"");frontImg.alt="Ilustración de "+card.name;}
+    cardEl.classList.add("flipped");
+    cardEl.classList.add("is-picked");
+  }
+  state._pickPool.splice(pi,1);
+  state._picked.push(card);
+  var done=state._picked.length;
+  $("pick-count").textContent="Cartas elegidas: "+done+" / "+n;
+  var _lbl=state._pickLabels[done-1]||"";
+  var _txt=(_lbl?_lbl+": ":"")+card.name+(card.reversed?" · Invertida":" · Derecha");
+  var _pl=$("pick-list");
+  if(_pl){_pl.textContent=state._picked.map(function(c,ix){var lb=state._pickLabels[ix]||"";return (lb?lb+": ":"")+c.name+(c.reversed?" · Invertida":" · Derecha");}).join("  ✦  ");}
+  if(done<n){$("pick-status").textContent="Carta "+done+" de "+n+" elegida: "+_txt+". Sigue girando… toca otra carta.";}
+  else{$("pick-status").textContent="Revelando tu tirada… ✦ Espera un momento, tus cartas están apareciendo.";}
+  sylCarHint();
+  var gen=window.SYL_revealGen;
+  setTimeout(function(){
+    var pos=S.order.indexOf(deckIdx);
+    if(pos>=0){
+      var wasActive=(pos===S.active);
+      S.order.splice(pos,1);
+      if(S.order.length){
+        if(wasActive){S.active=((pos-1)%S.order.length+S.order.length)%S.order.length;}
+        else if(pos<S.active){S.active=S.active-1;}
+      }
+    }
+    if(cardEl){cardEl.style.display="none";}
+    S.picking=false;
+    if(done<n){S.paused=false;sylCarLayout();}
+    else if(n>1){var vb=$("syl-car-ver");if(vb)vb.classList.remove("hidden");}
+    if(window.SYL_revealDone||gen!==window.SYL_revealGen)return;
+    if(done>=n&&n<=1){try{revealPicked(state._picked.slice(),state._pickLabels.slice());}catch(e){}}
+  },isLast?1500:1400);
+}
+function sylCarReset(){
+  if(typeof shuffleDeck==="function"){try{state.deck=shuffleDeck();}catch(e){}}
+  window.SYL_revealGen=(window.SYL_revealGen||0)+1;
+  window.SYL_revealDone=false;window.SYL_revealDelay=900;
+  state._picked=[];state._pickPool=state.deck?state.deck.slice():[];
+  state._pickLabels=pickLabelsFor(state.mode);
+  var pc=$("pick-count");if(pc)pc.textContent="Cartas elegidas: 0 / "+pickCountFor(state.mode);
+  var pl=$("pick-list");if(pl)pl.textContent="";
+  var st=$("pick-status");if(st)st.textContent="Mazo barajado. Toca una carta para elegirla.";
+  sylCarBuild();
+}
+
 function enterPick(){
   window.SYL_revealGen=(window.SYL_revealGen||0)+1;window.SYL_revealDone=false;window.SYL_revealDelay=900;
   /* La Tirada Completa de 22 cartas NO se escoge a mano: sigue al azar
@@ -2710,7 +2916,7 @@ function enterPick(){
   else{pq.classList.add("hidden");}
   var sc=$("btn-pick-sacar");if(sc)sc.textContent=pickSacarText(state.mode);
   state._pickPool=state.deck.slice();state._picked=[];state._pickLabels=pickLabelsFor(state.mode);
-  if(state.mode==="destino"){sylDestino3DStart();}else{buildPreview();buildFan();buildCarousel();}
+  sylCarStart();
   var fan=$("fan-pick");if(fan){fan.classList.remove("shuffling");fan.classList.add("spinning");}
   $("pick-status").textContent="El abanico gira mientras eliges… toca una carta o pulsa Sacar.";
   $("pick-count").textContent="Cartas elegidas: 0 / "+pickCountFor(state.mode);
