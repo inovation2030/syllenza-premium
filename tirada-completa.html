@@ -2030,33 +2030,7 @@ $("fs-sink2").addEventListener("load",function(){if(state._fsStep===2)state._fsD
    sin archivos externos) y solo suena si la persona la activa con su toque.
    La voz usa la síntesis de voz del propio dispositivo, en español, y solo
    narra si la persona activa el botón de Voz narradora. */
-var amb={ctx:null,on:false,gain:null,nodes:[]};
-function ambStart(){
-  var AC=window.AudioContext||window.webkitAudioContext; if(!AC)return false;
-  try{
-    if(!amb.ctx)amb.ctx=new AC();
-    var ctx=amb.ctx; if(ctx.state==="suspended")ctx.resume();
-    var g=ctx.createGain(); g.gain.value=0; g.connect(ctx.destination);
-    g.gain.linearRampToValueAtTime(0.045,ctx.currentTime+2.5);
-    var freqs=[196,246.94,293.66,392,493.88],nodes=[g];
-    freqs.forEach(function(f,i){
-      var o=ctx.createOscillator(); o.type=i<3?"sine":"triangle"; o.frequency.value=f;
-      var og=ctx.createGain(); og.gain.value=i<3?0.22:0.07;
-      o.connect(og); og.connect(g); o.start(); nodes.push(o);
-    });
-    var lfo=ctx.createOscillator(); lfo.frequency.value=0.07;
-    var lg=ctx.createGain(); lg.gain.value=0.018; lfo.connect(lg); lg.connect(g.gain); lfo.start(); nodes.push(lfo);
-    amb.gain=g; amb.nodes=nodes; return true;
-  }catch(e){return false;}
-}
-function ambStop(){
-  if(!amb.ctx||!amb.gain)return;
-  var ctx=amb.ctx,g=amb.gain,nodes=amb.nodes;
-  try{g.gain.cancelScheduledValues(ctx.currentTime);g.gain.setValueAtTime(g.gain.value,ctx.currentTime);g.gain.linearRampToValueAtTime(0.0001,ctx.currentTime+1.1);}catch(e){}
-  setTimeout(function(){nodes.forEach(function(n){try{if(n.stop)n.stop();}catch(e){}});},1300);
-  amb.nodes=[]; amb.gain=null;
-}
-var voiceOn=false;
+var amb={el:null,on:false,iv:null}; function ambFadeTo(target,ms){try{if(amb.iv){clearInterval(amb.iv);amb.iv=null;}var el=amb.el;if(!el)return;var from=el.volume,steps=Math.max(1,Math.round(ms/100)),i=0;amb.iv=setInterval(function(){i++;el.volume=from+(target-from)*i/steps;if(i>=steps){el.volume=target;clearInterval(amb.iv);amb.iv=null;}},100);}catch(e){}} function ambStart(){try{if(!amb.el){amb.el=new Audio("assets/Celestial_Golden_Atmosphere.mp3");amb.el.loop=true;amb.el.preload="auto";}amb.el.volume=0;var p=amb.el.play();if(p&&p.catch)p.catch(function(){});ambFadeTo(0.4,2500);amb.on=true;return true;}catch(e){return false;}} function ambStop(){try{if(!amb.el)return;ambFadeTo(0,1100);var el=amb.el;setTimeout(function(){try{el.pause();}catch(e){}},1250);amb.on=false;}catch(e){}} var voiceOn=false;
 var _maleVoice=null,_maleVoiceIsMale=false,_voicesReady=false;
 /* Voz de hombre, humana: SOLO voces masculinas en espanol (Miguel, Jorge,
    Diego, Raul, Pablo, Alvaro, Carlos, Sergio, Alejandro, Fernando, Roberto,
@@ -2143,7 +2117,7 @@ function setVoice(on){
   if(bm)bm.addEventListener("click",function(){
     if(amb.on){ambStop();amb.on=false;bm.setAttribute("aria-pressed","false");bm.textContent="♪ Música ambiental";}
     else if(ambStart()){amb.on=true;bm.setAttribute("aria-pressed","true");bm.textContent="♪ Música ambiental · Sonando";toast("Música ambiental activada. Toca de nuevo para silenciarla.");}
-    else toast("Tu navegador no permite generar la música ambiental.");
+    else toast("No se pudo cargar la música ambiental.");
   });
   if(bv)bv.addEventListener("click",function(){setVoice(!voiceOn);});
   var rv=$("btn-voice-result");if(rv)rv.addEventListener("click",function(){setVoice(!voiceOn);});
