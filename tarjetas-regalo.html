@@ -1031,6 +1031,7 @@ footer{font-size:23px}
 .gift-amt.on{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold),0 0 24px rgba(252,166,17,.25)}
 .gift-amt b{display:block;font-family:'Cinzel Decorative','Cinzel',serif;font-size:30px;color:var(--gold-pale)}
 .gift-amt span{display:block;color:var(--muted);margin-top:6px;line-height:1.45}
+.gift-amt .gift-fee{display:block;color:var(--gold-2);margin-top:6px;line-height:1.45;font-weight:600;font-size:17px}
 .gift-pass{max-width:520px;margin:26px auto 8px;border-radius:22px;overflow:hidden;border:2px solid var(--gold);outline:1px solid rgba(252,166,17,.4);outline-offset:5px;box-shadow:0 30px 70px rgba(0,0,0,.7),0 0 50px rgba(252,166,17,.18);background:linear-gradient(160deg,#2a4bff 0%,#1b2fd6 45%,#0a1a8f 100%);color:#fff;text-align:left;position:relative}
 .gift-pass .gp-pattern{position:absolute;inset:0;opacity:.18;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cg fill='none' stroke='%23ffdf6b' stroke-width='1.4'%3E%3Cpath d='M10 100 L40 40 L70 100 Z'/%3E%3Ccircle cx='40' cy='55' r='8'/%3E%3Cpath d='M85 30 v50 M75 45 h20 M80 80 h10'/%3E%3Ccircle cx='95' cy='95' r='12'/%3E%3Cpath d='M95 83 v24 M83 95 h24'/%3E%3C/g%3E%3C/svg%3E");background-size:120px 120px}
 .gift-pass .gp-top{display:flex;align-items:center;gap:12px;padding:20px 22px 0;position:relative}
@@ -1213,10 +1214,10 @@ footer{font-size:23px}
   <h1 class="gift-title">Tarjetas de regalo · Syllenza Pass</h1>
   <p class="gift-sub">Regala una lectura de tarot. Tu Syllenza Pass llega con saldo, código QR y un código único que se canjea en la página. Guárdalo en tu teléfono: se usa en Apple Wallet y Google Wallet.</p>
   <div class="gift-amounts" role="radiogroup" aria-label="Elige el monto">
-    <div class="gift-amt on" data-amt="100" data-cubre="Saldo Syllenza Pass · para usar en tu próxima lectura" role="radio" aria-checked="true"><b>$100</b><span>Saldo Syllenza Pass · para usar en tu próxima lectura</span></div>
-    <div class="gift-amt" data-amt="200" data-cubre="Cruz Celta · 10 cartas en PDF" role="radio" aria-checked="false"><b>$200</b><span>Cruz Celta · 10 cartas en PDF</span></div>
-    <div class="gift-amt" data-amt="400" data-cubre="Tirada Completa · 22 cartas + PDF con historieta" role="radio" aria-checked="false"><b>$400</b><span>Tirada Completa · 22 cartas + PDF con historieta</span></div>
-    <div class="gift-amt" data-amt="600" data-cubre="Tirada Completa + video animado de 2 minutos" role="radio" aria-checked="false"><b>$600</b><span>Tirada Completa + video animado de 2 minutos</span></div>
+    <div class="gift-amt on" data-amt="100" data-cubre="Saldo Syllenza Pass · para usar en tu próxima lectura" role="radio" aria-checked="true"><b>$100</b><span>Saldo Syllenza Pass · para usar en tu próxima lectura</span><span class="gift-fee">+ 5% cargo por servicio = $105 total a pagar</span></div>
+    <div class="gift-amt" data-amt="200" data-cubre="Cruz Celta · 10 cartas en PDF" role="radio" aria-checked="false"><b>$200</b><span>Cruz Celta · 10 cartas en PDF</span><span class="gift-fee">+ 5% cargo por servicio = $210 total a pagar</span></div>
+    <div class="gift-amt" data-amt="400" data-cubre="Tirada Completa · 22 cartas + PDF con historieta" role="radio" aria-checked="false"><b>$400</b><span>Tirada Completa · 22 cartas + PDF con historieta</span><span class="gift-fee">+ 5% cargo por servicio = $420 total a pagar</span></div>
+    <div class="gift-amt" data-amt="600" data-cubre="Tirada Completa + video animado de 2 minutos" role="radio" aria-checked="false"><b>$600</b><span>Tirada Completa + video animado de 2 minutos</span><span class="gift-fee">+ 5% cargo por servicio = $630 total a pagar</span></div>
   </div>
   <div class="gift-pass" id="gift-pass">
     <div class="gp-pattern" aria-hidden="true"></div>
