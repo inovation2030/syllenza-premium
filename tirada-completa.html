@@ -261,7 +261,7 @@
   .immersive{display:flex;gap:12px;flex-wrap:wrap;align-items:center;justify-content:center;margin-top:26px;background:linear-gradient(120deg,#0d1a42,#060b1e);border:1px solid var(--gold);border-radius:999px;padding:10px 14px;box-shadow:0 14px 34px rgba(0,0,0,.5)}
   .immersive .im-label{font-family:"Cinzel Decorative","Cinzel",serif;font-size: 16.8px;letter-spacing:2.4px;text-transform:uppercase;color:var(--gold-2);padding:0 8px}
   .im-btn{appearance:none;cursor:pointer;font:inherit;font-size: 18.1px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-pale);background:#050a1e;border:1px solid #3c4a7d;border-radius:999px;padding:11px 20px;min-height:48px;transition:border-color .15s ease,background .15s ease}
-  .im-btn:hover{border-color:var(--gold)}
+  .im-btn:hover{border-color:var(--gold)} .voice-pick{appearance:none;cursor:pointer;font:inherit;font-size:16px;font-weight:600;letter-spacing:.05em;color:var(--gold-pale);background:#050a1e;border:1px solid #3c4a7d;border-radius:999px;padding:11px 14px;min-height:48px;max-width:100%} .voice-pick:hover{border-color:var(--gold)}
   .im-btn[aria-pressed="true"]{background:linear-gradient(135deg,#ffe98a,var(--gold) 55%,#fc830e);color:#171106;border-color:#f6e7b8}
   /* Secciones celestiales */
   .sec{margin-top:56px;text-align:center;position:relative}
@@ -1373,7 +1373,7 @@ body.syl-fan-full .syl-bot-btn,body.syl-fan-full .syl-bot,body.syl-cruz-full .sy
   <div class="immersive" role="group" aria-label="Experiencia inmersiva">
     <span class="im-label">Experiencia inmersiva</span>
     <button type="button" class="im-btn" id="btn-music" aria-pressed="false">♪ Música ambiental</button>
-    <button type="button" class="im-btn" id="btn-voice" aria-pressed="false">✧ Voz del narrador</button>
+    <button type="button" class="im-btn" id="btn-voice" aria-pressed="false">✧ Voz del narrador</button> <select id="voice-pick" class="voice-pick" aria-label="Elegir voz del narrador"><option value="">Cargando voces…</option></select>
   </div>
 
 
@@ -2076,6 +2076,8 @@ function pickMaleSpanishVoice(){
     var vs=speechSynthesis.getVoices()||[],es=[],i;
     for(i=0;i<vs.length;i++){if(vs[i]&&/^es/i.test(vs[i].lang||""))es.push(vs[i]);}
     if(!es.length)return null;
+    var _sv="";try{_sv=localStorage.getItem("syl-voice")||"";}catch(e){}
+    if(_sv){for(var _si=0;_si<es.length;_si++){if(((es[_si].voiceURI||"")===_sv)||(es[_si].name===_sv)){var _nm=(es[_si].name||"")+" "+(es[_si].voiceURI||"");_maleVoiceIsMale=_MALE_RE.test(_nm)&&!_FEMALE_RE.test(_nm);return es[_si];}}}
     es.sort(function(a,b){return _voiceScore(b)-_voiceScore(a);});
     var top=es[0],nm=(top.name||"")+" "+(top.voiceURI||"");
     _maleVoiceIsMale=_MALE_RE.test(nm)&&!_FEMALE_RE.test(nm);
@@ -2084,9 +2086,9 @@ function pickMaleSpanishVoice(){
 }
 function _voiceShortName(){try{if(!_maleVoice)return "";var n=_maleVoice.name||"";var m=n.match(/(Miguel|Jorge|Diego|Raul|Raúl|Pablo|Álvaro|Alvaro|Carlos|Sergio|Alejandro|Fernando|Roberto|Daniel|Javier|Enrique|Alfonso|Ricardo|Manuel|Francisco|Antonio)/i);if(m)return m[0].charAt(0).toUpperCase()+m[0].slice(1).toLowerCase().replace("ú","ú");return n.split(" - ")[0].split(" (")[0].slice(0,18);}catch(e){return "";}}
 function _voiceLabel(){var vn=_voiceShortName();return voiceOn?("✧ Voz del narrador · Activa"+(vn?" — "+vn:"")):"✧ Voz del narrador";}
-function refreshMaleVoice(){try{_maleVoice=pickMaleSpanishVoice();_voicesReady=true;if(voiceOn){var _vl=_voiceLabel();var _bv=$("btn-voice"),_rv=$("btn-voice-result");if(_bv)_bv.textContent=_vl;if(_rv)_rv.textContent=_vl;}}catch(e){_maleVoice=null;}}
-if("speechSynthesis" in window){try{refreshMaleVoice();speechSynthesis.addEventListener("voiceschanged",refreshMaleVoice);}catch(e){}}
-function _waitVoices(){return new Promise(function(res){try{if(!("speechSynthesis" in window))return res();if((speechSynthesis.getVoices()||[]).length){refreshMaleVoice();return res();}var done=false;var to=setTimeout(function(){if(!done){done=true;refreshMaleVoice();res();}},1200);speechSynthesis.addEventListener("voiceschanged",function h(){if(!done){done=true;clearTimeout(to);refreshMaleVoice();res();}},{once:true});}catch(e){res();}});}
+function sylVoiceFill(){try{var sel=$("voice-pick");if(!sel||!("speechSynthesis" in window))return;var vs=speechSynthesis.getVoices()||[],es=[],i;for(i=0;i<vs.length;i++){if(vs[i]&&/^es/i.test(vs[i].lang||""))es.push(vs[i]);}if(!es.length){sel.innerHTML='<option value="">Sin voces en español en este dispositivo</option>';return;}es.sort(function(a,b){return _voiceScore(b)-_voiceScore(a);});var cur="";try{cur=localStorage.getItem("syl-voice")||"";}catch(e){}if(!cur&&_maleVoice)cur=_maleVoice.voiceURI||_maleVoice.name||"";var h="";for(i=0;i<es.length;i++){var v=es[i],val=(v.voiceURI||v.name||"").replace(/"/g,"");h+='<option value="'+val+'"'+(val===cur?' selected':'')+'>'+v.name+' · '+v.lang+'</option>';}sel.innerHTML=h;}catch(e){}} function sylVoiceApply(val,preview){try{var vs=speechSynthesis.getVoices()||[],f=null,i;for(i=0;i<vs.length;i++){if(((vs[i].voiceURI||"")===val)||(vs[i].name===val)){f=vs[i];break;}}if(!f)return;try{localStorage.setItem("syl-voice",val);}catch(e){}_maleVoice=f;var nm=(f.name||"")+" "+(f.voiceURI||"");_maleVoiceIsMale=_MALE_RE.test(nm)&&!_FEMALE_RE.test(nm);voiceOn=true;var bv=$("btn-voice"),rv=$("btn-voice-result"),vl=_voiceLabel();if(bv){bv.setAttribute("aria-pressed","true");bv.textContent=vl;}if(rv){rv.setAttribute("aria-pressed","true");rv.textContent=vl;}if(preview)speak("Hola, soy tu narrador de Syllenza. Así suena mi voz.");}catch(e){}} function refreshMaleVoice(){try{_maleVoice=pickMaleSpanishVoice();_voicesReady=true;if(voiceOn){var _vl=_voiceLabel();var _bv=$("btn-voice"),_rv=$("btn-voice-result");if(_bv)_bv.textContent=_vl;if(_rv)_rv.textContent=_vl;}}catch(e){_maleVoice=null;}}
+if("speechSynthesis" in window){try{refreshMaleVoice();sylVoiceFill();speechSynthesis.addEventListener("voiceschanged",refreshMaleVoice);speechSynthesis.addEventListener("voiceschanged",sylVoiceFill);var _vp=$("voice-pick");if(_vp)_vp.addEventListener("change",function(){sylVoiceApply(this.value,true);});}catch(e){}}
+function _waitVoices(){return new Promise(function(res){try{if(!("speechSynthesis" in window))return res();if((speechSynthesis.getVoices()||[]).length){refreshMaleVoice();return res();}var done=false;var to=setTimeout(function(){if(!done){done=true;refreshMaleVoice();res();}},2500);speechSynthesis.addEventListener("voiceschanged",function h(){if(!done){done=true;clearTimeout(to);refreshMaleVoice();res();}},{once:true});}catch(e){res();}});}
 function speak(text){
   if(!voiceOn||!("speechSynthesis" in window)||!text)return;
   _waitVoices().then(function(){
