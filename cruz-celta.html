@@ -2800,7 +2800,7 @@ try{
   }
 }catch(e){}
 /* SYL_MASTSLIDES · Slides automáticos de la portada (como albertodorian.com):
-   6 imágenes distintas con fundido cada 5 s + puntos para elegir slide. */
+   6 imágenes distintas con fundido cada 2 s + puntos para elegir slide. */
 (function(){
   "use strict";
   var reduce=false;try{reduce=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;}catch(e){}
@@ -2810,7 +2810,7 @@ try{
   var slides=["assets/hero-joven.webp","assets/hero-libro.webp",altar?altar.src:"assets/reverso.webp","assets/reverso.webp","assets/sol-19.webp","assets/luna-18.webp"];
   var cur=0,shown=A,timer=null;
   function show(n){cur=(n+slides.length)%slides.length;var nx=(shown===A)?B:A;nx.src=slides[cur];nx.classList.add("on");shown.classList.remove("on");shown=nx;for(var d=0;d<dots.length;d++){dots[d].classList.toggle("on",d===cur);}}
-  function restart(){if(timer)clearInterval(timer);if(!reduce){timer=setInterval(function(){show(cur+1);},5000);}}
+  function restart(){if(timer)clearInterval(timer);if(!reduce){timer=setInterval(function(){show(cur+1);},2000);}}
   for(var q=0;q<dots.length;q++){(function(ix){dots[ix].addEventListener("click",function(){show(ix);restart();});})(q);}
   A.src=slides[0];A.classList.add("on");
   restart();
