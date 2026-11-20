@@ -3096,7 +3096,7 @@ function sylCosPick(c,ix,btn){
     sylCosStop();
     var pp=$("picker-pause");if(pp)pp.textContent="✓ Selección completa";try{var _cf=$("picker-confirm");if(_cf)_cf.scrollIntoView({behavior:"smooth",block:"center"});}catch(e){}
     try{window.SYL_revealDelay=60000;}catch(e){}
-    if(n===1&&!SYL_COS.done){SYL_COS.done=true;setTimeout(function(){if(SYL_COS&&SYL_COS.done)sylCosConfirm();},1400);}
+    if(n===1&&!SYL_COS.done){SYL_COS.done=true;}
   }else{
     try{
       var _ux=Math.floor(SYL_COS.pos),_ix=0,_n=0;
