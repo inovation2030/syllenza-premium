@@ -3119,7 +3119,7 @@ function sylCosCount(){
 }
 
 /* ===== SYL_PICK_ZOOM · la carta elegida se ve EN GRANDE, como la Carta del Día ===== */
-function sylCosZoom(c,label,interp){
+function sylCosZoom(c,label,interp,stay){
   try{
     var z=$("syl-zoom");if(!z||!c)return;
     var img=$("syl-zoom-img"),nm=$("syl-zoom-name"),lb=$("syl-zoom-lbl"),ct=$("syl-zoom-count"),ip=$("syl-zoom-interp");
@@ -3132,8 +3132,9 @@ function sylCosZoom(c,label,interp){
     if(ip){ip.textContent=interp||"";ip.style.display=interp?"block":"none";}
     try{z.style.top=window.scrollY+"px";z.style.height=window.innerHeight+"px";}catch(e){}
     z.classList.add("on");
+    if(!z._sylBound){z._sylBound=true;var _bn=$("syl-zoom-next");if(_bn)_bn.addEventListener("click",sylCosZoomHide);z.addEventListener("click",function(e){if(e.target===z)sylCosZoomHide();});}
     if(sylCosZoom._t)clearTimeout(sylCosZoom._t);
-    sylCosZoom._t=setTimeout(function(){sylCosZoomHide();},n===1?1300:2800);
+    if(!stay){sylCosZoom._t=setTimeout(function(){sylCosZoomHide();},n===1?1300:2800);}
   }catch(e){}
 }
 function sylCosZoomHide(){try{var z=$("syl-zoom");if(z){z.classList.remove("on");z.style.top="";z.style.height="";}if(sylCosZoom._t){clearTimeout(sylCosZoom._t);sylCosZoom._t=null;}try{if(SYL_COS&&!SYL_COS.done&&SYL_COS.selected.length<sylCosNeed()){var _cp=$("cosmic-picker");if(_cp&&_cp.classList.contains("active"))sylCosResume();}}catch(e){}}catch(e){}}
@@ -3248,7 +3249,7 @@ function revealPicked(pick,labels){
     var eb=$("entrega-block");if(eb)eb.classList.add("hidden");var _ec=$("entrega-celta");if(_ec){if(isCelta)_ec.classList.remove("hidden");else _ec.classList.add("hidden");}
     $("result-opened").classList.add("hidden");
     
-    try{(function(){var cols=document.querySelectorAll("#draw-grid .destino-col");for(var qi=0;qi<cols.length;qi++){(function(el,ix){el.style.cursor="pointer";el.addEventListener("click",function(){try{var cc=pick[ix]||null;var lb=(state._pickLabels&&state._pickLabels[ix])||"";var li=document.querySelectorAll("#celta-interp li")[ix];var ip=li?li.textContent:"";if(cc)sylCosZoom(cc,lb,ip);}catch(e){}});})(cols[qi],qi);}})();}catch(e){}
+    try{(function(){var cols=document.querySelectorAll("#draw-grid .destino-col");for(var qi=0;qi<cols.length;qi++){(function(el,ix){el.style.cursor="pointer";el.addEventListener("click",function(){try{var cc=pick[ix]||null;var lb=(state._pickLabels&&state._pickLabels[ix])||"";var li=document.querySelectorAll("#celta-interp li")[ix];var ip=li?li.textContent:((el.querySelector(".meaning")||{}).textContent||"");if(cc){sylCosZoom(cc,lb,ip,true);var _ct=$("syl-zoom-count");if(_ct)_ct.textContent="Carta "+(ix+1)+" de "+pick.length;}}catch(e){}});})(cols[qi],qi);}})();}catch(e){}
 $("result-block").classList.remove("hidden");
     if(isDia){$("draw-status").textContent="Tu Carta del día está revelada";$("btn-draw").textContent="✦ Elegir otra Carta del día";}
     else if(isCelta){$("draw-status").textContent="Tu Cruz Celta está revelada · 10 cartas";$("btn-draw").textContent="✦ Elegir otra Cruz Celta";}
