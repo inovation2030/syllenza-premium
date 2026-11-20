@@ -1155,8 +1155,10 @@ body.syl-carrusel .syl-car-box{display:flex;flex-direction:column;flex:1 1 auto;
 .syl-car-prev{left:10px}.syl-car-next{right:10px}
 @media(max-width:620px){.syl-car-stagewrap{min-height:300px}.syl-car-arrow{width:40px;height:40px;font-size:20px}}
 /* SYL_MENU_MARQUEE · menú en marquesina de izquierda a derecha, 25 s por ciclo (2026-11-20) */
-.syl-menu-view{flex:1 1 auto;min-width:0;overflow:hidden;display:flex;align-items:center}
-.syl-menu-track{display:flex;align-items:center;width:max-content;animation:syl-menu-marquee 25s linear infinite;will-change:transform}
+.syl-menu-view{flex:1 1 auto;min-width:0;overflow-x:auto;overflow-y:hidden;display:flex;align-items:center;scrollbar-width:none;-webkit-overflow-scrolling:touch;touch-action:pan-x;cursor:grab}
+.syl-menu-view::-webkit-scrollbar{display:none}
+.syl-menu-view.dragging{cursor:grabbing}
+.syl-menu-track{display:flex;align-items:center;width:max-content;will-change:transform}
 .syl-menu-set{display:flex;align-items:center;gap:2px;white-space:nowrap;flex:0 0 auto}
 @keyframes syl-menu-marquee{from{transform:translateX(-50%)}to{transform:translateX(0)}}
 /* SYL_COSMICO · Selector Cosmico (ejemplo de Leonardo, ZIP 2026-11-20): abanico animado, la central se revela sola, tocar para elegir. Arte original Syllenza. */
@@ -1167,18 +1169,20 @@ body.syl-cosmico .cosmic-picker.active{display:block}
 .picker-hint{color:var(--muted);font-size:15px;margin:0 0 14px}
 .picker-count{display:inline-block;border:1px solid var(--gold);border-radius:999px;padding:8px 16px;color:var(--gold-pale);font-size:14px;margin-bottom:12px}
 .picker-track{height:clamp(340px,62vh,540px);display:flex;align-items:center;justify-content:center;position:relative;perspective:1400px;overflow:hidden;touch-action:pan-y}
-.picker-card{position:absolute;width:min(68vw,300px);aspect-ratio:13/20;border:1px solid #c9a44b;border-radius:12px;background:#07132d;box-shadow:0 12px 32px #000b;overflow:hidden;cursor:pointer;transition:transform .75s cubic-bezier(.2,.75,.25,1),opacity .6s,filter .6s;transform-style:preserve-3d;padding:0;color:var(--gold-pale)}
+.picker-card{position:absolute;width:min(62vw,300px);aspect-ratio:13/20;border:1px solid #c9a44b;border-radius:12px;background:#07132d;box-shadow:0 12px 32px #000b;overflow:hidden;cursor:pointer;transition:opacity .6s,filter .6s;transform-style:preserve-3d;padding:0;color:var(--gold-pale)}
 .picker-card .picker-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden;border-radius:11px}
 .picker-card .picker-back{background:#07132d center/cover no-repeat;border:4px double #b58b37}
 .picker-card .picker-front{transform:rotateY(180deg);background:#07132d;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:7px}
 .picker-card .picker-front .artbox{width:100%;flex:1 1 auto;min-height:0;border:2px solid #c9a227;border-radius:7px;overflow:hidden}
 .picker-card .picker-front .artbox img{width:100%;height:100%;object-fit:cover;display:block}
 .picker-card .picker-front .name{font:600 clamp(11px,1.6vw,15px) 'Cinzel Decorative',Cinzel,serif;color:#f8ecc0;margin-top:6px;line-height:1.2}
-.picker-card.flipped{transform:translateX(var(--x)) translateY(var(--y)) scale(var(--scale)) rotateY(180deg) rotateZ(var(--rot))}
-.picker-card:not(.flipped){transform:translateX(var(--x)) translateY(var(--y)) scale(var(--scale)) rotateZ(var(--rot))}
+.picker-card{transform:translateX(var(--x)) translateY(var(--y)) scale(var(--scale)) rotateZ(var(--rot))}
+.picker-card .picker-flip{position:absolute;inset:0;transform-style:preserve-3d;transition:transform .6s cubic-bezier(.2,.75,.25,1)}
+.picker-card.flipped .picker-flip{transform:rotateY(180deg)}
 .picker-card.center{filter:none;box-shadow:0 0 0 2px #e9cb6d,0 0 35px rgba(252,166,17,.55),0 20px 45px #000c;z-index:10}
 .picker-card.side{filter:brightness(.72)}
-.picker-card.chosen{opacity:0;pointer-events:none;transform:translateY(-45px) scale(.72) rotateY(180deg)!important}
+.picker-card.chosen{opacity:0;pointer-events:none;transform:translateY(-45px) scale(.72)!important}
+.picker-card.center{box-shadow:0 0 0 2px #fca611,0 12px 32px #000b,0 0 34px rgba(252,166,17,.45)}
 .picker-controls{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:14px}
 .picker-controls .btn{min-width:150px}
 .picker-selected{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:14px auto 0;max-width:900px;min-height:42px}
@@ -1188,8 +1192,7 @@ body.syl-cosmico .cosmic-picker.active{display:block}
 /* SYL_COS_GLIDE_FIX · el boton Confirmar pulsa en dorado cuando ya se puede pulsar */
 @keyframes syl-cos-pulse{0%,100%{box-shadow:0 0 0 0 rgba(252,166,17,.55)}50%{box-shadow:0 0 0 10px rgba(252,166,17,0)}}
 #picker-confirm:not(:disabled){animation:syl-cos-pulse 1.4s ease-in-out infinite}
-/* SYL_MENU_PAUSA · menu detenido cuando el usuario ya eligio una opcion */
-.syl-menu.syl-menu-paused .syl-menu-track,.fan-menu.syl-menu-paused .syl-menu-track{animation-play-state:paused!important}
+/* SYL_MENU_SCROLL · el menu se desliza solo y tambien a mano */
 
 /* ===== SYL_PICK_ZOOM · la carta elegida se ve EN GRANDE, como la Carta del Día ===== */
 #syl-zoom{position:absolute;left:0;top:0;width:100%;z-index:9999;display:flex;align-items:center;justify-content:center;background:rgba(2,4,16,.9);opacity:0;pointer-events:none;transition:opacity .3s;padding:14px}
@@ -2211,7 +2214,7 @@ var _maleVoice=null,_maleVoiceIsMale=false,_voicesReady=false;
    suene natural, no robotizada. */
 var _MALE_RE=/(miguel|jorge|diego|raul|raúl|pablo|alvaro|álvaro|carlos|juan|pedro|luis|andres|andrés|sergio|alejandro|fernando|roberto|daniel|javier|enrique|alfonso|ricardo|manuel|francisco|antonio|\bmale\b|masculin|hombre)/i;
 var _FEMALE_RE=/(sabina|monica|mónica|paulina|lucia|lucía|sofia|sofía|valentina|camila|martina|isabella|victoria|daniela|fernanda|alejandra|carmen|elena|laura|paloma|google espa)/i;
-function _voiceScore(v){var sc=0,nm=(v.name||"")+" "+(v.voiceURI||"");if(_MALE_RE.test(nm))sc+=10;if(_FEMALE_RE.test(nm))sc-=10;if(/^es-MX/i.test(v.lang||""))sc+=3;else if(/^es-ES/i.test(v.lang||""))sc+=2;return sc;}
+function _voiceScore(v){var sc=0,nm=(v.name||"")+" "+(v.voiceURI||"");if(_MALE_RE.test(nm))sc+=10;if(_FEMALE_RE.test(nm))sc-=10;if(/mejorad|enhanced|premium|neural|natural/i.test(nm))sc+=6;if(/^es-MX/i.test(v.lang||""))sc+=3;else if(/^es-ES/i.test(v.lang||""))sc+=2;return sc;}
 function pickMaleSpanishVoice(){
   try{
     var vs=speechSynthesis.getVoices()||[],es=[],i;
@@ -2246,11 +2249,26 @@ function speak(text){
 function narrationText(pick,labels){
   return pick.map(function(c,ix){var lb=labels&&labels[ix]?labels[ix]+": ":"";return lb+c.name+", "+(c.reversed?"invertida":"derecha")+". "+(c.reversed?c.rev:c.up);}).join(" ");
 }
+
+/* ===== SYL_NARRADOR_HUMANO · la muestra real de Leonardo: El Sol derecha,
+   Carta del Día, se escucha con su voz humana, no con la sintética ===== */
+function sylHumanSol(pick){
+  try{
+    if(!voiceOn||!("Audio" in window))return false;
+    if(typeof I18N!=="undefined"&&I18N.lang==="en")return false;
+    if(state.mode!=="dia"||!pick||!pick.length)return false;
+    var c=pick[0];
+    if(!c||c.name!=="El Sol"||c.reversed)return false;
+    var a=new Audio("assets/narrador-sol.mp3");
+    a.play().catch(function(){});
+    return true;
+  }catch(e){return false;}
+}
 function narrateCurrentResult(){
   if(!state.draw||!state.person)return;
   if(state.mode==="completa"){speak("Tu Tirada Completa está lista, "+state.person.nombre+". "+narrationText(state.draw,state.draw.map(function(c,i){return "Carta "+(i+1);}))+" Tu resultado completo, con la interpretación de cada carta, está en la pestaña nueva.");}
   else if(state.mode==="celta"){speak("Tu Cruz Celta está lista. "+narrationText(state.draw,CELTA_LABELS));}
-  else if(state.mode==="dia"){speak("Tu carta del día es "+narrationText(state.draw,[""]));}
+  else if(state.mode==="dia"){if(!sylHumanSol(state.draw))speak("Tu carta del día es "+narrationText(state.draw,[""]));}
   else{speak("Tu destino en tres cartas. "+narrationText(state.draw,["Pasado","Presente","Futuro"]));}
 }
 function setVoice(on){
@@ -2691,22 +2709,39 @@ function sylCarReset(){
 /* SYL_COSMICO · Selector Cosmico (ejemplo de Leonardo, ZIP 2026-11-20). Abanico animado de 7 cartas: avanza solo cada 2.1 s de izquierda a derecha, la central se revela sola con brillo dorado, 1er toque voltea una lateral, 2o toque la elige. Arte original Syllenza (deckBackSrc + SYL_FRONTS). Sin repeticiones: splice de state._pickPool. */
 var SYL_COS=null;
 function sylCosNeed(){return pickCountFor(state.mode);}
-function sylCosStop(){if(SYL_COS&&SYL_COS.timer){try{clearInterval(SYL_COS.timer);}catch(e){}SYL_COS.timer=null;}}
+function sylCosStop(){if(SYL_COS){try{if(SYL_COS.raf)cancelAnimationFrame(SYL_COS.raf);}catch(e){}SYL_COS.raf=null;if(SYL_COS.timer){try{clearInterval(SYL_COS.timer);}catch(e){}SYL_COS.timer=null;}}}
+
+/* ===== SYL_CARRUSEL · carrusel continuo de izquierda a derecha =====
+   pos es un numero real en unidades de carta: avanza sin parar con
+   requestAnimationFrame (1 carta cada 2.1 s). Cada carta se desliza de
+   forma continua, pasa por el centro y sale por la derecha; las nuevas
+   entran por la izquierda. Sin saltos ni huecos: los 7 nodos se reutilizan. */
+function sylCosTick(t){
+  if(!SYL_COS)return;
+  if(SYL_COS.paused){SYL_COS.raf=null;return;}
+  var dt=t-(SYL_COS.lastT||t);SYL_COS.lastT=t;
+  if(dt>100)dt=100;if(dt<0)dt=0;
+  if(SYL_COS.selected.length<sylCosNeed()){SYL_COS.pos+=dt/2100;}
+  sylCosRender();
+  if(SYL_COS)SYL_COS.raf=requestAnimationFrame(sylCosTick);
+}
+function sylCosPause(){if(!SYL_COS)return;SYL_COS.paused=true;try{if(SYL_COS.raf)cancelAnimationFrame(SYL_COS.raf);}catch(e){}SYL_COS.raf=null;var pp=$("picker-pause");if(pp)pp.textContent="▶ Reanudar";}
+function sylCosResume(){if(!SYL_COS||SYL_COS.done||SYL_COS.selected.length>=sylCosNeed())return;if(!SYL_COS.paused&&SYL_COS.raf)return;SYL_COS.paused=false;SYL_COS.lastT=0;var pp=$("picker-pause");if(pp)pp.textContent="Ⅱ Pausar";if(!SYL_COS.raf)SYL_COS.raf=requestAnimationFrame(sylCosTick);}
 function sylCosStart(){
   if(!state.deck||!state.deck.length){toast("Primero baraja el mazo de 78 cartas.");return;}
   sylCosStop();
   try{document.body.classList.add("syl-cosmico");}catch(e){}
-  SYL_COS={index:0,selected:[],paused:false,flipped:{},timer:null,done:false};
+  SYL_COS={index:0,selected:[],paused:false,flipped:{},timer:null,done:false,pos:0,raf:null,lastT:0};
   try{window.SYL_COS=SYL_COS;}catch(e){}
   if(!window._sylCosBound){window._sylCosBound=true;
-    var pz=$("picker-pause");if(pz)pz.addEventListener("click",function(){if(!SYL_COS)return;SYL_COS.paused=!SYL_COS.paused;this.textContent=SYL_COS.paused?"▶ Reanudar":"Ⅱ Pausar";});
+    var pz=$("picker-pause");if(pz)pz.addEventListener("click",function(){if(!SYL_COS)return;if(SYL_COS.paused){sylCosResume();}else{sylCosPause();}});
     var cf=$("picker-confirm");if(cf)cf.addEventListener("click",function(){sylCosConfirm();});
     var rz=$("picker-reset");if(rz)rz.addEventListener("click",function(){sylCosReset();});
   }
   var cp=$("cosmic-picker");if(cp)cp.classList.add("active");
   var pp=$("picker-pause");if(pp)pp.textContent="Ⅱ Pausar";
   sylCosRender();
-  SYL_COS.timer=setInterval(function(){if(SYL_COS&&!SYL_COS.paused&&SYL_COS.selected.length<sylCosNeed()){SYL_COS.index=(SYL_COS.index-1+state.deck.length)%state.deck.length;sylCosRender();}},2100);
+  SYL_COS.lastT=0;SYL_COS.raf=requestAnimationFrame(sylCosTick);
 }
 function sylCosClamp(a,b,v){return Math.max(a,Math.min(b,v));}
 function sylCosFront(c){var ab="assets/";try{if(typeof ART_BASE!=="undefined"&&ART_BASE)ab=ART_BASE;}catch(e){}try{return SYL_FRONTS&&SYL_FRONTS[c.name]?ab+SYL_FRONTS[c.name]:"";}catch(e){return "";}}
@@ -2714,22 +2749,22 @@ function sylCosFront(c){var ab="assets/";try{if(typeof ART_BASE!=="undefined"&&A
    (la transicion CSS anima el cambio de posicion) en vez de recrearlas. */
 function sylCosPlace(b,w,back,snap){
   var x=w.off*sylCosClamp(110,180,window.innerWidth*0.42);
-  var scale=w.off===0?1:Math.max(.62,1-Math.abs(w.off)*0.11);
+  var scale=Math.max(.62,1-Math.abs(w.off)*0.11);
   var y=Math.abs(w.off)*8,rot=w.off*3.5;
-  var flipped=w.off===0||!!SYL_COS.flipped[w.ix];
+  var flipped=Math.abs(w.off)<0.5||!!SYL_COS.flipped[w.ix];
   if(snap){b.style.transition="none";b.style.display="";b.style.opacity="0";}
   b.setAttribute("data-ix",String(w.ix));
-  b.className="picker-card "+(w.off===0?"center":"side")+(flipped?" flipped":"");
+  b.className="picker-card "+(Math.abs(w.off)<0.5?"center":"side")+(flipped?" flipped":"");
   b.style.setProperty("--x",x+"px");
   b.style.setProperty("--y",y+"px");
   b.style.setProperty("--scale",String(scale));
   b.style.setProperty("--rot",rot+"deg");
-  b.style.zIndex=String(10-Math.abs(w.off));
-  b.setAttribute("aria-label",flipped?("Seleccionar "+w.c.name):"Carta boca abajo");
+  b.style.zIndex=String(Math.max(1,Math.round(10-Math.abs(w.off))));
+  var _al=flipped?("Seleccionar "+w.c.name):"Carta boca abajo";if(b._cosAl!==_al){b._cosAl=_al;b.setAttribute("aria-label",_al);}
   if(b._cosIx!==w.ix){
     b._cosIx=w.ix;
     var front=sylCosFront(w.c);
-    b.innerHTML='<span class="picker-face picker-back" style="background-image:url(&quot;'+back+'&quot;)"></span><span class="picker-face picker-front"><span class="artbox">'+(front?'<img src="'+front+'" alt="'+w.c.name+'">':'')+'</span><span class="name">'+w.c.name+'</span></span>';
+    b.innerHTML='<span class="picker-flip"><span class="picker-face picker-back" style="background-image:url(&quot;'+back+'&quot;)"></span><span class="picker-face picker-front"><span class="artbox">'+(front?'<img src="'+front+'" alt="'+w.c.name+'">':'')+'</span><span class="name">'+w.c.name+'</span></span></span>';
     if(!b._cosBound){
       b._cosBound=true;
       b.addEventListener("click",function(){
@@ -2743,18 +2778,19 @@ function sylCosPlace(b,w,back,snap){
   if(snap){void b.offsetWidth;b.style.transition="";b.style.opacity="";}
 }
 function sylCosRender(){
-  var track=$("picker-track");if(!track||!state.deck||!SYL_COS)return;
-  var deck=state.deck,center=SYL_COS.index;
-  var back="assets/reverso.webp";try{var b0=deckBackSrc();if(b0)back=b0;}catch(e){}
+  var track=SYL_COS._track||(SYL_COS._track=$("picker-track"));if(!track||!state.deck||!SYL_COS)return;
+  var deck=state.deck,pos=SYL_COS.pos||0;
+  var back=SYL_COS._back;if(!back){back="assets/reverso.webp";try{var b0=deckBackSrc();if(b0)back=b0;}catch(e){}SYL_COS._back=back;}
   if(!SYL_COS.nodes){
     SYL_COS.nodes=[];
     for(var k=0;k<7;k++){var nb=document.createElement("button");nb.type="button";nb.className="picker-card";track.appendChild(nb);SYL_COS.nodes.push(nb);}
   }
   var want=[];
-  [-3,-2,-1,0,1,2,3].forEach(function(off){
-    var ix=(center+off+deck.length)%deck.length,c=deck[ix];
+  var cc=Math.floor(pos);
+  [-3,-2,-1,0,1,2,3].forEach(function(k){
+    var ux=cc+k,ix=((ux%deck.length)+deck.length)%deck.length,c=deck[ix];
     if(state._picked.indexOf(c)>=0)return;
-    want.push({ix:ix,off:off,c:c});
+    want.push({ix:ix,off:pos-ux,c:c});
   });
   var used={};
   want.forEach(function(w){
@@ -2795,12 +2831,21 @@ function sylCosPick(c,ix,btn){
     try{window.SYL_revealDelay=60000;}catch(e){}
     if(n===1&&!SYL_COS.done){SYL_COS.done=true;setTimeout(function(){if(SYL_COS&&SYL_COS.done)sylCosConfirm();},1400);}
   }else{
-    SYL_COS.index=(ix-1+state.deck.length)%state.deck.length;
-    setTimeout(function(){if(SYL_COS)sylCosRender();},650);
+    try{
+      var _ux=Math.floor(SYL_COS.pos),_ix=0,_n=0;
+      for(_n=0;_n<state.deck.length;_n++){
+        _ix=(((_ux+_n)%state.deck.length)+state.deck.length)%state.deck.length;
+        if(state._picked.indexOf(state.deck[_ix])<0){_ux=_ux+_n;break;}
+      }
+      SYL_COS.pos=_ux;SYL_COS.index=_ix;
+    }catch(e){}
+    sylCosPause();
   }
 }
 function sylCosCount(){
   var need=sylCosNeed();
+  if(SYL_COS._cntKey===SYL_COS.selected.length+"|"+need)return;
+  SYL_COS._cntKey=SYL_COS.selected.length+"|"+need;
   var pc=$("picker-count");if(pc)pc.textContent=SYL_COS.selected.length+" de "+need+" cartas seleccionadas";
   var cf=$("picker-confirm");if(cf)cf.disabled=SYL_COS.selected.length!==need;
   var ps2=$("picker-selected");if(ps2)ps2.innerHTML=SYL_COS.selected.map(function(c,i){var lb=state._pickLabels[i]||"";return '<span class="picker-chip">'+(i+1)+'. '+(lb?lb+': ':'')+c.name+(c.reversed?' · Invertida':' · Derecha')+'</span>';}).join("");
@@ -2824,7 +2869,7 @@ function sylCosZoom(c,label,interp){
     sylCosZoom._t=setTimeout(function(){sylCosZoomHide();},n===1?1300:2800);
   }catch(e){}
 }
-function sylCosZoomHide(){try{var z=$("syl-zoom");if(z){z.classList.remove("on");z.style.top="";z.style.height="";}if(sylCosZoom._t){clearTimeout(sylCosZoom._t);sylCosZoom._t=null;}}catch(e){}}
+function sylCosZoomHide(){try{var z=$("syl-zoom");if(z){z.classList.remove("on");z.style.top="";z.style.height="";}if(sylCosZoom._t){clearTimeout(sylCosZoom._t);sylCosZoom._t=null;}try{if(SYL_COS&&!SYL_COS.done&&SYL_COS.selected.length<sylCosNeed()){var _cp=$("cosmic-picker");if(_cp&&_cp.classList.contains("active"))sylCosResume();}}catch(e){}}catch(e){}}
 window.addEventListener("scroll",function(){try{var z=$("syl-zoom");if(z&&z.classList.contains("on")){z.style.top=window.scrollY+"px";z.style.height=window.innerHeight+"px";}}catch(e){}},true);
 (function(){var b=$("syl-zoom-next");if(b)b.addEventListener("click",sylCosZoomHide);var z=$("syl-zoom");if(z)z.addEventListener("click",function(e){if(e.target===z)sylCosZoomHide();});})();
 
@@ -2838,11 +2883,12 @@ function sylCosReset(){
   try{state.deck=shuffleDeck();}catch(e){return;}
   try{window.SYL_revealGen=(window.SYL_revealGen||0)+1;}catch(e){}
   state._pickPool=state.deck.slice();state._picked=[];state._pickLabels=pickLabelsFor(state.mode);
-  SYL_COS={index:0,selected:[],paused:false,flipped:{},timer:null,done:false};
+  sylCosStop();
+  SYL_COS={index:0,selected:[],paused:false,flipped:{},timer:null,done:false,pos:0,raf:null,lastT:0};
   try{window.SYL_COS=SYL_COS;}catch(e){}
   var pp=$("picker-pause");if(pp)pp.textContent="Ⅱ Pausar";
   sylCosRender();
-  SYL_COS.timer=setInterval(function(){if(SYL_COS&&!SYL_COS.paused&&SYL_COS.selected.length<sylCosNeed()){SYL_COS.index=(SYL_COS.index-1+state.deck.length)%state.deck.length;sylCosRender();}},2100);
+  SYL_COS.lastT=0;SYL_COS.raf=requestAnimationFrame(sylCosTick);
   var pc=$("pick-count");if(pc)pc.textContent="Cartas elegidas: 0 / "+sylCosNeed();
   var pl=$("pick-list");if(pl)pl.textContent="";
 }
@@ -2939,7 +2985,7 @@ $("result-block").classList.remove("hidden");
     else if(isCelta){$("draw-status").textContent="Tu Cruz Celta está revelada · 10 cartas";$("btn-draw").textContent="✦ Elegir otra Cruz Celta";}
     else{$("draw-status").textContent="Tu destino en 3 cartas está revelado · Pasado, Presente y Futuro";$("btn-draw").textContent="✦ Elegir otras 3 cartas";}
     excel2(); /* Solo se genera: el envío de los 2 Excel espera a GUARDAR (saveEntrega). */
-    if(isDia){speak("Tu carta del día es "+narrationText(pick,[""]));}
+    if(isDia){if(!sylHumanSol(pick))speak("Tu carta del día es "+narrationText(pick,[""]));}
     else if(isCelta){speak("Tu Cruz Celta está lista. "+narrationText(pick,CELTA_LABELS));}
     else{speak("Tu destino en tres cartas. "+narrationText(pick,["Pasado","Presente","Futuro"]));}
     $("btn-draw").disabled=false;
@@ -2990,7 +3036,7 @@ function resultDoc(){
    +'<div class="entrega-block"><h3>Tu entrega VIP · Tirada Completa</h3><p>Se entregará un PDF con una historieta ilustrada de tu tirada.</p><p><strong>400 pesos</strong> · Incluye el PDF con historieta ilustrada.</p><p>Por <strong>200 pesos más</strong> (600 pesos en total), un video animado de 2 minutos de tu tirada.</p><p>Elige una de las dos opciones:</p><button type="button" class="entrega-opt" data-entrega="pdf"><b>PDF incluido</b><span>Historieta ilustrada de tu tirada, en PDF.</span><span class="precio">400 pesos</span></button><button type="button" class="entrega-opt" data-entrega="video"><b>Video animado</b><span>Video animado de 2 minutos de tu tirada, más el PDF.</span><span class="precio">600 pesos en total</span></button><label for="entrega-contacto-r">Tu email o WhatsApp para mandártelo:</label><input id="entrega-contacto-r" type="text" placeholder="Tu email o WhatsApp"><p>Se enviará en un lapso de 12 horas. Sin pago en esta versión: solo elige y déjanos tu contacto.</p><button type="button" class="guardar" id="btn-entrega-r">Guardar mi elección</button><p class="entrega-ok" id="entrega-ok-r" style="display:none"></p><script>var _eo=document.querySelectorAll(".entrega-opt");for(var _ei=0;_ei<_eo.length;_ei++){_eo[_ei].addEventListener("click",function(){for(var _j=0;_j<_eo.length;_j++){_eo[_j].classList.remove("on");}this.classList.add("on");window.entrega=this.getAttribute("data-entrega");window.entregaPrecio=(window.entrega==="video"?600:400);});}document.getElementById("btn-entrega-r").addEventListener("click",function(){var c=document.getElementById("entrega-contacto-r").value.trim();var ok=document.getElementById("entrega-ok-r");if(!window.entrega){ok.textContent="Primero elige una de las dos opciones: PDF incluido o Video animado.";ok.style.display="block";return;}if(!c){ok.textContent="Déjanos tu email o WhatsApp para mandarte tu entrega.";ok.style.display="block";return;}ok.textContent="✓ Elección guardada: "+(window.entrega==="video"?"Video animado · 600 pesos en total":"PDF incluido · 400 pesos")+". Te lo enviaremos en un lapso de 12 horas a "+c+".";ok.style.display="block";});</scr'+'ipt></div>'
    +'<footer>Syllenza con fines interpretativos y de entretenimiento. Las posiciones derecha/invertida se asignan al azar en cada barajada.<br>Puedes cerrar esta pestaña cuando quieras: tu consulta sigue abierta en la pestaña anterior.</footer>'
    +'<script>(window.adsbygoogle=window.adsbygoogle||[]).push({});(window.adsbygoogle=window.adsbygoogle||[]).push({});</scr'+'ipt>'
-   +'<script>function _pickMale(){try{var vs=speechSynthesis.getVoices()||[],es=[],i;for(i=0;i<vs.length;i++){if(/^es/i.test(vs[i].lang||""))es.push(vs[i]);}if(!es.length)return null;var re=/(miguel|jorge|diego|raul|raúl|pablo|alvaro|álvaro|carlos|juan|pedro|luis|andres|andrés|sergio|alejandro|fernando|roberto|daniel|javier|enrique|alfonso|ricardo|manuel|francisco|antonio|male|masculin|hombre)/i;var fe=/(sabina|monica|mónica|paulina|lucia|lucía|sofia|sofía|valentina|camila|martina|isabella|victoria|daniela|fernanda|alejandra|carmen|elena|laura|paloma|google espa)/i;es.sort(function(a,b){function sc(v){var nm=(v.name||"")+" "+(v.voiceURI||"");var s=re.test(nm)?10:0;if(fe.test(nm))s-=10;if(/^es-MX/i.test(v.lang||""))s+=3;else if(/^es-ES/i.test(v.lang||""))s+=2;return s;}return sc(b)-sc(a);});window._maleIsMale=re.test((es[0].name||"")+" "+(es[0].voiceURI||""))&&!fe.test((es[0].name||"")+" "+(es[0].voiceURI||""));return es[0];}catch(e){return null;}}function _narrate(){try{if(!("speechSynthesis" in window))return;var cards=document.querySelectorAll(".tcard"),txt="Tu Tirada Completa está lista. ",i;for(i=0;i<cards.length;i++){var nm=cards[i].querySelector(".name"),or=cards[i].querySelector(".orient"),mn=cards[i].querySelector(".meaning");txt+="Carta "+(i+1)+": "+(nm?nm.textContent:"")+", "+(or?or.textContent:"")+". "+(mn?mn.textContent:"")+" ";}txt+="Tu resultado completo está en esta página.";speechSynthesis.cancel();var v=_pickMale();var u=new SpeechSynthesisUtterance(txt);u.lang=(v&&v.lang)||"es-MX";u.rate=0.92;u.pitch=window._maleIsMale?0.85:0.75;if(v)u.voice=v;speechSynthesis.speak(u);}catch(e){}}document.getElementById("btn-voice-result-r").addEventListener("click",function(){if(speechSynthesis.speaking){speechSynthesis.cancel();this.textContent="✧ Escuchar mi Tirada Completa · Voz del narrador";}else{_narrate();this.textContent="✧ Silenciar la narración";}});</scr'+'ipt>'
+   +'<script>function _pickMale(){try{var vs=speechSynthesis.getVoices()||[],es=[],i;for(i=0;i<vs.length;i++){if(/^es/i.test(vs[i].lang||""))es.push(vs[i]);}if(!es.length)return null;var re=/(miguel|jorge|diego|raul|raúl|pablo|alvaro|álvaro|carlos|juan|pedro|luis|andres|andrés|sergio|alejandro|fernando|roberto|daniel|javier|enrique|alfonso|ricardo|manuel|francisco|antonio|male|masculin|hombre)/i;var fe=/(sabina|monica|mónica|paulina|lucia|lucía|sofia|sofía|valentina|camila|martina|isabella|victoria|daniela|fernanda|alejandra|carmen|elena|laura|paloma|google espa)/i;es.sort(function(a,b){function sc(v){var nm=(v.name||"")+" "+(v.voiceURI||"");var s=re.test(nm)?10:0;if(fe.test(nm))s-=10;if(/mejorad|enhanced|premium|neural|natural/i.test(nm))s+=6;if(/^es-MX/i.test(v.lang||""))s+=3;else if(/^es-ES/i.test(v.lang||""))s+=2;return s;}return sc(b)-sc(a);});window._maleIsMale=re.test((es[0].name||"")+" "+(es[0].voiceURI||""))&&!fe.test((es[0].name||"")+" "+(es[0].voiceURI||""));return es[0];}catch(e){return null;}}function _narrate(){try{if(!("speechSynthesis" in window))return;var cards=document.querySelectorAll(".tcard"),txt="Tu Tirada Completa está lista. ",i;for(i=0;i<cards.length;i++){var nm=cards[i].querySelector(".name"),or=cards[i].querySelector(".orient"),mn=cards[i].querySelector(".meaning");txt+="Carta "+(i+1)+": "+(nm?nm.textContent:"")+", "+(or?or.textContent:"")+". "+(mn?mn.textContent:"")+" ";}txt+="Tu resultado completo está en esta página.";speechSynthesis.cancel();var v=_pickMale();var u=new SpeechSynthesisUtterance(txt);u.lang=(v&&v.lang)||"es-MX";u.rate=0.92;u.pitch=window._maleIsMale?0.85:0.75;if(v)u.voice=v;speechSynthesis.speak(u);}catch(e){}}document.getElementById("btn-voice-result-r").addEventListener("click",function(){if(speechSynthesis.speaking){speechSynthesis.cancel();this.textContent="✧ Escuchar mi Tirada Completa · Voz del narrador";}else{_narrate();this.textContent="✧ Silenciar la narración";}});</scr'+'ipt>'
    +'</div></body></html>';
 }
 function writeTab(w,html){
@@ -4166,7 +4212,7 @@ if(typeof window.speak==="function"){
         speechSynthesis.cancel();
         var vs=speechSynthesis.getVoices()||[],i,cands=[],male=/daniel|david|james|alex|michael|john|google us english|microsoft (david|guy|ryan|christopher|eric)/i;
         for(i=0;i<vs.length;i++){if(/^en/i.test(vs[i].lang||""))cands.push(vs[i]);}
-        cands.sort(function(a,b){var am=male.test(a.name||""),bm=male.test(b.name||"");return (bm?1:0)-(am?1:0);});
+        cands.sort(function(a,b){function sc(v){var s2=male.test(v.name||"")?10:0;if(/enhanced|premium|neural|natural/i.test((v.name||"")+" "+(v.voiceURI||"")))s2+=6;return s2;}return sc(b)-sc(a);});
         var v=cands[0]||null;
         var u=new SpeechSynthesisUtterance(text);
         u.lang=(v&&v.lang)||"en-US";u.rate=0.95;u.pitch=0.9;
@@ -4501,13 +4547,60 @@ function init(){
 if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",init);}else{init();}
 })();
 </script>
-<script>/* SYL_MENU_PAUSA · al elegir una opcion del menu, el menu deja de avanzar (queda detenido en todas las paginas) */
+<script>/* SYL_MENU_SCROLL · el menu se desliza solo (25 s por vuelta, de izquierda a derecha) y tambien se puede deslizar a mano (arrastrar con el dedo o el raton). Al tocarlo se pausa un momento para poder pulsar un enlace y luego sigue. */
 (function(){try{
-  var KEY="syl-menu-pausa";
-  function pausar(){try{localStorage.setItem(KEY,"1");}catch(e){}
-    document.querySelectorAll(".syl-menu,.fan-menu").forEach(function(n){n.classList.add("syl-menu-paused");});}
-  try{if(localStorage.getItem(KEY)==="1"){document.querySelectorAll(".syl-menu,.fan-menu").forEach(function(n){n.classList.add("syl-menu-paused");});}}catch(e){}
-  document.addEventListener("click",function(ev){var a=ev.target&&ev.target.closest?ev.target.closest(".syl-menu a,.fan-menu a"):null;if(a)pausar();},true);
+  try{localStorage.removeItem("syl-menu-pausa");}catch(e){}
+  var views=document.querySelectorAll(".syl-menu-view");
+  if(!views.length)return;
+  views.forEach(function(view){
+    var track=view.querySelector(".syl-menu-track");if(!track)return;
+    var set=track.querySelector(".syl-menu-set");if(!set)return;
+    var st={drag:false,pauseUntil:0,raf:null,last:0,moved:0,sx:0,sl:0,suppress:false};
+    function setW(){return set.offsetWidth||1;}
+    function wide(){return setW()>view.clientWidth;}
+    function wrap(){
+      if(!wide())return;
+      var w=setW(),sl=view.scrollLeft;
+      if(sl<0){view.scrollLeft=sl+w;}
+      else if(sl>w){view.scrollLeft=sl-w;}
+    }
+    function tick(t){
+      st.raf=null;
+      if(!view.isConnected)return;
+      var now=t||performance.now(),dt=now-(st.last||now);st.last=now;
+      if(dt>100)dt=100;if(dt<0)dt=0;
+      if(wide()&&!st.drag&&now>=st.pauseUntil){
+        view.scrollLeft-=setW()*dt/25000;
+        if(view.scrollLeft<=0){view.scrollLeft+=setW();}
+      }
+      st.raf=requestAnimationFrame(tick);
+    }
+    function pause(ms){st.pauseUntil=performance.now()+(ms||1500);}
+    view.addEventListener("scroll",function(){if(!st.drag)wrap();},{passive:true});
+    view.addEventListener("pointerdown",function(ev){
+      st.drag=true;st.moved=0;st.sx=ev.clientX;st.sl=view.scrollLeft;
+      try{view.setPointerCapture(ev.pointerId);}catch(e){}
+      view.classList.add("dragging");pause(4000);
+    });
+    view.addEventListener("pointermove",function(ev){
+      if(!st.drag)return;
+      var dx=ev.clientX-st.sx;st.moved=Math.max(st.moved,Math.abs(dx));
+      view.scrollLeft=st.sl-dx;
+      var w=setW(),sl=view.scrollLeft;
+      if(sl<=0){view.scrollLeft=sl+w;st.sl+=w;}
+      else if(sl>=w){view.scrollLeft=sl-w;st.sl-=w;}
+    });
+    function endDrag(){if(!st.drag)return;st.drag=false;view.classList.remove("dragging");if(st.moved>6){st.suppress=true;setTimeout(function(){st.suppress=false;},150);}st.moved=0;pause(1200);}
+    view.addEventListener("pointerup",endDrag);
+    view.addEventListener("pointercancel",endDrag);
+    view.addEventListener("click",function(ev){
+      if(st.suppress){ev.preventDefault();ev.stopPropagation();}
+      else{pause(2500);}
+    },true);
+    window.addEventListener("resize",function(){wrap();});
+    if(wide())view.scrollLeft=setW();
+    st.raf=requestAnimationFrame(tick);
+  });
 }catch(e){}})();</script>
 
 
