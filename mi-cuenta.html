@@ -1042,6 +1042,12 @@ footer{font-size:23px}
 @keyframes syl-shine{0%{background-position:120% 0}100%{background-position:-120% 0}}
 @keyframes syl-twinkle{0%,100%{opacity:.2}50%{opacity:1}}
 @media (prefers-reduced-motion: reduce){.syl-logo-wrap,.syl-shine,.syl-tw{animation:none!important}}
+
+/* --- Sesion de prueba (PRUEBA) --- */
+.syl-demo-badge{display:block;text-align:center;font-family:"Cinzel Decorative","Cinzel",serif;color:#1a1206;background:linear-gradient(180deg,#fcda59,#fca611);border:2px solid #fdf77e;border-radius:14px;padding:10px 14px;font-weight:900;letter-spacing:.08em;margin:0 0 14px;box-shadow:0 0 24px rgba(252,166,17,.55)}
+.syl-demo-links{margin:0 0 14px;padding:14px 16px;border:1px dashed rgba(252,166,17,.7);border-radius:14px;background:rgba(252,166,17,.07)}
+.syl-demo-links b{color:var(--gold-pale)}
+.syl-demo-links a{display:inline-block;margin:6px 8px 0 0;color:var(--gold-2);font-weight:700}
 </style>
 
 
@@ -1212,10 +1218,24 @@ footer{font-size:23px}
         </label>
         <button class="btn btn-gold" type="submit">✦ Crear mi cuenta</button>
       </form>
+      <p class="bol-note" style="text-align:center">— o —</p>
+      <button class="btn btn-gold" type="button" id="cuenta-demo">✦ Entrar a mi sesión de prueba</button>
+      <p class="bol-note">Sesión de prueba del dueño: todo gratis y marcada como PRUEBA. Sirve para revisar todo en iPhone y computadora.</p>
       <p class="bol-note">Tu cuenta vive en tu navegador y solo se usa para tus referidos y tu boletín. Sin contraseñas.</p>
     </div>
     <div class="bol-card hidden" id="cuenta-panel">
       <p class="bol-perks" id="cuenta-bienvenida"></p>
+      <p class="syl-demo-badge hidden" id="cuenta-demo-badge">★ SESIÓN DE PRUEBA ★ · Todo gratis</p>
+      <div class="syl-demo-links hidden" id="cuenta-demo-links">
+        <b>Todo gratis en esta sesión:</b><br>
+        <a href="carta-del-dia.html">☀️ Carta del Día · Gratis</a>
+        <a href="pasado-presente-futuro.html">☾ Pasado · Presente · Futuro · Gratis</a>
+        <a href="cruz-celta.html">✥ Cruz Celta · Gratis</a>
+        <a href="tirada-completa.html">✧ Tirada Completa · Gratis</a>
+        <a href="horoscopos.html">Horóscopos</a>
+        <a href="runa-celta.html">Runa Celta</a>
+        <a href="tarjetas-regalo.html">Tarjetas de regalo</a>
+      </div>
       <p class="bol-nums-t">Tu código de referido</p>
       <p class="cuenta-code" id="cuenta-codigo"></p>
       <p class="bol-nums-t">Tu enlace personal</p>
@@ -1240,6 +1260,7 @@ footer{font-size:23px}
       <p class="bol-note">Tus referidos se confirman cuando se registran con tu enlace: cada registro nos llega por correo y lo sumamos a tu cuenta. Aquí ves los referidos confirmados en este dispositivo.</p>
       <p class="bol-back"><a href="boletin.html">✉ Ir al Boletín Mensual →</a></p>
       <p class="bol-back"><button class="bol-linklike" type="button" id="cuenta-eliminar">Eliminar mi cuenta</button></p>
+      <p class="bol-back hidden" id="cuenta-demo-salir-row"><button class="bol-linklike" type="button" id="cuenta-demo-salir">Salir de la sesión de prueba</button></p>
     </div>
     <p class="bol-back"><a href="index.html">← Regresar a Inicio</a></p>
   </section>
@@ -3182,6 +3203,66 @@ function refCrearCuentaAuto(nombre,email,opts){
   }catch(e){return null;}
 }
 window.SYL_crearCuentaAuto=refCrearCuentaAuto;
+/* ===== Sesion de prueba (PRUEBA) · para el dueno, sin EmailJS ===== */
+function sylDemoOn(){try{return localStorage.getItem("syl-demo")==="1";}catch(e){return false;}}
+function sylDemoActivar(){
+  try{
+    var prev=null;
+    try{prev=localStorage.getItem("syl-cuenta");}catch(e){}
+    if(prev)try{localStorage.setItem("syl-cuenta-respaldo",prev);}catch(e){}
+    var hoy=new Date().toISOString().slice(0,10);
+    var demo={nombre:"Leonardo",email:"alberto.ochoaa@gmail.com",codigo:"PRUEBA",creada:hoy,demo:true,
+      referidos:[{nombre:"Invitado Prueba 1",email:"prueba1@demo.syllenza",fecha:hoy},{nombre:"Invitado Prueba 2",email:"prueba2@demo.syllenza",fecha:hoy},{nombre:"Invitado Prueba 3",email:"prueba3@demo.syllenza",fecha:hoy},{nombre:"Invitado Prueba 4",email:"prueba4@demo.syllenza",fecha:hoy},{nombre:"Invitado Prueba 5",email:"prueba5@demo.syllenza",fecha:hoy}],
+      solicitudGratis:{codigo:"GRATIS-PRUEBA",fecha:hoy,entrega:"PDF"}};
+    localStorage.setItem("syl-cuenta",JSON.stringify(demo));
+    localStorage.setItem("syl-demo","1");
+    renderCuenta();sylDemoPintar();
+    refToast("Sesión de prueba activada. Todo gratis.");
+  }catch(e){}
+}
+function sylDemoSalir(){
+  try{
+    localStorage.removeItem("syl-demo");
+    localStorage.removeItem("syl-cuenta");
+    var prev=null;try{prev=localStorage.getItem("syl-cuenta-respaldo");}catch(e){}
+    if(prev){try{localStorage.setItem("syl-cuenta",prev);localStorage.removeItem("syl-cuenta-respaldo");}catch(e){}}
+    renderCuenta();sylDemoPintar();
+    refToast("Saliste de la sesión de prueba.");
+  }catch(e){}
+}
+function sylDemoPintar(){
+  try{
+    var on=sylDemoOn();
+    var b=document.getElementById("cuenta-demo-badge");if(b)b.classList.toggle("hidden",!on);
+    var l=document.getElementById("cuenta-demo-links");if(l)l.classList.toggle("hidden",!on);
+    var r=document.getElementById("cuenta-demo-salir-row");if(r)r.classList.toggle("hidden",!on);
+  }catch(e){}
+}
+document.addEventListener("DOMContentLoaded",function(){
+  var db=document.getElementById("cuenta-demo");
+  if(db)db.addEventListener("click",function(){sylDemoActivar();});
+  var ds=document.getElementById("cuenta-demo-salir");
+  if(ds)ds.addEventListener("click",function(){sylDemoSalir();});
+  var del=document.getElementById("cuenta-eliminar");
+  if(del)del.addEventListener("click",function(){try{localStorage.removeItem("syl-demo");}catch(e){}sylDemoPintar();});
+  function demoEntrega(entrega){
+    return function(ev){
+      if(!sylDemoOn())return;
+      try{ev.stopImmediatePropagation();ev.preventDefault();}catch(e){}
+      try{
+        var c=refLoadCuenta();if(!c||!c.solicitudGratis)return;
+        if(c.solicitudGratis.entrega===entrega)return;
+        c.solicitudGratis.entrega=entrega;refSaveCuenta(c);refPintarEntrega(c);
+        refToast("Entrega actualizada (PRUEBA).");
+      }catch(e){}
+    };
+  }
+  var bp=document.getElementById("cuenta-entrega-pdf");
+  if(bp)bp.addEventListener("click",demoEntrega("PDF"));
+  var bv=document.getElementById("cuenta-entrega-video");
+  if(bv)bv.addEventListener("click",demoEntrega("Video"));
+  sylDemoPintar();
+});
 function renderCuenta(){
   try{
     var c=refLoadCuenta();
