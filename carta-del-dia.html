@@ -2721,7 +2721,7 @@ function sylCosTick(t){
   if(SYL_COS.paused){SYL_COS.raf=null;return;}
   var dt=t-(SYL_COS.lastT||t);SYL_COS.lastT=t;
   if(dt>100)dt=100;if(dt<0)dt=0;
-  if(SYL_COS.selected.length<sylCosNeed()){SYL_COS.pos+=dt/2100;}
+  if(SYL_COS.selected.length<sylCosNeed()){SYL_COS.pos+=dt/1200;}
   sylCosRender();
   if(SYL_COS)SYL_COS.raf=requestAnimationFrame(sylCosTick);
 }
