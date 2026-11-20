@@ -843,6 +843,9 @@ body.page-leave{opacity:0;transition:opacity .35s ease}
 .fan-pick{margin-bottom:34px}
 @keyframes fanRotate{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
 .fan-pick.spinning{animation:fanRotate 36s linear infinite;transform-origin:50% 50%}
+/* SYL_FAN_DRAG: el abanico también se desliza a mano */
+.fan-pick{cursor:grab;touch-action:pan-y;-webkit-user-select:none;user-select:none}
+.fan-pick.dragging{cursor:grabbing}
   
 .pick-status,.car-wrap,.car-hint{position:relative;z-index:3}
 .bol-nums{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;align-items:center}
@@ -2413,8 +2416,61 @@ function buildFan(){
   fan.innerHTML=h;
   var cards=fan.querySelectorAll(".fan-card"),k;
   for(k=0;k<cards.length;k++){(function(el){el.addEventListener("click",function(){pickOne(+el.getAttribute("data-fan"));});})(cards[k]);}
+  bindFanDrag();
 }
 
+/* SYL_FAN_DRAG: deslizar el abanico a mano (ratón o dedo).
+   El giro automático sigue; al soltar, la animación continúa
+   desde el ángulo donde quedó, sin salto. */
+function bindFanDrag(){
+  var fan=$("fan-pick");
+  if(!fan||window._fanDragBound)return;
+  window._fanDragBound=true;
+  var dragging=false,startX=0,startAng=0,curAng=0,moved=0,pid=null;
+  function animAngle(){
+    try{
+      var d=parseFloat(fan.style.animationDelay)||0;
+      var a=fan.getAnimations?fan.getAnimations():[];
+      for(var i=0;i<a.length;i++){
+        if(a[i].animationName==="fanRotate"&&a[i].currentTime!=null){
+          return (((a[i].currentTime/1000-d)/36)*360)%360;
+        }
+      }
+    }catch(e){}
+    return 0;
+  }
+  function onMove(e){
+    if(!dragging||e.pointerId!==pid)return;
+    var dx=e.clientX-startX;
+    moved=Math.max(moved,Math.abs(dx));
+    curAng=startAng+dx*0.35;
+    fan.style.transform="rotate("+curAng.toFixed(1)+"deg)";
+  }
+  function onUp(e){
+    if(!dragging||e.pointerId!==pid)return;
+    dragging=false;
+    window.removeEventListener("pointermove",onMove);
+    window.removeEventListener("pointerup",onUp);
+    window.removeEventListener("pointercancel",onUp);
+    fan.classList.remove("dragging");
+    var a=((curAng%360)+360)%360;
+    fan.style.animation="";
+    fan.style.transform="";
+    fan.style.animationDelay=(-(a/10)).toFixed(2)+"s";
+  }
+  fan.addEventListener("pointerdown",function(e){
+    if(!fan.classList.contains("spinning"))return;
+    dragging=true;pid=e.pointerId;moved=0;startX=e.clientX;
+    startAng=animAngle();curAng=startAng;
+    fan.style.animation="none";
+    fan.style.transform="rotate("+startAng.toFixed(1)+"deg)";
+    fan.classList.add("dragging");
+    window.addEventListener("pointermove",onMove);
+    window.addEventListener("pointerup",onUp);
+    window.addEventListener("pointercancel",onUp);
+  });
+  fan.addEventListener("click",function(e){if(moved>8){e.preventDefault();e.stopPropagation();}},true);
+}
 function buildCarousel(){
   var tr=$("car-track");if(!tr)return;
   var back=deckBackSrc(),h="",i;
