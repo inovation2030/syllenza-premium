@@ -1094,6 +1094,16 @@ body.syl-fan-full #view-pick .fan-card{position:relative;left:auto;bottom:auto;f
 body.syl-fan-full #view-pick .fan-card:hover{transform:translateY(-10px) scale(1.03)!important}
 body.syl-fan-full #view-pick #fan-pick.dragging{cursor:grabbing}
 @media(max-width:620px){body.syl-fan-full #view-pick .fan-card{margin:0 5px}}
+/* ===== SYL_MENU_NUEVO · Menú único arriba, horizontal, enlaces directos (2026-11-19) ===== */
+.syl-top{position:sticky;top:0;z-index:50;background:#04060f;box-shadow:0 10px 30px rgba(0,0,0,.55)}
+.syl-menu{display:flex;align-items:center;gap:2px;overflow-x:auto;scrollbar-width:thin;background:linear-gradient(120deg,#101f4d,#060b1e 60%,#0d1a42);border:2px solid var(--gold);border-radius:999px;padding:10px 16px;margin:10px 0;white-space:nowrap}
+.syl-menu a{font-family:"Cinzel Decorative","Cinzel",serif;font-weight:700;font-size:17px;letter-spacing:.06em;color:var(--gold-pale);text-decoration:none;padding:9px 13px;border-radius:999px;border:1px solid transparent;flex:0 0 auto}
+.syl-menu a:hover{border-color:var(--gold);background:rgba(252,166,17,.1)}
+.syl-menu a.on{background:linear-gradient(180deg,#fca611,#b96a00);color:#1a1000}
+.syl-menu .syl-sep{color:var(--gold);opacity:.7;flex:0 0 auto}
+.syl-menu .lang-cur{margin-left:auto;display:flex;gap:6px;flex:0 0 auto;padding-left:10px}
+.syl-menu .lang-cur select{background:#0a1330;color:var(--gold-pale);border:1px solid var(--gold);border-radius:999px;padding:7px 9px;font-size:14px}
+@media(max-width:620px){.syl-menu{padding:8px 12px}.syl-menu a{font-size:15px;padding:8px 10px}}
 </style>
 
 
@@ -1103,7 +1113,7 @@ body.syl-fan-full #view-pick #fan-pick.dragging{cursor:grabbing}
   <!-- NAV · SYLLENZA -->
   <!-- MASTHEAD · SYLLENZA: cielo, lunas y esquinas construidos con CSS real -->
   <!-- BARRA SESION DE PRUEBA + SECUENCIA · en las 12 paginas, solo visible con la demo activa -->
-  <div class="syl-demo-bar hidden" id="syl-demo-bar" role="status"><span class="syl-demo-star">★ SESIÓN DE PRUEBA ★ · Todo gratis</span><span class="syl-demo-seq"> Secuencia: <a href="index.html" data-seq="inicio">① Inicio</a> → <a href="experiencias.html" data-seq="exp">② Experiencias</a> → <a href="carta-del-dia.html" data-seq="lect">③ Lecturas</a> → <a href="mi-cuenta.html" data-seq="cuenta">④ Mi cuenta</a></span><span class="syl-demo-links2"> <a href="mi-cuenta.html">Mi sesión</a> · <button type="button" id="syl-demo-salir-top">Salir</button></span></div>
+  <div class="syl-top"><div class="syl-demo-bar hidden" id="syl-demo-bar" role="status"><span class="syl-demo-star">★ SESIÓN DE PRUEBA ★ · Todo gratis</span><span class="syl-demo-seq"> Secuencia: <a href="index.html" data-seq="inicio">① Inicio</a> → <a href="experiencias.html" data-seq="exp">② Experiencias</a> → <a href="carta-del-dia.html" data-seq="lect">③ Lecturas</a> → <a href="mi-cuenta.html" data-seq="cuenta">④ Mi cuenta</a></span><span class="syl-demo-links2"> <a href="mi-cuenta.html">Mi sesión</a> · <button type="button" id="syl-demo-salir-top">Salir</button></span></div>
   <script>
   (function(){try{
     var bar=document.getElementById("syl-demo-bar");
@@ -1125,7 +1135,7 @@ body.syl-fan-full #view-pick #fan-pick.dragging{cursor:grabbing}
       try{location.reload();}catch(e){}
     });
   }catch(e){}})();
-  </script>
+  </script><nav class="syl-menu" aria-label="Menú principal de Syllenza"><a href="index.html">⌂ Inicio</a><span class="syl-sep">✦</span><a href="experiencias.html">✦ Elige tu experiencia</a><span class="syl-sep">✦</span><a href="carta-del-dia.html" class="on">☀️ Carta del Día</a><span class="syl-sep">✦</span><a href="pasado-presente-futuro.html">☾ 3 Cartas</a><span class="syl-sep">✦</span><a href="tirada-completa.html">✧ Tirada Completa</a><span class="syl-sep">✦</span><a href="cruz-celta.html">✥ Cruz Celta</a><span class="syl-sep">✦</span><a href="horoscopos.html">☾ Horóscopo del Día</a><span class="syl-sep">✦</span><a href="runa-celta.html">ᚱ Runa del Día</a><span class="syl-sep">✦</span><a href="numerologia.html">🔢 Numerología</a><span class="syl-sep">✦</span><a href="contacto.html">✉ Contacto</a><span class="syl-sep">✦</span><a href="tarjetas-regalo.html">🎁 Syllenza Pass</a><span class="syl-sep">✦</span><a href="mi-cuenta.html">👤 Mi cuenta</a><span class="lang-cur"><select id="sel-lang" aria-label="Idioma"><option value="es">ES</option><option value="en">EN</option></select><select id="sel-cur" aria-label="Moneda"><option value="MXN">MXN $</option><option value="USD">USD $</option><option value="EUR">EUR €</option></select></span></nav></div>
   <header class="masthead">
     <div class="hero-sky" id="hero-bg" aria-hidden="true"></div><div class="mast-slides" id="mast-slides" aria-hidden="true"><img id="mast-slide-a" alt=""><img id="mast-slide-b" alt=""></div><div class="mast-dots" id="mast-dots"><button type="button" data-mast="0" aria-label="Slide 1"></button><button type="button" data-mast="1" aria-label="Slide 2"></button><button type="button" data-mast="2" aria-label="Slide 3"></button><button type="button" data-mast="3" aria-label="Slide 4"></button><button type="button" data-mast="4" aria-label="Slide 5"></button><button type="button" data-mast="5" aria-label="Slide 6"></button></div><div class="hero-sparkles" id="hero-sparkles" aria-hidden="true"></div><div class="hero-corners" aria-hidden="true"><i class="hc tl"></i><i class="hc tr"></i><i class="hc bl"></i><i class="hc br"></i></div>
     <div class="mast-row">
@@ -1139,106 +1149,9 @@ body.syl-fan-full #view-pick #fan-pick.dragging{cursor:grabbing}
     <a class="btn btn-gold hero-cta" href="experiencias.html">Comenzar mi consulta</a>
     <div class="hero-illus" aria-hidden="true"><figure class="hi-left"><img src="assets/hero-joven.webp" alt="" decoding="async"></figure><div class="hi-mid"><span class="hi-ring">✦</span><span class="hi-moons">☾ ☽</span></div><figure class="hi-right"><img src="assets/hero-libro.webp" alt="" decoding="async"></figure></div>
   </header>
-    <nav class="topnav" aria-label="Navegación principal">
-<div class="menupill">
-        <div class="nav-drop">
-          <button type="button" class="nav-top" aria-haspopup="true" aria-expanded="false">⌂ Inicio ▾</button>
-          <div class="nav-sub">
-            <a href="index.html">⌂ Inicio</a>
-            <a href="experiencias.html">✦ Elige tu experiencia</a>
-          </div>
-        </div>
-        <div class="nav-drop">
-          <button type="button" class="nav-top" aria-haspopup="true" aria-expanded="false">✦ Tiradas ▾</button>
-          <div class="nav-sub">
-            <a href="carta-del-dia.html" class="on">☀️ Carta del Día</a>
-            <a href="pasado-presente-futuro.html">☾ Pasado · Presente · Futuro</a>
-            <a href="tirada-completa.html">✧ Tirada Completa 22</a>
-            <a href="cruz-celta.html">✥ Cruz Celta</a>
-          </div>
-        </div>
-        <div class="nav-drop">
-          <button type="button" class="nav-top" aria-haspopup="true" aria-expanded="false">☾ Astrología ▾</button>
-          <div class="nav-sub">
-            <a href="horoscopos.html">☾ Horóscopos diarios</a>
-            <a href="runa-celta.html">ᚱ Runa Celta del Día</a><a href="numerologia.html">🔢 Numerología</a>
-            <a href="horoscopos.html">✦ Horóscopo Mensual</a>
-            <a href="boletin.html">✉ Boletín Mensual</a>
-          </div>
-        </div>
-        <div class="nav-drop">
-          <button type="button" class="nav-top" aria-haspopup="true" aria-expanded="false">❖ Guía ▾</button>
-          <div class="nav-sub">
-            <a href="guia.html">❖ Guía Syllenza</a>
-            <a href="experiencias.html">✦ Mi consulta</a>
-            <a href="boletin.html">✉ Boletín Mensual</a>
-            <a href="mi-cuenta.html">👤 Mi cuenta</a>
-          </div>
-        </div>
-        <div class="nav-drop">
-          <button type="button" class="nav-top" aria-haspopup="true" aria-expanded="false">♛ Premium ▾</button>
-          <div class="nav-sub">
-            <a href="experiencias.html">♛ Experiencia VIP</a>
-            <a href="tarjetas-regalo.html">🎁 Tarjetas de regalo</a>
-            <a href="boletin.html">✉ Boletín Mensual</a>
-            <a href="tirada-completa.html">✧ Tirada Completa 22</a>
-          </div>
-        </div>
-      </div>
-      <span class="lang-cur"><select id="sel-lang" aria-label="Idioma"><option value="es">ES</option><option value="en">EN</option></select><select id="sel-cur" aria-label="Moneda"><option value="MXN">MXN $</option><option value="USD">USD $</option><option value="EUR">EUR €</option></select></span>
-      <button type="button" class="nav-acct" id="btn-account">👤 Mi cuenta</button>
-      <button type="button" class="nav-burger" id="btn-menu" aria-expanded="false" aria-controls="menu-movil" aria-label="Abrir menú">☰</button>
-    </nav>
-<nav class="submenubar" aria-label="Todas las páginas de Syllenza">
-<a href="index.html">⌂ Inicio</a><span class="smb-sep">✦</span><a href="experiencias.html">✦ Elige tu experiencia</a><span class="smb-sep">✦</span><a href="carta-del-dia.html" class="on">☀️ Carta del Día</a><span class="smb-sep">✦</span><a href="pasado-presente-futuro.html">☾ Pasado · Presente · Futuro</a><span class="smb-sep">✦</span><a href="tirada-completa.html">✧ Tirada Completa</a><span class="smb-sep">✦</span><a href="cruz-celta.html">✥ Cruz Celta</a><span class="smb-sep">✦</span><a href="horoscopos.html">☾ Horóscopos</a><span class="smb-sep">✦</span><a href="runa-celta.html">ᚱ Runa Celta</a><span class="smb-sep">✦</span><a href="numerologia.html">🔢 Numerología</a><span class="smb-sep">✦</span><a href="mi-cuenta.html">👤 Mi cuenta</a><span class="smb-sep">✦</span><a href="boletin.html">✉ Boletín</a><span class="smb-sep">✦</span><a href="guia.html">❖ Guía</a><span class="smb-sep">✦</span><a href="tarjetas-regalo.html">🎁 Tarjetas de regalo</a>
-</nav>
-<div class="menu-movil hidden" id="menu-movil">
-      <div class="nav-drop-m">
-        <button type="button" class="nav-top-m" aria-expanded="false">⌂ Inicio ▾</button>
-        <div class="nav-sub-m hidden">
-          <a href="index.html">⌂ Inicio</a>
-          <a href="experiencias.html">✦ Elige tu experiencia</a>
-        </div>
-      </div>
-      <div class="nav-drop-m">
-        <button type="button" class="nav-top-m" aria-expanded="false">✦ Tiradas ▾</button>
-        <div class="nav-sub-m hidden">
-          <a href="carta-del-dia.html">☀️ Carta del Día</a>
-          <a href="pasado-presente-futuro.html">☾ Pasado · Presente · Futuro</a>
-          <a href="tirada-completa.html">✧ Tirada Completa 22</a>
-          <a href="cruz-celta.html">✥ Cruz Celta</a>
-        </div>
-      </div>
-      <div class="nav-drop-m">
-        <button type="button" class="nav-top-m" aria-expanded="false">☾ Astrología ▾</button>
-        <div class="nav-sub-m hidden">
-          <a href="horoscopos.html">☾ Horóscopos diarios</a>
-          <a href="runa-celta.html">ᚱ Runa Celta del Día</a><a href="numerologia.html">🔢 Numerología</a>
-            <a href="horoscopos.html">✦ Horóscopo Mensual</a>
-            <a href="boletin.html">✉ Boletín Mensual</a>
-        </div>
-      </div>
-      <div class="nav-drop-m">
-        <button type="button" class="nav-top-m" aria-expanded="false">❖ Guía ▾</button>
-        <div class="nav-sub-m hidden">
-          <a href="guia.html">❖ Guía Syllenza</a>
-          <a href="experiencias.html">✦ Mi consulta</a>
-            <a href="boletin.html">✉ Boletín Mensual</a>
-            <a href="mi-cuenta.html">👤 Mi cuenta</a>
-        </div>
-      </div>
-      <div class="nav-drop-m">
-        <button type="button" class="nav-top-m" aria-expanded="false">♛ Premium ▾</button>
-        <div class="nav-sub-m hidden">
-          <a href="experiencias.html">♛ Experiencia VIP</a>
-          <a href="tarjetas-regalo.html">🎁 Tarjetas de regalo</a>
-            <a href="boletin.html">✉ Boletín Mensual</a>
-          <a href="tirada-completa.html">✧ Tirada Completa 22</a>
-        </div>
-      </div>
-      <span class="lang-cur"><select id="sel-lang-m" aria-label="Idioma"><option value="es">ES</option><option value="en">EN</option></select><select id="sel-cur-m" aria-label="Moneda"><option value="MXN">MXN $</option><option value="USD">USD $</option><option value="EUR">EUR €</option></select></span>
-      <button type="button" class="nav-acct-m" id="btn-account-m">👤 Mi cuenta</button>
-    </div>
+    
+
+
 
 
   <!-- ▼▼▼ BANNER ADSENSE · ARRIBA (bajo la portada) · data-ad-client = ★ TU ID ca-pub-XXXX ★ ▼▼▼ -->
@@ -1400,7 +1313,7 @@ body.syl-fan-full #view-pick #fan-pick.dragging{cursor:grabbing}
 
   <!-- ============ VISTA 2B: OPCIONES (foto 2) + ABANICO (foto 3) ============ -->
   
-<section class="panel hidden" id="view-pick"><nav class="fan-menu" aria-label="Menú"><a href="index.html">Inicio</a><a href="experiencias.html">Experiencias</a><a href="carta-del-dia.html">Carta del Día</a><a href="pasado-presente-futuro.html">3 Cartas</a><a href="tirada-completa.html">Tirada Completa</a><a href="cruz-celta.html">Cruz Celta</a><a href="mi-cuenta.html">Mi cuenta</a></nav>
+<section class="panel hidden" id="view-pick"><nav class="fan-menu" aria-label="Menú"><a href="index.html">⌂ Inicio</a><a href="experiencias.html">✦ Elige tu experiencia</a><a href="carta-del-dia.html" class="on">☀️ Carta del Día</a><a href="pasado-presente-futuro.html">☾ 3 Cartas</a><a href="tirada-completa.html">✧ Tirada Completa</a><a href="cruz-celta.html">✥ Cruz Celta</a><a href="horoscopos.html">☾ Horóscopo del Día</a><a href="runa-celta.html">ᚱ Runa del Día</a><a href="numerologia.html">🔢 Numerología</a><a href="contacto.html">✉ Contacto</a><a href="tarjetas-regalo.html">🎁 Syllenza Pass</a><a href="mi-cuenta.html">👤 Mi cuenta</a></nav>
     <p class="pick-eyebrow">✦ SYLLENZA ✦</p>
     <h2 id="pick-title">Carta del día</h2>
     <p class="sub" id="pick-sub">Una guía para hoy. La energía del universo te revela un mensaje especial.</p>
