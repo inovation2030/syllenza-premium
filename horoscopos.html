@@ -1089,12 +1089,13 @@ body.syl-fan-full .syl-bot-btn,body.syl-fan-full .syl-bot,body.syl-cruz-full .sy
 /* SYL_LOGO_SOLO: en las demás páginas solo el logo arriba */
 .masthead.masthead-logo-only{padding:16px 12px 18px}
 /* SYL_MENU_MARQUEE · menú en marquesina de izquierda a derecha, 25 s por ciclo (2026-11-20) */
-.syl-menu-view{flex:1 1 auto;min-width:0;overflow:hidden;display:flex;align-items:center}
-.syl-menu-track{display:flex;align-items:center;width:max-content;animation:syl-menu-marquee 25s linear infinite;will-change:transform}
+.syl-menu-view{flex:1 1 auto;min-width:0;overflow-x:auto;overflow-y:hidden;display:flex;align-items:center;scrollbar-width:none;-webkit-overflow-scrolling:touch;touch-action:pan-x;cursor:grab}
+.syl-menu-view::-webkit-scrollbar{display:none}
+.syl-menu-view.dragging{cursor:grabbing}
+.syl-menu-track{display:flex;align-items:center;width:max-content;will-change:transform}
 .syl-menu-set{display:flex;align-items:center;gap:2px;white-space:nowrap;flex:0 0 auto}
 @keyframes syl-menu-marquee{from{transform:translateX(-50%)}to{transform:translateX(0)}}
-/* SYL_MENU_PAUSA · menu detenido cuando el usuario ya eligio una opcion */
-.syl-menu.syl-menu-paused .syl-menu-track,.fan-menu.syl-menu-paused .syl-menu-track{animation-play-state:paused!important}
+/* SYL_MENU_SCROLL · el menu se desliza solo y tambien a mano */
 </style>
 
 
@@ -3724,13 +3725,60 @@ if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded"
 /* SYL_IR_SECCION · al abrir desde el menú, ir directo a su contenido (Leonardo, 2026-11-20) */
 document.addEventListener("DOMContentLoaded",function(){try{var el=document.getElementById("tarot-diario");if(el)setTimeout(function(){el.scrollIntoView({behavior:"smooth",block:"start"});},700);}catch(e){}});
 </script>
-<script>/* SYL_MENU_PAUSA · al elegir una opcion del menu, el menu deja de avanzar (queda detenido en todas las paginas) */
+<script>/* SYL_MENU_SCROLL · el menu se desliza solo (25 s por vuelta, de izquierda a derecha) y tambien se puede deslizar a mano (arrastrar con el dedo o el raton). Al tocarlo se pausa un momento para poder pulsar un enlace y luego sigue. */
 (function(){try{
-  var KEY="syl-menu-pausa";
-  function pausar(){try{localStorage.setItem(KEY,"1");}catch(e){}
-    document.querySelectorAll(".syl-menu,.fan-menu").forEach(function(n){n.classList.add("syl-menu-paused");});}
-  try{if(localStorage.getItem(KEY)==="1"){document.querySelectorAll(".syl-menu,.fan-menu").forEach(function(n){n.classList.add("syl-menu-paused");});}}catch(e){}
-  document.addEventListener("click",function(ev){var a=ev.target&&ev.target.closest?ev.target.closest(".syl-menu a,.fan-menu a"):null;if(a)pausar();},true);
+  try{localStorage.removeItem("syl-menu-pausa");}catch(e){}
+  var views=document.querySelectorAll(".syl-menu-view");
+  if(!views.length)return;
+  views.forEach(function(view){
+    var track=view.querySelector(".syl-menu-track");if(!track)return;
+    var set=track.querySelector(".syl-menu-set");if(!set)return;
+    var st={drag:false,pauseUntil:0,raf:null,last:0,moved:0,sx:0,sl:0,suppress:false};
+    function setW(){return set.offsetWidth||1;}
+    function wide(){return setW()>view.clientWidth;}
+    function wrap(){
+      if(!wide())return;
+      var w=setW(),sl=view.scrollLeft;
+      if(sl<0){view.scrollLeft=sl+w;}
+      else if(sl>w){view.scrollLeft=sl-w;}
+    }
+    function tick(t){
+      st.raf=null;
+      if(!view.isConnected)return;
+      var now=t||performance.now(),dt=now-(st.last||now);st.last=now;
+      if(dt>100)dt=100;if(dt<0)dt=0;
+      if(wide()&&!st.drag&&now>=st.pauseUntil){
+        view.scrollLeft-=setW()*dt/25000;
+        if(view.scrollLeft<=0){view.scrollLeft+=setW();}
+      }
+      st.raf=requestAnimationFrame(tick);
+    }
+    function pause(ms){st.pauseUntil=performance.now()+(ms||1500);}
+    view.addEventListener("scroll",function(){if(!st.drag)wrap();},{passive:true});
+    view.addEventListener("pointerdown",function(ev){
+      st.drag=true;st.moved=0;st.sx=ev.clientX;st.sl=view.scrollLeft;
+      try{view.setPointerCapture(ev.pointerId);}catch(e){}
+      view.classList.add("dragging");pause(4000);
+    });
+    view.addEventListener("pointermove",function(ev){
+      if(!st.drag)return;
+      var dx=ev.clientX-st.sx;st.moved=Math.max(st.moved,Math.abs(dx));
+      view.scrollLeft=st.sl-dx;
+      var w=setW(),sl=view.scrollLeft;
+      if(sl<=0){view.scrollLeft=sl+w;st.sl+=w;}
+      else if(sl>=w){view.scrollLeft=sl-w;st.sl-=w;}
+    });
+    function endDrag(){if(!st.drag)return;st.drag=false;view.classList.remove("dragging");if(st.moved>6){st.suppress=true;setTimeout(function(){st.suppress=false;},150);}st.moved=0;pause(1200);}
+    view.addEventListener("pointerup",endDrag);
+    view.addEventListener("pointercancel",endDrag);
+    view.addEventListener("click",function(ev){
+      if(st.suppress){ev.preventDefault();ev.stopPropagation();}
+      else{pause(2500);}
+    },true);
+    window.addEventListener("resize",function(){wrap();});
+    if(wide())view.scrollLeft=setW();
+    st.raf=requestAnimationFrame(tick);
+  });
 }catch(e){}})();</script>
 
 </body>
