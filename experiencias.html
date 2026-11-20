@@ -1050,6 +1050,33 @@ footer{font-size:23px}
 .syl-demo-bar button{background:#1a1206;color:#fcda59;border:1px solid #fdf77e;border-radius:8px;padding:2px 10px;font-weight:700;cursor:pointer;margin-left:6px}
 .syl-demo-bar .syl-demo-seq{font-weight:700}
 @media(max-width:860px){.syl-demo-bar{font-size:12.5px;padding:7px 8px}}
+
+/* ===== SYL_EXP2 · Elige tu experiencia como la foto (2 paneles) + que trata cada una ===== */
+.syl-exp2{display:grid;grid-template-columns:1fr 1fr;gap:0;max-width:1180px;margin:0 auto}
+.syl-exp2 .syl-panel{position:relative;text-align:center;padding:34px 30px 30px;border:0;background:transparent;box-shadow:none}
+.syl-exp2 .syl-panel+.syl-panel{border-left:1px solid rgba(252,166,17,.45)}
+.syl-exp2 .syl-panel:nth-child(3){border-top:1px solid rgba(252,166,17,.45)}
+.syl-exp2 .syl-panel:nth-child(4){border-top:1px solid rgba(252,166,17,.45)}
+.syl-exp2 .syl-panel h3{font-family:"Cinzel Decorative","Cinzel",serif;font-size:clamp(20px,2.5vw,27px);letter-spacing:.1em;color:#f6d47a;margin:0 0 12px;text-transform:uppercase}
+.syl-exp2 .syl-desc{font-family:"Cormorant Garamond",serif;font-size:clamp(19px,2.2vw,23px);line-height:1.5;color:#e8ddc0;margin:0 auto 22px;max-width:420px}
+.syl-exp2 .syl-cards{display:flex;justify-content:center;align-items:flex-end;gap:14px;margin:0 auto 10px}
+.syl-exp2 .syl-cards img{width:clamp(96px,13vw,150px);aspect-ratio:2/3.1;object-fit:cover;border-radius:10px;border:2px solid var(--gold);box-shadow:0 16px 34px rgba(0,0,0,.7)}
+.syl-exp2 .syl-one img{width:clamp(130px,17vw,190px)}
+.syl-exp2 .syl-labels{display:flex;justify-content:center;gap:14px;margin:0 0 18px}
+.syl-exp2 .syl-labels span{font-family:"Cinzel Decorative","Cinzel",serif;font-size:13px;letter-spacing:.22em;color:#f6d47a}
+.syl-exp2 .syl-price{font-family:"Cinzel Decorative","Cinzel",serif;color:#f6d47a;font-size:15px;letter-spacing:.1em;margin:0 0 18px}
+.syl-exp2 .syl-sacar{display:inline-block;padding:14px 30px;border:2px solid var(--gold);border-radius:999px;background:transparent;color:#f6d47a;font-family:"Cinzel Decorative","Cinzel",serif;font-size:15px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer}
+.syl-exp2 .syl-sacar:hover{background:linear-gradient(135deg,#ffe98a,#fca611 55%,#fc830e);color:#171106}
+.syl-que-es{max-width:1180px;margin:44px auto 0;text-align:center}
+.syl-que-es h3{font-family:"Cinzel Decorative","Cinzel",serif;color:#f6d47a;font-size:clamp(24px,3vw,32px);letter-spacing:.12em;margin:0 0 6px}
+.syl-que-es .syl-que-rule{color:var(--gold);letter-spacing:.4em;margin-bottom:22px}
+.syl-que-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;text-align:left}
+.syl-que-grid article{background:linear-gradient(160deg,#101f4d,#060b1e 70%);border:1px solid var(--gold);border-radius:16px;padding:20px 22px}
+.syl-que-grid h4{font-family:"Cinzel Decorative","Cinzel",serif;color:#f6d47a;font-size:19px;letter-spacing:.06em;margin:0 0 8px}
+.syl-que-grid p{font-family:"Cormorant Garamond",serif;font-size:20px;line-height:1.55;color:#e8ddc0;margin:0}
+.syl-que-grid .syl-que-meta{font-family:"Cinzel Decorative","Cinzel",serif;color:#f6d47a;font-size:13px;letter-spacing:.12em;margin-top:10px}
+#experiencias .exp-nav{display:none}
+@media(max-width:760px){.syl-exp2{grid-template-columns:1fr}.syl-exp2 .syl-panel+.syl-panel{border-left:0;border-top:1px solid rgba(252,166,17,.45)}.syl-que-grid{grid-template-columns:1fr}}
 </style>
 
 
@@ -1219,44 +1246,46 @@ footer{font-size:23px}
   <section class="sec" id="experiencias" aria-label="Elige tu experiencia">
     <h2 class="sec-title">Elige tu experiencia</h2>
     <div class="sec-rule"><span>✦</span></div>
-    <div class="exp-grid">
-      <article class="exp-card" data-exp="dia">
-        <span class="exp-med" aria-hidden="true">☀</span>
+    <div class="exp-grid syl-exp2">
+      <article class="exp-card syl-panel" data-exp="dia">
         <h3>Carta del día</h3>
-        <div class="exp-visual exp-fan" aria-hidden="true"><img src="assets/reverso.webp" alt=""><img src="assets/reverso.webp" alt=""><img src="assets/reverso.webp" alt=""><img src="assets/reverso.webp" alt=""><img src="assets/reverso.webp" alt=""></div>
-        <p>Descubre el mensaje y la energía que te acompañan hoy.</p>
-        <p class="exp-sub">1 carta</p>
-        <p class="exp-price">Gratis</p>
-        <button type="button" class="btn btn-gold exp-btn" data-mode="dia">Obtener mi carta ›</button>
+        <p class="syl-desc">Una guía para hoy. La energía del universo te revela un mensaje especial.</p>
+        <div class="syl-cards syl-one" aria-hidden="true"><img src="assets/reverso.webp" alt=""></div>
+        <p class="syl-price">Gratis</p>
+        <button type="button" class="btn btn-gold exp-btn syl-sacar" data-mode="dia">✦ Sacar carta del día ✦</button>
       </article>
-      <article class="exp-card" data-exp="destino">
-        <span class="exp-med" aria-hidden="true">☾</span>
-        <h3>Pasado · Presente · Futuro</h3>
-        <div class="exp-visual exp-trio" aria-hidden="true"><img src="assets/reverso.webp" alt=""><img src="assets/reverso.webp" alt=""><img src="assets/reverso.webp" alt=""></div>
-        <p>Explora tu historia, tu momento actual y el rumbo que se abre para ti.</p>
-        <p class="exp-sub">3 cartas</p>
-        <p class="exp-price">Gratis</p>
-        <button type="button" class="btn btn-gold exp-btn" data-mode="destino">Realizar tirada ›</button>
+      <article class="exp-card syl-panel" data-exp="destino">
+        <h3>Pasado ✦ Presente ✦ Futuro</h3>
+        <p class="syl-desc">Tres cartas, un mismo camino. Descubre la energía que te rodea y lo que viene.</p>
+        <div class="syl-cards syl-trio" aria-hidden="true"><img src="assets/reverso.webp" alt=""><img src="assets/reverso.webp" alt=""><img src="assets/reverso.webp" alt=""></div>
+        <div class="syl-labels" aria-hidden="true"><span>Pasado</span><span>Presente</span><span>Futuro</span></div>
+        <p class="syl-price">Gratis</p>
+        <button type="button" class="btn btn-gold exp-btn syl-sacar" data-mode="destino">✦ Sacar 3 cartas ✦</button>
       </article>
-      <article class="exp-card" data-exp="completa">
-        <span class="vip-tag">Experiencia VIP</span>
-        <span class="exp-med" aria-hidden="true">✦</span>
+      <article class="exp-card syl-panel" data-exp="completa">
         <h3>Tirada Completa</h3>
-        <p class="exp-sub">22 cartas</p>
-        <div class="exp-visual exp-many" aria-hidden="true"><img src="assets/reverso.webp" alt=""><img src="assets/reverso.webp" alt=""><img src="assets/reverso.webp" alt=""><img data-deck-src src="assets/reverso.webp" alt="Dorso de carta Syllenza"><img src="assets/reverso.webp" alt=""><img src="assets/reverso.webp" alt=""><img src="assets/reverso.webp" alt=""></div>
-        <p>Una visión profunda y detallada de tu situación actual.</p>
-        <p class="exp-price">400 pesos · Incluye PDF con historieta ilustrada</p>
-        <button type="button" class="btn btn-gold exp-btn" data-mode="completa">Iniciar tirada ›</button>
+        <p class="syl-desc">Una visión profunda y detallada de tu situación actual, con tus 22 cartas.</p>
+        <div class="syl-cards syl-trio" aria-hidden="true"><img src="assets/reverso.webp" alt=""><img src="assets/reverso.webp" alt=""><img src="assets/reverso.webp" alt=""></div>
+        <p class="syl-price">400 pesos · Incluye PDF con historieta ilustrada</p>
+        <button type="button" class="btn btn-gold exp-btn syl-sacar" data-mode="completa">✦ Sacar 22 cartas ✦</button>
       </article>
-      <article class="exp-card" data-exp="celta">
-        <span class="exp-med" aria-hidden="true">❖</span>
+      <article class="exp-card syl-panel" data-exp="celta">
         <h3>Cruz Celta</h3>
-        <p class="exp-sub">10 cartas</p>
-        <div class="exp-visual celta-mini" aria-hidden="true"><img style="grid-area:m1" src="assets/reverso.webp" alt=""><img style="grid-area:m2" src="assets/reverso.webp" alt=""><img style="grid-area:m3" src="assets/reverso.webp" alt=""><img style="grid-area:m4" src="assets/reverso.webp" alt=""><img style="grid-area:m5" src="assets/reverso.webp" alt=""><img style="grid-area:m6" src="assets/reverso.webp" alt=""><img style="grid-area:m7" src="assets/reverso.webp" alt=""><img style="grid-area:m8" src="assets/reverso.webp" alt=""><img style="grid-area:m9" src="assets/reverso.webp" alt=""><img style="grid-area:m10" src="assets/reverso.webp" alt=""></div>
-        <p>Haz tu pregunta y obtén una lectura completa y reveladora.</p>
-        <p class="exp-price">200 pesos</p>
-        <button type="button" class="btn btn-gold exp-btn" data-mode="celta">Realizar Cruz Celta ›</button>
+        <p class="syl-desc">Haz tu pregunta y obtén una lectura completa y reveladora en forma de cruz.</p>
+        <div class="syl-cards syl-trio" aria-hidden="true"><img src="assets/reverso.webp" alt=""><img src="assets/reverso.webp" alt=""><img src="assets/reverso.webp" alt=""></div>
+        <p class="syl-price">200 pesos</p>
+        <button type="button" class="btn btn-gold exp-btn syl-sacar" data-mode="celta">✦ Sacar 10 cartas ✦</button>
       </article>
+    </div>
+    <div class="syl-que-es">
+      <h3>¿De qué trata cada lectura?</h3>
+      <div class="syl-que-rule">✦ ✦ ✦</div>
+      <div class="syl-que-grid">
+        <article><h4>☀️ Carta del Día</h4><p>Una sola carta para hoy. Te dice qué energía te acompaña, qué cuidar y qué aprovechar en tu día. Es la guía rápida de cada mañana.</p><p class="syl-que-meta">1 carta · Gratis</p></article>
+        <article><h4>☾ Pasado · Presente · Futuro</h4><p>Tres cartas que cuentan tu historia: lo que ya pasó, lo que estás viviendo ahora y hacia dónde va tu camino. Ideal cuando quieres entender una situación completa.</p><p class="syl-que-meta">3 cartas · Gratis</p></article>
+        <article><h4>✧ Tirada Completa</h4><p>La lectura más profunda: 22 cartas que revelan tu pasado, tu presente, tu futuro y tu destino. Incluye PDF con historieta ilustrada, y puedes agregar un video animado de 2 minutos.</p><p class="syl-que-meta">22 cartas · 400 pesos · PDF incluido</p></article>
+        <article><h4>✥ Cruz Celta</h4><p>La tirada clásica en forma de cruz: tu presente, tu desafío, tu pasado, tu futuro y tu resultado. Responde una pregunta concreta con 10 cartas en cruz.</p><p class="syl-que-meta">10 cartas · 200 pesos</p></article>
+      </div>
     </div>
     <div class="exp-nav"><button type="button" id="exp-prev" aria-label="Ver experiencia anterior">‹</button><button type="button" id="exp-next" aria-label="Ver experiencia siguiente">›</button></div>
   </section>
