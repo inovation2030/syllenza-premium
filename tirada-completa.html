@@ -1275,10 +1275,10 @@ footer{font-size:23px}
       <div>
         <h2>Paso 1 · Cuéntanos de ti</h2>
         <p class="sub">Completa tus datos de nacimiento para preparar tu consulta. Solo para mayores de 18 años.</p>
-        <form id="natal-form" novalidate>
+        <form id="natal-form" novalidate autocomplete="off">
           <div class="field full">
             <label for="f-name">Nombre completo *</label>
-            <input id="f-name" type="text" autocomplete="name" placeholder="Ej. María Fernanda López García" required>
+            <input id="f-name" type="text" autocomplete="off" placeholder="Ej. María Fernanda López García" required>
           </div>
           <div class="field">
             <label for="f-date">Fecha de nacimiento *</label>
@@ -1343,34 +1343,9 @@ footer{font-size:23px}
 
   <!-- ============ VISTA 2: BARAJAR 78 ============ -->
   <section class="panel hidden" id="view-shuffle">
-    <h2>Paso 2 · Elige tu experiencia</h2>
-    <p class="sub">Cuatro experiencias, un mismo ritual de lujo. Elige la tuya y baraja el mazo completo de <strong>78 arcanos</strong> (22 mayores + 56 menores): cada carta es la original redibujada en anime, con <strong>su planeta y su signo zodiacal</strong>, y recibe su posición al azar, <strong>derecha o invertida</strong>.</p>
-    <div class="opts" role="radiogroup" aria-label="Elige tu tirada">
-      <button type="button" class="opt" data-mode="dia" role="radio" aria-checked="false">
-        <span class="opt-num">· I ·</span>
-        <span class="opt-name">Carta del día</span>
-        <span class="opt-desc">Una sola carta, un mensaje preciso: la energía que acompaña tu día, revelada al instante.</span>
-        <span class="opt-tag">1 carta · Lectura inmediata</span>
-      </button>
-      <button type="button" class="opt" data-mode="destino" role="radio" aria-checked="false">
-        <span class="opt-num">· II ·</span>
-        <span class="opt-name">Tu destino en 3 cartas</span>
-        <span class="opt-desc">Una carta para tu Pasado, una para tu Presente y una para tu Futuro: tu historia en tres tiempos.</span>
-        <span class="opt-tag">3 cartas · Pasado · Presente · Futuro</span>
-      </button>
-      <button type="button" class="opt on" data-mode="completa" role="radio" aria-checked="true">
-        <span class="opt-num">· III ·</span>
-        <span class="opt-name">Tirada Completa</span>
-        <span class="opt-desc">La experiencia mayor de Syllenza: 22 cartas elegidas al azar de tu mazo de 78, con su interpretación, en su propia página.</span>
-        <span class="opt-tag">22 cartas · 400 pesos · La experiencia insignia</span>
-      </button>
-      <button type="button" class="opt" data-mode="celta" role="radio" aria-checked="false">
-        <span class="opt-num">· IV ·</span>
-        <span class="opt-name">Cruz Celta</span>
-        <span class="opt-desc">Haz tu pregunta y obtén una lectura completa y reveladora con 10 cartas.</span>
-        <span class="opt-tag">10 cartas · Tu pregunta</span>
-      </button>
-    </div>
+    <h2>Paso 2 · Tu Tirada Completa</h2>
+    <p class="sub">Baraja el mazo completo de <strong>78 arcanos</strong> (22 mayores + 56 menores) y revela tus 22 cartas: cada carta es la original redibujada en anime, con <strong>su planeta y su signo zodiacal</strong>, y recibe su posición al azar, <strong>derecha o invertida</strong>.</p>
+    
     <div class="deck-stage">
       <img class="deck-img" id="deck-img" src="assets/reverso.webp" alt="Reverso celestial de las cartas de Syllenza: sol dorado radiante, luna creciente y rueda zodiacal sobre cielo azul medianoche estrellado, con marco de filigrana dorada" />
       <div style="flex:1 1 260px">
@@ -1403,7 +1378,7 @@ footer{font-size:23px}
       <button class="btn btn-ghost btn-pill" id="btn-pick-sacar" type="button" style="flex:0 1 340px">✦ SACAR CARTA DEL DÍA ✦</button>
     </div>
     <p class="foto2-orn" aria-hidden="true">☾ ☾ ☾&nbsp;&nbsp;✦&nbsp;&nbsp;☽ ☽ ☽</p>
-    <h3 class="fan-title">SELECT CARDS</h3>
+    <h3 class="fan-title">Selecciona tu carta</h3>
     <div class="fan-pick" id="fan-pick" role="group" aria-label="Abanico de cartas boca abajo"></div>
     <p class="car-hint">✦ Desliza las cartas y toca una para elegirla ✦</p>
     <div class="car-wrap" id="car-wrap">
@@ -1782,7 +1757,7 @@ if($("btn-natal"))$("btn-natal").addEventListener("click",function(){
   state.natal={sol:sol,luna:luna,ascendente:asc};
   var lp=(function(){var s=dv.replace(/-/g,""),t=0,ii;for(ii=0;ii<s.length;ii++)t+=+s[ii];while(t>9&&t!==11&&t!==22){var u=0;while(t>0){u+=t%10;t=Math.floor(t/10);}t=u;}return t;})();
   state.numerologia=lp;
-  try{localStorage.setItem("syl-natal",JSON.stringify({nombre:name,fecha:dv,hora:tv,lugar:place,tema:topic}));}catch(e){}
+  try{localStorage.removeItem("syl-natal");}catch(e){}
   renderOracle();
   $("data-ok").classList.remove("hidden");
   $("btn-to-shuffle").classList.remove("hidden");
@@ -1816,7 +1791,7 @@ function restoreNatal(){
   var dok=$("data-ok");if(dok)dok.classList.remove("hidden");
   var bts=$("btn-to-shuffle");if(bts)bts.classList.remove("hidden");
 }
-document.addEventListener("DOMContentLoaded",function(){try{restoreNatal();}catch(e){}});
+document.addEventListener("DOMContentLoaded",function(){try{localStorage.removeItem("syl-natal");}catch(e){}try{["f-name","f-date","f-time","f-place","f-topic"].forEach(function(id){var el=document.getElementById(id);if(el)el.value="";});}catch(e){}});
 if($("btn-back1"))$("btn-back1").addEventListener("click",function(){show("view-form");});
 if($("btn-back2"))$("btn-back2").addEventListener("click",function(){show("view-shuffle");});
 /* ---------- CARTAS: RENDER ---------- */
