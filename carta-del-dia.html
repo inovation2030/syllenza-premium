@@ -512,7 +512,7 @@
 .hero-media{position:relative}
 .hero-media img{transition:opacity 1.2s ease}
 .masthead .mast-slides{position:absolute;inset:0;z-index:1;overflow:hidden}
-.mast-slides img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:0;transition:opacity 1.6s ease}
+.mast-slides img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:0;transition:opacity .6s ease}
 .mast-slides img.on{opacity:.5}
 .masthead .mast-dots{position:absolute;left:50%;bottom:12px;transform:translateX(-50%);display:flex;gap:8px;z-index:3}
 .masthead .mast-dots button{width:10px;height:10px;min-height:0;border-radius:50%;border:1px solid #ffdf6b;background:transparent;cursor:pointer;padding:0}
@@ -1087,6 +1087,13 @@ body.syl-fan-full #view-pick .fan-menu{display:flex!important;justify-content:ce
 body.syl-fan-full #view-pick .fan-menu a{color:var(--gold-pale);text-decoration:none;font-family:"Cinzel Decorative","Cinzel",serif;font-size:13px;letter-spacing:.12em;white-space:nowrap;padding:6px 10px;border-radius:999px}
 body.syl-fan-full #view-pick .fan-menu a.on{background:var(--gold);color:#1a1206}
 @media(max-width:620px){body.syl-fan-full #view-pick #fan-pick{height:min(50vh,400px)}body.syl-fan-full #view-pick .fan-card{width:64px;margin:0 -56px}body.syl-fan-full #view-pick .fan-menu a{font-size:12px;padding:5px 8px}}
+/* SYL_TIRA_ANCHO · SYL_TIRA_PANTALLA · SYL_TIRA · las cartas en horizontal, de lado a lado, tamaño de pantalla */
+body.syl-fan-full #view-pick #fan-pick{display:flex!important;flex-wrap:nowrap;justify-content:flex-start;align-items:stretch;flex:1 1 auto;min-height:0;width:max-content;max-width:none;margin:0 auto;overflow:hidden;cursor:grab;touch-action:pan-y}
+body.syl-fan-full #view-pick #fan-pick.spinning{animation:none!important}
+body.syl-fan-full #view-pick .fan-card{position:relative;left:auto;bottom:auto;flex:0 0 auto;width:auto;height:min(100%,calc((100vw - 32px) * 1.55));aspect-ratio:2/3.1;margin:0 7px;transform:none!important;transform-origin:50% 50%}
+body.syl-fan-full #view-pick .fan-card:hover{transform:translateY(-10px) scale(1.03)!important}
+body.syl-fan-full #view-pick #fan-pick.dragging{cursor:grabbing}
+@media(max-width:620px){body.syl-fan-full #view-pick .fan-card{margin:0 5px}}
 </style>
 
 
@@ -1154,7 +1161,7 @@ body.syl-fan-full #view-pick .fan-menu a.on{background:var(--gold);color:#1a1206
           <button type="button" class="nav-top" aria-haspopup="true" aria-expanded="false">☾ Astrología ▾</button>
           <div class="nav-sub">
             <a href="horoscopos.html">☾ Horóscopos diarios</a>
-            <a href="runa-celta.html">ᚱ Runa Celta del Día</a>
+            <a href="runa-celta.html">ᚱ Runa Celta del Día</a><a href="numerologia.html">🔢 Numerología</a>
             <a href="horoscopos.html">✦ Horóscopo Mensual</a>
             <a href="boletin.html">✉ Boletín Mensual</a>
           </div>
@@ -1183,7 +1190,7 @@ body.syl-fan-full #view-pick .fan-menu a.on{background:var(--gold);color:#1a1206
       <button type="button" class="nav-burger" id="btn-menu" aria-expanded="false" aria-controls="menu-movil" aria-label="Abrir menú">☰</button>
     </nav>
 <nav class="submenubar" aria-label="Todas las páginas de Syllenza">
-<a href="index.html">⌂ Inicio</a><span class="smb-sep">✦</span><a href="experiencias.html">✦ Elige tu experiencia</a><span class="smb-sep">✦</span><a href="carta-del-dia.html" class="on">☀️ Carta del Día</a><span class="smb-sep">✦</span><a href="pasado-presente-futuro.html">☾ Pasado · Presente · Futuro</a><span class="smb-sep">✦</span><a href="tirada-completa.html">✧ Tirada Completa</a><span class="smb-sep">✦</span><a href="cruz-celta.html">✥ Cruz Celta</a><span class="smb-sep">✦</span><a href="horoscopos.html">☾ Horóscopos</a><span class="smb-sep">✦</span><a href="runa-celta.html">ᚱ Runa Celta</a><span class="smb-sep">✦</span><a href="mi-cuenta.html">👤 Mi cuenta</a><span class="smb-sep">✦</span><a href="boletin.html">✉ Boletín</a><span class="smb-sep">✦</span><a href="guia.html">❖ Guía</a><span class="smb-sep">✦</span><a href="tarjetas-regalo.html">🎁 Tarjetas de regalo</a>
+<a href="index.html">⌂ Inicio</a><span class="smb-sep">✦</span><a href="experiencias.html">✦ Elige tu experiencia</a><span class="smb-sep">✦</span><a href="carta-del-dia.html" class="on">☀️ Carta del Día</a><span class="smb-sep">✦</span><a href="pasado-presente-futuro.html">☾ Pasado · Presente · Futuro</a><span class="smb-sep">✦</span><a href="tirada-completa.html">✧ Tirada Completa</a><span class="smb-sep">✦</span><a href="cruz-celta.html">✥ Cruz Celta</a><span class="smb-sep">✦</span><a href="horoscopos.html">☾ Horóscopos</a><span class="smb-sep">✦</span><a href="runa-celta.html">ᚱ Runa Celta</a><span class="smb-sep">✦</span><a href="numerologia.html">🔢 Numerología</a><span class="smb-sep">✦</span><a href="mi-cuenta.html">👤 Mi cuenta</a><span class="smb-sep">✦</span><a href="boletin.html">✉ Boletín</a><span class="smb-sep">✦</span><a href="guia.html">❖ Guía</a><span class="smb-sep">✦</span><a href="tarjetas-regalo.html">🎁 Tarjetas de regalo</a>
 </nav>
 <div class="menu-movil hidden" id="menu-movil">
       <div class="nav-drop-m">
@@ -1206,7 +1213,7 @@ body.syl-fan-full #view-pick .fan-menu a.on{background:var(--gold);color:#1a1206
         <button type="button" class="nav-top-m" aria-expanded="false">☾ Astrología ▾</button>
         <div class="nav-sub-m hidden">
           <a href="horoscopos.html">☾ Horóscopos diarios</a>
-          <a href="runa-celta.html">ᚱ Runa Celta del Día</a>
+          <a href="runa-celta.html">ᚱ Runa Celta del Día</a><a href="numerologia.html">🔢 Numerología</a>
             <a href="horoscopos.html">✦ Horóscopo Mensual</a>
             <a href="boletin.html">✉ Boletín Mensual</a>
         </div>
@@ -2376,45 +2383,45 @@ function buildPreview(){
 function buildFan(){
   var fan=$("fan-pick");if(!fan)return;
   var back=deckBackSrc(),h="",i;
-  var N=78,spread=(window.innerWidth&&window.innerWidth<620)?96:120;
+  var N=78;
   for(i=0;i<N;i++){
-    var ang=-spread/2+i*(spread/(N-1));
-    var t=Math.abs(ang)/(spread/2);
-    var lift=Math.round(18-(1-t*t)*40);
-    h+='<button type="button" class="fan-card" data-fan="'+i+'" aria-label="Elegir carta '+(i+1)+' del abanico" style="--fan-rot:'+ang.toFixed(1)+'deg;--fan-lift:'+lift+'px"><img src="'+back+'" alt="Dorso de carta Syllenza"></button>';
+    h+='<button type="button" class="fan-card" data-fan="'+i+'" aria-label="Elegir carta '+(i+1)+' de la tira"><img src="'+back+'" alt="Dorso de carta Syllenza"></button>';
   }
-  fan.innerHTML=h;
+  fan.innerHTML=h+h; /* SYL_TIRA: la tira se duplica para el bucle sin fin */
   var cards=fan.querySelectorAll(".fan-card"),k;
   for(k=0;k<cards.length;k++){(function(el){el.addEventListener("click",function(){pickOne(+el.getAttribute("data-fan"));});})(cards[k]);}
   bindFanDrag();
 }
 
-/* SYL_FAN_DRAG: deslizar el abanico a mano (ratón o dedo).
-   El giro automático sigue; al soltar, la animación continúa
-   desde el ángulo donde quedó, sin salto. */
+/* SYL_TIRA: tira horizontal de lado a lado (ratón o dedo).
+   Las 78 cartas van en horizontal, del tamaño de la pantalla, y se
+   mueven solas de lado a lado en bucle sin fin. Al soltar el
+   arrastre, la tira sigue desde donde quedó. Un toque corto elige
+   la carta; arrastrar no elige. */
 function bindFanDrag(){
   var fan=$("fan-pick");
   if(!fan||window._fanDragBound)return;
   window._fanDragBound=true;
-  var dragging=false,startX=0,startAng=0,curAng=0,moved=0,pid=null;
-  function animAngle(){
-    try{
-      var d=parseFloat(fan.style.animationDelay)||0;
-      var a=fan.getAnimations?fan.getAnimations():[];
-      for(var i=0;i<a.length;i++){
-        if(a[i].animationName==="fanRotate"&&a[i].currentTime!=null){
-          return (((a[i].currentTime/1000-d)/36)*360)%360;
-        }
-      }
-    }catch(e){}
-    return 0;
+  var x=0,dragging=false,startX=0,startY=0,startPos=0,moved=0,pid=null,last=0,resumeAt=0,downCard=null,suppressClick=false;
+  function halfW(){return (fan.scrollWidth/2)||1;}
+  function wrap(v){var h=halfW();v=v%h;if(v>0)v-=h;return v;}
+  function apply(){fan.style.transform="translateX("+x.toFixed(1)+"px)";}
+  function tick(ts){
+    if(!last)last=ts;
+    var dt=Math.min(64,ts-last);last=ts;
+    if(!dragging&&fan.classList.contains("spinning")&&ts>=resumeAt){
+      x=wrap(x-dt*0.25 /* SYL_TIRA_RAPIDA: 250 px/s */);
+      apply();
+    }
+    requestAnimationFrame(tick);
   }
+  requestAnimationFrame(tick);
   function onMove(e){
     if(!dragging||e.pointerId!==pid)return;
-    var dx=e.clientX-startX;
-    moved=Math.max(moved,Math.abs(dx));
-    curAng=startAng+dx*0.35;
-    fan.style.transform="rotate("+curAng.toFixed(1)+"deg)";
+    var dx=e.clientX-startX,dy=e.clientY-startY;
+    moved=Math.max(moved,Math.abs(dx),Math.abs(dy));
+    x=wrap(startPos+dx);
+    apply();
   }
   function onUp(e){
     if(!dragging||e.pointerId!==pid)return;
@@ -2423,23 +2430,35 @@ function bindFanDrag(){
     window.removeEventListener("pointerup",onUp);
     window.removeEventListener("pointercancel",onUp);
     fan.classList.remove("dragging");
-    var a=((curAng%360)+360)%360;
-    fan.style.animation="";
-    fan.style.transform="";
-    fan.style.animationDelay=(-(a/10)).toFixed(2)+"s";
+    /* SYL_TIRA_PAUSA: la pausa tras el gesto depende de lo que fue.
+       Toque que elige: 0.7 s (se ve la carta marcada y la tira sigue
+       pronto). Arrastre: 2.5 s. Toque que no elige (hueco o carta ya
+       elegida): no rearma la pausa, para que la tira no se quede
+       parada para siempre si se toca varias veces seguidas. */
+    if(moved<=14&&downCard){
+      /* SYL_TIRA_TOQUE: el toque elige aquí mismo (en pointerup o en
+         pointercancel, si el navegador cancela el gesto). No se
+         depende del click, que el navegador a veces ya no dispara
+         tras un toque con temblor. El click que llegue después se
+         suprime para no elegir dos veces. */
+      suppressClick=true;
+      setTimeout(function(){suppressClick=false;},500);
+      pickOne(+downCard.getAttribute("data-fan"));
+      resumeAt=performance.now()+700;
+    }else if(moved>14){
+      resumeAt=performance.now()+2500;
+    }
   }
   fan.addEventListener("pointerdown",function(e){
     if(!fan.classList.contains("spinning"))return;
-    dragging=true;pid=e.pointerId;moved=0;startX=e.clientX;
-    startAng=animAngle();curAng=startAng;
-    fan.style.animation="none";
-    fan.style.transform="rotate("+startAng.toFixed(1)+"deg)";
+    dragging=true;pid=e.pointerId;moved=0;startX=e.clientX;startY=e.clientY;startPos=x;
+    downCard=(e.target&&e.target.closest)?e.target.closest(".fan-card"):null;
     fan.classList.add("dragging");
     window.addEventListener("pointermove",onMove);
     window.addEventListener("pointerup",onUp);
     window.addEventListener("pointercancel",onUp);
   });
-  fan.addEventListener("click",function(e){if(moved>8){e.preventDefault();e.stopPropagation();}},true);
+  fan.addEventListener("click",function(e){if(moved>14||suppressClick){e.preventDefault();e.stopPropagation();}},true);
 }
 function buildCarousel(){
   var tr=$("car-track");if(!tr)return;
@@ -2515,7 +2534,7 @@ function pickOne(fanIdx){
   var _pl=$("pick-list");
   if(_pl){_pl.textContent=state._picked.map(function(c,ix){var lb=state._pickLabels[ix]||"";return (lb?lb+": ":"")+c.name+(c.reversed?" · Invertida":" · Derecha");}).join("  ✦  ");}
   if(done<n){
-    $("pick-status").textContent="Carta "+done+" de "+n+" elegida: "+_txt+". El abanico sigue girando… toca otra carta o pulsa Sacar.";
+    $("pick-status").textContent="Carta "+done+" de "+n+" elegida: "+_txt+". La tira sigue moviéndose de lado a lado… toca otra carta o pulsa Sacar.";
   }else{
     /* Última carta: feedback visible inmediato, abanico girando, y luego revela. */
     $("pick-status").textContent="Revelando tu tirada… ✦ Espera un momento, tus cartas están apareciendo.";
@@ -2770,17 +2789,17 @@ try{
   }
 }catch(e){}
 /* SYL_MASTSLIDES · Slides automáticos de la portada (como albertodorian.com):
-   6 imágenes distintas con fundido cada 2 s + puntos para elegir slide. */
+   SYL_SLIDE_GIRA · 6 imágenes distintas con fundido rápido de 0.6 s cada 2 s + puntos para elegir slide. */
 (function(){
   "use strict";
-  var reduce=false;try{reduce=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;}catch(e){}
+  
   var A=document.getElementById("mast-slide-a"),B=document.getElementById("mast-slide-b"),dots=document.querySelectorAll("#mast-dots button");
   var altar=document.getElementById("altar-img");
   if(!A||!B)return;
   var slides=["assets/hero-joven.webp","assets/hero-libro.webp",altar?altar.src:"assets/reverso.webp","assets/reverso.webp","assets/sol-19.webp","assets/luna-18.webp"];
   var cur=0,shown=A,timer=null;
   function show(n){cur=(n+slides.length)%slides.length;var nx=(shown===A)?B:A;nx.src=slides[cur];nx.classList.add("on");shown.classList.remove("on");shown=nx;for(var d=0;d<dots.length;d++){dots[d].classList.toggle("on",d===cur);}}
-  function restart(){if(timer)clearInterval(timer);if(!reduce){timer=setInterval(function(){show(cur+1);},2000);}}
+  function restart(){if(timer)clearInterval(timer);timer=setInterval(function(){show(cur+1);},2000);}
   for(var q=0;q<dots.length;q++){(function(ix){dots[ix].addEventListener("click",function(){show(ix);restart();});})(q);}
   A.src=slides[0];A.classList.add("on");
   restart();
