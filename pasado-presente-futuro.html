@@ -1074,6 +1074,16 @@ body.syl-fan-full #view-pick #btn-pick-back{padding:12px 22px}
 .fan-pick .fan-card:nth-child(7) img{animation-delay:2.7s}
 .fan-pick .fan-card:hover{transform:translateY(-18px) scale(1.06)!important}
 @media(prefers-reduced-motion:reduce){.fan-pick .fan-card img{animation:none}}
+#view-pick .fan-menu{display:none}
+/* ===== SYL_FAN78 · abanico de 78 cartas, casi pantalla, izquierda a derecha ===== */
+body.syl-fan-full #view-pick #fan-pick{width:100%;max-width:1180px;height:min(52vh,460px);margin:0 auto;display:flex;justify-content:center;align-items:flex-end}
+body.syl-fan-full #view-pick .fan-card{position:relative;left:auto;bottom:auto;width:110px;margin:0 -96px;transform-origin:50% 88%;transform:rotate(var(--fan-rot,0deg)) translateY(var(--fan-lift,0px))}
+body.syl-fan-full #view-pick .fan-card:hover{transform:rotate(var(--fan-rot,0deg)) translateY(calc(var(--fan-lift,0px) - 16px)) scale(1.05)!important}
+body.syl-fan-full #view-pick .fan-title{position:relative;z-index:5}
+body.syl-fan-full #view-pick .fan-menu{display:flex!important;justify-content:center;gap:6px;flex-wrap:nowrap;overflow-x:auto;max-width:100%;padding:8px 10px;margin:0 0 4px;border:1px solid rgba(252,166,17,.55);border-radius:999px;background:rgba(0,0,0,.72);scrollbar-width:none}
+body.syl-fan-full #view-pick .fan-menu a{color:var(--gold-pale);text-decoration:none;font-family:"Cinzel Decorative","Cinzel",serif;font-size:13px;letter-spacing:.12em;white-space:nowrap;padding:6px 10px;border-radius:999px}
+body.syl-fan-full #view-pick .fan-menu a.on{background:var(--gold);color:#1a1206}
+@media(max-width:620px){body.syl-fan-full #view-pick #fan-pick{height:min(50vh,400px)}body.syl-fan-full #view-pick .fan-card{width:64px;margin:0 -56px}body.syl-fan-full #view-pick .fan-menu a{font-size:12px;padding:5px 8px}}
 </style>
 
 
@@ -1363,34 +1373,9 @@ body.syl-fan-full #view-pick #btn-pick-back{padding:12px 22px}
 
   <!-- ============ VISTA 2: BARAJAR 78 ============ -->
   <section class="panel hidden" id="view-shuffle">
-    <h2>Paso 2 · Elige tu experiencia</h2>
-    <p class="sub">Cuatro experiencias, un mismo ritual de lujo. Elige la tuya del mazo completo de <strong>78 arcanos</strong> (22 mayores + 56 menores): cada carta es la original redibujada en anime, con <strong>su planeta y su signo zodiacal</strong>, y recibe su posición al azar, <strong>derecha o invertida</strong>.</p>
-    <div class="opts" role="radiogroup" aria-label="Elige tu tirada">
-      <button type="button" class="opt" data-mode="dia" role="radio" aria-checked="false">
-        <span class="opt-num">· I ·</span>
-        <span class="opt-name">Carta del día</span>
-        <span class="opt-desc">Una sola carta, un mensaje preciso: la energía que acompaña tu día, revelada al instante.</span>
-        <span class="opt-tag">1 carta · Lectura inmediata</span>
-      </button>
-      <button type="button" class="opt on" data-mode="destino" role="radio" aria-checked="true">
-        <span class="opt-num">· II ·</span>
-        <span class="opt-name">Tu destino en 3 cartas</span>
-        <span class="opt-desc">Una carta para tu Pasado, una para tu Presente y una para tu Futuro: tu historia en tres tiempos.</span>
-        <span class="opt-tag">3 cartas · Pasado · Presente · Futuro</span>
-      </button>
-      <button type="button" class="opt" data-mode="completa" role="radio" aria-checked="false">
-        <span class="opt-num">· III ·</span>
-        <span class="opt-name">Tirada Completa</span>
-        <span class="opt-desc">La experiencia mayor de Syllenza: 22 cartas elegidas al azar de tu mazo de 78, con su interpretación, en su propia página.</span>
-        <span class="opt-tag">22 cartas · 400 pesos · La experiencia insignia</span>
-      </button>
-      <button type="button" class="opt" data-mode="celta" role="radio" aria-checked="false">
-        <span class="opt-num">· IV ·</span>
-        <span class="opt-name">Cruz Celta</span>
-        <span class="opt-desc">Haz tu pregunta y obtén una lectura completa y reveladora con 10 cartas.</span>
-        <span class="opt-tag">10 cartas · Tu pregunta</span>
-      </button>
-    </div>
+    <h2>Paso 2 · Tu destino en 3 cartas</h2>
+    <p class="sub">Elige tus 3 cartas del mazo completo de <strong>78 arcanos</strong> (22 mayores + 56 menores): cada carta es la original redibujada en anime, con <strong>su planeta y su signo zodiacal</strong>.</p>
+    
     <div class="deck-stage">
       <img class="deck-img" id="deck-img" src="assets/reverso.webp" alt="Reverso celestial de las cartas de Syllenza: sol dorado radiante, luna creciente y rueda zodiacal sobre cielo azul medianoche estrellado, con marco de filigrana dorada" />
       <div style="flex:1 1 260px">
@@ -1409,7 +1394,7 @@ body.syl-fan-full #view-pick #btn-pick-back{padding:12px 22px}
 
   <!-- ============ VISTA 2B: OPCIONES (foto 2) + ABANICO (foto 3) ============ -->
   
-<section class="panel hidden" id="view-pick">
+<section class="panel hidden" id="view-pick"><nav class="fan-menu" aria-label="Menú"><a href="index.html">Inicio</a><a href="experiencias.html">Experiencias</a><a href="carta-del-dia.html">Carta del Día</a><a href="pasado-presente-futuro.html">3 Cartas</a><a href="tirada-completa.html">Tirada Completa</a><a href="cruz-celta.html">Cruz Celta</a><a href="mi-cuenta.html">Mi cuenta</a></nav>
     <p class="pick-eyebrow">✦ SYLLENZA ✦</p>
     <h2 id="pick-title">Pasado ✦ Presente ✦ Futuro</h2>
     <p class="sub" id="pick-sub">Tres cartas, un mismo camino. Descubre la energía que te rodea y lo que viene.</p>
@@ -1420,7 +1405,7 @@ body.syl-fan-full #view-pick #btn-pick-back{padding:12px 22px}
       <button class="btn btn-ghost btn-pill" id="btn-pick-sacar" type="button" style="flex:0 1 340px">✦ SACAR 3 CARTAS ✦</button>
     </div>
     <p class="foto2-orn" aria-hidden="true">☾ ☾ ☾&nbsp;&nbsp;✦&nbsp;&nbsp;☽ ☽ ☽</p>
-    <h3 class="fan-title">SELECT CARDS</h3>
+    <h3 class="fan-title">Selecciona tu carta</h3>
     <div class="fan-pick" id="fan-pick" role="group" aria-label="Abanico de cartas boca abajo"></div>
     <p class="car-hint">✦ Desliza las cartas y toca una para elegirla ✦</p>
     <div class="car-wrap" id="car-wrap">
@@ -1799,7 +1784,7 @@ if($("btn-natal"))$("btn-natal").addEventListener("click",function(){
   state.natal={sol:sol,luna:luna,ascendente:asc};
   var lp=(function(){var s=dv.replace(/-/g,""),t=0,ii;for(ii=0;ii<s.length;ii++)t+=+s[ii];while(t>9&&t!==11&&t!==22){var u=0;while(t>0){u+=t%10;t=Math.floor(t/10);}t=u;}return t;})();
   state.numerologia=lp;
-  try{localStorage.setItem("syl-natal",JSON.stringify({nombre:name,fecha:dv,hora:tv,lugar:place,tema:topic}));}catch(e){}
+  try{localStorage.removeItem("syl-natal");}catch(e){}
   renderOracle();
   $("data-ok").classList.remove("hidden");
   $("btn-to-shuffle").classList.remove("hidden");
@@ -1833,7 +1818,7 @@ function restoreNatal(){
   var dok=$("data-ok");if(dok)dok.classList.remove("hidden");
   var bts=$("btn-to-shuffle");if(bts)bts.classList.remove("hidden");
 }
-document.addEventListener("DOMContentLoaded",function(){try{restoreNatal();}catch(e){}});
+document.addEventListener("DOMContentLoaded",function(){try{localStorage.removeItem("syl-natal");}catch(e){}try{["f-name","f-date","f-time","f-place","f-topic"].forEach(function(id){var el=document.getElementById(id);if(el)el.value="";});}catch(e){}});
 if($("btn-back1"))$("btn-back1").addEventListener("click",function(){show("view-form");});
 if($("btn-back2"))$("btn-back2").addEventListener("click",function(){show("view-shuffle");});
 /* ---------- CARTAS: RENDER ---------- */
@@ -2392,7 +2377,13 @@ function buildPreview(){
 function buildFan(){
   var fan=$("fan-pick");if(!fan)return;
   var back=deckBackSrc(),h="",i;
-  for(i=0;i<7;i++){h+='<button type="button" class="fan-card" data-fan="'+i+'" aria-label="Elegir carta '+(i+1)+' del abanico"><img src="'+back+'" alt="Dorso de carta Syllenza"></button>';}
+  var N=78,spread=(window.innerWidth&&window.innerWidth<620)?96:120;
+  for(i=0;i<N;i++){
+    var ang=-spread/2+i*(spread/(N-1));
+    var t=Math.abs(ang)/(spread/2);
+    var lift=Math.round(18-(1-t*t)*40);
+    h+='<button type="button" class="fan-card" data-fan="'+i+'" aria-label="Elegir carta '+(i+1)+' del abanico" style="--fan-rot:'+ang.toFixed(1)+'deg;--fan-lift:'+lift+'px"><img src="'+back+'" alt="Dorso de carta Syllenza"></button>';
+  }
   fan.innerHTML=h;
   var cards=fan.querySelectorAll(".fan-card"),k;
   for(k=0;k<cards.length;k++){(function(el){el.addEventListener("click",function(){pickOne(+el.getAttribute("data-fan"));});})(cards[k]);}
