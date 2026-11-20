@@ -512,7 +512,7 @@
 .hero-media{position:relative}
 .hero-media img{transition:opacity 1.2s ease}
 .masthead .mast-slides{position:absolute;inset:0;z-index:1;overflow:hidden}
-.mast-slides img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:0;transition:opacity 1.6s ease}
+.mast-slides img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:0;transition:opacity .6s ease}
 .mast-slides img.on{opacity:.5}
 .masthead .mast-dots{position:absolute;left:50%;bottom:12px;transform:translateX(-50%);display:flex;gap:8px;z-index:3}
 .masthead .mast-dots button{width:10px;height:10px;min-height:0;border-radius:50%;border:1px solid #ffdf6b;background:transparent;cursor:pointer;padding:0}
@@ -1123,7 +1123,7 @@ footer{font-size:23px}
           <button type="button" class="nav-top" aria-haspopup="true" aria-expanded="false">☾ Astrología ▾</button>
           <div class="nav-sub">
             <a href="horoscopos.html">☾ Horóscopos diarios</a>
-            <a href="runa-celta.html">ᚱ Runa Celta del Día</a>
+            <a href="runa-celta.html">ᚱ Runa Celta del Día</a><a href="numerologia.html">🔢 Numerología</a>
             <a href="horoscopos.html">✦ Horóscopo Mensual</a>
             <a href="boletin.html">✉ Boletín Mensual</a>
           </div>
@@ -1152,7 +1152,7 @@ footer{font-size:23px}
       <button type="button" class="nav-burger" id="btn-menu" aria-expanded="false" aria-controls="menu-movil" aria-label="Abrir menú">☰</button>
     </nav>
 <nav class="submenubar" aria-label="Todas las páginas de Syllenza">
-<a href="index.html">⌂ Inicio</a><span class="smb-sep">✦</span><a href="experiencias.html">✦ Elige tu experiencia</a><span class="smb-sep">✦</span><a href="carta-del-dia.html">☀️ Carta del Día</a><span class="smb-sep">✦</span><a href="pasado-presente-futuro.html">☾ Pasado · Presente · Futuro</a><span class="smb-sep">✦</span><a href="tirada-completa.html">✧ Tirada Completa</a><span class="smb-sep">✦</span><a href="cruz-celta.html">✥ Cruz Celta</a><span class="smb-sep">✦</span><a href="horoscopos.html">☾ Horóscopos</a><span class="smb-sep">✦</span><a href="runa-celta.html">ᚱ Runa Celta</a><span class="smb-sep">✦</span><a href="mi-cuenta.html" class="on">👤 Mi cuenta</a><span class="smb-sep">✦</span><a href="boletin.html">✉ Boletín</a><span class="smb-sep">✦</span><a href="guia.html">❖ Guía</a><span class="smb-sep">✦</span><a href="tarjetas-regalo.html">🎁 Tarjetas de regalo</a>
+<a href="index.html">⌂ Inicio</a><span class="smb-sep">✦</span><a href="experiencias.html">✦ Elige tu experiencia</a><span class="smb-sep">✦</span><a href="carta-del-dia.html">☀️ Carta del Día</a><span class="smb-sep">✦</span><a href="pasado-presente-futuro.html">☾ Pasado · Presente · Futuro</a><span class="smb-sep">✦</span><a href="tirada-completa.html">✧ Tirada Completa</a><span class="smb-sep">✦</span><a href="cruz-celta.html">✥ Cruz Celta</a><span class="smb-sep">✦</span><a href="horoscopos.html">☾ Horóscopos</a><span class="smb-sep">✦</span><a href="runa-celta.html">ᚱ Runa Celta</a><span class="smb-sep">✦</span><a href="numerologia.html">🔢 Numerología</a><span class="smb-sep">✦</span><a href="mi-cuenta.html" class="on">👤 Mi cuenta</a><span class="smb-sep">✦</span><a href="boletin.html">✉ Boletín</a><span class="smb-sep">✦</span><a href="guia.html">❖ Guía</a><span class="smb-sep">✦</span><a href="tarjetas-regalo.html">🎁 Tarjetas de regalo</a>
 </nav>
 <div class="menu-movil hidden" id="menu-movil">
       <div class="nav-drop-m">
@@ -1175,7 +1175,7 @@ footer{font-size:23px}
         <button type="button" class="nav-top-m" aria-expanded="false">☾ Astrología ▾</button>
         <div class="nav-sub-m hidden">
           <a href="horoscopos.html">☾ Horóscopos diarios</a>
-          <a href="runa-celta.html">ᚱ Runa Celta del Día</a>
+          <a href="runa-celta.html">ᚱ Runa Celta del Día</a><a href="numerologia.html">🔢 Numerología</a>
             <a href="horoscopos.html">✦ Horóscopo Mensual</a>
             <a href="boletin.html">✉ Boletín Mensual</a>
         </div>
@@ -2508,16 +2508,16 @@ try{
   }
 }catch(e){}
 /* SYL_MASTSLIDES · Slides automáticos de la portada (como albertodorian.com):
-   6 imágenes distintas con fundido cada 2 s + puntos para elegir slide. */
+   SYL_SLIDE_GIRA · 6 imágenes distintas con fundido rápido de 0.6 s cada 2 s + puntos para elegir slide. */
 (function(){
   "use strict";
-  var reduce=false;try{reduce=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;}catch(e){}
+  
   var A=document.getElementById("mast-slide-a"),B=document.getElementById("mast-slide-b"),dots=document.querySelectorAll("#mast-dots button");
   if(!A||!B)return;
   var slides=["assets/hero-joven.webp","assets/hero-libro.webp","assets/altar.webp","assets/reverso.webp","assets/sol-19.webp","assets/luna-18.webp"];
   var cur=0,shown=A,timer=null;
   function show(n){cur=(n+slides.length)%slides.length;var nx=(shown===A)?B:A;nx.src=slides[cur];nx.classList.add("on");shown.classList.remove("on");shown=nx;for(var d=0;d<dots.length;d++){dots[d].classList.toggle("on",d===cur);}}
-  function restart(){if(timer)clearInterval(timer);if(!reduce){timer=setInterval(function(){show(cur+1);},2000);}}
+  function restart(){if(timer)clearInterval(timer);timer=setInterval(function(){show(cur+1);},2000);}
   for(var q=0;q<dots.length;q++){(function(ix){dots[ix].addEventListener("click",function(){show(ix);restart();});})(q);}
   A.src=slides[0];A.classList.add("on");
   restart();
