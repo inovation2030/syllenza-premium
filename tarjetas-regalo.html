@@ -1019,6 +1019,14 @@ footer{font-size:23px}
 .celta-interp li p{font-size:19px}
 }
 
+
+/* --- Barra Sesion de prueba + secuencia (visible en las 12 paginas) --- */
+.syl-demo-bar{position:sticky;top:0;z-index:9999;text-align:center;font-family:"Cinzel Decorative","Cinzel",serif;color:#1a1206;background:linear-gradient(180deg,#fcda59,#fca611);border-bottom:2px solid #fdf77e;padding:8px 10px;font-weight:900;letter-spacing:.04em;font-size:14px;line-height:1.5}
+.syl-demo-bar a{color:#1a1206;text-decoration:underline}
+.syl-demo-bar a.on{background:#1a1206;color:#fcda59;border-radius:8px;padding:1px 8px;text-decoration:none}
+.syl-demo-bar button{background:#1a1206;color:#fcda59;border:1px solid #fdf77e;border-radius:8px;padding:2px 10px;font-weight:700;cursor:pointer;margin-left:6px}
+.syl-demo-bar .syl-demo-seq{font-weight:700}
+@media(max-width:860px){.syl-demo-bar{font-size:12.5px;padding:7px 8px}}
 </style>
 <style>
 /* ===== SYL_GIFT · Tarjetas de regalo / Syllenza Pass ===== */
@@ -1085,6 +1093,30 @@ footer{font-size:23px}
 <div class="wrap" id="top">
   <!-- NAV · SYLLENZA -->
   <!-- MASTHEAD · SYLLENZA: cielo, lunas y esquinas construidos con CSS real -->
+  <!-- BARRA SESION DE PRUEBA + SECUENCIA · en las 12 paginas, solo visible con la demo activa -->
+  <div class="syl-demo-bar hidden" id="syl-demo-bar" role="status"><span class="syl-demo-star">★ SESIÓN DE PRUEBA ★ · Todo gratis</span><span class="syl-demo-seq"> Secuencia: <a href="index.html" data-seq="inicio">① Inicio</a> → <a href="experiencias.html" data-seq="exp">② Experiencias</a> → <a href="carta-del-dia.html" data-seq="lect">③ Lecturas</a> → <a href="mi-cuenta.html" data-seq="cuenta">④ Mi cuenta</a></span><span class="syl-demo-links2"> <a href="mi-cuenta.html">Mi sesión</a> · <button type="button" id="syl-demo-salir-top">Salir</button></span></div>
+  <script>
+  (function(){try{
+    var bar=document.getElementById("syl-demo-bar");
+    if(!bar)return;
+    var on=false;try{on=localStorage.getItem("syl-demo")==="1";}catch(e){}
+    if(on)bar.classList.remove("hidden");
+    try{
+      var p=(location.pathname||"").split("/").pop().toLowerCase();
+      var step=p==="index.html"||p===""?"inicio":p==="experiencias.html"?"exp":(p==="carta-del-dia.html"||p==="pasado-presente-futuro.html"||p==="tirada-completa.html"||p==="cruz-celta.html")?"lect":p==="mi-cuenta.html"?"cuenta":"";
+      if(step){var a=bar.querySelector('[data-seq="'+step+'"]');if(a)a.classList.add("on");}
+    }catch(e){}
+    var s=document.getElementById("syl-demo-salir-top");
+    if(s)s.addEventListener("click",function(){
+      try{localStorage.removeItem("syl-demo");localStorage.removeItem("syl-cuenta");
+      var prev=null;try{prev=localStorage.getItem("syl-cuenta-respaldo");}catch(e){}
+      if(prev){try{localStorage.setItem("syl-cuenta",prev);localStorage.removeItem("syl-cuenta-respaldo");}catch(e){}}
+      }catch(e){}
+      bar.classList.add("hidden");
+      try{location.reload();}catch(e){}
+    });
+  }catch(e){}})();
+  </script>
   <header class="masthead">
     <div class="hero-sky" id="hero-bg" aria-hidden="true"></div><div class="mast-slides" id="mast-slides" aria-hidden="true"><img id="mast-slide-a" alt=""><img id="mast-slide-b" alt=""></div><div class="mast-dots" id="mast-dots"><button type="button" data-mast="0" aria-label="Slide 1"></button><button type="button" data-mast="1" aria-label="Slide 2"></button><button type="button" data-mast="2" aria-label="Slide 3"></button><button type="button" data-mast="3" aria-label="Slide 4"></button><button type="button" data-mast="4" aria-label="Slide 5"></button><button type="button" data-mast="5" aria-label="Slide 6"></button></div><div class="hero-sparkles" id="hero-sparkles" aria-hidden="true"></div><div class="hero-corners" aria-hidden="true"><i class="hc tl"></i><i class="hc tr"></i><i class="hc bl"></i><i class="hc br"></i></div>
     <div class="mast-row">
