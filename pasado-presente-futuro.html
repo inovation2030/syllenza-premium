@@ -3018,7 +3018,7 @@ function sylCosPlace(b,w,back,snap){
   var flipped=!!SYL_COS.flipped[w.ix];
   if(snap){b.style.transition="none";b.style.display="";b.style.opacity="0";}
   b.setAttribute("data-ix",String(w.ix));
-  b.className="picker-card "+(Math.abs(w.off)<0.5?"center":"side")+(flipped?" flipped":"");
+  b.className="picker-card "+(w._ctr?"center":"side")+(flipped?" flipped":"");
   b.style.setProperty("--x",x+"px");
   b.style.setProperty("--y",y+"px");
   b.style.setProperty("--scale",String(scale));
@@ -3034,7 +3034,7 @@ function sylCosPlace(b,w,back,snap){
       b.addEventListener("click",function(){
         var ix=Number(b.getAttribute("data-ix")),c=state.deck[ix];
         if(!c||state._picked.indexOf(c)>=0)return;
-        if(!b.classList.contains("flipped")){SYL_COS.flipped[ix]=true;b.classList.add("flipped");b.setAttribute("aria-label","Seleccionar "+c.name);return;}
+        if(!b.classList.contains("flipped")){SYL_COS.flipped[ix]=true;b.classList.add("flipped");b.setAttribute("aria-label","Seleccionar "+c.name);try{sylCosPause();}catch(e){}return;}
         sylCosPick(c,ix,b);
       });
     }
@@ -3056,6 +3056,9 @@ function sylCosRender(){
     if(state._picked.indexOf(c)>=0)return;
     want.push({ix:ix,off:pos-ux,c:c});
   });
+  /* SYL_CENTRO · siempre hay una carta central: la visible más cercana al medio.
+     Sin esto, al pasar por una carta ya elegida el centro quedaba vacío y no había qué tocar. */
+  var _mc=null,_mo=1e9;want.forEach(function(w){var _a=Math.abs(w.off);if(_a<_mo){_mo=_a;_mc=w;}});if(_mc)_mc._ctr=true;
   var used={};
   want.forEach(function(w){
     for(var i=0;i<SYL_COS.nodes.length;i++){
