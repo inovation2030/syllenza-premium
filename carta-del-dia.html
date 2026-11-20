@@ -1159,6 +1159,32 @@ body.syl-carrusel .syl-car-box{display:flex;flex-direction:column;flex:1 1 auto;
 .syl-menu-track{display:flex;align-items:center;width:max-content;animation:syl-menu-marquee 25s linear infinite;will-change:transform}
 .syl-menu-set{display:flex;align-items:center;gap:2px;white-space:nowrap;flex:0 0 auto}
 @keyframes syl-menu-marquee{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+/* SYL_COSMICO · Selector Cosmico (ejemplo de Leonardo, ZIP 2026-11-20): abanico animado, la central se revela sola, tocar para elegir. Arte original Syllenza. */
+body.syl-fan-full.syl-cosmico #view-pick #fan-pick,body.syl-fan-full.syl-cosmico #view-pick .car-wrap,body.syl-fan-full.syl-cosmico #view-pick .car-hint,body.syl-fan-full.syl-cosmico #view-pick #pick-preview,body.syl-fan-full.syl-cosmico #view-pick #btn-pick-draw,body.syl-fan-full.syl-cosmico #view-pick #btn-pick-sacar,body.syl-fan-full.syl-cosmico #view-pick #btn-pick-back,body.syl-fan-full.syl-cosmico #view-pick #destino3d,body.syl-fan-full.syl-cosmico #view-pick #celta3d,body.syl-fan-full.syl-cosmico #destino3d-full,body.syl-fan-full.syl-cosmico #celta3d-full,body.syl-fan-full.syl-cosmico #view-pick #syl-carrusel,body.syl-fan-full.syl-cosmico #view-pick #pick-title,body.syl-fan-full.syl-cosmico #view-pick #pick-sub,body.syl-fan-full.syl-cosmico #view-pick #pick-price,body.syl-fan-full.syl-cosmico #view-pick #pick-question,body.syl-fan-full.syl-cosmico #view-pick .foto2-orn,body.syl-fan-full.syl-cosmico #view-pick .fan-title,body.syl-fan-full.syl-cosmico #view-pick #pick-status,body.syl-fan-full.syl-cosmico #view-pick #pick-count,body.syl-fan-full.syl-cosmico #view-pick #pick-list{display:none!important}
+.cosmic-picker{display:none;margin-top:18px;text-align:center;background:radial-gradient(ellipse at 50% 48%,#101b3b 0%,#050914 62%,#020309 100%);border:1px solid rgba(252,166,17,.65);border-radius:22px;padding:clamp(16px,3vw,28px) 10px 22px;overflow:hidden}
+body.syl-cosmico .cosmic-picker.active{display:block}
+.cosmic-picker h3{font-family:'Cinzel Decorative',Cinzel,serif;color:var(--gold-pale);font-size:clamp(22px,4vw,34px);letter-spacing:.12em;margin:4px 0 8px}
+.picker-hint{color:var(--muted);font-size:15px;margin:0 0 14px}
+.picker-count{display:inline-block;border:1px solid var(--gold);border-radius:999px;padding:8px 16px;color:var(--gold-pale);font-size:14px;margin-bottom:12px}
+.picker-track{height:clamp(340px,62vh,540px);display:flex;align-items:center;justify-content:center;position:relative;perspective:1400px;overflow:hidden;touch-action:pan-y}
+.picker-card{position:absolute;width:min(68vw,300px);aspect-ratio:13/20;border:1px solid #c9a44b;border-radius:12px;background:#07132d;box-shadow:0 12px 32px #000b;overflow:hidden;cursor:pointer;transition:transform .75s cubic-bezier(.2,.75,.25,1),opacity .6s,filter .6s;transform-style:preserve-3d;padding:0;color:var(--gold-pale)}
+.picker-card .picker-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden;border-radius:11px}
+.picker-card .picker-back{background:#07132d center/cover no-repeat;border:4px double #b58b37}
+.picker-card .picker-front{transform:rotateY(180deg);background:#07132d;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:7px}
+.picker-card .picker-front .artbox{width:100%;flex:1 1 auto;min-height:0;border:2px solid #c9a227;border-radius:7px;overflow:hidden}
+.picker-card .picker-front .artbox img{width:100%;height:100%;object-fit:cover;display:block}
+.picker-card .picker-front .name{font:600 clamp(11px,1.6vw,15px) 'Cinzel Decorative',Cinzel,serif;color:#f8ecc0;margin-top:6px;line-height:1.2}
+.picker-card.flipped{transform:translateX(var(--x)) translateY(var(--y)) scale(var(--scale)) rotateY(180deg) rotateZ(var(--rot))}
+.picker-card:not(.flipped){transform:translateX(var(--x)) translateY(var(--y)) scale(var(--scale)) rotateZ(var(--rot))}
+.picker-card.center{filter:none;box-shadow:0 0 0 2px #e9cb6d,0 0 35px rgba(252,166,17,.55),0 20px 45px #000c;z-index:10}
+.picker-card.side{filter:brightness(.72)}
+.picker-card.chosen{opacity:0;pointer-events:none;transform:translateY(-45px) scale(.72) rotateY(180deg)!important}
+.picker-controls{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:14px}
+.picker-controls .btn{min-width:150px}
+.picker-selected{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:14px auto 0;max-width:900px;min-height:42px}
+.picker-chip{border:1px solid #9c7c35;border-radius:9px;padding:7px 10px;color:var(--gold-pale);background:#0a1330;font-size:12px}
+@media(max-width:620px){.picker-track{height:min(64vh,430px)}}
+@media(prefers-reduced-motion:reduce){.picker-card{transition:none}}
 </style>
 
 
@@ -1376,6 +1402,14 @@ body.syl-carrusel .syl-car-box{display:flex;flex-direction:column;flex:1 1 auto;
     <p class="foto2-orn" aria-hidden="true">☾ ☾ ☾&nbsp;&nbsp;✦&nbsp;&nbsp;☽ ☽ ☽</p>
     <h3 class="fan-title">Selecciona tu carta</h3>
     <div class="fan-pick" id="fan-pick" role="group" aria-label="Abanico de cartas boca abajo"></div>
+    <section class="cosmic-picker" id="cosmic-picker" aria-label="Selector animado de cartas">
+      <h3>SELECT CARDS</h3>
+      <p class="picker-hint">La carta central se revela automáticamente. Tócala para elegirla.</p>
+      <div class="picker-count" id="picker-count" aria-live="polite">0 cartas seleccionadas</div>
+      <div class="picker-track" id="picker-track"></div>
+      <div class="picker-selected" id="picker-selected"></div>
+      <div class="picker-controls"><button class="btn btn-ghost" id="picker-pause" type="button">Ⅱ Pausar</button><button class="btn btn-ghost" id="picker-reset" type="button">↺ Nuevas cartas</button><button class="btn btn-gold" id="picker-confirm" type="button" disabled>Confirmar selección</button></div>
+    </section>
     <div id="syl-carrusel" class="syl-car-box" aria-label="Selección de cartas">
       <div class="syl-car-stagewrap">
         <div class="syl-car-stage" id="syl-car-stage"></div>
@@ -2636,6 +2670,100 @@ function sylCarReset(){
   sylCarBuild();
 }
 
+/* SYL_COSMICO · Selector Cosmico (ejemplo de Leonardo, ZIP 2026-11-20). Abanico animado de 7 cartas: avanza solo cada 2.1 s de izquierda a derecha, la central se revela sola con brillo dorado, 1er toque voltea una lateral, 2o toque la elige. Arte original Syllenza (deckBackSrc + SYL_FRONTS). Sin repeticiones: splice de state._pickPool. */
+var SYL_COS=null;
+function sylCosNeed(){return pickCountFor(state.mode);}
+function sylCosStop(){if(SYL_COS&&SYL_COS.timer){try{clearInterval(SYL_COS.timer);}catch(e){}SYL_COS.timer=null;}}
+function sylCosStart(){
+  if(!state.deck||!state.deck.length){toast("Primero baraja el mazo de 78 cartas.");return;}
+  sylCosStop();
+  try{document.body.classList.add("syl-cosmico");}catch(e){}
+  SYL_COS={index:0,selected:[],paused:false,flipped:{},timer:null,done:false};
+  try{window.SYL_COS=SYL_COS;}catch(e){}
+  if(!window._sylCosBound){window._sylCosBound=true;
+    var pz=$("picker-pause");if(pz)pz.addEventListener("click",function(){if(!SYL_COS)return;SYL_COS.paused=!SYL_COS.paused;this.textContent=SYL_COS.paused?"▶ Reanudar":"Ⅱ Pausar";});
+    var cf=$("picker-confirm");if(cf)cf.addEventListener("click",function(){sylCosConfirm();});
+    var rz=$("picker-reset");if(rz)rz.addEventListener("click",function(){sylCosReset();});
+  }
+  var cp=$("cosmic-picker");if(cp)cp.classList.add("active");
+  var pp=$("picker-pause");if(pp)pp.textContent="Ⅱ Pausar";
+  sylCosRender();
+  SYL_COS.timer=setInterval(function(){if(SYL_COS&&!SYL_COS.paused&&SYL_COS.selected.length<sylCosNeed()){SYL_COS.index=(SYL_COS.index+1)%state.deck.length;sylCosRender();}},2100);
+}
+function sylCosClamp(a,b,v){return Math.max(a,Math.min(b,v));}
+function sylCosFront(c){var ab="assets/";try{if(typeof ART_BASE!=="undefined"&&ART_BASE)ab=ART_BASE;}catch(e){}try{return SYL_FRONTS&&SYL_FRONTS[c.name]?ab+SYL_FRONTS[c.name]:"";}catch(e){return "";}}
+function sylCosRender(){
+  var track=$("picker-track");if(!track||!state.deck||!SYL_COS)return;
+  var deck=state.deck,center=SYL_COS.index,html="";
+  var back="assets/reverso.webp";try{var b=deckBackSrc();if(b)back=b;}catch(e){}
+  var offsets=[-3,-2,-1,0,1,2,3];
+  offsets.forEach(function(off){
+    var ix=(center+off+deck.length)%deck.length,c=deck[ix];
+    if(state._picked.indexOf(c)>=0)return;
+    var x=off*sylCosClamp(110,180,window.innerWidth*0.42);
+    var scale=off===0?1:Math.max(.62,1-Math.abs(off)*0.11);
+    var y=Math.abs(off)*8,rot=off*3.5;
+    var flipped=off===0||!!SYL_COS.flipped[ix];
+    var front=sylCosFront(c);
+    html+='<button type="button" class="picker-card '+(off===0?'center':'side')+(flipped?' flipped':'')+'" data-ix="'+ix+'" aria-label="'+(flipped?('Seleccionar '+c.name):'Carta boca abajo')+'" style="--x:'+x+'px;--y:'+y+'px;--scale:'+scale+';--rot:'+rot+'deg;z-index:'+(10-Math.abs(off))+'"><span class="picker-face picker-back" style="background-image:url(&quot;'+back+'&quot;)"></span><span class="picker-face picker-front"><span class="artbox">'+(front?'<img src="'+front+'" alt="'+c.name+'">':'')+'</span><span class="name">'+c.name+'</span></span></button>';
+  });
+  track.innerHTML=html;
+  track.querySelectorAll('.picker-card').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var ix=Number(btn.getAttribute('data-ix')),c=deck[ix];
+      if(state._picked.indexOf(c)>=0)return;
+      if(!btn.classList.contains('flipped')){SYL_COS.flipped[ix]=true;btn.classList.add('flipped');btn.setAttribute('aria-label','Seleccionar '+c.name);return;}
+      sylCosPick(c,ix,btn);
+    });
+  });
+  sylCosCount();
+}
+function sylCosPick(c,ix,btn){
+  var n=sylCosNeed();
+  if(!SYL_COS||state._picked.length>=n)return;
+  var pi=state._pickPool.indexOf(c);
+  if(pi>=0)state._pickPool.splice(pi,1);
+  state._picked.push(c);
+  SYL_COS.selected.push(c);
+  btn.classList.add('chosen');
+  var done=state._picked.length;
+  var pc=$("pick-count");if(pc)pc.textContent="Cartas elegidas: "+done+" / "+n;
+  var pl=$("pick-list");if(pl)pl.textContent=state._picked.map(function(cc,ix2){var lb=state._pickLabels[ix2]||"";return (lb?lb+": ":"")+cc.name+(cc.reversed?" · Invertida":" · Derecha");}).join("  ✦  ");
+  var ps=$("pick-status");if(ps){var lb2=state._pickLabels[done-1]||"";ps.textContent="Carta "+done+" de "+n+" elegida: "+(lb2?lb2+": ":"")+c.name+(c.reversed?" · Invertida":" · Derecha")+".";}
+  sylCosCount();
+  if(done>=n){
+    sylCosStop();
+    var pp=$("picker-pause");if(pp)pp.textContent="✓ Selección completa";
+    try{window.SYL_revealDelay=60000;}catch(e){}
+    if(n===1&&!SYL_COS.done){SYL_COS.done=true;setTimeout(function(){if(SYL_COS&&SYL_COS.done)sylCosConfirm();},1400);}
+  }else{
+    SYL_COS.index=(ix+1)%state.deck.length;
+    setTimeout(function(){if(SYL_COS)sylCosRender();},650);
+  }
+}
+function sylCosCount(){
+  var need=sylCosNeed();
+  var pc=$("picker-count");if(pc)pc.textContent=SYL_COS.selected.length+" de "+need+" cartas seleccionadas";
+  var cf=$("picker-confirm");if(cf)cf.disabled=SYL_COS.selected.length!==need;
+  var ps2=$("picker-selected");if(ps2)ps2.innerHTML=SYL_COS.selected.map(function(c,i){var lb=state._pickLabels[i]||"";return '<span class="picker-chip">'+(i+1)+'. '+(lb?lb+': ':'')+c.name+(c.reversed?' · Invertida':' · Derecha')+'</span>';}).join("");
+}
+function sylCosConfirm(){
+  if(!SYL_COS||SYL_COS.selected.length!==sylCosNeed())return;
+  sylCosStop();
+  revealPicked(state._picked.slice(), state._pickLabels.slice());
+}
+function sylCosReset(){
+  try{state.deck=shuffleDeck();}catch(e){return;}
+  try{window.SYL_revealGen=(window.SYL_revealGen||0)+1;}catch(e){}
+  state._pickPool=state.deck.slice();state._picked=[];state._pickLabels=pickLabelsFor(state.mode);
+  SYL_COS={index:0,selected:[],paused:false,flipped:{},timer:null,done:false};
+  try{window.SYL_COS=SYL_COS;}catch(e){}
+  var pp=$("picker-pause");if(pp)pp.textContent="Ⅱ Pausar";
+  sylCosRender();
+  SYL_COS.timer=setInterval(function(){if(SYL_COS&&!SYL_COS.paused&&SYL_COS.selected.length<sylCosNeed()){SYL_COS.index=(SYL_COS.index+1)%state.deck.length;sylCosRender();}},2100);
+  var pc=$("pick-count");if(pc)pc.textContent="Cartas elegidas: 0 / "+sylCosNeed();
+  var pl=$("pick-list");if(pl)pl.textContent="";
+}
 function enterPick(){
   /* La Tirada Completa de 22 cartas NO se escoge a mano: sigue al azar
      del mazo barajado, como está. Solo Carta del día (1), 3 cartas y
@@ -2652,7 +2780,7 @@ function enterPick(){
   else{pq.classList.add("hidden");}
   var sc=$("btn-pick-sacar");if(sc)sc.textContent=pickSacarText(state.mode);
   state._pickPool=state.deck.slice();state._picked=[];state._pickLabels=pickLabelsFor(state.mode);
-  sylCarStart();
+  sylCosStart();
   var fan=$("fan-pick");if(fan){fan.classList.remove("shuffling");fan.classList.add("spinning");}
   $("pick-status").textContent="El abanico gira mientras eliges… toca una carta o pulsa Sacar.";
   $("pick-count").textContent="Cartas elegidas: 0 / "+pickCountFor(state.mode);
