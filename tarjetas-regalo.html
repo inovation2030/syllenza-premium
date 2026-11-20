@@ -1053,6 +1053,7 @@ footer{font-size:23px}
 .gift-pay button{border-radius:999px;padding:13px 26px;font-weight:700;font-size:17px;cursor:pointer}
 .gift-pay .pay-apple{background:#000;color:#fff;border:1px solid #000}
 .gift-pay .pay-google{background:#fff;color:#1a1a1a;border:1px solid #dadce0}
+.gift-pay .pay-mp{background:#009ee3;color:#fff;border:1px solid #009ee3}
 
 /* ===== SYL_SUBMENUBAR · barra de submenú con las 12 páginas (foto 1) ===== */
 .submenubar{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:4px 10px;max-width:1180px;margin:0 auto 22px;padding:10px 16px;background:linear-gradient(120deg,#0d1a42,#060b1e);border:1px solid var(--gold);border-radius:999px;box-shadow:0 14px 34px rgba(0,0,0,.5),0 0 24px rgba(252,166,17,.12);font-family:'Cinzel Decorative','Cinzel',serif}
@@ -1228,8 +1229,9 @@ footer{font-size:23px}
   <div class="gift-pay">
     <button type="button" class="pay-apple" id="btn-pay-apple"> Pay · Apple Pay</button>
     <button type="button" class="pay-google" id="btn-pay-google">G Pay · Google Pay</button>
+    <button type="button" class="pay-mp" id="btn-pay-mp">Mercado Pago</button>
   </div>
-  <p class="gift-sub" style="font-size:15px">El pago con Apple Pay y Google Pay se confirma al momento. Si prefieres, crea tu pase con el formulario y te lo enviamos por email.</p>
+  <p class="gift-sub" style="font-size:15px">El pago con Apple Pay, Google Pay y Mercado Pago se confirma al momento. Si prefieres, crea tu pase con el formulario y te lo enviamos por email.</p>
   <form class="gift-form" id="gift-form">
     <h3 style="font-family:'Cinzel Decorative','Cinzel',serif;color:var(--gold-pale);margin:0 0 6px">Crear mi Syllenza Pass</h3>
     <label for="gf-nombre">Tu nombre</label>
@@ -3636,7 +3638,8 @@ var qrcode=function(){var t=function(t,r){var e=t,n=g[r],o=null,i=0,a=null,u=[],
 //# sourceMappingURL=/sm/26b4b0d0b1e283d6b3ec9857ac597d7a60c76ac17be1ef4c965f03086de426bb.map</script>
 <script>
 /* ===== SYL_GIFT · Syllenza Pass ===== */
-var SYL_GIFT_LINKS={100:"https://buy.stripe.com/test_cNi5kE81DeTbdUnbt73ks06",200:"https://buy.stripe.com/test_8x28wQ6Xz12l03xbt73ks04",400:"https://buy.stripe.com/test_8x228sa9Lh1jg2vfJn3ks07",600:"https://buy.stripe.com/test_9B64gAbdPaCV6rVcxb3ks05"}; /* Stripe (modo prueba): cada enlace cobra la tarjeta + 5% cargo por servicio (100->105, 200->210, 400->420, 600->630 MXN). Sin IVA en Stripe; el IVA lo paga Leonardo aparte. */
+var SYL_GIFT_LINKS={100:"https://buy.stripe.com/test_cNi5kE81DeTbdUnbt73ks06",200:"https://buy.stripe.com/test_8x28wQ6Xz12l03xbt73ks04",400:"https://buy.stripe.com/test_8x228sa9Lh1jg2vfJn3ks07",600:"https://buy.stripe.com/test_9B64gAbdPaCV6rVcxb3ks05"};
+var SYL_MP_LINKS={100:"https://mpago.la/1bNZY4Z",200:"https://mpago.la/2uPfgX7",400:"https://mpago.la/1me52Jb",600:"https://mpago.la/191fddY"}; /* Mercado Pago (links de pago): 100->105, 200->210, 400->420, 600->630 MXN, con 5% cargo por servicio. Verificados 2026-11-19. */ /* Stripe (modo prueba): cada enlace cobra la tarjeta + 5% cargo por servicio (100->105, 200->210, 400->420, 600->630 MXN). Sin IVA en Stripe; el IVA lo paga Leonardo aparte. */
 (function(){
   var amt=100, code="";
   function fmt(n){return "$"+Number(n).toFixed(2);}
@@ -3673,6 +3676,7 @@ var SYL_GIFT_LINKS={100:"https://buy.stripe.com/test_cNi5kE81DeTbdUnbt73ks06",20
   }
   var pa=document.getElementById("btn-pay-apple"); if(pa)pa.addEventListener("click",function(){goPay("Apple Pay");});
   var pg=document.getElementById("btn-pay-google"); if(pg)pg.addEventListener("click",function(){goPay("Google Pay");});
+  var pm=document.getElementById("btn-pay-mp"); if(pm)pm.addEventListener("click",function(){var link=SYL_MP_LINKS[String(amt)]; if(link){location.href=link;return;} var fo=document.getElementById("gift-form"); if(fo)fo.scrollIntoView({behavior:"smooth",block:"center"});});
   var form=document.getElementById("gift-form");
   if(form)form.addEventListener("submit",function(ev){
     ev.preventDefault();
