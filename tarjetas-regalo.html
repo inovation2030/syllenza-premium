@@ -1037,6 +1037,32 @@ footer{font-size:23px}
 .syl-menu .lang-cur{margin-left:auto;display:flex;gap:6px;flex:0 0 auto;padding-left:10px}
 .syl-menu .lang-cur select{background:#0a1330;color:var(--gold-pale);border:1px solid var(--gold);border-radius:999px;padding:7px 9px;font-size:14px}
 @media(max-width:620px){.syl-menu{padding:8px 12px}.syl-menu a{font-size:15px;padding:8px 10px}}
+/* ===== SYL_BOT · Asistente virtual de Syllenza (2026-11-20) ===== */
+.syl-bot-btn{position:fixed;right:18px;bottom:18px;z-index:80;width:60px;height:60px;border-radius:50%;border:2px solid var(--gold);background:#0a1330;cursor:pointer;box-shadow:0 10px 30px rgba(0,0,0,.6),0 0 24px rgba(252,166,17,.35);padding:0;overflow:hidden}
+.syl-bot-btn img{width:100%;height:100%;object-fit:cover;display:block}
+.syl-bot{position:fixed;right:18px;bottom:92px;z-index:90;width:380px;max-width:calc(100vw - 36px);height:min(560px,calc(100dvh - 130px));display:flex;flex-direction:column;background:linear-gradient(180deg,#101f4d,#060b1e);border:2px solid var(--gold);border-radius:20px;box-shadow:0 24px 60px rgba(0,0,0,.75),0 0 30px rgba(252,166,17,.2);overflow:hidden}
+.syl-bot.hidden{display:none}
+.syl-bot-head{display:flex;align-items:center;gap:10px;padding:12px 14px;background:linear-gradient(120deg,#101f4d,#0a1330);border-bottom:1px solid rgba(252,166,17,.4)}
+.syl-bot-head img{width:40px;height:40px;border-radius:50%;border:1px solid var(--gold);object-fit:cover}
+.syl-bot-head .t{flex:1;min-width:0}
+.syl-bot-head .t b{display:block;font-family:"Cinzel Decorative","Cinzel",serif;color:var(--gold-pale);font-size:17px;letter-spacing:.05em}
+.syl-bot-head .t span{font-size:12px;color:#9fb4e8}
+.syl-bot-head .t span i{display:inline-block;width:8px;height:8px;border-radius:50%;background:#37d67a;margin-right:5px}
+.syl-bot-close{background:transparent;border:1px solid var(--gold);color:var(--gold-pale);border-radius:50%;width:30px;height:30px;font-size:16px;cursor:pointer;flex:0 0 auto}
+.syl-bot-body{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px}
+.syl-msg{max-width:88%;padding:10px 13px;border-radius:14px;font-size:15px;line-height:1.55;white-space:pre-wrap;word-break:break-word}
+.syl-msg.bot{align-self:flex-start;background:rgba(252,166,17,.12);border:1px solid rgba(252,166,17,.35);color:#fdf3c4}
+.syl-msg.user{align-self:flex-end;background:#1a2c5e;border:1px solid rgba(252,166,17,.5);color:#fff}
+.syl-msg.bot a{color:var(--gold-2);font-weight:700}
+.syl-msg.typing{opacity:.7}
+.syl-qr{display:flex;flex-wrap:wrap;gap:6px;padding:0 14px 10px}
+.syl-qr button{background:transparent;border:1px solid var(--gold);color:var(--gold-pale);border-radius:999px;padding:7px 12px;font-size:13px;cursor:pointer;font-family:inherit}
+.syl-qr button:hover{background:rgba(252,166,17,.15)}
+.syl-bot-input{display:flex;gap:8px;padding:10px 12px;border-top:1px solid rgba(252,166,17,.35)}
+.syl-bot-input input{flex:1;min-width:0;background:#0a1330;border:1px solid rgba(252,166,17,.5);border-radius:999px;color:#fff;padding:10px 14px;font-size:15px;font-family:inherit}
+.syl-bot-input button{background:linear-gradient(180deg,#fca611,#b96a00);border:none;color:#1a1000;border-radius:999px;padding:10px 16px;font-weight:700;cursor:pointer;font-size:15px}
+body.syl-fan-full .syl-bot-btn,body.syl-fan-full .syl-bot,body.syl-cruz-full .syl-bot-btn,body.syl-cruz-full .syl-bot{display:none!important}
+@media(max-width:620px){.syl-bot-btn{right:12px;bottom:12px;width:54px;height:54px}.syl-bot{right:12px;bottom:78px}}
 </style>
 <style>
 /* ===== SYL_GIFT · Tarjetas de regalo / Syllenza Pass ===== */
@@ -1126,7 +1152,7 @@ footer{font-size:23px}
       try{location.reload();}catch(e){}
     });
   }catch(e){}})();
-  </script><nav class="syl-menu" aria-label="Menú principal de Syllenza"><a href="index.html">⌂ Inicio</a><span class="syl-sep">✦</span><a href="experiencias.html">✦ Elige tu experiencia</a><span class="syl-sep">✦</span><a href="carta-del-dia.html">☀️ Carta del Día</a><span class="syl-sep">✦</span><a href="pasado-presente-futuro.html">☾ 3 Cartas</a><span class="syl-sep">✦</span><a href="tirada-completa.html">✧ Tirada Completa</a><span class="syl-sep">✦</span><a href="cruz-celta.html">✥ Cruz Celta</a><span class="syl-sep">✦</span><a href="horoscopos.html">☾ Horóscopo del Día</a><span class="syl-sep">✦</span><a href="runa-celta.html">ᚱ Runa del Día</a><span class="syl-sep">✦</span><a href="numerologia.html">🔢 Numerología</a><span class="syl-sep">✦</span><a href="contacto.html">✉ Contacto</a><span class="syl-sep">✦</span><a href="tarjetas-regalo.html" class="on">🎁 Syllenza Pass</a><span class="syl-sep">✦</span><a href="mi-cuenta.html">👤 Mi cuenta</a><span class="lang-cur"><select id="sel-lang" aria-label="Idioma"><option value="es">ES</option><option value="en">EN</option></select><select id="sel-cur" aria-label="Moneda"><option value="MXN">MXN $</option><option value="USD">USD $</option><option value="EUR">EUR €</option></select></span></nav></div>
+  </script><nav class="syl-menu" aria-label="Menú principal de Syllenza"><a href="index.html">⌂ Inicio</a><span class="syl-sep">✦</span><a href="experiencias.html">✦ Elige tu experiencia</a><span class="syl-sep">✦</span><a href="carta-del-dia.html">☀️ Carta del Día</a><span class="syl-sep">✦</span><a href="pasado-presente-futuro.html">☾ 3 Cartas</a><span class="syl-sep">✦</span><a href="tirada-completa.html">✧ Tirada Completa</a><span class="syl-sep">✦</span><a href="cruz-celta.html">✥ Cruz Celta</a><span class="syl-sep">✦</span><a href="horoscopos.html">☾ Horóscopo del Día</a><span class="syl-sep">✦</span><a href="runa-celta.html">ᚱ Runa del Día</a><span class="syl-sep">✦</span><a href="numerologia.html">🔢 Numerología</a><span class="syl-sep">✦</span><a href="compatibilidad.html">💕 Compatibilidad</a><span class="syl-sep">✦</span><a href="contacto.html">✉ Contacto</a><span class="syl-sep">✦</span><a href="tarjetas-regalo.html" class="on">🎁 Syllenza Pass</a><span class="syl-sep">✦</span><a href="mi-cuenta.html">👤 Mi cuenta</a><span class="lang-cur"><select id="sel-lang" aria-label="Idioma"><option value="es">ES</option><option value="en">EN</option></select><select id="sel-cur" aria-label="Moneda"><option value="MXN">MXN $</option><option value="USD">USD $</option><option value="EUR">EUR €</option></select></span></nav></div>
   <header class="masthead">
     <div class="hero-sky" id="hero-bg" aria-hidden="true"></div><div class="mast-slides" id="mast-slides" aria-hidden="true"><img id="mast-slide-a" alt=""><img id="mast-slide-b" alt=""></div><div class="mast-dots" id="mast-dots"><button type="button" data-mast="0" aria-label="Slide 1"></button><button type="button" data-mast="1" aria-label="Slide 2"></button><button type="button" data-mast="2" aria-label="Slide 3"></button><button type="button" data-mast="3" aria-label="Slide 4"></button><button type="button" data-mast="4" aria-label="Slide 5"></button><button type="button" data-mast="5" aria-label="Slide 6"></button></div><div class="hero-sparkles" id="hero-sparkles" aria-hidden="true"></div><div class="hero-corners" aria-hidden="true"><i class="hc tl"></i><i class="hc tr"></i><i class="hc bl"></i><i class="hc br"></i></div>
     <div class="mast-row">
@@ -3645,6 +3671,142 @@ var SYL_MP_LINKS={100:"https://mpago.la/1bNZY4Z",200:"https://mpago.la/2uPfgX7",
     if(m&&/^SYL-GIFT-[A-Z0-9]{6}$/i.test(m[1])){code=m[1].toUpperCase();}
     render();
   }catch(e){render();}
+})();
+</script>
+<button type="button" class="syl-bot-btn" id="syl-bot-btn" aria-label="Abrir el asistente de Syllenza"><img src="assets/logo-syllenza.gif" alt="Syllenza"></button>
+<div class="syl-bot hidden" id="syl-bot" role="dialog" aria-label="Asistente de Syllenza">
+  <div class="syl-bot-head"><img src="assets/logo-syllenza.gif" alt="Syllenza"><div class="t"><b>Asistente Syllenza</b><span><i></i><span id="syl-bot-online">En línea · responde al instante</span></span></div><button type="button" class="syl-bot-close" id="syl-bot-close" aria-label="Cerrar">✕</button></div>
+  <div class="syl-bot-body" id="syl-bot-body"></div>
+  <div class="syl-qr" id="syl-bot-qr"></div>
+  <div class="syl-bot-input"><input type="text" id="syl-bot-text" placeholder="Escribe tu pregunta…" autocomplete="off" aria-label="Escribe tu pregunta"><button type="button" id="syl-bot-send" aria-label="Enviar">➤</button></div>
+</div>
+<script>
+/* ===== SYL_BOT · Asistente virtual de Syllenza (2026-11-20) ===== */
+(function(){
+"use strict";
+var KB=[
+{id:"saludo",k:["hola","buenas","buenos dias","buenas tardes","buenas noches","hey","que tal","saludos"],a:"¡Hola! ✦ Soy el asistente virtual de Syllenza, tu casa privada de tarot. Puedo ayudarte con precios, las lecturas, las tarjetas de regalo, tu cuenta, los referidos, tu pareja ideal y el contacto. ¿Qué quieres saber?",e:"Hello! ✦ I'm Syllenza's virtual assistant, your private tarot house. I can help you with prices, readings, gift cards, your account, referrals, your ideal partner and contact. What would you like to know?",rel:["precios","gift","cuenta","compat"]},
+{id:"precios",p:["cuanto cuesta","cuánto cuesta","cuanto cuestan","cuánto cuestan","precio de"],k:["precio","precios","cuesta","cuestan","costo","cuanto","vale","valen","pago","pagar","tarifa"],a:"Estos son los precios: ☀️ Carta del Día — gratis · ☾ Pasado · Presente · Futuro — gratis · ✥ Cruz Celta — $200 · ✧ Tirada Completa — $400 (incluye el PDF con la historieta ilustrada) o $600 con el video animado de 2 minutos. La Tirada Completa se entrega en un máximo de 12 horas después de tu compra.",e:"Here are the prices: ☀️ Card of the Day — free · ☾ Past · Present · Future — free · ✥ Celtic Cross — $200 MXN · ✧ Full Reading — $400 MXN (includes the PDF with the illustrated comic) or $600 MXN with the 2-minute animated video. The Full Reading is delivered within 12 hours of your purchase.",rel:["completa","cruz","gift","contacto"]},
+{id:"completa",p:["tirada completa","lectura completa","la completa"],k:["completa","22 cartas","22"],a:"La Tirada Completa cuesta $400 e incluye el PDF con tu historieta ilustrada. Si quieres también el video animado de 2 minutos, son $600 en total. Son 22 cartas al azar con tu carta natal, tu oráculo personal y tu interpretación. La recibes en un máximo de 12 horas después de comprar, en tu correo o WhatsApp. [Ver la Tirada Completa](tirada-completa.html)",e:"The Full Reading costs $400 MXN and includes the PDF with your illustrated comic. With the 2-minute animated video it's $600 MXN in total. It's 22 cards drawn at random, with your birth chart, your personal oracle and your interpretation. You receive it within 12 hours of purchase, by email or WhatsApp. [See the Full Reading](tirada-completa.html)",rel:["precios","entrega","pago","contacto"]},
+{id:"cruz",p:["cruz celta","la cruz"],k:["cruz","celta","10 cartas"],a:"La Cruz Celta cuesta $200. Son 10 cartas en la forma clásica de la cruz celta: tu situación actual, tu obstáculo, tu pasado, tu futuro y tu resultado, entre otras. La eliges carta por carta en 3D y al final ves tu interpretación. [Ver la Cruz Celta](cruz-celta.html)",e:"The Celtic Cross costs $200 MXN. It's 10 cards in the classic Celtic Cross layout: your current situation, your obstacle, your past, your future and your outcome. You pick the cards one by one in 3D and see your interpretation at the end. [See the Celtic Cross](cruz-celta.html)",rel:["precios","lecturas","pago","contacto"]},
+{id:"gratis",p:["que es gratis","qué es gratis","lecturas gratis","gratis"],k:["gratis","free","sin costo","sin pagar"],a:"La Carta del Día y el Pasado · Presente · Futuro son gratis, siempre. También son gratis el Horóscopo del Día, la Runa del Día, la Numerología y la Compatibilidad. Solo la Cruz Celta ($200) y la Tirada Completa ($400) tienen costo.",e:"The Card of the Day and Past · Present · Future are always free. The Daily Horoscope, the Daily Celtic Rune, Numerology and Compatibility are free too. Only the Celtic Cross ($200 MXN) and the Full Reading ($400 MXN) have a cost.",rel:["lecturas","horoscopo","runa","compat"]},
+{id:"lecturas",p:["como funciona","cómo funciona","las lecturas","que lecturas","qué lecturas"],k:["lectura","lecturas","tirada","tiradas","funciona"],a:"Tenemos 4 lecturas: ☀️ Carta del Día (1 carta, gratis), ☾ Pasado · Presente · Futuro (3 cartas, gratis), ✧ Tirada Completa (22 cartas, $400) y ✥ Cruz Celta (10 cartas, $200). En las tres primeras eliges tus cartas a mano; la Tirada Completa es al azar. Todas terminan con tu interpretación y narración. [Elige tu experiencia](experiencias.html)",e:"We have 4 readings: ☀️ Card of the Day (1 card, free), ☾ Past · Present · Future (3 cards, free), ✧ Full Reading (22 cards, $400 MXN) and ✥ Celtic Cross (10 cards, $200 MXN). In the first three you pick your cards by hand; the Full Reading is random. All end with your interpretation and narration. [Choose your experience](experiencias.html)",rel:["precios","completa","cruz","gratis"]},
+{id:"gift",p:["tarjeta de regalo","tarjetas de regalo","syllenza pass","gift card","regalar"],k:["regalo","pass","gift","tarjeta"],a:"El Syllenza Pass es nuestra tarjeta de regalo: $100, $200, $400 o $600 de saldo. Se paga un 5% de cargo por servicio, así que el total es $105, $210, $420 o $630. Puedes pagar con tarjeta (Stripe, con Apple Pay o Google Pay) o con Mercado Pago. Recibes un código SYL-GIFT-XXXXXX con un código QR, y lo canjeas en la entrega de tu lectura de pago. [Ver el Syllenza Pass](tarjetas-regalo.html)",e:"The Syllenza Pass is our gift card: $100, $200, $400 or $600 MXN of balance. There's a 5% service fee, so the total is $105, $210, $420 or $630 MXN. You can pay by card (Stripe, with Apple Pay or Google Pay) or with Mercado Pago. You get a SYL-GIFT-XXXXXX code with a QR code, and you redeem it when your paid reading is delivered. [See the Syllenza Pass](tarjetas-regalo.html)",rel:["precios","pago","contacto"]},
+{id:"referidos",p:["referidos","programa de referidos","invitar amigos"],k:["referido","referidos","sello","sellos","invitar","gratis por referidos"],a:"Con tus referidos ganas una Tirada Completa gratis: por cada persona que se registre con tu enlace, ganas 1 sello; con 5 sellos, tu Tirada Completa es gratis, con el PDF y el video incluidos. Todo se ve dentro de Mi cuenta. [Ir a Mi cuenta](mi-cuenta.html)",e:"With referrals you earn a free Full Reading: each person who signs up with your link earns you 1 stamp; with 5 stamps your Full Reading is free, PDF and video included. You can see it all inside My account. [Go to My account](mi-cuenta.html)",rel:["cuenta","completa","contacto"]},
+{id:"cuenta",p:["mi cuenta","crear cuenta","registrarme","registro"],k:["cuenta","registro","registrar","sesion","sesión","perfil"],a:"Tu cuenta se crea solo con tu correo, sin contraseña. Ahí ves tu código de referido, tus sellos y tu progreso. También puedes entrar a la sesión de prueba, donde todo es gratis, para conocer el sitio. [Ir a Mi cuenta](mi-cuenta.html)",e:"Your account is created with just your email, no password. There you can see your referral code, your stamps and your progress. You can also enter the demo session, where everything is free. [Go to My account](mi-cuenta.html)",rel:["referidos","demo","boletin","contacto"]},
+{id:"demo",p:["sesion de prueba","sesión de prueba","probar","demo"],k:["prueba","demo"],a:"La sesión de prueba está en Mi cuenta: toca “Entrar a mi sesión de prueba” y verás todo gratis, con 5 sellos y tu Tirada Completa gratis de prueba. Para salir, toca “Salir de la sesión de prueba”. [Ir a Mi cuenta](mi-cuenta.html)",e:"The demo session is in My account: tap “Enter my demo session” and you'll see everything free, with 5 stamps and your free demo Full Reading. To leave, tap “Exit the demo session”. [Go to My account](mi-cuenta.html)",rel:["cuenta","completa","contacto"]},
+{id:"boletin",p:["boletin","boletín mensual","newsletter","suscribirme"],k:["boletin","boletín","newsletter","suscripcion","suscripción"],a:"El boletín mensual llega cada mes a tu correo con el horóscopo del mes, tu número de la suerte y las novedades de referidos. Te suscribes en la página del Boletín o al crear tu cuenta. [Ir al Boletín](boletin.html)",e:"The monthly newsletter arrives in your email every month with the horoscope of the month, your lucky number and referral news. You subscribe on the Newsletter page or when you create your account. [Go to the Newsletter](boletin.html)",rel:["cuenta","horoscopo","contacto"]},
+{id:"horoscopo",p:["horoscopo del dia","horóscopo del día","horoscopo de hoy","mi horoscopo","mi horóscopo"],k:["horoscopo","horóscopo","horoscopos","signo","signos","zodiaco","zodíaco"],a:"El Horóscopo del Día es gratis: consulta tu signo cada día, con su mensaje. También está el horóscopo mensual. [Ver Horóscopos](horoscopos.html)",e:"The Daily Horoscope is free: check your sign every day, with its message. There's also the monthly horoscope. [See Horoscopes](horoscopos.html)",rel:["runa","numerologia","compat"]},
+{id:"runa",p:["runa del dia","runa celta","la runa"],k:["runa","runas"],a:"La Runa Celta del Día es gratis: una runa distinta cada día, con su símbolo, su nombre y su mensaje para ti. [Ver la Runa del Día](runa-celta.html)",e:"The Daily Celtic Rune is free: a different rune each day, with its symbol, its name and its message for you. [See the Daily Rune](runa-celta.html)",rel:["horoscopo","numerologia","compat"]},
+{id:"numerologia",p:["numerologia","numerología","mi numero","mi número"],k:["numerologia","numerología","numero de vida","número de vida"],a:"La Numerología te da tu número de vida (1–9, 11, 22 o 33) con su significado, su energía y su consejo. Solo pon tu fecha de nacimiento. [Ver Numerología](numerologia.html)",e:"Numerology gives you your life number (1–9, 11, 22 or 33) with its meaning, its energy and its advice. Just enter your birth date. [See Numerology](numerologia.html)",rel:["horoscopo","runa","compat"]},
+{id:"compat",p:["pareja ideal","mi pareja ideal","compatibilidad","match","con quien soy compatible","qué signo me conviene","que signo me conviene"],k:["pareja","ideal","compatible","compatibilidad","match","amor","enamorar","novio","novia"],a:"¿Quieres saber cuál es tu pareja ideal? En la página de Compatibilidad eliges tu signo y ves tu match con los 12 signos, con porcentaje y consejo para cada uno, además de la matriz de todos con todos. [Ver Compatibilidad](compatibilidad.html)",e:"Want to know who your ideal partner is? On the Compatibility page, choose your sign and see your match with all 12 signs, with a percentage and advice for each, plus the matrix of everyone with everyone. [See Compatibility](compatibilidad.html)",rel:["horoscopo","numerologia","contacto"]},
+{id:"contacto",p:["contacto","hablar con alguien","atencion al cliente","atención al cliente","ayuda"],k:["contacto","correo","email","escribir","mensaje","telefono","teléfono","whatsapp"],a:"Puedes escribirnos en la página de Contacto o a nuestro correo alberto.ochoaa@gmail.com. Te respondemos lo antes posible. [Ir a Contacto](contacto.html)",e:"You can write to us on the Contact page or at alberto.ochoaa@gmail.com. We'll get back to you as soon as possible. [Go to Contact](contacto.html)",rel:["humano","precios","gift"]},
+{id:"entrega",p:["cuando llega","cuánto tarda","cuanto tarda","entrega","cuando me llega"],k:["entrega","llega","tarda","tardan","horas"],a:"La Tirada Completa se entrega en un máximo de 12 horas después de tu compra, en el correo o WhatsApp que nos diste. Las lecturas gratis (Carta del Día y 3 Cartas) y la Cruz Celta las ves al momento, en la misma página.",e:"The Full Reading is delivered within 12 hours of your purchase, to the email or WhatsApp you gave us. The free readings and the Celtic Cross you see right away, on the same page.",rel:["completa","pago","contacto"]},
+{id:"pago",p:["como pago","cómo pago","formas de pago","metodos de pago","métodos de pago"],k:["pagar","pago","tarjeta","stripe","mercado pago","mercadopago","apple pay","google pay","efectivo"],a:"Puedes pagar con tarjeta (Stripe, con Apple Pay o Google Pay) o con Mercado Pago. La Tirada Completa cuesta $400 ($600 con video) y la Cruz Celta $200; el Syllenza Pass se paga con un 5% de cargo por servicio.",e:"You can pay by card (Stripe, with Apple Pay or Google Pay) or with Mercado Pago. The Full Reading costs $400 MXN ($600 MXN with video) and the Celtic Cross $200 MXN; the Syllenza Pass has a 5% service fee.",rel:["precios","gift","completa","contacto"]},
+{id:"idioma",p:["idioma","cambiar idioma","moneda","cambiar moneda","ingles","inglés"],k:["idioma","moneda","ingles","inglés","english","euros","dolares","dólares"],a:"La página cambia sola de idioma y de moneda según tu país. También puedes cambiarlo arriba en el menú: ES/EN y MXN/USD/EUR.",e:"The page changes language and currency automatically based on your country. You can also change it at the top of the menu: ES/EN and MXN/USD/EUR.",rel:["contacto"]},
+{id:"quees",p:["que es syllenza","qué es syllenza","quienes son","quiénes son"],k:["syllenza","que es","qué es"],a:"Syllenza es una casa privada de tarot: lecturas elegantes con cartas ilustradas, interpretación concreta y humana que responde a tu pregunta, y narración con voz. Todo es para fines interpretativos y de entretenimiento.",e:"Syllenza is a private tarot house: elegant readings with illustrated cards, a concrete, human interpretation that answers your question, and voice narration.",rel:["lecturas","precios","contacto"]},
+{id:"humano",p:["hablar con una persona","quiero hablar con alguien","un humano","una persona","asesor"],k:["persona","humano","humana","asesor","agente"],a:"Claro, si prefieres hablar con una persona, escríbenos en la página de Contacto o a alberto.ochoaa@gmail.com y te atiende directamente el equipo de Syllenza. [Ir a Contacto](contacto.html)",e:"Of course — if you'd rather talk to a person, write to us on the Contact page or at alberto.ochoaa@gmail.com and the Syllenza team will help you directly. [Go to Contact](contacto.html)",rel:["contacto"]},
+{id:"gracias",k:["gracias","thank"],a:"¡Con gusto! ✦ Si necesitas algo más, aquí estoy. Que el universo te guíe.",e:"You're welcome! ✦ I'm here if you need anything else.",rel:["precios","compat","contacto"]},
+{id:"despedida",k:["adios","adiós","bye","hasta luego","chao","nos vemos"],a:"¡Que el universo te guíe! ✦ Aquí estoy cuando quieras consultar de nuevo.",e:"May the universe guide you! ✦ I'm here whenever you want to consult again.",rel:[]},
+{id:"robot",p:["eres humano","eres un robot","eres real","quien eres","quién eres"],k:["robot","humano","bot","eres"],a:"Soy el asistente virtual de Syllenza: un programa que responde con la información oficial del sitio. Si quieres hablar con una persona, escríbenos en Contacto. [Ir a Contacto](contacto.html)",e:"I'm Syllenza's virtual assistant: a program that answers with the site's official information. If you want to talk to a person, write to us on the Contact page. [Go to Contact](contacto.html)",rel:["humano","contacto"]}
+];
+var QR_LABEL={precios:"💰 Precios",gift:"🎁 Tarjetas de regalo",cuenta:"👤 Mi cuenta",referidos:"✦ Referidos",contacto:"✉ Contacto",lecturas:"🔮 Las lecturas",completa:"✧ Tirada Completa",cruz:"✥ Cruz Celta",boletin:"✉ Boletín",horoscopo:"☾ Horóscopo",runa:"ᚱ Runa del Día",numerologia:"🔢 Numerología",entrega:"⏰ Entrega",humano:"👤 Hablar con una persona",compat:"💕 Pareja ideal",demo:"★ Sesión de prueba",pago:"💳 Pago"};
+var FALLBACK={es:"No tengo la respuesta exacta a eso, pero puedo ayudarte con precios, las lecturas, las tarjetas de regalo, tu cuenta, los referidos, tu pareja ideal o el contacto. Y si prefieres, escríbenos en la página de Contacto y te atiende una persona.",en:"I don't have the exact answer to that, but I can help with prices, readings, gift cards, your account, referrals, your ideal partner or contact. Or write to us on the Contact page and a person will help you."};
+var STR={es:{ph:"Escribe tu pregunta…",online:"En línea · responde al instante",typing:"Escribiendo…",defQR:["precios","gift","cuenta","referidos","contacto"]},en:{ph:"Type your question…",online:"Online · replies instantly",typing:"Typing…",defQR:["precios","gift","cuenta","referidos","contacto"]}};
+function byId(id){return document.getElementById(id);}
+function lang(){var s=byId("sel-lang");return (s&&s.value==="en")?"en":"es";}
+function norm(t){return (t||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9 ]/g," ");}
+function esc(t){return String(t).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+function linkify(t){return t.replace(/\[([^\]]+)\]\(([^)\s]+)\)/g,'<a href="$2">$1</a>');}
+function findIntent(q){
+ var n=" "+norm(q)+" ",best=null,sc0=0;
+ for(var i=0;i<KB.length;i++){var it=KB[i],sc=0;
+  if(it.p){for(var j=0;j<it.p.length;j++){if(n.indexOf(" "+norm(it.p[j])+" ")>=0)sc+=3;}}
+  if(it.k){for(var k=0;k<it.k.length;k++){if(n.indexOf(norm(it.k[k]))>=0)sc+=1;}}
+  if(sc>sc0){sc0=sc;best=it;}
+ }
+ return sc0>0?best:null;
+}
+function intentById(id){for(var i=0;i<KB.length;i++){if(KB[i].id===id)return KB[i];}return null;}
+var opened=false;
+function addMsg(text,who){
+ var body=byId("syl-bot-body");if(!body)return null;
+ var d=document.createElement("div");d.className="syl-msg "+who;
+ if(who==="bot"){d.innerHTML=linkify(esc(text));}
+ else{d.textContent=text;}
+ body.appendChild(d);body.scrollTop=body.scrollHeight;
+ return d;
+}
+function addBotMsg(text){
+ var L=lang();
+ var d=addMsg(STR[L].typing,"bot typing");
+ setTimeout(function(){
+  if(d&&d.parentNode)d.parentNode.removeChild(d);
+  addMsg(text,"bot");
+ },700);
+}
+function showQR(ids){
+ var L=lang(),box=byId("syl-bot-qr");if(!box)return;
+ var list=(ids&&ids.length)?ids:STR[L].defQR;
+ var h="";
+ for(var i=0;i<list.length;i++){var id=list[i];if(QR_LABEL[id])h+='<button type="button" data-qr="'+id+'">'+esc(QR_LABEL[id])+'</button>';}
+ box.innerHTML=h;
+ var btns=box.querySelectorAll("button");
+ for(var j=0;j<btns.length;j++){btns[j].addEventListener("click",function(){
+  var it=intentById(this.getAttribute("data-qr"));
+  if(!it)return;
+  addMsg(QR_LABEL[it.id].replace(/^[^\s]+\s/,""),"user");
+  addBotMsg(it[lang()]||it.a);
+  showQR(it.rel);
+ });}
+}
+function answer(q){
+ var it=findIntent(q),L=lang();
+ if(!it){addBotMsg(FALLBACK[L]);showQR(null);return;}
+ addBotMsg(it[L]||it.a);
+ showQR(it.rel);
+}
+function open(){
+ var p=byId("syl-bot"),b=byId("syl-bot-btn");if(!p)return;
+ p.classList.remove("hidden");
+ var L=lang();
+ var inp=byId("syl-bot-text");if(inp)inp.placeholder=STR[L].ph;
+ var on=byId("syl-bot-online");if(on)on.textContent=STR[L].online;
+ if(!opened){
+  opened=true;
+  var it=intentById("saludo");
+  addMsg(it[L]||it.a,"bot");
+  showQR(it.rel);
+ }
+ if(inp)inp.focus();
+}
+function send(){
+ var inp=byId("syl-bot-text");if(!inp)return;
+ var v=inp.value.trim();if(!v)return;
+ addMsg(v,"user");
+ inp.value="";
+ answer(v);
+}
+function init(){
+ var b=byId("syl-bot-btn"),c=byId("syl-bot-close"),s=byId("syl-bot-send"),inp=byId("syl-bot-text");
+ if(!b||!byId("syl-bot"))return;
+ b.addEventListener("click",function(){
+  var p=byId("syl-bot");
+  if(p.classList.contains("hidden")){open();}
+  else{p.classList.add("hidden");}
+ });
+ if(c)c.addEventListener("click",function(){byId("syl-bot").classList.add("hidden");});
+ if(s)s.addEventListener("click",send);
+ if(inp)inp.addEventListener("keydown",function(ev){if(ev.key==="Enter")send();});
+ var sl=byId("sel-lang");
+ if(sl)sl.addEventListener("change",function(){
+  var L=lang(),i2=byId("syl-bot-text"),o=byId("syl-bot-online");
+  if(i2)i2.placeholder=STR[L].ph;
+  if(o)o.textContent=STR[L].online;
+ });
+ window.SYL_botAsk=function(q){open();if(q){addMsg(q,"user");answer(q);}};
+}
+if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",init);}else{init();}
 })();
 </script>
 </body>
