@@ -512,7 +512,7 @@
 .hero-media{position:relative}
 .hero-media img{transition:opacity 1.2s ease}
 .masthead .mast-slides{position:absolute;inset:0;z-index:1;overflow:hidden}
-.mast-slides img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:0;transition:opacity 1.6s ease}
+.mast-slides img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:0;transition:opacity .6s ease}
 .mast-slides img.on{opacity:.5}
 .masthead .mast-dots{position:absolute;left:50%;bottom:12px;transform:translateX(-50%);display:flex;gap:8px;z-index:3}
 .masthead .mast-dots button{width:10px;height:10px;min-height:0;border-radius:50%;border:1px solid #ffdf6b;background:transparent;cursor:pointer;padding:0}
@@ -1101,6 +1101,29 @@ body.syl-fan-full #view-pick .fan-menu{display:flex!important;justify-content:ce
 body.syl-fan-full #view-pick .fan-menu a{color:var(--gold-pale);text-decoration:none;font-family:"Cinzel Decorative","Cinzel",serif;font-size:13px;letter-spacing:.12em;white-space:nowrap;padding:6px 10px;border-radius:999px}
 body.syl-fan-full #view-pick .fan-menu a.on{background:var(--gold);color:#1a1206}
 @media(max-width:620px){body.syl-fan-full #view-pick #fan-pick{height:min(50vh,400px)}body.syl-fan-full #view-pick .fan-card{width:64px;margin:0 -56px}body.syl-fan-full #view-pick .fan-menu a{font-size:12px;padding:5px 8px}}
+/* SYL_TIRA_ANCHO · SYL_TIRA_PANTALLA · SYL_TIRA · las cartas en horizontal, de lado a lado, tamaño de pantalla */
+body.syl-fan-full #view-pick #fan-pick{display:flex!important;flex-wrap:nowrap;justify-content:flex-start;align-items:stretch;flex:1 1 auto;min-height:0;width:max-content;max-width:none;margin:0 auto;overflow:hidden;cursor:grab;touch-action:pan-y}
+body.syl-fan-full #view-pick #fan-pick.spinning{animation:none!important}
+body.syl-fan-full #view-pick .fan-card{position:relative;left:auto;bottom:auto;flex:0 0 auto;width:auto;height:min(100%,calc((100vw - 32px) * 1.55));aspect-ratio:2/3.1;margin:0 7px;transform:none!important;transform-origin:50% 50%}
+body.syl-fan-full #view-pick .fan-card:hover{transform:translateY(-10px) scale(1.03)!important}
+body.syl-fan-full #view-pick #fan-pick.dragging{cursor:grabbing}
+@media(max-width:620px){body.syl-fan-full #view-pick .fan-card{margin:0 5px}}
+
+/* SYL_CELTA3D: mazo 3D y cruz celta 3D (Three.js + GSAP). */
+#celta3d{position:relative;width:100%;flex:1 1 auto;min-height:340px;height:min(62vh,560px);border-radius:18px;overflow:hidden;background:radial-gradient(ellipse at 50% 30%,#101a3a 0%,#05060f 70%);border:1px solid rgba(252,166,17,.35);touch-action:none}
+.celta3d-gl{position:absolute;inset:0}
+#celta3d canvas{display:block;width:100%!important;height:100%!important;touch-action:none}
+.celta3d-hint{position:absolute;top:10px;left:50%;transform:translateX(-50%);z-index:3;color:var(--gold-pale);font-size:15px;letter-spacing:.08em;text-align:center;pointer-events:none;text-shadow:0 2px 8px #000;white-space:nowrap}
+.celta3d-reset{position:absolute;top:10px;right:10px;z-index:4;background:rgba(5,6,15,.7);color:var(--gold-2);border:1px solid var(--gold);border-radius:999px;padding:8px 14px;font-size:14px;cursor:pointer;font-family:inherit}
+.celta3d-ver{position:absolute;left:14px;bottom:14px;transform:none;z-index:4;background:linear-gradient(180deg,#fca611,#b96a00);color:#1a1000;border:0;border-radius:999px;padding:12px 22px;font-size:17px;font-weight:700;cursor:pointer;box-shadow:0 6px 24px rgba(252,166,17,.45);font-family:inherit;white-space:nowrap}
+.celta3d-full{position:fixed;top:0!important;left:0!important;width:100vw!important;height:100vh!important;height:100dvh!important;z-index:60;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:rgba(2,3,8,.94);padding:18px}
+.celta3d-full-card{width:min(94vw,460px);text-align:center}
+.celta3d-full-card img{width:100%;height:auto;max-height:78vh;object-fit:contain;border:3px solid var(--gold);border-radius:14px;box-shadow:0 0 44px rgba(252,166,17,.55)}
+.celta3d-full-lbl{color:var(--gold-pale);font-size:20px;margin-top:10px;font-weight:700}
+.celta3d-full-cerrar{background:transparent;color:var(--gold-2);border:1px solid var(--gold);border-radius:999px;padding:9px 18px;font-size:15px;cursor:pointer;font-family:inherit}
+body.syl-celta3d #fan-pick,body.syl-celta3d .car-wrap,body.syl-celta3d .car-hint,body.syl-celta3d #pick-preview,body.syl-celta3d #btn-pick-draw,body.syl-celta3d #btn-pick-sacar,body.syl-celta3d #btn-pick-back{display:none!important}
+body.syl-celta3d #view-pick .fan-title{margin-bottom:8px}
+@media(max-width:620px){#celta3d{min-height:300px;height:min(58vh,480px)}.celta3d-hint{font-size:12px;white-space:normal;max-width:58%;left:10px;transform:none;text-align:left}.celta3d-reset{padding:6px 10px;font-size:12px}}
 </style>
 
 
@@ -1168,7 +1191,7 @@ body.syl-fan-full #view-pick .fan-menu a.on{background:var(--gold);color:#1a1206
           <button type="button" class="nav-top" aria-haspopup="true" aria-expanded="false">☾ Astrología ▾</button>
           <div class="nav-sub">
             <a href="horoscopos.html">☾ Horóscopos diarios</a>
-            <a href="runa-celta.html">ᚱ Runa Celta del Día</a>
+            <a href="runa-celta.html">ᚱ Runa Celta del Día</a><a href="numerologia.html">🔢 Numerología</a>
             <a href="horoscopos.html">✦ Horóscopo Mensual</a>
             <a href="boletin.html">✉ Boletín Mensual</a>
           </div>
@@ -1197,7 +1220,7 @@ body.syl-fan-full #view-pick .fan-menu a.on{background:var(--gold);color:#1a1206
       <button type="button" class="nav-burger" id="btn-menu" aria-expanded="false" aria-controls="menu-movil" aria-label="Abrir menú">☰</button>
     </nav>
 <nav class="submenubar" aria-label="Todas las páginas de Syllenza">
-<a href="index.html">⌂ Inicio</a><span class="smb-sep">✦</span><a href="experiencias.html">✦ Elige tu experiencia</a><span class="smb-sep">✦</span><a href="carta-del-dia.html">☀️ Carta del Día</a><span class="smb-sep">✦</span><a href="pasado-presente-futuro.html">☾ Pasado · Presente · Futuro</a><span class="smb-sep">✦</span><a href="tirada-completa.html">✧ Tirada Completa</a><span class="smb-sep">✦</span><a href="cruz-celta.html" class="on">✥ Cruz Celta</a><span class="smb-sep">✦</span><a href="horoscopos.html">☾ Horóscopos</a><span class="smb-sep">✦</span><a href="runa-celta.html">ᚱ Runa Celta</a><span class="smb-sep">✦</span><a href="mi-cuenta.html">👤 Mi cuenta</a><span class="smb-sep">✦</span><a href="boletin.html">✉ Boletín</a><span class="smb-sep">✦</span><a href="guia.html">❖ Guía</a><span class="smb-sep">✦</span><a href="tarjetas-regalo.html">🎁 Tarjetas de regalo</a>
+<a href="index.html">⌂ Inicio</a><span class="smb-sep">✦</span><a href="experiencias.html">✦ Elige tu experiencia</a><span class="smb-sep">✦</span><a href="carta-del-dia.html">☀️ Carta del Día</a><span class="smb-sep">✦</span><a href="pasado-presente-futuro.html">☾ Pasado · Presente · Futuro</a><span class="smb-sep">✦</span><a href="tirada-completa.html">✧ Tirada Completa</a><span class="smb-sep">✦</span><a href="cruz-celta.html" class="on">✥ Cruz Celta</a><span class="smb-sep">✦</span><a href="horoscopos.html">☾ Horóscopos</a><span class="smb-sep">✦</span><a href="runa-celta.html">ᚱ Runa Celta</a><span class="smb-sep">✦</span><a href="numerologia.html">🔢 Numerología</a><span class="smb-sep">✦</span><a href="mi-cuenta.html">👤 Mi cuenta</a><span class="smb-sep">✦</span><a href="boletin.html">✉ Boletín</a><span class="smb-sep">✦</span><a href="guia.html">❖ Guía</a><span class="smb-sep">✦</span><a href="tarjetas-regalo.html">🎁 Tarjetas de regalo</a>
 </nav>
 <div class="menu-movil hidden" id="menu-movil">
       <div class="nav-drop-m">
@@ -1220,7 +1243,7 @@ body.syl-fan-full #view-pick .fan-menu a.on{background:var(--gold);color:#1a1206
         <button type="button" class="nav-top-m" aria-expanded="false">☾ Astrología ▾</button>
         <div class="nav-sub-m hidden">
           <a href="horoscopos.html">☾ Horóscopos diarios</a>
-          <a href="runa-celta.html">ᚱ Runa Celta del Día</a>
+          <a href="runa-celta.html">ᚱ Runa Celta del Día</a><a href="numerologia.html">🔢 Numerología</a>
             <a href="horoscopos.html">✦ Horóscopo Mensual</a>
             <a href="boletin.html">✉ Boletín Mensual</a>
         </div>
@@ -1436,6 +1459,14 @@ body.syl-fan-full #view-pick .fan-menu a.on{background:var(--gold);color:#1a1206
     <p class="foto2-orn" aria-hidden="true">☾ ☾ ☾&nbsp;&nbsp;✦&nbsp;&nbsp;☽ ☽ ☽</p>
     <h3 class="fan-title">Selecciona tu carta</h3>
     <div class="fan-pick" id="fan-pick" role="group" aria-label="Abanico de cartas boca abajo"></div>
+
+<div class="celta3d" id="celta3d" aria-label="Mazo tridimensional de 78 cartas">
+  <div class="celta3d-gl" id="celta3d-gl"></div>
+  <div class="celta3d-hint" id="celta3d-hint">✦ Toca una carta del mazo para elegirla ✦</div>
+  <button class="celta3d-reset" id="celta3d-reset" type="button">↺ Nuevas cartas</button>
+  <button class="celta3d-ver hidden" id="celta3d-ver" type="button">✦ Ver mi interpretación ↓</button>
+</div>
+
     <p class="car-hint">✦ Desliza las cartas y toca una para elegirla ✦</p>
     <div class="car-wrap" id="car-wrap">
       <button class="car-arrow" id="car-prev" type="button" aria-label="Deslizar a la izquierda">‹</button>
@@ -2278,7 +2309,7 @@ var MODES={
   celta:{title:"Paso 3 · Cruz Celta",kind:"Tu Cruz Celta",btn:"✦ Revelar mi Cruz Celta",go:"Ir a mi Cruz Celta →",
    sub:"Diez cartas elegidas al azar de tu mazo ya barajado para responder a tu pregunta, cada una con la posición (derecha o invertida) que le tocó en la barajada y su interpretación. <strong>200 pesos</strong> · Se entrega en PDF por email o WhatsApp en 12 horas."}
 };
-var CELTA_LABELS=["Presente","Desafío","Pasado lejano","Pasado reciente","Posible futuro","Futuro inmediato","Tu actitud","Tu entorno","Esperanzas y miedos","Resultado"];
+var CELTA_LABELS=["Situación actual","Obstáculo o desafío","Fundamento","Pasado","Posibilidades futuras","Futuro próximo","Actitud personal","Influencias externas","Esperanzas y temores","Resultado"];
 function selectMode(m){
   state.mode=m;
   var os=document.querySelectorAll(".opt"),i;
@@ -2406,45 +2437,45 @@ function buildPreview(){
 function buildFan(){
   var fan=$("fan-pick");if(!fan)return;
   var back=deckBackSrc(),h="",i;
-  var N=78,spread=(window.innerWidth&&window.innerWidth<620)?96:120;
+  var N=78;
   for(i=0;i<N;i++){
-    var ang=-spread/2+i*(spread/(N-1));
-    var t=Math.abs(ang)/(spread/2);
-    var lift=Math.round(18-(1-t*t)*40);
-    h+='<button type="button" class="fan-card" data-fan="'+i+'" aria-label="Elegir carta '+(i+1)+' del abanico" style="--fan-rot:'+ang.toFixed(1)+'deg;--fan-lift:'+lift+'px"><img src="'+back+'" alt="Dorso de carta Syllenza"></button>';
+    h+='<button type="button" class="fan-card" data-fan="'+i+'" aria-label="Elegir carta '+(i+1)+' de la tira"><img src="'+back+'" alt="Dorso de carta Syllenza"></button>';
   }
-  fan.innerHTML=h;
+  fan.innerHTML=h+h; /* SYL_TIRA: la tira se duplica para el bucle sin fin */
   var cards=fan.querySelectorAll(".fan-card"),k;
   for(k=0;k<cards.length;k++){(function(el){el.addEventListener("click",function(){pickOne(+el.getAttribute("data-fan"));});})(cards[k]);}
   bindFanDrag();
 }
 
-/* SYL_FAN_DRAG: deslizar el abanico a mano (ratón o dedo).
-   El giro automático sigue; al soltar, la animación continúa
-   desde el ángulo donde quedó, sin salto. */
+/* SYL_TIRA: tira horizontal de lado a lado (ratón o dedo).
+   Las 78 cartas van en horizontal, del tamaño de la pantalla, y se
+   mueven solas de lado a lado en bucle sin fin. Al soltar el
+   arrastre, la tira sigue desde donde quedó. Un toque corto elige
+   la carta; arrastrar no elige. */
 function bindFanDrag(){
   var fan=$("fan-pick");
   if(!fan||window._fanDragBound)return;
   window._fanDragBound=true;
-  var dragging=false,startX=0,startAng=0,curAng=0,moved=0,pid=null;
-  function animAngle(){
-    try{
-      var d=parseFloat(fan.style.animationDelay)||0;
-      var a=fan.getAnimations?fan.getAnimations():[];
-      for(var i=0;i<a.length;i++){
-        if(a[i].animationName==="fanRotate"&&a[i].currentTime!=null){
-          return (((a[i].currentTime/1000-d)/36)*360)%360;
-        }
-      }
-    }catch(e){}
-    return 0;
+  var x=0,dragging=false,startX=0,startY=0,startPos=0,moved=0,pid=null,last=0,resumeAt=0,downCard=null,suppressClick=false;
+  function halfW(){return (fan.scrollWidth/2)||1;}
+  function wrap(v){var h=halfW();v=v%h;if(v>0)v-=h;return v;}
+  function apply(){fan.style.transform="translateX("+x.toFixed(1)+"px)";}
+  function tick(ts){
+    if(!last)last=ts;
+    var dt=Math.min(64,ts-last);last=ts;
+    if(!dragging&&fan.classList.contains("spinning")&&ts>=resumeAt){
+      x=wrap(x-dt*0.25 /* SYL_TIRA_RAPIDA: 250 px/s */);
+      apply();
+    }
+    requestAnimationFrame(tick);
   }
+  requestAnimationFrame(tick);
   function onMove(e){
     if(!dragging||e.pointerId!==pid)return;
-    var dx=e.clientX-startX;
-    moved=Math.max(moved,Math.abs(dx));
-    curAng=startAng+dx*0.35;
-    fan.style.transform="rotate("+curAng.toFixed(1)+"deg)";
+    var dx=e.clientX-startX,dy=e.clientY-startY;
+    moved=Math.max(moved,Math.abs(dx),Math.abs(dy));
+    x=wrap(startPos+dx);
+    apply();
   }
   function onUp(e){
     if(!dragging||e.pointerId!==pid)return;
@@ -2453,23 +2484,35 @@ function bindFanDrag(){
     window.removeEventListener("pointerup",onUp);
     window.removeEventListener("pointercancel",onUp);
     fan.classList.remove("dragging");
-    var a=((curAng%360)+360)%360;
-    fan.style.animation="";
-    fan.style.transform="";
-    fan.style.animationDelay=(-(a/10)).toFixed(2)+"s";
+    /* SYL_TIRA_PAUSA: la pausa tras el gesto depende de lo que fue.
+       Toque que elige: 0.7 s (se ve la carta marcada y la tira sigue
+       pronto). Arrastre: 2.5 s. Toque que no elige (hueco o carta ya
+       elegida): no rearma la pausa, para que la tira no se quede
+       parada para siempre si se toca varias veces seguidas. */
+    if(moved<=14&&downCard){
+      /* SYL_TIRA_TOQUE: el toque elige aquí mismo (en pointerup o en
+         pointercancel, si el navegador cancela el gesto). No se
+         depende del click, que el navegador a veces ya no dispara
+         tras un toque con temblor. El click que llegue después se
+         suprime para no elegir dos veces. */
+      suppressClick=true;
+      setTimeout(function(){suppressClick=false;},500);
+      pickOne(+downCard.getAttribute("data-fan"));
+      resumeAt=performance.now()+700;
+    }else if(moved>14){
+      resumeAt=performance.now()+2500;
+    }
   }
   fan.addEventListener("pointerdown",function(e){
     if(!fan.classList.contains("spinning"))return;
-    dragging=true;pid=e.pointerId;moved=0;startX=e.clientX;
-    startAng=animAngle();curAng=startAng;
-    fan.style.animation="none";
-    fan.style.transform="rotate("+startAng.toFixed(1)+"deg)";
+    dragging=true;pid=e.pointerId;moved=0;startX=e.clientX;startY=e.clientY;startPos=x;
+    downCard=(e.target&&e.target.closest)?e.target.closest(".fan-card"):null;
     fan.classList.add("dragging");
     window.addEventListener("pointermove",onMove);
     window.addEventListener("pointerup",onUp);
     window.addEventListener("pointercancel",onUp);
   });
-  fan.addEventListener("click",function(e){if(moved>8){e.preventDefault();e.stopPropagation();}},true);
+  fan.addEventListener("click",function(e){if(moved>14||suppressClick){e.preventDefault();e.stopPropagation();}},true);
 }
 function buildCarousel(){
   var tr=$("car-track");if(!tr)return;
@@ -2504,7 +2547,251 @@ function carScroll(dir){
   var step=card?card.offsetWidth+16:180;
   tr.scrollBy({left:dir*step,behavior:"smooth"});
 }
+
+/* SYL_CELTA3D: Cruz Celta en 3D (Three.js + GSAP, sin Spline/React).
+   Mazo 3D de 78 cartas que gira 360° y se baraja al entrar. Cada
+   toque en el mazo elige una carta: se separa, gira 180°, se muestra
+   a pantalla completa unos instantes y vuela a su lugar en la cruz.
+   La cruz se forma en la escena con la geometría tradicional.
+   Tocar una carta ya colocada la amplía a pantalla completa.
+   Si WebGL o las librerías fallan, se vuelve a la tira clásica. */
+var SYL_CELTA3D=null;
+function sylCelta3DStart(){
+  window.SYL_revealDone=false;window.SYL_revealDelay=900;
+  try{document.body.classList.add("syl-celta3d");}catch(e){}
+  var pt=$("pick-title");if(pt)pt.textContent="Toca una carta del mazo";
+  var ps=$("pick-sub");if(ps)ps.textContent="El mazo gira solo. Toca una carta para elegirla: se revelará y volará a su lugar en la cruz.";
+  function boot(){
+    try{
+      if(!(window.THREE&&window.gsap))throw new Error("sin libs 3D");
+      sylCelta3DBuild();
+    }catch(e){
+      try{document.body.classList.remove("syl-celta3d");}catch(e2){}
+      try{buildPreview();buildFan();buildCarousel();}catch(e3){}
+    }
+  }
+  if(window.THREE&&window.gsap){boot();return;}
+  var loaded=0,failed=false;
+  function done(){loaded++;if(loaded===2&&!failed)boot();}
+  function fail(){if(failed)return;failed=true;try{document.body.classList.remove("syl-celta3d");}catch(e){}try{buildPreview();buildFan();buildCarousel();}catch(e2){}}
+  ["assets/three.min.js","assets/gsap.min.js"].forEach(function(src){
+    var sc=document.createElement("script");sc.src=src;sc.onload=done;sc.onerror=fail;document.head.appendChild(sc);
+  });
+}
+function sylCelta3DSlots(){
+  return [
+    {x:0,y:0,z:0.06,rz:0},
+    {x:0,y:0,z:0.14,rz:Math.PI/2},
+    {x:0,y:-2.3,z:0.06,rz:0},
+    {x:-1.7,y:0,z:0.06,rz:0},
+    {x:0,y:2.3,z:0.06,rz:0},
+    {x:1.7,y:0,z:0.06,rz:0},
+    {x:3.3,y:-2.6,z:0.06,rz:0},
+    {x:3.3,y:-0.9,z:0.06,rz:0},
+    {x:3.3,y:0.9,z:0.06,rz:0},
+    {x:3.3,y:2.6,z:0.06,rz:0}
+  ];
+}
+function sylCelta3DBuild(){
+  var host=$("celta3d-gl");if(!host)return;
+  var THREE=window.THREE,gsap=window.gsap;
+  if(SYL_CELTA3D&&SYL_CELTA3D.renderer){
+    try{cancelAnimationFrame(SYL_CELTA3D.raf);}catch(e){}
+    try{SYL_CELTA3D.renderer.dispose();}catch(e){}
+    host.innerHTML="";
+  }
+  var W=host.clientWidth||800,H=host.clientHeight||500;
+  var renderer=new THREE.WebGLRenderer({antialias:true,alpha:true});
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,2));
+  renderer.setSize(W,H);
+  host.appendChild(renderer.domElement);
+  var scene=new THREE.Scene();
+  var camera=new THREE.PerspectiveCamera(42,W/H,0.1,100);
+  camera.position.set(0,0,12);
+  var CW=1.3,CH=2.0;
+  var _ld0=new THREE.TextureLoader();_ld0.setCrossOrigin(undefined);var backTex=_ld0.load(deckBackSrc()||"assets/reverso.webp");
+  var deckGroup=new THREE.Group();deckGroup.position.set(0,-3.1,-1.0);scene.add(deckGroup);
+  var crossGroup=new THREE.Group();crossGroup.position.set(0,0.9,0);scene.add(crossGroup);
+  var S={renderer:renderer,scene:scene,camera:camera,deckGroup:deckGroup,crossGroup:crossGroup,deckCards:[],placedCards:[],placedCount:0,picking:false,raf:0,backTex:backTex,slots:sylCelta3DSlots()};
+  SYL_CELTA3D=S;window.SYL_CELTA3D=S;
+  var geo=new THREE.PlaneGeometry(CW,CH);
+  var geoF=new THREE.PlaneGeometry(CW+0.14,CH+0.14);
+  var goldMat=new THREE.MeshBasicMaterial({color:0xfca611});
+  var darkMat=new THREE.MeshBasicMaterial({color:0x0a1030});
+  var backMat=new THREE.MeshBasicMaterial({map:backTex});
+  S.darkMat=darkMat;
+  for(var i=0;i<78;i++){
+    var g=new THREE.Group();
+    var fr=new THREE.Mesh(geoF,goldMat);fr.userData.deckIdx=i;g.add(fr);
+    var bk=new THREE.Mesh(geo,backMat);bk.position.z=0.012;bk.userData.deckIdx=i;g.add(bk);
+    var ft=new THREE.Mesh(geo,darkMat);ft.rotation.y=Math.PI;ft.position.z=-0.012;ft.userData.deckIdx=i;g.add(ft);
+    g.position.set(0,0,i*0.012);
+    g.rotation.set((Math.random()-0.5)*0.05,(Math.random()-0.5)*0.05,(Math.random()-0.5)*0.06);
+    g.userData.deckIdx=i;g.userData.frontMesh=ft;
+    deckGroup.add(g);
+    S.deckCards.push({group:g,idx:i,placed:false});
+  }
+  function frameTargets(){
+    var tan=Math.tan(camera.fov*Math.PI/360);
+    var crossZ=Math.max(8.4/(2*tan),7.0/(2*tan*camera.aspect),9);
+    var deckZ=Math.max(3.6/(2*tan*camera.aspect),3.6/(2*tan),5);
+    var k=S.placedCount/10;
+    return {z:deckZ+(crossZ-deckZ)*k,y:-3.1+4.0*k};
+  }
+  function fit(){
+    var w=host.clientWidth||800,h=host.clientHeight||500;
+    renderer.setSize(w,h);camera.aspect=w/h;
+    var t=frameTargets();
+    camera.position.z=t.z;camera.position.y=t.y;camera.lookAt(0,t.y,0);
+    camera.updateProjectionMatrix();
+  }
+  S.frame=function(){
+    var t=frameTargets();
+    gsap.to(camera.position,{z:t.z,y:t.y,duration:0.9,ease:"power2.inOut",onUpdate:function(){camera.lookAt(0,camera.position.y,0);}});
+  };
+  S.fit=fit;fit();
+  if(window.ResizeObserver){try{new ResizeObserver(function(){fit();}).observe(host);}catch(e){}}
+  window.addEventListener("resize",fit);
+  var ray=new THREE.Raycaster(),ptr=new THREE.Vector2();
+  var downX=0,downY=0,downT=0,dragging=false,lastX=0;
+  function setPtr(e){var r=renderer.domElement.getBoundingClientRect();ptr.x=((e.clientX-r.left)/r.width)*2-1;ptr.y=-((e.clientY-r.top)/r.height)*2+1;}
+  renderer.domElement.addEventListener("pointerdown",function(e){downX=e.clientX;downY=e.clientY;downT=Date.now();dragging=true;lastX=e.clientX;});
+  renderer.domElement.addEventListener("pointermove",function(e){if(!dragging)return;var dx=e.clientX-lastX;lastX=e.clientX;deckGroup.rotation.y+=dx*0.005;});
+  function endPointer(e){
+    if(!dragging)return;dragging=false;
+    var moved=Math.max(Math.abs(e.clientX-downX),Math.abs(e.clientY-downY));
+    if(moved>12||Date.now()-downT>600)return;
+    setPtr(e);ray.setFromCamera(ptr,camera);
+    var hits=ray.intersectObjects(deckGroup.children,true);
+    if(hits.length){var d=hits[0].object.userData.deckIdx;if(typeof d==="number"){sylCelta3DPick(d);return;}}
+    var hits2=ray.intersectObjects(crossGroup.children,true);
+    if(hits2.length){var slot=hits2[0].object.userData.slotPos;if(slot){var c=S.placedCards[slot-1];if(c)sylCelta3DZoom(c,slot);}}
+  }
+  renderer.domElement.addEventListener("pointerup",endPointer);
+  renderer.domElement.addEventListener("pointercancel",function(){dragging=false;});
+  var rs=$("celta3d-reset");if(rs)rs.onclick=function(){sylCelta3DReset();};
+  var vb=$("celta3d-ver");if(vb)vb.onclick=function(){try{revealPicked(state._picked.slice(),state._pickLabels.slice());}catch(e){}};
+  var cf=$("celta3d-full-cerrar");if(cf)cf.onclick=function(){sylCelta3DHideFull();};
+  var full=$("celta3d-full");if(full)full.addEventListener("click",function(e){if(e.target===full)sylCelta3DHideFull();});
+  function tick(){
+    S.raf=requestAnimationFrame(tick);
+    var vp=$("view-pick");if(vp&&vp.classList.contains("hidden"))return;
+    deckGroup.rotation.y+=0.0022;
+    renderer.render(scene,camera);
+  }
+  tick();
+  S.deckCards.forEach(function(dc){
+    var g=dc.group;
+    gsap.to(g.position,{x:(Math.random()-0.5)*0.9,y:(Math.random()-0.5)*0.9,z:g.position.z+(Math.random()-0.5)*0.4,duration:0.45,delay:Math.random()*0.2,yoyo:true,repeat:1,ease:"power2.inOut"});
+  });
+  var ver=$("celta3d-ver");if(ver)ver.classList.add("hidden");
+  var hint=$("celta3d-hint");if(hint)hint.textContent="✦ Toca una carta del mazo para elegirla ✦";
+}
+function sylCelta3DLoadTex(url){
+  return new Promise(function(res){
+    var to=setTimeout(function(){res(null);},1200);
+    try{
+      var _ld=new window.THREE.TextureLoader();_ld.setCrossOrigin(undefined);_ld.load(url,function(tex){clearTimeout(to);res(tex);},undefined,function(){clearTimeout(to);res(null);});
+    }catch(e){clearTimeout(to);res(null);}
+  });
+}
+function sylCelta3DPick(deckIdx){
+  var S=SYL_CELTA3D;if(!S||S.picking)return;
+  if(!state._pickPool||state._picked.length>=10)return;
+  var dc=S.deckCards[deckIdx];if(!dc||dc.placed)return;
+  var isLast=(state._picked.length===9);
+  if(isLast){window.SYL_revealDelay=60000;}
+  pickOne(deckIdx);
+  var card=state._picked[state._picked.length-1];if(!card){S.picking=false;return;}
+  var pos=state._picked.length;
+  var label=state._pickLabels[pos-1]||"";
+  dc.placed=true;S.picking=true;
+  var st=$("pick-status");
+  if(st){st.textContent=isLast?"¡Tu Cruz Celta está completa! ✦ Toca una carta para ampliarla o ve tu interpretación.":"Carta "+pos+" de 10 elegida: "+label+" — "+card.name+(card.reversed?" · Invertida":" · Derecha")+". Toca otra carta del mazo.";}
+  sylCelta3DAnimate(dc,card,pos,label,isLast);
+}
+function sylCelta3DAnimate(dc,card,pos,label,isLast){
+  var S=SYL_CELTA3D,gsap=window.gsap;
+  var g=dc.group;
+  var frontURL="assets/"+(SYL_FRONTS[card.name]||"");
+  sylCelta3DLoadTex(frontURL).then(function(tex){
+    if(tex){var fm=g.userData.frontMesh;if(fm)fm.material=new window.THREE.MeshBasicMaterial({map:tex});}
+    S.scene.attach(g);
+    var lookY=-3.1+4.0*(S.placedCount/10);
+    var tl=gsap.timeline();
+    tl.to(g.position,{x:0,y:lookY+0.8,z:4.2,duration:0.7,ease:"power2.out"},0);
+    tl.to(g.rotation,{y:g.rotation.y+Math.PI,duration:0.8,ease:"power2.inOut"},0.1);
+    tl.add(function(){
+      sylCelta3DFull(card,pos,1800).then(function(){
+        var slot=S.slots[pos-1];
+        var wp=new window.THREE.Vector3(slot.x,slot.y,slot.z);
+        S.crossGroup.localToWorld(wp);
+        gsap.to(g.position,{x:wp.x,y:wp.y,z:wp.z,duration:0.9,ease:"power2.inOut"});
+        gsap.to(g.rotation,{x:0,y:Math.PI,z:slot.rz,duration:0.9,ease:"power2.inOut",onComplete:function(){
+          S.crossGroup.attach(g);
+          g.traverse(function(o){o.userData.slotPos=pos;});
+          S.placedCards[pos-1]=card;S.placedCount=pos;S.picking=false;
+          if(S.frame)S.frame();
+          if(isLast){var vb=$("celta3d-ver");if(vb)vb.classList.remove("hidden");var hn=$("celta3d-hint");if(hn)hn.textContent="✦ Tu Cruz Celta está completa ✦";}
+        }});
+      });
+    });
+  });
+}
+function sylCelta3DFull(card,pos,ms){
+  return new Promise(function(res){
+    var S=SYL_CELTA3D;
+    var img=$("celta3d-full-img"),lbl=$("celta3d-full-lbl"),full=$("celta3d-full");
+    if(!img||!full){res();return;}
+    img.src="assets/"+(SYL_FRONTS[card.name]||"");
+    img.alt="Ilustración de "+card.name;
+    if(lbl)lbl.textContent=pos+" · "+(state._pickLabels[pos-1]||"")+" — "+card.name+(card.reversed?" · Invertida":" · Derecha");
+    full.classList.remove("hidden");
+    var done=false;
+    function fin(){if(done)return;done=true;var f=$("celta3d-full");if(f)f.classList.add("hidden");if(S)S.fullResolve=null;res();}
+    if(S)S.fullResolve=fin;
+    setTimeout(fin,ms);
+  });
+}
+function sylCelta3DZoom(card,pos){
+  var img=$("celta3d-full-img"),lbl=$("celta3d-full-lbl"),full=$("celta3d-full");if(!img||!full)return;
+  img.src="assets/"+(SYL_FRONTS[card.name]||"");
+  img.alt="Ilustración de "+card.name;
+  if(lbl)lbl.textContent=pos+" · "+(state._pickLabels[pos-1]||"")+" — "+card.name+(card.reversed?" · Invertida":" · Derecha");
+  full.classList.remove("hidden");
+}
+function sylCelta3DHideFull(){
+  var f=$("celta3d-full");if(f)f.classList.add("hidden");
+  var S=SYL_CELTA3D;if(S&&S.fullResolve){var r=S.fullResolve;S.fullResolve=null;r();}
+}
+function sylCelta3DReset(){
+  var S=SYL_CELTA3D;if(!S)return;
+  window.SYL_revealGen=(window.SYL_revealGen||0)+1;
+  window.SYL_revealDone=false;window.SYL_revealDelay=900;
+  if(typeof shuffleDeck==="function"){try{state.deck=shuffleDeck();}catch(e){}}
+  state._picked=[];state._pickPool=state.deck?state.deck.slice():[];
+  state._pickLabels=pickLabelsFor(state.mode);
+  var pc=$("pick-count");if(pc)pc.textContent="Cartas elegidas: 0 / 10";
+  var pl=$("pick-list");if(pl)pl.textContent="";
+  var st=$("pick-status");if(st)st.textContent="Mazo barajado. Toca una carta para elegirla.";
+  var vb=$("celta3d-ver");if(vb)vb.classList.add("hidden");
+  S.picking=false;S.placedCount=0;S.placedCards=[];
+  S.deckGroup.children.slice().forEach(function(ch){S.deckGroup.remove(ch);});
+  S.crossGroup.children.slice().forEach(function(ch){S.crossGroup.remove(ch);});
+  S.deckCards.forEach(function(dc){
+    var g=dc.group;dc.placed=false;
+    g.position.set(0,0,dc.idx*0.012);
+    g.rotation.set((Math.random()-0.5)*0.05,(Math.random()-0.5)*0.05,(Math.random()-0.5)*0.06);
+    g.traverse(function(o){delete o.userData.slotPos;});
+    var fm=g.userData.frontMesh;if(fm&&S.darkMat)fm.material=S.darkMat;
+    S.deckGroup.add(g);
+  });
+  S.fit();
+  var hint=$("celta3d-hint");if(hint)hint.textContent="✦ Toca una carta del mazo para elegirla ✦";
+}
+
 function enterPick(){
+  window.SYL_revealGen=(window.SYL_revealGen||0)+1;window.SYL_revealDone=false;window.SYL_revealDelay=900;
   /* La Tirada Completa de 22 cartas NO se escoge a mano: sigue al azar
      del mazo barajado, como está. Solo Carta del día (1), 3 cartas y
      Cruz Celta (10) se eligen a mano en el abanico giratorio. */
@@ -2520,7 +2807,7 @@ function enterPick(){
   else{pq.classList.add("hidden");}
   var sc=$("btn-pick-sacar");if(sc)sc.textContent=pickSacarText(state.mode);
   state._pickPool=state.deck.slice();state._picked=[];state._pickLabels=pickLabelsFor(state.mode);
-  buildPreview();buildFan();buildCarousel();
+  if(state.mode==="celta"){sylCelta3DStart();}else{buildPreview();buildFan();buildCarousel();}
   var fan=$("fan-pick");if(fan){fan.classList.remove("shuffling");fan.classList.add("spinning");}
   $("pick-status").textContent="El abanico gira mientras eliges… toca una carta o pulsa Sacar.";
   $("pick-count").textContent="Cartas elegidas: 0 / "+pickCountFor(state.mode);
@@ -2545,7 +2832,7 @@ function pickOne(fanIdx){
   var _pl=$("pick-list");
   if(_pl){_pl.textContent=state._picked.map(function(c,ix){var lb=state._pickLabels[ix]||"";return (lb?lb+": ":"")+c.name+(c.reversed?" · Invertida":" · Derecha");}).join("  ✦  ");}
   if(done<n){
-    $("pick-status").textContent="Carta "+done+" de "+n+" elegida: "+_txt+". El abanico sigue girando… toca otra carta o pulsa Sacar.";
+    $("pick-status").textContent="Carta "+done+" de "+n+" elegida: "+_txt+". La tira sigue moviéndose de lado a lado… toca otra carta o pulsa Sacar.";
   }else{
     /* Última carta: feedback visible inmediato, abanico girando, y luego revela. */
     $("pick-status").textContent="Revelando tu tirada… ✦ Espera un momento, tus cartas están apareciendo.";
@@ -2554,10 +2841,11 @@ function pickOne(fanIdx){
     var sc=$("btn-pick-sacar");if(sc)sc.disabled=true;
     var _cc=document.querySelectorAll(".car-card"),_ci;for(_ci=0;_ci<_cc.length;_ci++){_cc[_ci].disabled=true;}
     var picked=state._picked.slice(),labels=state._pickLabels.slice();
-    setTimeout(function(){revealPicked(picked,labels);},900);
+    var _rg=window.SYL_revealGen||0;setTimeout(function(){if(window.SYL_revealDone||(window.SYL_revealGen||0)!==_rg)return;revealPicked(picked,labels);},window.SYL_revealDelay||900);
   }
 }
 function revealPicked(pick,labels){
+  window.SYL_revealDone=true;
   var _fan0=$("fan-pick");if(_fan0){_fan0.classList.remove("spinning");_fan0.classList.remove("shuffling");}
   var isDia=state.mode==="dia",isCelta=state.mode==="celta";
   state.draw=pick;
@@ -2800,17 +3088,17 @@ try{
   }
 }catch(e){}
 /* SYL_MASTSLIDES · Slides automáticos de la portada (como albertodorian.com):
-   6 imágenes distintas con fundido cada 2 s + puntos para elegir slide. */
+   SYL_SLIDE_GIRA · 6 imágenes distintas con fundido rápido de 0.6 s cada 2 s + puntos para elegir slide. */
 (function(){
   "use strict";
-  var reduce=false;try{reduce=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;}catch(e){}
+  
   var A=document.getElementById("mast-slide-a"),B=document.getElementById("mast-slide-b"),dots=document.querySelectorAll("#mast-dots button");
   var altar=document.getElementById("altar-img");
   if(!A||!B)return;
   var slides=["assets/hero-joven.webp","assets/hero-libro.webp",altar?altar.src:"assets/reverso.webp","assets/reverso.webp","assets/sol-19.webp","assets/luna-18.webp"];
   var cur=0,shown=A,timer=null;
   function show(n){cur=(n+slides.length)%slides.length;var nx=(shown===A)?B:A;nx.src=slides[cur];nx.classList.add("on");shown.classList.remove("on");shown=nx;for(var d=0;d<dots.length;d++){dots[d].classList.toggle("on",d===cur);}}
-  function restart(){if(timer)clearInterval(timer);if(!reduce){timer=setInterval(function(){show(cur+1);},2000);}}
+  function restart(){if(timer)clearInterval(timer);timer=setInterval(function(){show(cur+1);},2000);}
   for(var q=0;q<dots.length;q++){(function(ix){dots[ix].addEventListener("click",function(){show(ix);restart();});})(q);}
   A.src=slides[0];A.classList.add("on");
   restart();
@@ -3999,5 +4287,9 @@ b.addEventListener("click",function(){
 });
 }catch(e){}})();
 </script>
+<div class="celta3d-full hidden" id="celta3d-full" role="dialog" aria-label="Carta revelada">
+  <div class="celta3d-full-card"><img id="celta3d-full-img" src="assets/reverso.webp" alt="Carta revelada"><div class="celta3d-full-lbl" id="celta3d-full-lbl"></div></div>
+  <button class="celta3d-full-cerrar" id="celta3d-full-cerrar" type="button">✕ Cerrar</button>
+</div>
 </body>
 </html>
