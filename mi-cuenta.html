@@ -1894,7 +1894,7 @@ function _voiceScore(v){var sc=0,nm=(v.name||"")+" "+(v.voiceURI||"");if(_MALE_R
 function pickMaleSpanishVoice(){
   try{
     var vs=speechSynthesis.getVoices()||[],es=[],i;
-    for(i=0;i<vs.length;i++){if(vs[i]&&/^es/i.test(vs[i].lang||"")&&!/(paulina|paloma)/i.test((vs[i].name||"")+" "+(vs[i].voiceURI||"")))es.push(vs[i]);}
+    for(i=0;i<vs.length;i++){if(vs[i]&&/^es/i.test(vs[i].lang||"")&&!/(paulina|paloma)/i.test((vs[i].name||"")+" "+(vs[i].voiceURI||""))&&!_FEMALE_RE.test((vs[i].name||"")+" "+(vs[i].voiceURI||"")))es.push(vs[i]);}
     if(!es.length)return null;
     es.sort(function(a,b){return _voiceScore(b)-_voiceScore(a);});
     var top=es[0],nm=(top.name||"")+" "+(top.voiceURI||"");
@@ -3865,5 +3865,6 @@ document.addEventListener("DOMContentLoaded",function(){try{var el=document.getE
   });
 }catch(e){}})();</script>
 
+<script src="assets/syl-player.js"></script>
 </body>
 </html>
