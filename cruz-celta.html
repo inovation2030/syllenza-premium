@@ -3456,11 +3456,11 @@ function saveEntregaCelta(){
   var r=sylValidaContactoCelta();
   var ok=$("entrega-celta-ok");
   if(!r.ok){toast("Revisa tu contacto: "+r.msg);var inp=$("entrega-celta-contacto");if(inp)inp.focus();return;}
-  if(state._entregaCeltaSent){if(ok){ok.textContent="✓ Ya se envió a Leonardo: tu Cruz Celta en PDF te llegará en un lapso de 12 horas por "+state.entregaContactoTipo+": "+state.entregaContacto+".";ok.classList.remove("hidden");}return;}
+  if(state._entregaCeltaSent){if(ok){ok.textContent="✓ Ya se envió a Syllenza: tu Cruz Celta en PDF te llegará en un lapso de 12 horas por "+state.entregaContactoTipo+": "+state.entregaContacto+".";ok.classList.remove("hidden");}return;}
   state.entregaContacto=r.val; state.entregaContactoTipo=sylContactoTipo();
   try{localStorage.setItem("syl-entrega-celta",state.entregaContactoTipo+"|"+state.entregaContacto);}catch(e){}
   var bt=$("btn-entrega-celta-guardar");if(bt)bt.disabled=true;
-  if(ok){ok.textContent="Enviando tu Cruz Celta a Leonardo…";ok.classList.remove("hidden");}
+  if(ok){ok.textContent="Enviando tu Cruz Celta a Syllenza…";ok.classList.remove("hidden");}
   var cards="";
   try{cards=(state.draw||[]).map(function(c,ix){var lb=(state._pickLabels&&state._pickLabels[ix])||("Carta "+(ix+1));return (ix+1)+". "+lb+": "+c.name+(c.reversed?" · Invertida":" · Derecha");}).join("\n");}catch(e){cards="";}
   var fd=new FormData();
@@ -3474,7 +3474,7 @@ function saveEntregaCelta(){
   fd.append("Entrega","PDF de la Cruz Celta · 200 pesos · En un lapso de 12 horas por "+state.entregaContactoTipo+": "+state.entregaContacto);
   fetch(FS_ENDPOINT,{method:"POST",body:fd,mode:"no-cors"}).then(function(){
     state._entregaCeltaSent=true;
-    if(ok){ok.textContent="✓ Enviado a Leonardo: tu Cruz Celta en PDF te llegará en un lapso de 12 horas por "+state.entregaContactoTipo+": "+state.entregaContacto+".";ok.classList.remove("hidden");}
+    if(ok){ok.textContent="✓ Enviado a Syllenza: tu Cruz Celta en PDF te llegará en un lapso de 12 horas por "+state.entregaContactoTipo+": "+state.entregaContacto+".";ok.classList.remove("hidden");}
   },function(){
     if(bt)bt.disabled=false;
     if(ok){ok.textContent="⚠ No se pudo enviar. Revisa tu conexión y pulsa de nuevo «Guardar mi elección».";ok.classList.remove("hidden");}
