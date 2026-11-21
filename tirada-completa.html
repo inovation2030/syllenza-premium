@@ -2558,7 +2558,7 @@ function saveEntrega(){
   var r=sylValidaContacto();
   if(!r.ok){toast("Revisa tu contacto: "+r.msg);var inp=$("entrega-contacto");if(inp)inp.focus();return;}
   if(state._entregaSent){
-    if(_ok0){_ok0.textContent="✓ Ya se envió a Leonardo: "+(state.entrega==="video"?"Video animado · 600 pesos en total":"PDF incluido · 400 pesos")+". Te lo enviará en un lapso de 12 horas por "+state.entregaContactoTipo+": "+state.entregaContacto+". Tus 2 archivos Excel también llevan tu contacto.";_ok0.classList.remove("hidden");}
+    if(_ok0){_ok0.textContent="✓ Ya se envió a Syllenza: "+(state.entrega==="video"?"Video animado · 600 pesos en total":"PDF incluido · 400 pesos")+". Te lo enviará en un lapso de 12 horas por "+state.entregaContactoTipo+": "+state.entregaContacto+". Tus 2 archivos Excel también llevan tu contacto.";_ok0.classList.remove("hidden");}
     return;
   }
   state.entregaContacto=r.val; state.entregaContactoTipo=sylContactoTipo();
@@ -2584,7 +2584,7 @@ function saveEntrega(){
     if(state._fsDone||n>40){
       clearInterval(saveEntrega._t);saveEntrega._t=null;
       if(ok){
-        if(state._fsDone){ok.textContent="✓ Enviado a Leonardo: "+(state.entrega==="video"?"Video animado · 600 pesos en total":"PDF incluido · 400 pesos")+". Te lo enviará en un lapso de 12 horas por "+state.entregaContactoTipo+": "+state.entregaContacto+". Tus 2 archivos Excel también llevan tu contacto.";}
+        if(state._fsDone){ok.textContent="✓ Enviado a Syllenza: "+(state.entrega==="video"?"Video animado · 600 pesos en total":"PDF incluido · 400 pesos")+". Te lo enviará en un lapso de 12 horas por "+state.entregaContactoTipo+": "+state.entregaContacto+". Tus 2 archivos Excel también llevan tu contacto.";}
         else{ok.textContent="⚠ No se pudo confirmar el envío. Revisa tu conexión y pulsa de nuevo «Guardar mi elección».";}
         ok.classList.remove("hidden");
       }
