@@ -1855,7 +1855,7 @@ function pickMaleSpanishVoice(){
   }catch(e){return null;}
 }
 function _voiceShortName(){try{if(!_maleVoice)return "";var n=_maleVoice.name||"";var m=n.match(/(Miguel|Jorge|Diego|Raul|Raúl|Pablo|Álvaro|Alvaro|Carlos|Sergio|Alejandro|Fernando|Roberto|Daniel|Javier|Enrique|Alfonso|Ricardo|Manuel|Francisco|Antonio)/i);if(m)return m[0].charAt(0).toUpperCase()+m[0].slice(1).toLowerCase().replace("ú","ú");return n.split(" - ")[0].split(" (")[0].slice(0,18);}catch(e){return "";}}
-function _voiceLabel(){var vn=_voiceShortName();return voiceOn?("✧ Voz del narrador · Activa"+(vn?" — "+vn:"")):"✧ Voz del narrador";}
+function _voiceLabel(){var vn="SYLLENZA";try{if(window.sylEffectiveVoice)vn=window.sylEffectiveVoice("SYLLENZA")||"SYLLENZA";else{var _sv=localStorage.getItem("syl-voice-elevenlabs");if(_sv)vn=_sv;}}catch(e){}return voiceOn?("✧ Voz del narrador · Activa — "+vn):"✧ Voz del narrador";}
 function refreshMaleVoice(){try{_maleVoice=pickMaleSpanishVoice();_voicesReady=true;if(voiceOn){var _vl=_voiceLabel();var _bv=$("btn-voice"),_rv=$("btn-voice-result");if(_bv)_bv.textContent=_vl;if(_rv)_rv.textContent=_vl;}}catch(e){_maleVoice=null;}}
 if("speechSynthesis" in window){try{refreshMaleVoice();speechSynthesis.addEventListener("voiceschanged",refreshMaleVoice);}catch(e){}}
 function _waitVoices(){return new Promise(function(res){try{if(!("speechSynthesis" in window))return res();if((speechSynthesis.getVoices()||[]).length){refreshMaleVoice();return res();}var done=false;var to=setTimeout(function(){if(!done){done=true;refreshMaleVoice();res();}},1200);speechSynthesis.addEventListener("voiceschanged",function h(){if(!done){done=true;clearTimeout(to);refreshMaleVoice();res();}},{once:true});}catch(e){res();}});}
@@ -1865,9 +1865,10 @@ function speak(text){
     try{
       speechSynthesis.cancel();
       if(!_maleVoice)refreshMaleVoice();
+      if(!_maleVoice)return;
       var u=new SpeechSynthesisUtterance(text);
-      u.lang=(_maleVoice&&_maleVoice.lang)||"es-MX";u.rate=0.92;u.pitch=_maleVoiceIsMale?0.85:0.75;
-      if(_maleVoice)u.voice=_maleVoice;
+      u.lang=_maleVoice.lang||"es-MX";u.rate=0.92;u.pitch=_maleVoiceIsMale?0.85:0.75;
+      u.voice=_maleVoice;
       speechSynthesis.speak(u);
     }catch(e){}
   });
