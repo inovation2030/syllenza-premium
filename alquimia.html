@@ -1834,7 +1834,7 @@ function _voiceScore(v){var sc=0,nm=(v.name||"")+" "+(v.voiceURI||"");if(_MALE_R
 function pickMaleSpanishVoice(){
   try{
     var vs=speechSynthesis.getVoices()||[],es=[],i;
-    for(i=0;i<vs.length;i++){if(vs[i]&&/^es/i.test(vs[i].lang||"")&&!/(paulina|paloma)/i.test((vs[i].name||"")+" "+(vs[i].voiceURI||"")))es.push(vs[i]);}
+    for(i=0;i<vs.length;i++){if(vs[i]&&/^es/i.test(vs[i].lang||"")&&!/(paulina|paloma)/i.test((vs[i].name||"")+" "+(vs[i].voiceURI||""))&&!_FEMALE_RE.test((vs[i].name||"")+" "+(vs[i].voiceURI||"")))es.push(vs[i]);}
     if(!es.length)return null;
     es.sort(function(a,b){return _voiceScore(b)-_voiceScore(a);});
     var top=es[0],nm=(top.name||"")+" "+(top.voiceURI||"");
@@ -3785,5 +3785,6 @@ window.sylTonePlay=function(hz,btn){try{if(window._sylToneBtn===btn&&window._syl
   if(sl)sl.addEventListener("change",function(){setTimeout(function(){if(cur.g>=0)render(cur.g,cur.ix);},150);});
 })();
 </script>
+<script src="assets/syl-player.js"></script>
 </body>
 </html>
