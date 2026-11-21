@@ -316,8 +316,8 @@ var sylStrip=null, sylStripHome=null;
 function sylBuildStrip(){
   if(sylStrip)return sylStrip;
   var im=document.querySelector(".immersive");
-  var bv=$("btn-voice");
-  if(!im||!bv)return null;
+  var bm=$("btn-music");
+  if(!im||!bm)return null;
   var strip=document.createElement("div");
   strip.id="syl-narr-strip";
   strip.className="syl-narr-strip";
@@ -330,7 +330,6 @@ function sylBuildStrip(){
   var order=[];
   if(intro)order.push(intro);
   if(vsel){order.push(lbl);order.push(vsel);}
-  if(bv)order.push(bv);
   if(vp)order.push(vp);
   for(var i=0;i<order.length;i++)strip.appendChild(order[i]);
   var music=$("btn-music");
@@ -411,8 +410,8 @@ function sylInject(){
   var path="";
   try{path=String(location.pathname||"");}catch(e){}
   var isRuna=path.indexOf("runa-celta")>=0;
-  var bv=$("btn-voice");
-  if(bv&&!isRuna){
+  var bm=$("btn-music");
+  if(bm&&!isRuna){
     var key="";
     for(var k in INTRO_BY_PAGE){if(path.indexOf(k)>=0){key=k;break;}}
     if(key&&!$("syl-intro-btn")){
@@ -424,15 +423,15 @@ function sylInject(){
       b.setAttribute("data-voice","SYLLENZA");
       b.textContent="✦ Escuchar introducción · "+sylEffectiveVoice("SYLLENZA");
       b.addEventListener("click",function(){sylPlayCard(b);});
-      if(bv.parentNode){bv.parentNode.insertBefore(b,bv.nextSibling);}
+      if(bm.parentNode){bm.parentNode.insertBefore(b,bm.nextSibling);}
     }
   }
   /* Selector de voz ElevenLabs junto a los controles del narrador
      (también en runa-celta: la runa respeta la voz elegida). */
-  if(bv){
+  if(bm){
     var vsel=sylBuildVoiceSelect();
-    if(vsel&&!vsel.parentNode&&bv.parentNode){
-      bv.parentNode.appendChild(vsel);
+    if(vsel&&!vsel.parentNode&&bm.parentNode){
+      bm.parentNode.appendChild(vsel);
     }
   }
   var vr=$("view-result");
@@ -537,7 +536,6 @@ function sylInject(){
     if(sylBuildStrip()){
       sylNarrPlace();
       sylWatchOverlay();
-      if(sylStoredVoice()){sylHideStrip();}
       if(document&&!document.body._sylStripHide){
         document.body._sylStripHide=true;
         document.addEventListener("click",function(e){
