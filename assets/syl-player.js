@@ -591,3 +591,13 @@ document.addEventListener("click",function(ev){
     window.sylFreeSession();
   }catch(e){}
 });
+
+/* ---------- Sesion gratis SOLO por enlace privado del dueño ---------- */
+/* Ya no hay boton publico. Solo entra quien abra el enlace especial
+   con ?syl-leo=1 ; al cargar, activa la sesion gratis y va a Experiencias. */
+(function(){
+  try{
+    var q=new URLSearchParams(location.search);
+    if(q.get("syl-leo")==="1"){ window.sylFreeSession(); }
+  }catch(e){}
+})();
