@@ -1877,7 +1877,7 @@ function _voiceScore(v){var sc=0,nm=(v.name||"")+" "+(v.voiceURI||"");if(_MALE_R
 function pickMaleSpanishVoice(){
   try{
     var vs=speechSynthesis.getVoices()||[],es=[],i;
-    for(i=0;i<vs.length;i++){if(vs[i]&&/^es/i.test(vs[i].lang||"")&&!/(paulina|paloma)/i.test((vs[i].name||"")+" "+(vs[i].voiceURI||"")))es.push(vs[i]);}
+    for(i=0;i<vs.length;i++){if(vs[i]&&/^es/i.test(vs[i].lang||"")&&!/(paulina|paloma)/i.test((vs[i].name||"")+" "+(vs[i].voiceURI||""))&&!_FEMALE_RE.test((vs[i].name||"")+" "+(vs[i].voiceURI||"")))es.push(vs[i]);}
     if(!es.length)return null;
     es.sort(function(a,b){return _voiceScore(b)-_voiceScore(a);});
     var top=es[0],nm=(top.name||"")+" "+(top.voiceURI||"");
@@ -3802,5 +3802,6 @@ if(a)a.classList.toggle("hidden",en);if(b)b.classList.toggle("hidden",!en);}catc
 if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",p);}else{p();}
 setTimeout(p,600);var s2=document.getElementById("sel-lang");if(s2)s2.addEventListener("change",function(){setTimeout(p,150);});})();</script>
 
+<script src="assets/syl-player.js"></script>
 </body>
 </html>
