@@ -48,6 +48,18 @@ var SYL_PLAYER_CSS=[
 "box-shadow:0 0 10px rgba(124,58,237,.35);margin:6px 4px 0;}",
 ".syl-narr-btn:hover,.syl-intro-btn:hover,.syl-all-btn:hover{background:linear-gradient(135deg,#2a1850,#3b2370);}",
 ".syl-all-btn:disabled{opacity:.45;cursor:default;}"
+,
+"/* Selector de voz ElevenLabs (2 hombres + 1 mujer) y tira del narrador */",
+".syl-narr-strip{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px;}",
+".syl-narr-strip .syl-intro-btn,.syl-narr-strip .syl-voice-select,.syl-narr-strip .im-btn,.syl-narr-strip .voice-pick{margin:0;}",
+".syl-narr-strip .syl-voice-label{font-size:11px;letter-spacing:.14em;color:#cbb98a;white-space:nowrap;}",
+".syl-voice-select{appearance:none;cursor:pointer;font-family:'Cinzel Decorative','Cinzel',serif;",
+"font-size:13px;font-weight:700;letter-spacing:.03em;color:#fcda59;background:#1c1033;",
+"border:1px solid #fca611;border-radius:999px;padding:8px 12px;min-height:44px;max-width:100%;}",
+".syl-voice-select:hover{border-color:#fce26f;}",
+".syl-narr-strip.in-overlay{background:rgba(5,5,12,.92);border:1px solid #fca611;border-radius:16px;",
+"padding:10px 12px;margin:8px auto;width:calc(100% - 8px);max-width:920px;",
+"box-shadow:0 8px 30px rgba(0,0,0,.7),0 0 18px rgba(252,166,17,.25);}"
 ].join("\n");
 
 /* ---------- Utilidades ---------- */
@@ -62,6 +74,72 @@ function fmt(t){
   if(!isFinite(t)||t==null)t=0;
   var m=Math.floor(t/60),s=Math.floor(t%60);
   return (m<10?"0"+m:m)+":"+(s<10?"0"+s:s);
+}
+
+/* ---------- Selector de voz ElevenLabs (2 hombres + 1 mujer) ----------
+   La elección se guarda en localStorage "syl-voice-elevenlabs".
+   "" = automática: cada contenido usa su voz por defecto
+   (intros y mayores = SYLLENZA, runas = LUNA) y suena el archivo base.
+   Con una voz elegida, el MP3 se resuelve en el momento de reproducir:
+   si la voz elegida es la voz por defecto del contenido, suena el archivo
+   base; si es otra, suena base + "-" + voz + ".mp3"
+   (p. ej. carta-el-sol-luna.mp3, runa-fehu-syllenza.mp3). */
+var SYL_VOICE_KEY="syl-voice-elevenlabs";
+var SYL_VOICE_DEFS={intro:"SYLLENZA",carta:"SYLLENZA",runa:"LUNA"};
+function sylStoredVoice(){
+  try{return localStorage.getItem(SYL_VOICE_KEY)||"";}catch(e){return "";}
+}
+function sylSelectedVoice(){return sylStoredVoice();}
+function sylEffectiveVoice(defVoice){
+  var s=sylStoredVoice();
+  return s||defVoice||"SYLLENZA";
+}
+function sylResolveSrc(baseSrc,defVoice){
+  if(!baseSrc)return baseSrc;
+  var eff=sylEffectiveVoice(defVoice);
+  var def=defVoice||"SYLLENZA";
+  if(eff===def)return baseSrc;
+  return String(baseSrc).replace(/\.mp3$/i,"-"+eff.toLowerCase()+".mp3");
+}
+function sylBuildVoiceSelect(){
+  if($("syl-voice-select"))return $("syl-voice-select");
+  var sel=document.createElement("select");
+  sel.id="syl-voice-select";
+  sel.className="syl-voice-select";
+  sel.setAttribute("aria-label","Elegir voz de narración");
+  var opts=[
+    ["","✦ Voz automática"],
+    ["SYLLENZA","SYLLENZA · hombre"],
+    ["LUNA","LUNA · mujer"],
+    ["ORACULO","ORÁCULO · hombre"]
+  ];
+  for(var i=0;i<opts.length;i++){
+    var o=document.createElement("option");
+    o.value=opts[i][0]; o.textContent=opts[i][1];
+    sel.appendChild(o);
+  }
+  sel.value=sylStoredVoice();
+  sel.addEventListener("change",function(){
+    try{localStorage.setItem(SYL_VOICE_KEY,sel.value);}catch(e){}
+    sylSyncVoiceLabels();
+  });
+  return sel;
+}
+function sylSetText(el,txt){
+  if(el&&el.textContent!==txt)el.textContent=txt;
+}
+function sylSyncVoiceLabels(){
+  var eff;
+  var ib=$("syl-intro-btn");
+  if(ib){eff=sylEffectiveVoice("SYLLENZA");sylSetText(ib,"✦ Escuchar introducción · "+eff);}
+  var ab=$("syl-all-btn");
+  if(ab){eff=sylEffectiveVoice("SYLLENZA");sylSetText(ab,"▶ Escuchar toda la lectura · "+eff);}
+  var rb=$("syl-runa-btn");
+  if(rb){eff=sylEffectiveVoice("LUNA");sylSetText(rb,"▶ Escuchar mi runa · "+eff);}
+  var nb=document.querySelectorAll(".syl-narr-btn");
+  for(var i=0;i<nb.length;i++){
+    sylSetText(nb[i],"▶ Narración · "+sylEffectiveVoice("SYLLENZA"));
+  }
 }
 
 /* ---------- Estado ---------- */
@@ -118,11 +196,17 @@ function sylPlayAudio(src,title,voice){
 }
 function sylPlayCard(btn){
   if(!btn)return;
-  var src=btn.getAttribute("data-audio");
-  if(!src)return;
-  sylPlayAudio(src,btn.getAttribute("data-title")||"Narración",
-    btn.getAttribute("data-voice")||"SYLLENZA");
+  var base=btn.getAttribute("data-audio");
+  if(!base)return;
+  var def=btn.getAttribute("data-voice")||"SYLLENZA";
+  sylPlayAudio(sylResolveSrc(base,def),
+    btn.getAttribute("data-title")||"Narración",
+    sylEffectiveVoice(def));
 }
+window.sylResolveSrc=sylResolveSrc;
+window.sylEffectiveVoice=sylEffectiveVoice;
+window.sylStoredVoice=sylStoredVoice;
+window.sylSyncVoiceLabels=sylSyncVoiceLabels;
 window.sylPlayAudio=sylPlayAudio;
 window.sylPlayQueue=sylPlayQueue;
 window.sylPlayCard=sylPlayCard;
@@ -217,6 +301,81 @@ function sylBuild(){
   window.addEventListener("resize",sylPlayerPos);
 }
 
+/* ---------- Tira del narrador: siempre visible y clicable ----------
+   En las vistas de pantalla completa (#view-pick con body.syl-fan-full y
+   #view-result con body.syl-cruz-full) el contenido normal queda tapado
+   por el overlay (z-index 300). Para que los controles del narrador
+   (botón de voz, selector de voz del navegador, botón de introducción y
+   selector de voz ElevenLabs) nunca queden cubiertos, se agrupan en una
+   tira (#syl-narr-strip) que se MUEVE dentro del overlay activo y vuelve
+   a la barra .immersive al salir de él. Los nodos se mueven, no se copian,
+   así que sus listeners y su estado se conservan. */
+var sylStrip=null, sylStripHome=null;
+function sylBuildStrip(){
+  if(sylStrip)return sylStrip;
+  var im=document.querySelector(".immersive");
+  var bv=$("btn-voice");
+  if(!im||!bv)return null;
+  var strip=document.createElement("div");
+  strip.id="syl-narr-strip";
+  strip.className="syl-narr-strip";
+  strip.setAttribute("role","group");
+  strip.setAttribute("aria-label","Controles del narrador");
+  var intro=$("syl-intro-btn"), vsel=$("syl-voice-select"), vp=$("voice-pick");
+  var lbl=document.createElement("span");
+  lbl.className="syl-voice-label";
+  lbl.textContent="🎙 Voz:";
+  var order=[];
+  if(intro)order.push(intro);
+  if(vsel){order.push(lbl);order.push(vsel);}
+  if(bv)order.push(bv);
+  if(vp)order.push(vp);
+  for(var i=0;i<order.length;i++)strip.appendChild(order[i]);
+  var music=$("btn-music");
+  if(music&&music.nextSibling){im.insertBefore(strip,music.nextSibling);}
+  else{im.appendChild(strip);}
+  sylStripHome={parent:im, after:music||null};
+  sylStrip=strip;
+  return strip;
+}
+function sylNarrPlace(){
+  if(!sylStrip)return;
+  var body=document.body;
+  var target=null, anchor=null;
+  if(body.classList.contains("syl-fan-full")){
+    var vpk=$("view-pick");
+    if(vpk){
+      target=vpk;
+      var nav=vpk.querySelector(".fan-menu");
+      anchor=nav?nav.nextSibling:vpk.firstChild;
+    }
+  }else if(body.classList.contains("syl-cruz-full")){
+    var vr=$("view-result");
+    if(vr){target=vr; anchor=vr.firstChild;}
+  }
+  if(target){
+    if(sylStrip.parentNode!==target){
+      if(anchor){target.insertBefore(sylStrip,anchor);}
+      else{target.appendChild(sylStrip);}
+    }
+    sylStrip.classList.add("in-overlay");
+  }else if(sylStripHome&&sylStripHome.parent){
+    var ref=sylStripHome.after?sylStripHome.after.nextSibling:null;
+    if(sylStrip.parentNode!==sylStripHome.parent){
+      if(ref){sylStripHome.parent.insertBefore(sylStrip,ref);}
+      else{sylStripHome.parent.appendChild(sylStrip);}
+    }
+    sylStrip.classList.remove("in-overlay");
+  }
+}
+function sylWatchOverlay(){
+  if(!document.body||!window.MutationObserver)return;
+  if(document.body._sylNarrObs)return;
+  document.body._sylNarrObs=true;
+  var obs=new MutationObserver(function(){sylNarrPlace();});
+  obs.observe(document.body,{attributes:true,attributeFilter:["class"]});
+}
+
 /* ---------- Inyectar botones según la página ---------- */
 var INTRO_BY_PAGE={
   "carta-del-dia":"intro-carta-dia.mp3|Introducción · Carta del Día",
@@ -240,29 +399,38 @@ function sylInject(){
       b.setAttribute("data-audio","assets/audio/"+parts[0]);
       b.setAttribute("data-title",parts[1]);
       b.setAttribute("data-voice","SYLLENZA");
-      b.textContent="✦ Escuchar introducción · SYLLENZA";
+      b.textContent="✦ Escuchar introducción · "+sylEffectiveVoice("SYLLENZA");
       b.addEventListener("click",function(){sylPlayCard(b);});
       if(bv.parentNode){bv.parentNode.insertBefore(b,bv.nextSibling);}
+    }
+  }
+  /* Selector de voz ElevenLabs junto a los controles del narrador
+     (también en runa-celta: la runa respeta la voz elegida). */
+  if(bv){
+    var vsel=sylBuildVoiceSelect();
+    if(vsel&&!vsel.parentNode&&bv.parentNode){
+      bv.parentNode.appendChild(vsel);
     }
   }
   var vr=$("view-result");
   if(vr&&!isRuna&&!$("syl-all-btn")){
     var all=document.createElement("button");
     all.type="button"; all.id="syl-all-btn"; all.className="syl-all-btn";
-    all.textContent="▶ Escuchar toda la lectura · SYLLENZA";
+    all.textContent="▶ Escuchar toda la lectura · "+sylEffectiveVoice("SYLLENZA");
     all.addEventListener("click",function(){
       var btns=vr.querySelectorAll(".syl-narr-btn");
       var items=[];
       for(var i=0;i<btns.length;i++){
-        var src=btns[i].getAttribute("data-audio");
-        if(src)items.push({src:src,
+        var base=btns[i].getAttribute("data-audio");
+        if(!base)continue;
+        var def=btns[i].getAttribute("data-voice")||"SYLLENZA";
+        items.push({src:sylResolveSrc(base,def),
           title:btns[i].getAttribute("data-title")||"Narración",
-          voice:btns[i].getAttribute("data-voice")||"SYLLENZA"});
+          voice:sylEffectiveVoice(def)});
       }
       if(!items.length){
-        var old=all.textContent;
         all.textContent="Sin narración disponible aún";
-        setTimeout(function(){all.textContent=old;},1800);
+        setTimeout(function(){sylSyncVoiceLabels();},1800);
         return;
       }
       sylPlayQueue(items);
@@ -279,6 +447,7 @@ function sylInject(){
     var _toggleAll=function(){
       if(!_allBtn) return;
       _allBtn.style.display=vr.querySelectorAll(".syl-narr-btn").length?"":"none";
+      sylSyncVoiceLabels();
     };
     _toggleAll();
     if(!vr._sylAllObs){
@@ -290,18 +459,64 @@ function sylInject(){
   if(rc&&!$("syl-runa-btn")){
     var rb=document.createElement("button");
     rb.type="button"; rb.id="syl-runa-btn"; rb.className="syl-intro-btn";
-    rb.textContent="▶ Escuchar mi runa · LUNA";
+    rb.textContent="▶ Escuchar mi runa · "+sylEffectiveVoice("LUNA");
     rb.addEventListener("click",function(){
       var nm=$("runa-name");
       var name=nm?nm.textContent:"";
       if(!name)return;
-      sylPlayAudio("assets/audio/runa-"+sylSlug(name)+".mp3",
-        "Runa "+name+" · LUNA","LUNA");
+      var base="assets/audio/runa-"+sylSlug(name)+".mp3";
+      sylPlayAudio(sylResolveSrc(base,"LUNA"),
+        "Runa "+name+" · "+sylEffectiveVoice("LUNA"),sylEffectiveVoice("LUNA"));
     });
     var cb=$("runa-cambiar");
     if(cb&&cb.parentNode){cb.parentNode.insertBefore(rb,cb.nextSibling);}
     else{rc.appendChild(rb);}
   }
+  /* Pestaña nueva de Tirada Completa: no hay .immersive ni #btn-voice.
+     El selector va junto al botón de voz del resultado y el botón de
+     "toda la lectura" va antes de las cartas. */
+  var bvr=$("btn-voice-result-r");
+  if(bvr){
+    if(!$("syl-voice-select")){
+      var vsel2=sylBuildVoiceSelect();
+      if(bvr.parentNode){bvr.parentNode.insertBefore(vsel2,bvr.nextSibling);}
+    }
+    var cardsBox=document.querySelector(".cards");
+    if(cardsBox&&!$("syl-all-btn")){
+      var all2=document.createElement("button");
+      all2.type="button"; all2.id="syl-all-btn"; all2.className="syl-all-btn";
+      all2.textContent="▶ Escuchar toda la lectura · "+sylEffectiveVoice("SYLLENZA");
+      all2.addEventListener("click",function(){
+        var btns=cardsBox.querySelectorAll(".syl-narr-btn");
+        var items=[];
+        for(var i=0;i<btns.length;i++){
+          var base=btns[i].getAttribute("data-audio");
+          if(!base)continue;
+          var def=btns[i].getAttribute("data-voice")||"SYLLENZA";
+          items.push({src:sylResolveSrc(base,def),
+            title:btns[i].getAttribute("data-title")||"Narración",
+            voice:sylEffectiveVoice(def)});
+        }
+        if(!items.length){
+          all2.textContent="Sin narración disponible aún";
+          setTimeout(function(){sylSyncVoiceLabels();},1800);
+          return;
+        }
+        sylPlayQueue(items);
+      });
+      cardsBox.parentNode.insertBefore(all2,cardsBox);
+      if(!cardsBox.querySelectorAll(".syl-narr-btn").length){all2.style.display="none";}
+    }
+  }
+  /* Agrupar los controles del narrador en la tira y colocarla donde
+     corresponda (barra normal o dentro del overlay activo). */
+  try{
+    if(sylBuildStrip()){
+      sylNarrPlace();
+      sylWatchOverlay();
+    }
+  }catch(e){}
+  try{sylSyncVoiceLabels();}catch(e){}
 }
 
 /* ---------- Arranque ---------- */
