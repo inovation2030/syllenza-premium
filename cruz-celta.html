@@ -1331,7 +1331,7 @@ body.syl-cosmico .cosmic-picker.active{display:block}
       <div class="pick-back"><img src="assets/reverso.webp" alt="Dorso de carta Syllenza"><span>Esperanzas y miedos</span></div>
       <div class="pick-back"><img src="assets/reverso.webp" alt="Dorso de carta Syllenza"><span>Resultado</span></div>
     </div>
-    <p class="mode-price">200 pesos · Tu Cruz Celta se entrega en PDF por email o WhatsApp, en 12 horas</p>
+    <p class="mode-price">200 pesos</p>
     <button class="btn btn-gold btn-pill" id="btn-page-sacar" type="button">✦ SACAR 10 CARTAS ✦</button>
     <div class="btn-row"><a class="btn btn-ghost" href="index.html">← Regresar a Inicio</a></div>
   </div>
@@ -1528,7 +1528,7 @@ body.syl-cosmico .cosmic-picker.active{display:block}
   <!-- ============ VISTA 3: TIRADA 22 + RESULTADO ============ -->
   <section class="panel hidden" id="view-result">
     <h2 id="result-title">Paso 3 · Cruz Celta</h2>
-    <p class="sub" id="result-sub">Diez cartas elegidas al azar de tu mazo ya barajado para responder a tu pregunta, cada una con la posición (derecha o invertida) que le tocó en la barajada y su interpretación. <strong>200 pesos</strong> · Se entrega en PDF por email o WhatsApp en 12 horas.</p>
+    <p class="sub" id="result-sub">Diez cartas elegidas al azar de tu mazo ya barajado para responder a tu pregunta, cada una con la posición (derecha o invertida) que le tocó en la barajada y su interpretación. <strong>200 pesos</strong>.</p>
     <p class="mode-price" id="result-price"></p>
     <div class="deck-stage">
       <img class="deck-img" id="deck-img2" data-deck-src src="" alt="Reverso celestial de las cartas de Syllenza: sol dorado, luna creciente y rueda zodiacal en azul medianoche y oro" />
@@ -1561,63 +1561,8 @@ body.syl-cosmico .cosmic-picker.active{display:block}
       </div>
     </div>
 
-    <!-- ===== ENTREGA · TIRADA COMPLETA (solo se muestra en la Tirada Completa) ===== -->
-    <div class="entrega-block hidden" id="entrega-block">
-      <h3>Tu entrega VIP · Tirada Completa</h3>
-      <p>Se entregará un PDF con una historieta ilustrada de tu tirada.</p>
-      <p><strong>400 pesos</strong> · Incluye el PDF con historieta ilustrada.</p>
-      <p>Por <strong>200 pesos más</strong> (600 pesos en total), un video animado de 2 minutos de tu tirada.</p>
-      <p>Elige una de las dos opciones:</p>
-      <div class="entrega-opts" role="radiogroup" aria-label="Elige tu entrega">
-        <button type="button" class="entrega-opt" data-entrega="pdf" role="radio" aria-checked="false">
-          <b>PDF incluido</b>
-          <span>Historieta ilustrada de tu tirada, en PDF.</span>
-          <span class="precio">400 pesos</span>
-        </button>
-        <button type="button" class="entrega-opt" data-entrega="video" role="radio" aria-checked="false">
-          <b>Video animado</b>
-          <span>Video animado de 2 minutos de tu tirada, más el PDF.</span>
-          <span class="precio">600 pesos en total</span>
-        </button>
-      </div>
-      <div id="entrega-contacto-wrap" class="hidden">
-        <label for="entrega-contacto">Tu email o WhatsApp para mandártelo:</label>
-        <input id="entrega-contacto" type="text" autocomplete="off" placeholder="Ej. tu correo o tu número de WhatsApp">
-        <label for="entrega-gift" style="margin-top:14px">¿Tienes un Syllenza Pass? Canjea tu tarjeta de regalo:</label>
-        <div style="display:flex;gap:10px;align-items:center">
-          <input id="entrega-gift" type="text" autocomplete="off" placeholder="Ej. SYL-GIFT-ABC123" style="text-transform:uppercase;flex:1">
-          <button class="btn btn-ghost" id="btn-gift-apply" type="button">Canjear</button>
-        </div>
-        <p class="entrega-ok hidden" id="gift-ok"></p>
-
-        <p class="entrega-note">Se enviará en un lapso de 12 horas. Sin pago en esta versión: solo elige y déjanos tu contacto.</p>
-        <div class="btn-row">
-          <button class="btn btn-gold" id="btn-entrega-guardar" type="button">Guardar mi elección</button>
-        </div>
-        <p class="entrega-ok hidden" id="entrega-ok"></p>
-        <p class="entrega-ok hidden" id="excel-ok"></p>
-      </div>
-    </div>
-    <div class="entrega-block hidden" id="entrega-celta">
-      <h3>Tu entrega · Cruz Celta</h3>
-      <p>Tu Cruz Celta se entrega en PDF, igual que la Tirada Completa, por email o WhatsApp en un lapso de 12 horas.</p>
-      <p><strong>200 pesos</strong> · Sin pago en esta página.</p>
-      <div id="entrega-celta-contacto-wrap">
-        <label>¿Por dónde te lo mandamos?</label>
-        <div class="entrega-tabs" role="tablist" aria-label="Elige WhatsApp o correo">
-          <button type="button" class="entrega-tab on" data-ctipo="WhatsApp" role="tab" aria-selected="true">WhatsApp</button>
-          <button type="button" class="entrega-tab" data-ctipo="Correo" role="tab" aria-selected="false">Correo electrónico</button>
-        </div>
-        <label for="entrega-celta-contacto" id="entrega-celta-contacto-lbl">Tu número de WhatsApp:</label>
-        <input id="entrega-celta-contacto" type="tel" inputmode="tel" autocomplete="off" placeholder="Ej. 55 1234 5678">
-        <p class="entrega-msg" id="entrega-celta-contacto-msg" aria-live="polite"></p>
-        <p class="entrega-note">Se enviará en un lapso de 12 horas. Sin pago en esta página.</p>
-        <div class="btn-row">
-          <button class="btn btn-gold" id="btn-entrega-celta-guardar" type="button">Guardar mi elección</button>
-        </div>
-        <p class="entrega-ok hidden" id="entrega-celta-ok"></p>
-      </div>
-    </div>
+    
+    
     <div class="btn-row">
       <button class="btn btn-ghost" id="btn-back2" type="button">← Volver a barajar</button>
     </div>
@@ -2361,7 +2306,7 @@ function selectMode(m){
   var ec=document.querySelectorAll(".exp-card"),j;
   for(j=0;j<ec.length;j++){ec[j].classList.toggle("on",ec[j].getAttribute("data-exp")===m);}
   $("btn-to-draw").textContent=MODES[m].go;
-  var _mp={dia:"Gratis · Tu carta del día",destino:"Gratis · Pasado, presente y futuro",celta:"200 pesos · Tu Cruz Celta se entrega en PDF por email o WhatsApp, en 12 horas",completa:"400 pesos · Experiencia VIP · Incluye PDF con historieta ilustrada"};var _pp=$("pick-price");if(_pp)_pp.textContent=_mp[m]||"";var _rp=$("result-price");if(_rp)_rp.textContent=_mp[m]||"";
+  var _mp={dia:"Gratis · Tu carta del día",destino:"Gratis · Pasado, presente y futuro",celta:"200 pesos",completa:"400 pesos · Experiencia VIP · Incluye PDF con historieta ilustrada"};var _pp=$("pick-price");if(_pp)_pp.textContent=_mp[m]||"";var _rp=$("result-price");if(_rp)_rp.textContent=_mp[m]||"";
   var _nt={dia:"Sin datos: tu carta del día se elige al azar del mazo completo de 78 arcanos, solo para hoy.",destino:"Sin datos: tus 3 cartas se eligen al azar del mazo completo de 78 arcanos.",celta:"Sin datos: tu Cruz Celta de 10 cartas se elige al azar del mazo completo de 78 arcanos.",completa:"Tus datos de nacimiento acompañan tu consulta de principio a fin, para que tu tirada de 22 cartas sea <strong>personal y única</strong>, como tú."};
   var _nn=$("note-natal");if(_nn)_nn.innerHTML=_nt[m]||_nt.completa;
   var _rs=$("result-sub");if(_rs)_rs.innerHTML=MODES[m].sub;
@@ -3430,73 +3375,7 @@ var entregaOpts=document.querySelectorAll(".entrega-opt"),ei2;
 for(ei2=0;ei2<entregaOpts.length;ei2++){(function(el){el.addEventListener("click",function(){selectEntrega(el.getAttribute("data-entrega"));});})(entregaOpts[ei2]);}
 var btnEntrega=$("btn-entrega-guardar");if(btnEntrega){btnEntrega.addEventListener("click",saveEntrega);}
 
-/* ===== SYL_ENTREGA_CONTACTO · WhatsApp o correo, validado y enviado DE VERDAD ===== */
-function sylContactoTipo(){return state.entregaContactoTipo||"WhatsApp";}
-function sylNormalizaContacto(tipo,raw){
-  var v=(raw||"").trim();
-  if(tipo==="Correo"){
-    var okE=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
-    return {ok:okE,val:v,msg:okE?"✓ Correo válido":"Escribe un correo válido, ej. nombre@correo.com"};
-  }
-  var d=v.replace(/[^\d]/g,"");
-  if(d.length===13&&d.indexOf("521")===0)d=d.slice(3);
-  else if(d.length===12&&d.indexOf("52")===0)d=d.slice(2);
-  var okW=d.length===10;
-  var disp=okW?("+52 "+d.slice(0,2)+" "+d.slice(2,6)+" "+d.slice(6)):"";
-  return {ok:okW,val:okW?disp:v,msg:okW?("✓ WhatsApp válido: "+disp):"Escribe tu número de WhatsApp de 10 dígitos, ej. 55 1234 5678"};
-}
-function sylValidaContactoCelta(){
-  var inp=$("entrega-celta-contacto"),msg=$("entrega-celta-contacto-msg");
-  var r=sylNormalizaContacto(sylContactoTipo(),inp?inp.value:"");
-  if(msg){msg.textContent=r.msg;msg.className="entrega-msg "+(r.ok?"ok":"bad");}
-  var bt=$("btn-entrega-celta-guardar");if(bt)bt.disabled=!r.ok;
-  return r;
-}
-function saveEntregaCelta(){
-  var r=sylValidaContactoCelta();
-  var ok=$("entrega-celta-ok");
-  if(!r.ok){toast("Revisa tu contacto: "+r.msg);var inp=$("entrega-celta-contacto");if(inp)inp.focus();return;}
-  if(state._entregaCeltaSent){if(ok){ok.textContent="✓ Ya se envió a Syllenza: tu Cruz Celta en PDF te llegará en un lapso de 12 horas por "+state.entregaContactoTipo+": "+state.entregaContacto+".";ok.classList.remove("hidden");}return;}
-  state.entregaContacto=r.val; state.entregaContactoTipo=sylContactoTipo();
-  try{localStorage.setItem("syl-entrega-celta",state.entregaContactoTipo+"|"+state.entregaContacto);}catch(e){}
-  var bt=$("btn-entrega-celta-guardar");if(bt)bt.disabled=true;
-  if(ok){ok.textContent="Enviando tu Cruz Celta a Syllenza…";ok.classList.remove("hidden");}
-  var cards="";
-  try{cards=(state.draw||[]).map(function(c,ix){var lb=(state._pickLabels&&state._pickLabels[ix])||("Carta "+(ix+1));return (ix+1)+". "+lb+": "+c.name+(c.reversed?" · Invertida":" · Derecha");}).join("\n");}catch(e){cards="";}
-  var fd=new FormData();
-  fd.append("_subject","Syllenza · Cruz Celta — Entrega PDF (200 pesos)");
-  fd.append("_template","table");
-  fd.append("_captcha","false");
-  fd.append("_honey","");
-  fd.append("Lectura","Cruz Celta · 10 cartas");
-  fd.append("Cartas de la tirada",cards);
-  fd.append("Contacto de entrega ("+state.entregaContactoTipo+")",state.entregaContacto);
-  fd.append("Entrega","PDF de la Cruz Celta · 200 pesos · En un lapso de 12 horas por "+state.entregaContactoTipo+": "+state.entregaContacto);
-  fetch(FS_ENDPOINT,{method:"POST",body:fd,mode:"no-cors"}).then(function(){
-    state._entregaCeltaSent=true;
-    if(ok){ok.textContent="✓ Enviado a Syllenza: tu Cruz Celta en PDF te llegará en un lapso de 12 horas por "+state.entregaContactoTipo+": "+state.entregaContacto+".";ok.classList.remove("hidden");}
-  },function(){
-    if(bt)bt.disabled=false;
-    if(ok){ok.textContent="⚠ No se pudo enviar. Revisa tu conexión y pulsa de nuevo «Guardar mi elección».";ok.classList.remove("hidden");}
-  });
-}
-var btnEntregaCelta=$("btn-entrega-celta-guardar");if(btnEntregaCelta){btnEntregaCelta.addEventListener("click",saveEntregaCelta);}
-(function(){
-  if(!state.entregaContactoTipo)state.entregaContactoTipo="WhatsApp";
-  var tabs=document.querySelectorAll(".entrega-tab");
-  function setTipo(t){
-    state.entregaContactoTipo=t;
-    var inp=$("entrega-celta-contacto"),lbl=$("entrega-celta-contacto-lbl");
-    for(var i=0;i<tabs.length;i++){var on=tabs[i].getAttribute("data-ctipo")===t;tabs[i].classList.toggle("on",on);tabs[i].setAttribute("aria-selected",on?"true":"false");}
-    if(inp){inp.value="";inp.setAttribute("type",t==="Correo"?"email":"tel");inp.setAttribute("inputmode",t==="Correo"?"email":"tel");inp.setAttribute("placeholder",t==="Correo"?"Ej. nombre@correo.com":"Ej. 55 1234 5678");}
-    if(lbl)lbl.textContent=t==="Correo"?"Tu correo electrónico:":"Tu número de WhatsApp:";
-    sylValidaContactoCelta();
-  }
-  for(var i=0;i<tabs.length;i++){(function(el){el.addEventListener("click",function(){setTipo(el.getAttribute("data-ctipo"));});})(tabs[i]);}
-  var inp2=$("entrega-celta-contacto");
-  if(inp2){inp2.addEventListener("input",sylValidaContactoCelta);inp2.addEventListener("blur",sylValidaContactoCelta);}
-  sylValidaContactoCelta();
-})();
+
 
 function resetAll(){
   if(state._fsTimer){clearTimeout(state._fsTimer);state._fsTimer=null;}
