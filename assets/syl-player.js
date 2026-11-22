@@ -299,6 +299,18 @@ function sylBuild(){
     else{elPlay.textContent="▶";}
   });
   audio.addEventListener("error",function(){
+    var cur=queue[qix];
+    if(cur&&/-(luna|oraculo)\.mp3$/i.test(cur.src)&&!cur._triedBase){
+      cur._triedBase=true;
+      cur.src=cur.src.replace(/-(luna|oraculo)\.mp3$/i,".mp3");
+      cur.voice="SYLLENZA";
+      sylSetTrack(cur);
+      audio.src=cur.src;
+      audio.playbackRate=speeds[speedIx];
+      var p2=audio.play();if(p2&&p2.catch)p2.catch(function(){});
+      elPlay.textContent="⏸";
+      return;
+    }
     if(qix+1<queue.length){sylPlayIx(qix+1);}
     else{elTitle.textContent="Audio no disponible por ahora";elPlay.textContent="▶";}
   });
