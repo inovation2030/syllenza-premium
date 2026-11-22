@@ -1522,7 +1522,7 @@ body.syl-cosmico .cosmic-picker.active{display:block}
     <p class="pick-list" id="pick-list"></p>
     <div class="btn-row">
       <button class="btn btn-pink btn-getcard" id="btn-pick-draw" type="button">GET A CARD</button>
-      <button class="btn btn-ghost" id="btn-pick-back" type="button">← Volver a barajar</button>
+      <button class="btn btn-ghost" id="btn-pick-back" type="button">↺ Nuevas cartas</button>
     </div>
   </section>
 
@@ -2343,11 +2343,11 @@ for(qi=0;qi<optEls.length;qi++){(function(el){el.addEventListener("click",functi
 var expBtns=document.querySelectorAll(".exp-btn"),ei;
 for(ei=0;ei<expBtns.length;ei++){(function(el){el.addEventListener("click",function(){var m=el.getAttribute("data-mode");var pg=m==="dia"?"carta-del-dia.html":m==="destino"?"pasado-presente-futuro.html":m==="completa"?"tirada-completa.html":"cruz-celta.html";if(window.SYL_goPage)window.SYL_goPage(pg);else location.href=pg;});})(expBtns[ei]);}
 try{selectMode(PAGE_MODE);}catch(e){}
-if(PAGE_MODE!=="completa"){try{show("view-shuffle");var _s1=$("step1");if(_s1)_s1.style.display="none";var _b1=$("btn-back1");if(_b1)_b1.style.display="none";}catch(e){}}
+if(PAGE_MODE!=="completa"){try{var _s1=$("step1");if(_s1)_s1.style.display="none";var _b1=$("btn-back1");if(_b1)_b1.style.display="none";setTimeout(function(){try{state.deck=shuffleDeck();state.draw=null;enterPick();}catch(e){}},0);}catch(e){}}
 var acct=$("btn-account");if(acct){acct.addEventListener("click",function(){if(window.SYL_goPage)window.SYL_goPage("mi-cuenta.html");else location.href="mi-cuenta.html";});}
 var pickSacar=$("btn-pick-sacar");if(pickSacar){pickSacar.addEventListener("click",function(){pickOne(-1);});}
 var pickDraw=$("btn-pick-draw");if(pickDraw){pickDraw.addEventListener("click",function(){pickOne(-1);});}
-var pickBack=$("btn-pick-back");if(pickBack){pickBack.addEventListener("click",function(){show("view-shuffle");});}
+var pickBack=$("btn-pick-back");if(pickBack){pickBack.addEventListener("click",function(){try{state.deck=shuffleDeck();state.draw=null;enterPick();}catch(e){}});}
 var _od=$("btn-opt-dia");if(_od)_od.addEventListener("click",function(){if(/carta-del-dia\.html$/.test(location.pathname)){startFlowFor("dia");}else if(window.SYL_goPage)window.SYL_goPage("carta-del-dia.html");else location.href="carta-del-dia.html";});
 var _ot=$("btn-opt-destino");if(_ot)_ot.addEventListener("click",function(){if(/pasado-presente-futuro\.html$/.test(location.pathname)){startFlowFor("destino");}else if(window.SYL_goPage)window.SYL_goPage("pasado-presente-futuro.html");else location.href="pasado-presente-futuro.html";});
 var _ob2=document.querySelectorAll(".opt2-col .pick-back"),_bi;
