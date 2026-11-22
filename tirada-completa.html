@@ -2120,6 +2120,9 @@ function narrateCurrentResult(){
   else if(state.mode==="celta"){speak("Tu Cruz Celta está lista. "+narrationText(state.draw,CELTA_LABELS));}
   else if(state.mode==="dia"){if(!sylHumanSol(state.draw))speak("Tu carta del día es "+narrationText(state.draw,[""]));}
   else{speak("Tu destino en tres cartas. "+narrationText(state.draw,["Pasado","Presente","Futuro"]));}
+  /* Auto-narración del resultado (solo resultados): al abrirse el resultado,
+     la narración humana arranca sola carta por carta. */
+  try{if(window.sylAutoPlayResult)window.sylAutoPlayResult();}catch(e){}
 }
 function setVoice(on){
   voiceOn=!!on;
