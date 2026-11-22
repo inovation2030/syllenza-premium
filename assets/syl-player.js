@@ -93,7 +93,7 @@ function sylStoredVoice(){
 function sylSelectedVoice(){return sylStoredVoice();}
 function sylEffectiveVoice(defVoice){
   var s=sylStoredVoice();
-  return s||"ORÁCULO";
+  return s||"LUNA";
 }
 function sylResolveSrc(baseSrc,defVoice){
   if(!baseSrc)return baseSrc;
