@@ -1924,7 +1924,7 @@ function cardHTML(c,i,showMeaning){
    +'<div class="a-col sg"><span class="gly">'+c.sGly+'</span><span class="a-name">'+c.signo+'</span><span class="a-lbl">Signo</span></div>'
    +'<div class="a-col el"><span class="gly">'+el.gly+'</span><span class="a-name">'+el.name+'</span><span class="a-lbl">Elemento</span></div></div>'
    +(typeof i==="number"?'<span class="orient '+(rev?"rev":"up")+'">'+(rev?"▽ Invertida":"△ Derecha")+'</span>':'')
-   +(showMeaning?'<p class="meaning">'+(rev?c.rev:c.up)+'</p><p class="consejo">Consejo: '+sylConsejo(c)+'</p><p class="solfegio">'+sylSolfeoLine(c)+'</p><button type="button" class="solfegio-play" onclick="event.stopPropagation();window.sylSolfeoPlay('+sylSolfeo(c).hz+',this)">▶ Escuchar</button>'+(c.major?'<button type="button" class="syl-narr-btn" data-audio="assets/audio/carta-'+sylAudioSlug(c.name)+(rev?'-inv':'')+'.mp3" data-title="'+c.name+' · '+(rev?'Invertida':'Derecha')+'" data-voice="SYLLENZA" onclick="event.stopPropagation();window.sylPlayCard&&window.sylPlayCard(this)">▶ Narración · SYLLENZA</button>':''):'')
+   +(showMeaning?'<p class="meaning">'+(rev?c.rev:c.up)+'</p><p class="consejo">Consejo: '+sylConsejo(c)+'</p><p class="solfegio">'+sylSolfeoLine(c)+'</p><button type="button" class="solfegio-play" onclick="event.stopPropagation();window.sylSolfeoPlay('+sylSolfeo(c).hz+',this)">▶ Escuchar</button>'+'<button type="button" class="syl-narr-btn" data-audio="assets/audio/carta-'+sylAudioSlug(c.name)+(rev?'-inv':'')+'.mp3" data-title="'+c.name+' · '+(rev?'Invertida':'Derecha')+'" data-voice="SYLLENZA" onclick="event.stopPropagation();window.sylPlayCard&&window.sylPlayCard(this)">▶ Narración · SYLLENZA</button>':'')
    +'</article>';
 }
 /* ---------- PASO 2: BARAJAR ---------- */
@@ -4618,6 +4618,6 @@ if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded"
     <button type="button" class="btn btn-gold zoom-next" id="syl-zoom-next">✦ Continuar</button>
   </div>
 </div>
-<script src="assets/syl-player.js?v=51"></script>
+<script src="assets/syl-player.js?v=52"></script>
 </body>
 </html>
