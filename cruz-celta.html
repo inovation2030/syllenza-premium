@@ -1365,8 +1365,8 @@ body.syl-cosmico .cosmic-picker.active{display:block}
 
   <!-- STEPPER -->
   <nav class="steps" aria-label="Pasos de la consulta">
-    <div class="step active" id="step1"><span class="num">1</span> Tus datos de nacimiento</div>
-    <div class="step" id="step2"><span class="num">2</span> Elige tu tirada y baraja</div>
+    <div class="step active" id="step1"><span class="num">1</span> Tu pregunta</div>
+    <div class="step" id="step2"><span class="num">2</span> Elige tus 10 cartas</div>
     <div class="step" id="step3"><span class="num">3</span> Tu revelación</div>
   </nav>
 
@@ -1374,24 +1374,24 @@ body.syl-cosmico .cosmic-picker.active{display:block}
   <section class="panel" id="view-form">
     <div class="split">
       <div>
-        <h2>Paso 1 · Cuéntanos de ti</h2>
-        <p class="sub">Completa tus datos de nacimiento para preparar tu consulta. Solo para mayores de 18 años.</p>
+        <h2>Paso 1 · Tu pregunta</h2>
+        <p class="sub">Escribe tu pregunta o el tema de tu consulta. La lectura responderá a tu pregunta.</p>
         <form id="natal-form" novalidate>
-          <div class="field full">
+          <div class="field full" style="display:none">
             <label for="f-name">Nombre completo *</label>
             <input id="f-name" type="text" autocomplete="name" placeholder="Ej. María Fernanda López García" required>
           </div>
-          <div class="field">
+          <div class="field" style="display:none">
             <label for="f-date">Fecha de nacimiento *</label>
             <input id="f-date" type="date" required>
             <span class="hint">Día, mes y año. Debes tener 18 años o más.</span>
           </div>
-          <div class="field">
+          <div class="field" style="display:none">
             <label for="f-time">Hora de nacimiento *</label>
             <input id="f-time" type="time" required>
             <span class="hint">Si no la sabes exacta, usa la más cercana que recuerdes.</span>
           </div>
-          <div class="field full">
+          <div class="field full" style="display:none">
             <label for="f-place">Lugar de nacimiento *</label>
             <input id="f-place" type="text" list="world-places" placeholder="Empieza a escribir tu ciudad…" autocomplete="off" required>
             <datalist id="world-places">
@@ -1408,20 +1408,20 @@ body.syl-cosmico .cosmic-picker.active{display:block}
             <span class="hint" id="place-detected" style="color:var(--ok);font-weight:800"></span>
           </div>
           <div class="field full">
-            <label for="f-topic">Pregunta o tema de tu consulta (opcional)</label>
+            <label for="f-topic">Tu pregunta o tema de tu consulta</label>
             <input id="f-topic" type="text" placeholder="Ej. Amor, trabajo, un nuevo comienzo…">
           </div>
         </form>
         <div class="error" id="form-error" role="alert"></div>
 
         <div id="data-ok" class="hidden">
-          <div class="note" style="border-color:var(--ok)">✓ <strong>¡Datos registrados!</strong> Todo listo: continúa al paso 2 para barajar el mazo.</div>
+          <div class="note" style="border-color:var(--ok)">✓ <strong>¡Pregunta lista!</strong> Continúa al paso 2 para elegir tus 10 cartas.</div>
         </div>
 
         <div id="oracle-panel" class="hidden"></div>
 
         <div class="btn-row">
-          <button class="btn btn-pink" id="btn-natal" type="button">✦ Confirmar mis datos</button>
+          <button class="btn btn-pink" id="btn-natal" type="button">✦ Confirmar mi pregunta</button>
           <button class="btn btn-cyan hidden" id="btn-to-shuffle" type="button">Continuar · Elegir mi tirada →</button>
         </div>
       </div>
@@ -1461,7 +1461,7 @@ body.syl-cosmico .cosmic-picker.active{display:block}
       </div>
     </div>
     <div class="btn-row">
-      <button class="btn btn-ghost" id="btn-back1" type="button">← Volver a mis datos</button>
+      <button class="btn btn-ghost" id="btn-back1" type="button">← Volver a mi pregunta</button>
     </div>
   </section>
 
@@ -1834,27 +1834,14 @@ function renderOracle(){
   $("oracle-panel").classList.remove("hidden");
 }
 if($("btn-natal"))$("btn-natal").addEventListener("click",function(){
-  var err=$("form-error"); err.classList.remove("show"); err.textContent="";
-  var name=$("f-name").value.trim(), dv=$("f-date").value, tv=$("f-time").value, place=$("f-place").value.trim(), topic=$("f-topic").value.trim();
-  if(!name||!dv||!tv||!place){err.textContent="Por favor completa todos los campos marcados con *: nombre completo, fecha, hora y lugar de nacimiento.";err.classList.add("show");return;}
-  var parts=dv.split("-"), birth=new Date(+parts[0],+parts[1]-1,+parts[2]);
-  var age=ageOf(birth);
-  if(isNaN(birth.getTime())||birth>new Date()){err.textContent="La fecha de nacimiento no es válida. Revisa el día, mes y año.";err.classList.add("show");return;}
-  if(age<18){err.textContent="Lo sentimos: esta consulta es solo para mayores de 18 años. Según la fecha indicada, la persona consultante tiene "+age+" años.";err.classList.add("show");return;}
-  var tp=tv.split(":"), sol=sunSign(+parts[1],+parts[2]);
-  var utc=new Date(Date.UTC(+parts[0],+parts[1]-1,+parts[2],+tp[0],+tp[1]));
-  var luna=moonSign(utc), asc=ascSign(sol,+tp[0],+tp[1]);
-  state.person={nombre:name,fecha:dv,hora:tv,lugar:place,tema:topic,edad:age};
-  state.natal={sol:sol,luna:luna,ascendente:asc};
-  var lp=(function(){var s=dv.replace(/-/g,""),t=0,ii;for(ii=0;ii<s.length;ii++)t+=+s[ii];while(t>9&&t!==11&&t!==22){var u=0;while(t>0){u+=t%10;t=Math.floor(t/10);}t=u;}return t;})();
-  state.numerologia=lp;
-  try{localStorage.removeItem("syl-natal");}catch(e){}
-  renderOracle();
-  $("data-ok").classList.remove("hidden");
-  $("btn-to-shuffle").classList.remove("hidden");
-  $("data-ok").scrollIntoView({behavior:"smooth",block:"center"});
-toast("Datos listos. Pasando a barajar…");
-try{if(window._sylAutoT)clearTimeout(window._sylAutoT);window._sylAutoT=setTimeout(function(){try{show("view-shuffle");}catch(e){}},3000);}catch(e){}
+  var err=$("form-error"); if(err){err.classList.remove("show");err.textContent="";}
+  var topic=$("f-topic")?$("f-topic").value.trim():"";
+  if(!state.person)state.person={};
+  state.person.tema=topic;
+  var dok=$("data-ok"); if(dok)dok.classList.remove("hidden");
+  var bts=$("btn-to-shuffle"); if(bts)bts.classList.add("hidden");
+  try{state.deck=shuffleDeck();state.draw=null;}catch(e){}
+  try{enterPick();}catch(e){}
 });
 if($("btn-to-shuffle"))$("btn-to-shuffle").addEventListener("click",function(){try{if(window._sylAutoT){clearTimeout(window._sylAutoT);window._sylAutoT=null;}}catch(e){}show("view-shuffle");});
 /* ---------- DATOS NATALES PERSISTENTES (2026-11-19) ----------
@@ -2346,7 +2333,7 @@ for(qi=0;qi<optEls.length;qi++){(function(el){el.addEventListener("click",functi
 var expBtns=document.querySelectorAll(".exp-btn"),ei;
 for(ei=0;ei<expBtns.length;ei++){(function(el){el.addEventListener("click",function(){var m=el.getAttribute("data-mode");var pg=m==="dia"?"carta-del-dia.html":m==="destino"?"pasado-presente-futuro.html":m==="completa"?"tirada-completa.html":"cruz-celta.html";if(window.SYL_goPage)window.SYL_goPage(pg);else location.href=pg;});})(expBtns[ei]);}
 try{selectMode(PAGE_MODE);}catch(e){}
-if(PAGE_MODE!=="completa"){try{var _s1=$("step1");if(_s1)_s1.style.display="none";var _b1=$("btn-back1");if(_b1)_b1.style.display="none";setTimeout(function(){try{state.deck=shuffleDeck();state.draw=null;enterPick();}catch(e){}},0);}catch(e){}}
+if(PAGE_MODE==="dia"||PAGE_MODE==="destino"){try{var _s1=$("step1");if(_s1)_s1.style.display="none";var _b1=$("btn-back1");if(_b1)_b1.style.display="none";setTimeout(function(){try{state.deck=shuffleDeck();state.draw=null;enterPick();}catch(e){}},0);}catch(e){}}
 var acct=$("btn-account");if(acct){acct.addEventListener("click",function(){if(window.SYL_goPage)window.SYL_goPage("mi-cuenta.html");else location.href="mi-cuenta.html";});}
 var pickSacar=$("btn-pick-sacar");if(pickSacar){pickSacar.addEventListener("click",function(){pickOne(-1);});}
 var pickDraw=$("btn-pick-draw");if(pickDraw){pickDraw.addEventListener("click",function(){pickOne(-1);});}
