@@ -192,6 +192,36 @@ function sylPlayQueue(items){
   queue=items.slice(0);
   sylPlayIx(0);
 }
+/* ---------- Auto-narración del resultado · SOLO resultados ----------
+   Cuando se abre el resultado de cualquier tirada, la narración humana
+   (ElevenLabs) arranca sola, carta por carta, y sigue aunque el visitante
+   deslice la página arriba y abajo: el audio es un elemento multimedia y
+   el desplazamiento solo mueve el reproductor, no lo pausa. Solo para
+   resultados (#view-result): no se auto-reproduce la introducción, la
+   runa ni nada más. Una sola vez por resultado (la clave es el conjunto
+   de audios); si el visitante cierra el reproductor, no se reinicia. */
+var sylAutoKey="";
+function sylAutoPlayResult(){
+  var vr=$("view-result");
+  if(!vr||vr.classList.contains("hidden"))return false;
+  var btns=vr.querySelectorAll(".syl-narr-btn");
+  if(!btns.length)return false;
+  var key="",items=[],i;
+  for(i=0;i<btns.length;i++){
+    var base=btns[i].getAttribute("data-audio");
+    if(!base)continue;
+    var def=btns[i].getAttribute("data-voice")||"SYLLENZA";
+    key+=base+"|";
+    items.push({src:sylResolveSrc(base,def),
+      title:btns[i].getAttribute("data-title")||"Narración",
+      voice:sylEffectiveVoice(def)});
+  }
+  if(!items.length||key===sylAutoKey)return false;
+  sylAutoKey=key;
+  sylPlayQueue(items);
+  return true;
+}
+window.sylAutoPlayResult=sylAutoPlayResult;
 function sylPlayAudio(src,title,voice){
   if(!src)return;
   sylPlayQueue([{src:src,title:title||"Narración Syllenza",voice:voice||"SYLLENZA"}]);
@@ -470,6 +500,7 @@ function sylInject(){
       if(!_allBtn) return;
       _allBtn.style.display=vr.querySelectorAll(".syl-narr-btn").length?"":"none";
       sylSyncVoiceLabels();
+      try{sylAutoPlayResult();}catch(e){}
     };
     _toggleAll();
     if(!vr._sylAllObs){
