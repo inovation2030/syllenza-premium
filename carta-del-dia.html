@@ -1538,7 +1538,7 @@ body.syl-cosmico .cosmic-picker.active{display:block}
     <div class="entrega-block hidden" id="entrega-celta">
       <h3>Tu entrega · Cruz Celta</h3>
       <p>Tu Cruz Celta se entrega en PDF, igual que la Tirada Completa, por email o WhatsApp en un lapso de 12 horas.</p>
-      <p><strong>200 pesos</strong> · Sin pago en esta página.</p>
+      <p><strong>100 pesos</strong> · Sin pago en esta página.</p>
       <div id="entrega-celta-contacto-wrap">
         <label for="entrega-celta-contacto">Tu email o WhatsApp para mandártelo:</label>
         <input id="entrega-celta-contacto" type="text" autocomplete="off" placeholder="Ej. tu correo o tu número de WhatsApp">
@@ -2297,7 +2297,7 @@ var MODES={
  destino:{title:"Paso 3 · Tu destino en 3 cartas",kind:"Tu destino en 3 cartas",btn:"✦ Revelar mi destino en 3 cartas",go:"Ir a Tu destino en 3 cartas →",
   sub:"Tres cartas elegidas al azar de tu mazo ya barajado: <strong>una para tu Pasado, una para tu Presente y una para tu Futuro</strong>, cada una con la posición (derecha o invertida) que le tocó en la barajada y su interpretación. <strong>Gratis</strong>."},
   celta:{title:"Paso 3 · Cruz Celta",kind:"Tu Cruz Celta",btn:"✦ Revelar mi Cruz Celta",go:"Ir a mi Cruz Celta →",
-   sub:"Diez cartas elegidas al azar de tu mazo ya barajado para responder a tu pregunta, cada una con la posición (derecha o invertida) que le tocó en la barajada y su interpretación. <strong>200 pesos</strong> · Se entrega en PDF por email o WhatsApp en 12 horas."}
+   sub:"Diez cartas elegidas al azar de tu mazo ya barajado para responder a tu pregunta, cada una con la posición (derecha o invertida) que le tocó en la barajada y su interpretación. <strong>100 pesos</strong> · Se entrega en PDF por email o WhatsApp en 12 horas."}
 };
 var CELTA_LABELS=["Presente","Desafío","Pasado lejano","Pasado reciente","Posible futuro","Futuro inmediato","Tu actitud","Tu entorno","Esperanzas y miedos","Resultado"];
 function selectMode(m){
@@ -2307,7 +2307,7 @@ function selectMode(m){
   var ec=document.querySelectorAll(".exp-card"),j;
   for(j=0;j<ec.length;j++){ec[j].classList.toggle("on",ec[j].getAttribute("data-exp")===m);}
   $("btn-to-draw").textContent=MODES[m].go;
-  var _mp={dia:"Gratis · Tu carta del día",destino:"Gratis · Pasado, presente y futuro",celta:"200 pesos · Tu Cruz Celta se entrega en PDF por email o WhatsApp, en 12 horas",completa:"400 pesos · Experiencia VIP · Incluye PDF con historieta ilustrada"};var _pp=$("pick-price");if(_pp)_pp.textContent=_mp[m]||"";var _rp=$("result-price");if(_rp)_rp.textContent=_mp[m]||"";
+  var _mp={dia:"Gratis · Tu carta del día",destino:"Gratis · Pasado, presente y futuro",celta:"100 pesos · Tu Cruz Celta se entrega en PDF por email o WhatsApp, en 12 horas",completa:"400 pesos · Experiencia VIP · Incluye PDF con historieta ilustrada"};var _pp=$("pick-price");if(_pp)_pp.textContent=_mp[m]||"";var _rp=$("result-price");if(_rp)_rp.textContent=_mp[m]||"";
   var _nt={dia:"Sin datos: tu carta del día se elige al azar del mazo completo de 78 arcanos, solo para hoy.",destino:"Sin datos: tus 3 cartas se eligen al azar del mazo completo de 78 arcanos.",celta:"Sin datos: tu Cruz Celta de 10 cartas se elige al azar del mazo completo de 78 arcanos.",completa:"Tus datos de nacimiento acompañan tu consulta de principio a fin, para que tu tirada de 22 cartas sea <strong>personal y única</strong>, como tú."};
   var _nn=$("note-natal");if(_nn)_nn.innerHTML=_nt[m]||_nt.completa;
   var _rs=$("result-sub");if(_rs)_rs.innerHTML=MODES[m].sub;

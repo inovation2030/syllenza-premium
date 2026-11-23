@@ -1248,6 +1248,14 @@ body.syl-cosmico .cosmic-picker.active{display:block}
 .entrega-msg.bad{color:#ff7b7b}
 #btn-entrega-guardar:disabled,#btn-entrega-celta-guardar:disabled{opacity:.45;cursor:not-allowed}
 .solfegio{color:var(--gold-pale);font-weight:600}.solfegio-play{display:inline-block;background:transparent;border:1px solid var(--gold);color:var(--gold);border-radius:999px;padding:6px 14px;font-family:inherit;font-size:.9em;cursor:pointer;margin:4px 0 8px}.solfegio-play:hover{background:rgba(252,166,17,.18)}
+
+/* Pantalla de pago SYL */
+#view-pago{text-align:center}
+#view-pago .pago-precio{font-size:clamp(28px,6vw,44px);color:var(--gold);font-family:"Cinzel Decorative","Cinzel",serif;margin:6px 0 16px}
+#view-pago .pago-btns{display:flex;flex-direction:column;gap:12px;max-width:440px;margin:0 auto}
+#view-pago .pago-btns .btn{width:100%}
+#view-pago .pago-note{font-size:13px;opacity:.85;margin-top:16px}
+#view-pago .pago-ok{color:var(--gold-pale);font-weight:700}
 </style>
 
 
@@ -1332,7 +1340,7 @@ body.syl-cosmico .cosmic-picker.active{display:block}
       <div class="pick-back"><img src="assets/reverso.webp" alt="Dorso de carta Syllenza"><span>Esperanzas y miedos</span></div>
       <div class="pick-back"><img src="assets/reverso.webp" alt="Dorso de carta Syllenza"><span>Resultado</span></div>
     </div>
-    <p class="mode-price">200 pesos</p>
+    <p class="mode-price">100 pesos</p>
     <button class="btn btn-gold btn-pill" id="btn-page-sacar" type="button">✦ SACAR 10 CARTAS ✦</button>
     <div class="btn-row"><a class="btn btn-ghost" href="index.html">← Regresar a Inicio</a></div>
   </div>
@@ -1527,9 +1535,21 @@ body.syl-cosmico .cosmic-picker.active{display:block}
   </section>
 
   <!-- ============ VISTA 3: TIRADA 22 + RESULTADO ============ -->
+  <section class="panel hidden" id="view-pago">
+    <h2>✦ Para poder continuar necesitas hacer tu pago</h2>
+    <p class="sub">Tu Cruz Celta está lista: 10 cartas para responder a tu pregunta.</p>
+    <p class="pago-precio">$100 MXN</p>
+    <div class="pago-btns">
+      <a class="btn btn-gold" id="pago-stripe" href="https://buy.stripe.com/test_4gMeVe2HjdP7eYr0Ot3ks08" target="_blank" rel="noopener">💳 Pagar $100 con tarjeta</a>
+      <button class="btn btn-gold" id="pago-mp" type="button">Pagar con Mercado Pago</button>
+    </div>
+    <p class="pago-note">Después de pagar regresarás aquí y verás tu resultado.</p>
+    <div class="btn-row"><button class="btn btn-ghost" id="pago-volver" type="button">← Volver a mis cartas</button></div>
+    <div class="btn-row hidden" id="pago-ver-row"><button class="btn btn-gold" id="pago-ver" type="button">✓ Pago recibido · Ver mi resultado</button></div>
+  </section>
   <section class="panel hidden" id="view-result">
     <h2 id="result-title">Paso 3 · Cruz Celta</h2>
-    <p class="sub" id="result-sub">Diez cartas elegidas al azar de tu mazo ya barajado para responder a tu pregunta, cada una con la posición (derecha o invertida) que le tocó en la barajada y su interpretación. <strong>200 pesos</strong>.</p>
+    <p class="sub" id="result-sub">Diez cartas elegidas al azar de tu mazo ya barajado para responder a tu pregunta, cada una con la posición (derecha o invertida) que le tocó en la barajada y su interpretación. <strong>100 pesos</strong>.</p>
     <p class="mode-price" id="result-price"></p>
     <div class="deck-stage">
       <img class="deck-img" id="deck-img2" data-deck-src src="" alt="Reverso celestial de las cartas de Syllenza: sol dorado, luna creciente y rueda zodiacal en azul medianoche y oro" />
@@ -2299,7 +2319,7 @@ var MODES={
  destino:{title:"Paso 3 · Tu destino en 3 cartas",kind:"Tu destino en 3 cartas",btn:"✦ Revelar mi destino en 3 cartas",go:"Ir a Tu destino en 3 cartas →",
   sub:"Tres cartas elegidas al azar de tu mazo ya barajado: <strong>una para tu Pasado, una para tu Presente y una para tu Futuro</strong>, cada una con la posición (derecha o invertida) que le tocó en la barajada y su interpretación. <strong>Gratis</strong>."},
   celta:{title:"Paso 3 · Cruz Celta",kind:"Tu Cruz Celta",btn:"✦ Revelar mi Cruz Celta",go:"Ir a mi Cruz Celta →",
-   sub:"Diez cartas elegidas al azar de tu mazo ya barajado para responder a tu pregunta, cada una con la posición (derecha o invertida) que le tocó en la barajada y su interpretación. <strong>200 pesos</strong> · Se entrega en PDF por email o WhatsApp en 12 horas."}
+   sub:"Diez cartas elegidas al azar de tu mazo ya barajado para responder a tu pregunta, cada una con la posición (derecha o invertida) que le tocó en la barajada y su interpretación. <strong>100 pesos</strong> · Se entrega en PDF por email o WhatsApp en 12 horas."}
 };
 var CELTA_LABELS=["Situación actual","Obstáculo o desafío","Fundamento","Pasado","Posibilidades futuras","Futuro próximo","Actitud personal","Influencias externas","Esperanzas y temores","Resultado"];
 function selectMode(m){
@@ -2309,7 +2329,7 @@ function selectMode(m){
   var ec=document.querySelectorAll(".exp-card"),j;
   for(j=0;j<ec.length;j++){ec[j].classList.toggle("on",ec[j].getAttribute("data-exp")===m);}
   $("btn-to-draw").textContent=MODES[m].go;
-  var _mp={dia:"Gratis · Tu carta del día",destino:"Gratis · Pasado, presente y futuro",celta:"200 pesos",completa:"400 pesos · Experiencia VIP · Incluye PDF con historieta ilustrada"};var _pp=$("pick-price");if(_pp)_pp.textContent=_mp[m]||"";var _rp=$("result-price");if(_rp)_rp.textContent=_mp[m]||"";
+  var _mp={dia:"Gratis · Tu carta del día",destino:"Gratis · Pasado, presente y futuro",celta:"100 pesos",completa:"400 pesos · Experiencia VIP · Incluye PDF con historieta ilustrada"};var _pp=$("pick-price");if(_pp)_pp.textContent=_mp[m]||"";var _rp=$("result-price");if(_rp)_rp.textContent=_mp[m]||"";
   var _nt={dia:"Sin datos: tu carta del día se elige al azar del mazo completo de 78 arcanos, solo para hoy.",destino:"Sin datos: tus 3 cartas se eligen al azar del mazo completo de 78 arcanos.",celta:"Sin datos: tu Cruz Celta de 10 cartas se elige al azar del mazo completo de 78 arcanos.",completa:"Tus datos de nacimiento acompañan tu consulta de principio a fin, para que tu tirada de 22 cartas sea <strong>personal y única</strong>, como tú."};
   var _nn=$("note-natal");if(_nn)_nn.innerHTML=_nt[m]||_nt.completa;
   var _rs=$("result-sub");if(_rs)_rs.innerHTML=MODES[m].sub;
@@ -2978,6 +2998,47 @@ function sylCosStart(){
   if(!window._sylCosBound){window._sylCosBound=true;
     var pz=$("picker-pause");if(pz)pz.addEventListener("click",function(){if(!SYL_COS)return;if(SYL_COS.paused){sylCosResume();}else{sylCosPause();}});
     var cf=$("picker-confirm");if(cf)cf.addEventListener("click",function(){sylCosConfirm();});
+    /* ---- Retorno de pago (?compra=exito) ---- */
+    (function(){
+      try{
+        var q=new URLSearchParams(location.search);
+        if(q.get("compra")==="exito"){
+          sylPagoMarcar();
+          var okR=sylPagoRestaurarCelta();
+          var row=$("pago-ver-row");
+          if(okR && row){
+            sylMostrarPago();
+            row.classList.remove("hidden");
+            var pb=$("pago-stripe");if(pb)pb.classList.add("hidden");
+            var pm=$("pago-mp");if(pm)pm.classList.add("hidden");
+            var pv=$("pago-volver");if(pv)pv.classList.add("hidden");
+            var nt=document.querySelector("#view-pago .pago-note");
+            if(nt)nt.textContent="Tu pago fue recibido. Toca el botón para ver tu resultado.";
+            var pv2=$("pago-ver");
+            if(pv2)pv2.addEventListener("click",function(){
+              sylPagoLimpiar();
+              try{sessionStorage.removeItem("syl-pago-celta");}catch(e){}
+              revealPicked(state._picked.slice(), state._pickLabels.slice());
+            });
+          }
+        }
+      }catch(e){}
+    })();
+    var _pv=$("pago-volver");if(_pv)_pv.addEventListener("click",function(){sylPagoVolver();});
+    var _pm=$("pago-mp");if(_pm)_pm.addEventListener("click",function(){sylPagoMP("https://mpago.la/2MCjSUv");});
+    var _pver=$("pago-ver");
+    if(_pver)_pver.addEventListener("click",function(){
+      sylPagoMarcar();
+      var okR=sylPagoRestaurarCelta();
+      if(okR){
+        sylPagoLimpiar();
+        try{sessionStorage.removeItem("syl-pago-celta");}catch(e){}
+        revealPicked(state._picked.slice(), state._pickLabels.slice());
+      }else{
+        toast("No encontramos tu tirada guardada. Vuelve a elegir tus cartas.");
+      }
+    });
+    var _ps=$("pago-stripe");if(_ps)_ps.addEventListener("click",function(){sylPagoGuardarCelta();});
     var rz=$("picker-reset");if(rz)rz.addEventListener("click",function(){sylCosReset();});
   }
   var cp=$("cosmic-picker");if(cp)cp.classList.add("active");
@@ -3120,10 +3181,75 @@ function sylCosZoomHide(){try{var z=$("syl-zoom");if(z){z.classList.remove("on")
 window.addEventListener("scroll",function(){try{var z=$("syl-zoom");if(z&&z.classList.contains("on")){z.style.top=window.scrollY+"px";z.style.height=window.innerHeight+"px";}}catch(e){}},true);
 (function(){var b=$("syl-zoom-next");if(b)b.addEventListener("click",sylCosZoomHide);var z=$("syl-zoom");if(z)z.addEventListener("click",function(e){if(e.target===z)sylCosZoomHide();});})();
 
+
+/* ---- Pantalla de pago SYL (2026-11-22) ---- */
+function sylPagoLibre(){
+  try{
+    if(localStorage.getItem("syl-demo")==="1")return true;
+    var c=JSON.parse(localStorage.getItem("syl-cuenta")||"null");
+    if(c&&(c.codigo==="PRUEBA"||c.codigo==="GRATIS"))return true;
+  }catch(e){}
+  return false;
+}
+function sylPagoHecho(){
+  try{return sessionStorage.getItem("syl-pago-ok")==="1";}catch(e){return false;}
+}
+function sylPagoMarcar(){
+  try{sessionStorage.setItem("syl-pago-ok","1");}catch(e){}
+}
+function sylPagoLimpiar(){
+  try{sessionStorage.removeItem("syl-pago-ok");}catch(e){}
+}
+function sylMostrarPago(){
+  var v=$("view-pago");if(!v)return;
+  show("view-pago");
+  try{window.scrollTo({top:0,behavior:"smooth"});}catch(e){}
+}
+function sylPagoVolver(){
+  try{show("view-pick");}catch(e){}
+}
+function sylPagoMP(url){
+  if(!url){toast("Mercado Pago disponible próximamente. Por ahora puedes pagar con tarjeta.");return;}
+  window.open(url,"_blank");
+  /* Mercado Pago no regresa solo al sitio: al volver, el usuario toca "Ya pague". */
+  try{
+    var row=$("pago-ver-row");if(row)row.classList.remove("hidden");
+    var nt=document.querySelector("#view-pago .pago-note");
+    if(nt)nt.textContent="Paga en la pestaña de Mercado Pago y luego vuelve aquí y toca 'Ya pagué · Ver mi resultado'.";
+    var pv=$("pago-ver");if(pv)pv.textContent="Ya pagué · Ver mi resultado";
+  }catch(e){}
+}
+
+function sylPagoGuardarCelta(){
+  try{
+    sessionStorage.setItem("syl-pago-celta", JSON.stringify({
+      pick: state._picked,
+      labels: state._pickLabels,
+      tema: state.person && state.person.tema ? state.person.tema : ""
+    }));
+  }catch(e){}
+}
+function sylPagoRestaurarCelta(){
+  try{
+    var d = JSON.parse(sessionStorage.getItem("syl-pago-celta") || "null");
+    if(!d || !d.pick || !d.pick.length) return false;
+    state._picked = d.pick;
+    state._pickLabels = d.labels;
+    if(d.tema){ if(!state.person) state.person={}; state.person.tema=d.tema; }
+    return true;
+  }catch(e){ return false; }
+}
 function sylCosConfirm(){
   try{sylCosZoomHide();}catch(e){}
   if(!SYL_COS||SYL_COS.selected.length!==sylCosNeed())return;
   sylCosStop();
+  /* PAGO: la Cruz Celta cuesta $100. Si es la sesion gratis del dueno o ya se pago, se revela directo. */
+  if(!sylPagoLibre() && !sylPagoHecho()){
+    sylPagoGuardarCelta();
+    sylMostrarPago();
+    return;
+  }
+  sylPagoLimpiar();
   revealPicked(state._picked.slice(), state._pickLabels.slice());
 }
 function sylCosReset(){

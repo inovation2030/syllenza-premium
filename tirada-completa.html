@@ -1120,6 +1120,14 @@ body.syl-fan-full .syl-bot-btn,body.syl-fan-full .syl-bot,body.syl-cruz-full .sy
 .entrega-msg.bad{color:#ff7b7b}
 #btn-entrega-guardar:disabled,#btn-entrega-celta-guardar:disabled{opacity:.45;cursor:not-allowed}
 .solfegio{color:var(--gold-pale);font-weight:600}.solfegio-play{display:inline-block;background:transparent;border:1px solid var(--gold);color:var(--gold);border-radius:999px;padding:6px 14px;font-family:inherit;font-size:.9em;cursor:pointer;margin:4px 0 8px}.solfegio-play:hover{background:rgba(252,166,17,.18)}
+
+/* Pantalla de pago SYL */
+#view-pago{text-align:center}
+#view-pago .pago-precio{font-size:clamp(28px,6vw,44px);color:var(--gold);font-family:"Cinzel Decorative","Cinzel",serif;margin:6px 0 16px}
+#view-pago .pago-btns{display:flex;flex-direction:column;gap:12px;max-width:440px;margin:0 auto}
+#view-pago .pago-btns .btn{width:100%}
+#view-pago .pago-note{font-size:13px;opacity:.85;margin-top:16px}
+#view-pago .pago-ok{color:var(--gold-pale);font-weight:700}
 </style>
 
 
@@ -1272,6 +1280,19 @@ body.syl-fan-full .syl-bot-btn,body.syl-fan-full .syl-bot,body.syl-cruz-full .sy
 
 
   <!-- ============ VISTA 3: TIRADA 22 + RESULTADO ============ -->
+  <section class="panel hidden" id="view-pago">
+    <h2>✦ Para poder continuar necesitas hacer tu pago</h2>
+    <p class="sub">Tu Tirada Completa está lista: 22 cartas con tu historia completa.</p>
+    <p class="pago-precio">$400 MXN</p>
+    <div class="pago-btns">
+      <a class="btn btn-gold" id="pago-stripe" href="https://buy.stripe.com/test_00w9AUbdPbGZ7vZ9kZ3ks09" target="_blank" rel="noopener">💳 Pagar $400 con tarjeta · PDF con historieta</a>
+      <a class="btn btn-gold" id="pago-stripe-video" href="https://buy.stripe.com/test_7sYdRagy97qJcQj1Sx3ks0a" target="_blank" rel="noopener">💳 Pagar $600 con tarjeta · PDF + video animado 2 min</a>
+      <button class="btn btn-gold" id="pago-mp" type="button">Pagar con Mercado Pago</button>
+    </div>
+    <p class="pago-note">Después de pagar regresarás aquí y verás tu resultado.</p>
+    <div class="btn-row"><button class="btn btn-ghost" id="pago-volver" type="button">← Volver</button></div>
+    <div class="btn-row hidden" id="pago-ver-row"><button class="btn btn-gold" id="pago-ver" type="button">✓ Pago recibido · Ver mi resultado</button></div>
+  </section>
   <section class="panel hidden" id="view-result">
     <h2 id="result-title">Paso 3 · Tirada Completa</h2>
     <p class="sub" id="result-sub">De tu mazo ya barajado se eligen <strong>22 cartas al azar</strong>, cada una con la posición (derecha o invertida) que le tocó en la barajada. Pulsa el botón para revelarlas: tu resultado aparecerá en <strong>esta misma página</strong>, con la interpretación de cada carta. <strong>400 pesos</strong> · Incluye el PDF con historieta ilustrada.</p>
@@ -2153,7 +2174,7 @@ var MODES={
  destino:{title:"Paso 3 · Tu destino en 3 cartas",kind:"Tu destino en 3 cartas",btn:"✦ Revelar mi destino en 3 cartas",go:"Ir a Tu destino en 3 cartas →",
   sub:"Tres cartas elegidas al azar de tu mazo ya barajado: <strong>una para tu Pasado, una para tu Presente y una para tu Futuro</strong>, cada una con la posición (derecha o invertida) que le tocó en la barajada y su interpretación. <strong>Gratis</strong>."},
   celta:{title:"Paso 3 · Cruz Celta",kind:"Tu Cruz Celta",btn:"✦ Revelar mi Cruz Celta",go:"Ir a mi Cruz Celta →",
-   sub:"Diez cartas elegidas al azar de tu mazo ya barajado para responder a tu pregunta, cada una con la posición (derecha o invertida) que le tocó en la barajada y su interpretación. <strong>200 pesos</strong> · Se entrega en PDF por email o WhatsApp en 12 horas."}
+   sub:"Diez cartas elegidas al azar de tu mazo ya barajado para responder a tu pregunta, cada una con la posición (derecha o invertida) que le tocó en la barajada y su interpretación. <strong>100 pesos</strong> · Se entrega en PDF por email o WhatsApp en 12 horas."}
 };
 var CELTA_LABELS=["Presente","Desafío","Pasado lejano","Pasado reciente","Posible futuro","Futuro inmediato","Tu actitud","Tu entorno","Esperanzas y miedos","Resultado"];
 function selectMode(m){
@@ -2163,7 +2184,7 @@ function selectMode(m){
   var ec=document.querySelectorAll(".exp-card"),j;
   for(j=0;j<ec.length;j++){ec[j].classList.toggle("on",ec[j].getAttribute("data-exp")===m);}
   $("btn-to-draw").textContent=MODES[m].go;
-  var _mp={dia:"Gratis · Tu carta del día",destino:"Gratis · Pasado, presente y futuro",celta:"200 pesos · Tu Cruz Celta se entrega en PDF por email o WhatsApp, en 12 horas",completa:"400 pesos · Experiencia VIP · Incluye PDF con historieta ilustrada"};var _pp=$("pick-price");if(_pp)_pp.textContent=_mp[m]||"";var _rp=$("result-price");if(_rp)_rp.textContent=_mp[m]||"";
+  var _mp={dia:"Gratis · Tu carta del día",destino:"Gratis · Pasado, presente y futuro",celta:"100 pesos · Tu Cruz Celta se entrega en PDF por email o WhatsApp, en 12 horas",completa:"400 pesos · Experiencia VIP · Incluye PDF con historieta ilustrada"};var _pp=$("pick-price");if(_pp)_pp.textContent=_mp[m]||"";var _rp=$("result-price");if(_rp)_rp.textContent=_mp[m]||"";
   var _nt={dia:"Sin datos: tu carta del día se elige al azar del mazo completo de 78 arcanos, solo para hoy.",destino:"Sin datos: tus 3 cartas se eligen al azar del mazo completo de 78 arcanos.",celta:"Sin datos: tu Cruz Celta de 10 cartas se elige al azar del mazo completo de 78 arcanos.",completa:"Tus datos de nacimiento acompañan tu consulta de principio a fin, para que tu tirada de 22 cartas sea <strong>personal y única</strong>, como tú."};
   var _nn=$("note-natal");if(_nn)_nn.innerHTML=_nt[m]||_nt.completa;
   var _rs=$("result-sub");if(_rs)_rs.innerHTML=MODES[m].sub;
@@ -2479,9 +2500,78 @@ function openResultTab(html){
   return writeTab(w,html)?w:null;
 }
 if($("btn-to-draw"))$("btn-to-draw").addEventListener("click",function(){try{if(window._sylAutoT2){clearTimeout(window._sylAutoT2);window._sylAutoT2=null;}}catch(e){}if(state.mode==="completa"){enterResult();}else{enterPick();}});
+
+/* ---- Pantalla de pago SYL (2026-11-22) ---- */
+function sylPagoLibre(){
+  try{
+    if(localStorage.getItem("syl-demo")==="1")return true;
+    var c=JSON.parse(localStorage.getItem("syl-cuenta")||"null");
+    if(c&&(c.codigo==="PRUEBA"||c.codigo==="GRATIS"))return true;
+  }catch(e){}
+  return false;
+}
+function sylPagoHecho(){
+  try{return sessionStorage.getItem("syl-pago-ok")==="1";}catch(e){return false;}
+}
+function sylPagoMarcar(){
+  try{sessionStorage.setItem("syl-pago-ok","1");}catch(e){}
+}
+function sylPagoLimpiar(){
+  try{sessionStorage.removeItem("syl-pago-ok");}catch(e){}
+}
+function sylMostrarPago(){
+  var v=$("view-pago");if(!v)return;
+  show("view-pago");
+  try{window.scrollTo({top:0,behavior:"smooth"});}catch(e){}
+}
+function sylPagoVolver(){
+  try{show("view-pick");}catch(e){}
+}
+function sylPagoMP(url){
+  if(!url){toast("Mercado Pago disponible próximamente. Por ahora puedes pagar con tarjeta.");return;}
+  window.open(url,"_blank");
+  /* Mercado Pago no regresa solo al sitio: al volver, el usuario toca "Ya pague". */
+  try{
+    var row=$("pago-ver-row");if(row)row.classList.remove("hidden");
+    var nt=document.querySelector("#view-pago .pago-note");
+    if(nt)nt.textContent="Paga en la pestaña de Mercado Pago y luego vuelve aquí y toca 'Ya pagué · Ver mi resultado'.";
+    var pv=$("pago-ver");if(pv)pv.textContent="Ya pagué · Ver mi resultado";
+  }catch(e){}
+}
+
+function sylPagoGuardarCompleta(){
+  try{
+    var pool=state.deck.slice(), pick=[], k;
+    for(k=0;k<22;k++){pick.push(pool.splice(Math.floor(Math.random()*pool.length),1)[0]);}
+    state.draw=pick;
+    state._pagoPick=pick;
+    sessionStorage.setItem("syl-pago-completa", JSON.stringify({
+      pick: pick,
+      person: state.person
+    }));
+  }catch(e){}
+}
+function sylPagoRestaurarCompleta(){
+  try{
+    var d = JSON.parse(sessionStorage.getItem("syl-pago-completa") || "null");
+    if(!d || !d.pick || d.pick.length!==22) return false;
+    state._pagoPick = d.pick;
+    state.draw = d.pick;
+    if(d.person) state.person = d.person;
+    if(!state.deck){ try{ state.deck = shuffleDeck(); }catch(e){} }
+    return true;
+  }catch(e){ return false; }
+}
 if($("btn-draw"))$("btn-draw").addEventListener("click",function(){
   if(!state.deck){toast("Primero baraja el mazo en el paso 2.");show("view-shuffle");return;}
   if(state.mode!=="completa"){enterPick();return;}
+  /* PAGO: la Tirada Completa cuesta $400 ($600 con video). Si es la sesion gratis del dueno o ya se pago, se revela directo. */
+  if(!sylPagoLibre() && !sylPagoHecho()){
+    sylPagoGuardarCompleta();
+    sylMostrarPago();
+    return;
+  }
+  sylPagoLimpiar();
   /* La pestaña del resultado se abre de inmediato, dentro del clic, para que el navegador no la bloquee como ventana emergente */
   var win=openResultTab(LOADING_DOC);   try{if(win&&window.SYL_I18N&&window.SYL_I18N.applyToDoc)window.SYL_I18N.applyToDoc(win.document);}catch(e){}
   var img=$("deck-img2"); img.classList.add("shuffling");
@@ -2489,9 +2579,14 @@ if($("btn-draw"))$("btn-draw").addEventListener("click",function(){
   $("btn-draw").disabled=true;
   setTimeout(function(){
     img.classList.remove("shuffling");
-    /* 22 cartas elegidas AL AZAR del mazo ya barajado (muestreo sin reemplazo), no las primeras 22 */
+    /* 22 cartas elegidas AL AZAR del mazo ya barajado (muestreo sin reemplazo), no las primeras 22.
+       Si ya se sacaron antes del pago, se usan esas mismas. */
     var pool=state.deck.slice(), pick=[], k;
-    for(k=0;k<22;k++){pick.push(pool.splice(Math.floor(Math.random()*pool.length),1)[0]);}
+    if(state._pagoPick && state._pagoPick.length===22){
+      pick = state._pagoPick; state._pagoPick = null;
+    }else{
+      for(k=0;k<22;k++){pick.push(pool.splice(Math.floor(Math.random()*pool.length),1)[0]);}
+    }
     state.draw=pick;
     $("r-name").textContent=state.person.nombre;
     $("r-kind").textContent="Tu Tirada Completa";
@@ -2528,6 +2623,49 @@ if($("btn-draw"))$("btn-draw").addEventListener("click",function(){
     $("btn-draw").disabled=false; $("btn-draw").textContent="✦ Elegir otra Tirada Completa";
   },1100);
 });
+  /* ---- Retorno de pago (?compra=exito) ---- */
+  (function(){
+    try{
+      var q=new URLSearchParams(location.search);
+      if(q.get("compra")==="exito"){
+        sylPagoMarcar();
+        var okR=sylPagoRestaurarCompleta();
+        if(okR){
+          sylMostrarPago();
+          var row=$("pago-ver-row");if(row)row.classList.remove("hidden");
+          var pb=$("pago-stripe");if(pb)pb.classList.add("hidden");
+          var pv2=$("pago-stripe-video");if(pv2)pv2.classList.add("hidden");
+          var pm=$("pago-mp");if(pm)pm.classList.add("hidden");
+          var pv=$("pago-volver");if(pv)pv.classList.add("hidden");
+          var nt=document.querySelector("#view-pago .pago-note");
+          if(nt)nt.textContent="Tu pago fue recibido. Toca el botón para ver tu resultado.";
+          var ver=$("pago-ver");
+          if(ver)ver.addEventListener("click",function(){
+            sylPagoLimpiar();
+            try{sessionStorage.removeItem("syl-pago-completa");}catch(e){}
+            /* El clic es un gesto del usuario: abrir la pestana esta permitido. */
+            var bd=$("btn-draw");if(bd)bd.click();
+          });
+        }
+      }
+    }catch(e){}
+  })();
+  var _pv=$("pago-volver");if(_pv)_pv.addEventListener("click",function(){try{show("view-shuffle");}catch(e){}});
+  var _pm=$("pago-mp");if(_pm)_pm.addEventListener("click",function(){sylPagoMP("https://mpago.la/1UPJtoy");});
+  var _pver=$("pago-ver");
+  if(_pver)_pver.addEventListener("click",function(){
+    sylPagoMarcar();
+    var okR=sylPagoRestaurarCompleta();
+    if(okR){
+      sylPagoLimpiar();
+      try{sessionStorage.removeItem("syl-pago-completa");}catch(e){}
+      var bd=$("btn-draw");if(bd)bd.click();
+    }else{
+      toast("No encontramos tu tirada guardada. Vuelve a barajar y revelar.");
+    }
+  });
+  var _ps=$("pago-stripe");if(_ps)_ps.addEventListener("click",function(){sylPagoGuardarCompleta();});
+  var _psv=$("pago-stripe-video");if(_psv)_psv.addEventListener("click",function(){sylPagoGuardarCompleta();});
 if($("btn-reopen"))$("btn-reopen").addEventListener("click",function(){
   if(!state._resultDoc){toast("Primero revela tus 22 cartas.");return;}
   if(!openResultTab(state._resultDoc)){

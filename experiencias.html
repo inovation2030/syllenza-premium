@@ -1216,7 +1216,7 @@ body.syl-fan-full .syl-bot-btn,body.syl-fan-full .syl-bot,body.syl-cruz-full .sy
         <h3>Cruz Celta</h3>
         <p class="syl-desc">Haz tu pregunta y obtén una lectura completa y reveladora en forma de cruz.</p>
         <div class="syl-cards syl-trio" aria-hidden="true"><img src="assets/reverso.webp" alt=""><img src="assets/reverso.webp" alt=""><img src="assets/reverso.webp" alt=""></div>
-        <p class="syl-price">200 pesos</p>
+        <p class="syl-price">100 pesos</p>
         <button type="button" class="btn btn-gold exp-btn syl-sacar" data-mode="celta">✦ Sacar 10 cartas ✦</button>
       </article>
     </div>
@@ -1227,7 +1227,7 @@ body.syl-fan-full .syl-bot-btn,body.syl-fan-full .syl-bot,body.syl-cruz-full .sy
         <article><h4>☀️ Carta del Día</h4><p>Una sola carta para hoy. Te dice qué energía te acompaña, qué cuidar y qué aprovechar en tu día. Es la guía rápida de cada mañana.</p><p class="syl-que-meta">1 carta · Gratis</p></article>
         <article><h4>☾ Pasado · Presente · Futuro</h4><p>Tres cartas que cuentan tu historia: lo que ya pasó, lo que estás viviendo ahora y hacia dónde va tu camino. Ideal cuando quieres entender una situación completa.</p><p class="syl-que-meta">3 cartas · Gratis</p></article>
         <article><h4>✧ Tirada Completa</h4><p>La lectura más profunda: 22 cartas que revelan tu pasado, tu presente, tu futuro y tu destino. Incluye PDF con historieta ilustrada, y puedes agregar un video animado de 2 minutos.</p><p class="syl-que-meta">22 cartas · 400 pesos · PDF incluido</p></article>
-        <article><h4>✥ Cruz Celta</h4><p>La tirada clásica en forma de cruz: tu presente, tu desafío, tu pasado, tu futuro y tu resultado. Responde una pregunta concreta con 10 cartas en cruz.</p><p class="syl-que-meta">10 cartas · 200 pesos</p></article>
+        <article><h4>✥ Cruz Celta</h4><p>La tirada clásica en forma de cruz: tu presente, tu desafío, tu pasado, tu futuro y tu resultado. Responde una pregunta concreta con 10 cartas en cruz.</p><p class="syl-que-meta">10 cartas · 100 pesos</p></article>
       </div>
     </div>
     <div class="exp-nav"><button type="button" id="exp-prev" aria-label="Ver experiencia anterior">‹</button><button type="button" id="exp-next" aria-label="Ver experiencia siguiente">›</button></div>
@@ -1968,7 +1968,7 @@ var MODES={
  destino:{title:"Paso 3 · Tu destino en 3 cartas",kind:"Tu destino en 3 cartas",btn:"✦ Revelar mi destino en 3 cartas",go:"Ir a Tu destino en 3 cartas →",
   sub:"Tres cartas elegidas al azar de tu mazo ya barajado: <strong>una para tu Pasado, una para tu Presente y una para tu Futuro</strong>, cada una con la posición (derecha o invertida) que le tocó en la barajada y su interpretación. <strong>Gratis</strong>."},
   celta:{title:"Paso 3 · Cruz Celta",kind:"Tu Cruz Celta",btn:"✦ Revelar mi Cruz Celta",go:"Ir a mi Cruz Celta →",
-   sub:"Diez cartas elegidas al azar de tu mazo ya barajado para responder a tu pregunta, cada una con la posición (derecha o invertida) que le tocó en la barajada y su interpretación. <strong>200 pesos</strong> · Se entrega en PDF por email o WhatsApp en 12 horas."}
+   sub:"Diez cartas elegidas al azar de tu mazo ya barajado para responder a tu pregunta, cada una con la posición (derecha o invertida) que le tocó en la barajada y su interpretación. <strong>100 pesos</strong> · Se entrega en PDF por email o WhatsApp en 12 horas."}
 };
 var CELTA_LABELS=["Presente","Desafío","Pasado lejano","Pasado reciente","Posible futuro","Futuro inmediato","Tu actitud","Tu entorno","Esperanzas y miedos","Resultado"];
 function selectMode(m){
@@ -1978,7 +1978,7 @@ function selectMode(m){
   var ec=document.querySelectorAll(".exp-card"),j;
   for(j=0;j<ec.length;j++){ec[j].classList.toggle("on",ec[j].getAttribute("data-exp")===m);}
   $("btn-to-draw").textContent=MODES[m].go;
-  var _mp={dia:"Gratis · Tu carta del día",destino:"Gratis · Pasado, presente y futuro",celta:"200 pesos · Tu Cruz Celta se entrega en PDF por email o WhatsApp, en 12 horas",completa:"400 pesos · Experiencia VIP · Incluye PDF con historieta ilustrada"};var _pp=$("pick-price");if(_pp)_pp.textContent=_mp[m]||"";var _rp=$("result-price");if(_rp)_rp.textContent=_mp[m]||"";
+  var _mp={dia:"Gratis · Tu carta del día",destino:"Gratis · Pasado, presente y futuro",celta:"100 pesos · Tu Cruz Celta se entrega en PDF por email o WhatsApp, en 12 horas",completa:"400 pesos · Experiencia VIP · Incluye PDF con historieta ilustrada"};var _pp=$("pick-price");if(_pp)_pp.textContent=_mp[m]||"";var _rp=$("result-price");if(_rp)_rp.textContent=_mp[m]||"";
   var _nt={dia:"Sin datos: tu carta del día se elige al azar del mazo completo de 78 arcanos, solo para hoy.",destino:"Sin datos: tus 3 cartas se eligen al azar del mazo completo de 78 arcanos.",celta:"Sin datos: tu Cruz Celta de 10 cartas se elige al azar del mazo completo de 78 arcanos.",completa:"Tus datos de nacimiento acompañan tu consulta de principio a fin, para que tu tirada de 22 cartas sea <strong>personal y única</strong>, como tú."};
   var _nn=$("note-natal");if(_nn)_nn.innerHTML=_nt[m]||_nt.completa;
   var _rs=$("result-sub");if(_rs)_rs.innerHTML=MODES[m].sub;
