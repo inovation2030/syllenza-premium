@@ -1540,7 +1540,7 @@ body.syl-cosmico .cosmic-picker.active{display:block}
     <p class="sub">Tu Cruz Celta está lista: 10 cartas para responder a tu pregunta.</p>
     <p class="pago-precio">$100 MXN</p>
     <div class="pago-btns">
-      <a class="btn btn-gold" id="pago-stripe" href="https://buy.stripe.com/test_4gMeVe2HjdP7eYr0Ot3ks08" target="_blank" rel="noopener">💳 Pagar $100 con tarjeta</a>
+      <a class="btn btn-gold hidden" id="pago-stripe" href="https://buy.stripe.com/test_4gMeVe2HjdP7eYr0Ot3ks08" target="_blank" rel="noopener">💳 Pagar $100 con tarjeta</a>
       <button class="btn btn-gold" id="pago-mp" type="button">Pagar con Mercado Pago</button>
     </div>
     <p class="pago-note">Después de pagar regresarás aquí y verás tu resultado.</p>
@@ -3246,9 +3246,9 @@ function sylCosConfirm(){
   /* PAGO: la Cruz Celta cuesta $100. Si es la sesion gratis del dueno o ya se pago, se revela directo. */
   if(!sylPagoLibre() && !sylPagoHecho()){
     sylPagoGuardarCelta();
-    /* El botón manda directo al link de pago con tarjeta (pestaña nueva) y deja la pantalla de pago para Mercado Pago y "Ya pagué". */
-    try{window.open("https://buy.stripe.com/test_4gMeVe2HjdP7eYr0Ot3ks08","_blank");}catch(e){}
-    try{var _pvr=$("pago-ver-row");if(_pvr)_pvr.classList.remove("hidden");var _pvb=$("pago-ver");if(_pvb)_pvb.textContent="Ya pagué · Ver mi resultado";var _nt=document.querySelector("#view-pago .pago-note");if(_nt)_nt.textContent="Se abrió el pago con tarjeta en una pestaña nueva. También puedes pagar con Mercado Pago, y al terminar vuelve aquí y toca 'Ya pagué · Ver mi resultado'.";}catch(e){}
+    /* SOLO Mercado Pago por el momento: el botón manda directo al link de Mercado Pago (pestaña nueva). */
+    try{window.open("https://mpago.la/2MCjSUv","_blank");}catch(e){}
+    try{var _pvr=$("pago-ver-row");if(_pvr)_pvr.classList.remove("hidden");var _pvb=$("pago-ver");if(_pvb)_pvb.textContent="Ya pagué · Ver mi resultado";var _nt=document.querySelector("#view-pago .pago-note");if(_nt)_nt.textContent="Se abrió el pago de Mercado Pago en una pestaña nueva. Al terminar, vuelve aquí y toca 'Ya pagué · Ver mi resultado'.";}catch(e){}
     sylMostrarPago();
     return;
   }

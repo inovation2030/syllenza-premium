@@ -1285,8 +1285,8 @@ body.syl-fan-full .syl-bot-btn,body.syl-fan-full .syl-bot,body.syl-cruz-full .sy
     <p class="sub">Tu Tirada Completa está lista: 22 cartas con tu historia completa.</p>
     <p class="pago-precio">$400 MXN</p>
     <div class="pago-btns">
-      <a class="btn btn-gold" id="pago-stripe" href="https://buy.stripe.com/test_00w9AUbdPbGZ7vZ9kZ3ks09" target="_blank" rel="noopener">💳 Pagar $400 con tarjeta · PDF con historieta</a>
-      <a class="btn btn-gold" id="pago-stripe-video" href="https://buy.stripe.com/test_7sYdRagy97qJcQj1Sx3ks0a" target="_blank" rel="noopener">💳 Pagar $600 con tarjeta · PDF + video animado 2 min</a>
+      <a class="btn btn-gold hidden" id="pago-stripe" href="https://buy.stripe.com/test_00w9AUbdPbGZ7vZ9kZ3ks09" target="_blank" rel="noopener">💳 Pagar $400 con tarjeta · PDF con historieta</a>
+      <a class="btn btn-gold hidden" id="pago-stripe-video" href="https://buy.stripe.com/test_7sYdRagy97qJcQj1Sx3ks0a" target="_blank" rel="noopener">💳 Pagar $600 con tarjeta · PDF + video animado 2 min</a>
       <button class="btn btn-gold" id="pago-mp" type="button">Pagar con Mercado Pago</button>
     </div>
     <p class="pago-note">Después de pagar regresarás aquí y verás tu resultado.</p>
@@ -2568,9 +2568,9 @@ if($("btn-draw"))$("btn-draw").addEventListener("click",function(){
   /* PAGO: la Tirada Completa cuesta $400 ($600 con video). Si es la sesion gratis del dueno o ya se pago, se revela directo. */
   if(!sylPagoLibre() && !sylPagoHecho()){
     sylPagoGuardarCompleta();
-    /* El botón manda directo al link de pago con tarjeta (pestaña nueva) y deja la pantalla de pago para Mercado Pago, el video y "Ya pagué". */
-    try{window.open("https://buy.stripe.com/test_00w9AUbdPbGZ7vZ9kZ3ks09","_blank");}catch(e){}
-    try{var _pvr=$("pago-ver-row");if(_pvr)_pvr.classList.remove("hidden");var _pvb=$("pago-ver");if(_pvb)_pvb.textContent="Ya pagué · Ver mi resultado";var _nt=document.querySelector("#view-pago .pago-note");if(_nt)_nt.textContent="Se abrió el pago con tarjeta en una pestaña nueva. También puedes pagar con Mercado Pago o elegir el video, y al terminar vuelve aquí y toca 'Ya pagué · Ver mi resultado'.";}catch(e){}
+    /* SOLO Mercado Pago por el momento: el botón manda directo al link de Mercado Pago (pestaña nueva). */
+    try{window.open("https://mpago.la/1UPJtoy","_blank");}catch(e){}
+    try{var _pvr=$("pago-ver-row");if(_pvr)_pvr.classList.remove("hidden");var _pvb=$("pago-ver");if(_pvb)_pvb.textContent="Ya pagué · Ver mi resultado";var _nt=document.querySelector("#view-pago .pago-note");if(_nt)_nt.textContent="Se abrió el pago de Mercado Pago en una pestaña nueva. Al terminar, vuelve aquí y toca 'Ya pagué · Ver mi resultado'.";}catch(e){}
     sylMostrarPago();
     return;
   }
