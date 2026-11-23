@@ -1340,6 +1340,7 @@ body.syl-cosmico .cosmic-picker.active{display:block}
       <div class="pick-back"><img src="assets/reverso.webp" alt="Dorso de carta Syllenza"><span>Esperanzas y miedos</span></div>
       <div class="pick-back"><img src="assets/reverso.webp" alt="Dorso de carta Syllenza"><span>Resultado</span></div>
     </div>
+    <div class="btn-row" style="justify-content:center"><button class="btn btn-pink" id="btn-hero-confirm" type="button">✦ Confirmar mi pregunta</button></div>
     <p class="mode-price">100 pesos</p>
     <button class="btn btn-gold btn-pill" id="btn-page-sacar" type="button">✦ SACAR 10 CARTAS ✦</button>
     <div class="btn-row"><a class="btn btn-ghost" href="index.html">← Regresar a Inicio</a></div>
@@ -1538,7 +1539,8 @@ body.syl-cosmico .cosmic-picker.active{display:block}
   <section class="panel hidden" id="view-pago">
     <h2>✦ Para poder continuar necesitas hacer tu pago</h2>
     <p class="sub">Tu Cruz Celta está lista: 10 cartas para responder a tu pregunta.</p>
-    <p class="pago-precio">$100 MXN</p>
+    <p class="pago-precio">$105 MXN</p>
+    <p style="font-size:15px;opacity:.9;margin:-8px 0 16px">$100 de tu Cruz Celta + $5 del servicio</p>
     <div class="pago-btns">
       <a class="btn btn-gold hidden" id="pago-stripe" href="https://buy.stripe.com/test_4gMeVe2HjdP7eYr0Ot3ks08" target="_blank" rel="noopener">💳 Pagar $100 con tarjeta</a>
       <button class="btn btn-gold" id="pago-mp" type="button">Pagar con Mercado Pago</button>
@@ -2338,14 +2340,14 @@ function deckBackSrc(){try{var d=$("deck-img");return d&&d.src?d.src:"";}catch(e
 function chooseExperience(m){
   selectMode(m);
   if(m==="completa"&&!state.person){show("view-form");toast("Primero completa tus datos de nacimiento en el Paso 1.");return;}
-  if(!state.deck){show("view-shuffle");toast("Primero baraja el mazo en el Paso 2.");return;}
+  if(!state.deck){if(m==="celta"){try{state.deck=shuffleDeck();state.draw=null;}catch(e){}}else{show("view-shuffle");toast("Primero baraja el mazo en el Paso 2.");return;}}
   if(m==="completa"){enterResult();}else{enterPick();}
 }
 
 function startFlowFor(m){
   selectMode(m);
   if(m==="completa"&&!state.person){show("view-form");toast("Primero completa tus datos y baraja.");return;}
-  if(!state.deck){show("view-shuffle");toast("Primero baraja el mazo en el Paso 2.");return;}
+  if(!state.deck){if(m==="celta"){try{state.deck=shuffleDeck();state.draw=null;}catch(e){}}else{show("view-shuffle");toast("Primero baraja el mazo en el Paso 2.");return;}}
   if(m==="completa"){enterResult();}else{enterPick();}
 }
 var optEls=document.querySelectorAll(".opt"),qi;
@@ -4762,6 +4764,8 @@ document.addEventListener("DOMContentLoaded",function(){
     var h2=document.querySelector("#view-shuffle h2");if(h2)h2.textContent="Paso 2 · Baraja tu mazo";
     var ps=document.getElementById("btn-page-sacar");
     if(ps)ps.addEventListener("click",function(){startFlowFor("celta");});
+    var _hc=document.getElementById("btn-hero-confirm");
+    if(_hc)_hc.addEventListener("click",function(){try{var _q2=document.getElementById("celta-pregunta");var _tp=_q2?_q2.value.trim():"";if(!state.person)state.person={};state.person.tema=_tp;var _ft=document.getElementById("f-topic");if(_ft)_ft.value=_tp;var _dok=$("data-ok");if(_dok)_dok.classList.remove("hidden");state.deck=shuffleDeck();state.draw=null;enterPick();}catch(e){}});
 
     var _q=document.getElementById("celta-pregunta");
     if(_q)_q.addEventListener("input",function(){try{if(!state.person)state.person={};state.person.tema=_q.value.trim();var ft=document.getElementById("f-topic");if(ft)ft.value=_q.value;}catch(e){}});
