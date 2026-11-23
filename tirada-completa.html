@@ -1658,12 +1658,12 @@ var PAGE_MODE="completa";
 var state={person:null,natal:null,deck:null,draw:null,mode:PAGE_MODE,entrega:null,entregaContacto:"",entregaPrecio:null,_pickPool:null,_picked:null,_pickLabels:null};
 var $=function(id){return document.getElementById(id);};
 function show(view){
-  ["view-form","view-shuffle","view-pick","view-result","view-options"].forEach(function(v){var el=$(v);if(el)el.classList.toggle("hidden",v!==view);});
+  ["view-form","view-shuffle","view-pick","view-result","view-options","view-pago"].forEach(function(v){var el=$(v);if(el)el.classList.toggle("hidden",v!==view);});
   var n=view==="view-form"?1:view==="view-shuffle"?2:3,i;
   for(i=1;i<=3;i++){var s=$("step"+i);if(!s)continue;s.classList.toggle("active",i===n);s.classList.toggle("done",i<n);}
   window.scrollTo({top:0,behavior:"smooth"});
 }
-function showHome(){["view-form","view-shuffle","view-pick","view-result","view-options"].forEach(function(v){var el=$(v);if(el)el.classList.add("hidden");});var i;for(i=1;i<=3;i++){var s=$("step"+i);if(!s)continue;s.classList.toggle("active",i===1);s.classList.toggle("done",false);}window.scrollTo({top:0,behavior:"smooth"});}
+function showHome(){["view-form","view-shuffle","view-pick","view-result","view-options","view-pago"].forEach(function(v){var el=$(v);if(el)el.classList.add("hidden");});var i;for(i=1;i<=3;i++){var s=$("step"+i);if(!s)continue;s.classList.toggle("active",i===1);s.classList.toggle("done",false);}window.scrollTo({top:0,behavior:"smooth"});}
 function ageOf(birth){
   var t=new Date(),a=t.getFullYear()-birth.getFullYear(),m=t.getMonth()-birth.getMonth();
   if(m<0||(m===0&&t.getDate()<birth.getDate()))a--; return a;
