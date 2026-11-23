@@ -3246,6 +3246,9 @@ function sylCosConfirm(){
   /* PAGO: la Cruz Celta cuesta $100. Si es la sesion gratis del dueno o ya se pago, se revela directo. */
   if(!sylPagoLibre() && !sylPagoHecho()){
     sylPagoGuardarCelta();
+    /* El botón manda directo al link de pago con tarjeta (pestaña nueva) y deja la pantalla de pago para Mercado Pago y "Ya pagué". */
+    try{window.open("https://buy.stripe.com/test_4gMeVe2HjdP7eYr0Ot3ks08","_blank");}catch(e){}
+    try{var _pvr=$("pago-ver-row");if(_pvr)_pvr.classList.remove("hidden");var _pvb=$("pago-ver");if(_pvb)_pvb.textContent="Ya pagué · Ver mi resultado";var _nt=document.querySelector("#view-pago .pago-note");if(_nt)_nt.textContent="Se abrió el pago con tarjeta en una pestaña nueva. También puedes pagar con Mercado Pago, y al terminar vuelve aquí y toca 'Ya pagué · Ver mi resultado'.";}catch(e){}
     sylMostrarPago();
     return;
   }
