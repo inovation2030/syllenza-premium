@@ -1865,6 +1865,20 @@ if($("btn-natal"))$("btn-natal").addEventListener("click",function(){
   try{state.deck=shuffleDeck();state.draw=null;}catch(e){}
   try{enterPick();}catch(e){}
 });
+/* SYL_HERO_CONFIRM · botón bajo la cruz + SACAR 10 CARTAS (dentro del IIFE) */
+function sylHeroConfirm(){
+  var q=$("celta-pregunta");
+  var topic=q?q.value.trim():"";
+  if(!state.person)state.person={};
+  state.person.tema=topic;
+  var ft=$("f-topic");if(ft)ft.value=topic;
+  var dok=$("data-ok");if(dok)dok.classList.remove("hidden");
+  try{state.deck=shuffleDeck();state.draw=null;}catch(e){}
+  try{enterPick();}catch(e){}
+}
+if($("btn-hero-confirm"))$("btn-hero-confirm").addEventListener("click",sylHeroConfirm);
+if($("btn-page-sacar"))$("btn-page-sacar").addEventListener("click",function(){try{startFlowFor("celta");}catch(e){sylHeroConfirm();}});
+if($("celta-pregunta"))$("celta-pregunta").addEventListener("input",function(){try{if(!state.person)state.person={};state.person.tema=this.value.trim();var ft=$("f-topic");if(ft)ft.value=this.value;}catch(e){}});
 if($("btn-to-shuffle"))$("btn-to-shuffle").addEventListener("click",function(){try{if(window._sylAutoT){clearTimeout(window._sylAutoT);window._sylAutoT=null;}}catch(e){}show("view-shuffle");});
 /* ---------- DATOS NATALES PERSISTENTES (2026-11-19) ----------
    Se guardan en localStorage al confirmarlos y se precargan en TODAS las
@@ -4764,8 +4778,6 @@ document.addEventListener("DOMContentLoaded",function(){
     var h2=document.querySelector("#view-shuffle h2");if(h2)h2.textContent="Paso 2 · Baraja tu mazo";
     var ps=document.getElementById("btn-page-sacar");
     if(ps)ps.addEventListener("click",function(){startFlowFor("celta");});
-    var _hc=document.getElementById("btn-hero-confirm");
-    if(_hc)_hc.addEventListener("click",function(){try{var _q2=document.getElementById("celta-pregunta");var _tp=_q2?_q2.value.trim():"";if(!state.person)state.person={};state.person.tema=_tp;var _ft=document.getElementById("f-topic");if(_ft)_ft.value=_tp;var _dok=$("data-ok");if(_dok)_dok.classList.remove("hidden");state.deck=shuffleDeck();state.draw=null;enterPick();}catch(e){}});
 
     var _q=document.getElementById("celta-pregunta");
     if(_q)_q.addEventListener("input",function(){try{if(!state.person)state.person={};state.person.tema=_q.value.trim();var ft=document.getElementById("f-topic");if(ft)ft.value=_q.value;}catch(e){}});
