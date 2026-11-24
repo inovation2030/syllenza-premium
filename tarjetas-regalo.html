@@ -3682,6 +3682,7 @@ var SYL_MP_LINKS={100:"https://mpago.la/1bNZY4Z",400:"https://mpago.la/1me52Jb",
     try{
       var SYL_API="https://script.google.com/macros/s/AKfycbw9vCNPuk9qklqCOZxTpah70884bCkn8rMNhPraKYC6eVeeBDrqER7XatoE5PuxUPBvKQ/exec";
       fetch(SYL_API+"?accion=regalo&codigo="+encodeURIComponent(code)+"&saldo="+amt+"&correo="+encodeURIComponent(em)+"&nombre="+encodeURIComponent(nm)).catch(function(){});
+      fetch(SYL_API+"?accion=enviar-pass&codigo="+encodeURIComponent(code)+"&saldo="+amt+"&correo="+encodeURIComponent(em)+"&nombre="+encodeURIComponent(nm)).catch(function(){});
     }catch(e){}
     try{
       var ifr=document.createElement("iframe"); ifr.name="syl-gift-sink"; ifr.style.display="none"; document.body.appendChild(ifr);
@@ -3691,7 +3692,7 @@ var SYL_MP_LINKS={100:"https://mpago.la/1bNZY4Z",400:"https://mpago.la/1me52Jb",
       Object.keys(fields).forEach(function(k){var i=document.createElement("input");i.type="hidden";i.name=k;i.value=fields[k];fo.appendChild(i);});
       document.body.appendChild(fo); fo.submit();
     }catch(e){}
-    if(ok){ok.classList.remove("hidden");ok.textContent="✓ Tu Syllenza Pass está listo: "+code+" · Saldo "+fmt(amt)+". Te lo enviamos a "+em+" y ya puedes canjearlo en tu lectura.";}
+    if(ok){ok.classList.remove("hidden");ok.textContent="✓ Tu Syllenza Pass está listo: "+code+" · Saldo "+fmt(amt)+". Te lo enviamos a "+em+" con tu código y los botones para guardarlo en Apple Wallet y Google Wallet, y ya puedes canjearlo en tu lectura.";}
     try{localStorage.setItem("syl-gift-code",code);}catch(e){}
   });
   try{
