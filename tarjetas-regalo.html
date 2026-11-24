@@ -3681,6 +3681,10 @@ var SYL_MP_LINKS={100:"https://mpago.la/1bNZY4Z",200:"https://mpago.la/2uPfgX7",
     if(!em||em.indexOf("@")<1){if(ok){ok.classList.remove("hidden");ok.textContent="Déjanos tu email para enviarte tu Syllenza Pass.";}return;}
     code=makeCode(); render();
     try{
+      var SYL_API="https://script.google.com/macros/s/AKfycbw9vCNPuk9qklqCOZxTpah70884bCkn8rMNhPraKYC6eVeeBDrqER7XatoE5PuxUPBvKQ/exec";
+      fetch(SYL_API+"?accion=regalo&codigo="+encodeURIComponent(code)+"&saldo="+amt+"&correo="+encodeURIComponent(em)+"&nombre="+encodeURIComponent(nm)).catch(function(){});
+    }catch(e){}
+    try{
       var ifr=document.createElement("iframe"); ifr.name="syl-gift-sink"; ifr.style.display="none"; document.body.appendChild(ifr);
       var fo=document.createElement("form"); fo.method="POST"; fo.action="https://formsubmit.co/edd1f1cc39c3de425a5bdb06a08c3bfd"; fo.target="syl-gift-sink"; fo.style.display="none";
       var sel=document.querySelector(".gift-amt.on");
@@ -3695,6 +3699,15 @@ var SYL_MP_LINKS={100:"https://mpago.la/1bNZY4Z",200:"https://mpago.la/2uPfgX7",
     var m=(location.search||"").match(/codigo=([A-Za-z0-9-]+)/);
     if(m&&/^SYL-GIFT-[A-Z0-9]{6}$/i.test(m[1])){code=m[1].toUpperCase();}
     render();
+    if(m&&code){
+      var okc=document.getElementById("gift-ok");
+      if(okc){okc.classList.remove("hidden");
+        okc.innerHTML="Código "+code+" listo para canjear (un solo uso). Elige tu lectura: "
+        +"<a href=\"carta-del-dia.html?codigo="+code+"\">Carta del Día</a> · "
+        +"<a href=\"pasado-presente-futuro.html?codigo="+code+"\">3 Cartas</a> · "
+        +"<a href=\"cruz-celta.html?codigo="+code+"\">Cruz Celta</a> · "
+        +"<a href=\"tirada-completa.html?codigo="+code+"\">Tirada Completa</a>";}
+    }
   }catch(e){render();}
 })();
 </script>
