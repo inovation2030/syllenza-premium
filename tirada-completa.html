@@ -1130,6 +1130,14 @@ body.syl-fan-full .syl-bot-btn,body.syl-fan-full .syl-bot,body.syl-cruz-full .sy
 #view-pago .pago-btns .btn{width:100%}
 #view-pago .pago-note{font-size:13px;opacity:.85;margin-top:16px}
 #view-pago .pago-ok{color:var(--gold-pale);font-weight:700}
+#pago-opciones{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:560px;margin:0 auto 16px}
+@media(max-width:620px){#pago-opciones{grid-template-columns:1fr}}
+.pago-opcion{appearance:none;cursor:pointer;text-align:left;font:inherit;color:var(--ink);background:#050a1e;border:1px solid #3c4a7d;border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:6px}
+.pago-opcion:hover{border-color:var(--gold)}
+.pago-opcion.on{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold);background:linear-gradient(180deg,#1d1709,#050a1e 65%)}
+.pago-opcion b{font-family:"Cinzel Decorative","Cinzel",serif;font-size:20px;color:var(--gold-pale)}
+.pago-opcion span{font-size:14px;color:var(--muted);line-height:1.5}
+.pago-opcion .precio{font-weight:700;color:var(--gold-2);font-size:17px}
 </style>
 
 
@@ -1198,13 +1206,13 @@ body.syl-fan-full .syl-bot-btn,body.syl-fan-full .syl-bot,body.syl-cruz-full .sy
             <span class="hint">Día, mes y año. Debes tener 18 años o más.</span>
           </div>
           <div class="field">
-            <label for="f-time">Hora de nacimiento *</label>
-            <input id="f-time" type="time" required>
-            <span class="hint">Si no la sabes exacta, usa la más cercana que recuerdes.</span>
+            <label for="f-time">Hora de nacimiento (opcional)</label>
+            <input id="f-time" type="time">
+            <span class="hint">Opcional: si no la sabes, déjala en blanco. Tu Sol y tu Luna se calculan con tu fecha.</span>
           </div>
           <div class="field full">
-            <label for="f-place">Lugar de nacimiento *</label>
-            <input id="f-place" type="text" list="world-places" placeholder="Empieza a escribir tu ciudad…" autocomplete="off" required>
+            <label for="f-place">Lugar de nacimiento (opcional)</label>
+            <input id="f-place" type="text" list="world-places" placeholder="Empieza a escribir tu ciudad…" autocomplete="off">
             <datalist id="world-places">
               <option value="Ciudad de México, México"></option><option value="Guadalajara, México"></option><option value="Monterrey, México"></option><option value="Puebla, México"></option><option value="Toluca, México"></option><option value="Tijuana, México"></option><option value="León, México"></option><option value="Ciudad Juárez, México"></option><option value="Zapopan, México"></option><option value="Mérida, México"></option><option value="San Luis Potosí, México"></option><option value="Aguascalientes, México"></option><option value="Mexicali, México"></option><option value="Culiacán, México"></option><option value="Hermosillo, México"></option><option value="Chihuahua, México"></option><option value="Morelia, México"></option><option value="Veracruz, México"></option><option value="Cancún, México"></option><option value="Querétaro, México"></option><option value="Acapulco, México"></option><option value="Oaxaca de Juárez, México"></option><option value="Pachuca, México"></option><option value="Tampico, México"></option><option value="Durango, México"></option><option value="Tuxtla Gutiérrez, México"></option><option value="Cuernavaca, México"></option><option value="Villahermosa, México"></option><option value="Xalapa, México"></option><option value="Colima, México"></option><option value="La Paz, México"></option><option value="Campeche, México"></option><option value="Tepic, México"></option><option value="Guanajuato, México"></option><option value="Saltillo, México"></option><option value="Torreón, México"></option><option value="Reynosa, México"></option><option value="Playa del Carmen, México"></option><option value="Los Cabos, México"></option><option value="Puerto Vallarta, México"></option><option value="Mazatlán, México"></option><option value="Ensenada, México"></option><option value="Tlaxcala, México"></option><option value="Chilpancingo, México"></option><option value="Chetumal, México"></option>
               <option value="Ciudad de Guatemala, Guatemala"></option><option value="San Salvador, El Salvador"></option><option value="Tegucigalpa, Honduras"></option><option value="Managua, Nicaragua"></option><option value="San José, Costa Rica"></option><option value="Ciudad de Panamá, Panamá"></option><option value="La Habana, Cuba"></option><option value="Santo Domingo, República Dominicana"></option><option value="San Juan, Puerto Rico"></option><option value="Kingston, Jamaica"></option><option value="Puerto Príncipe, Haití"></option><option value="Belmopán, Belice"></option>
@@ -1284,9 +1292,22 @@ body.syl-fan-full .syl-bot-btn,body.syl-fan-full .syl-bot,body.syl-cruz-full .sy
   <!-- ============ VISTA 3: TIRADA 22 + RESULTADO ============ -->
   <section class="panel hidden" id="view-pago">
     <h2>✦ Para poder continuar necesitas hacer tu pago</h2>
-    <p class="sub">Tu Tirada Completa está lista: 22 cartas con tu historia completa.</p>
-    <p class="pago-precio">$420 MXN</p>
-    <p style="font-size:15px;opacity:.9;margin:-8px 0 16px">$400 de tu Tirada Completa + $20 del servicio</p>
+    <p class="sub">Tu Tirada Completa está lista: 22 cartas con tu historia completa. Elige cómo quieres recibirla:</p>
+    <div id="pago-opciones" role="radiogroup" aria-label="Elige tu entrega">
+      <button type="button" class="pago-opcion on" data-pago="pdf" role="radio" aria-checked="true">
+        <b>✦ Con historieta</b>
+        <span>PDF con historieta ilustrada de tu tirada.</span>
+        <span class="precio">$420 MXN en total</span>
+        <span>$400 de tu Tirada Completa + $20 del servicio</span>
+      </button>
+      <button type="button" class="pago-opcion" data-pago="video" role="radio" aria-checked="false">
+        <b>✦ Con video animado</b>
+        <span>Video animado de 2 minutos de tu tirada, más el PDF con historieta.</span>
+        <span class="precio">$630 MXN en total</span>
+        <span>$600 de tu Tirada Completa + video + $30 del servicio</span>
+      </button>
+    </div>
+    <p class="pago-precio" id="pago-precio">$420 MXN</p>
     <div class="pago-btns">
       <a class="btn btn-gold hidden" id="pago-stripe" href="https://buy.stripe.com/test_00w9AUbdPbGZ7vZ9kZ3ks09" target="_blank" rel="noopener">💳 Pagar $400 con tarjeta · PDF con historieta</a>
       <a class="btn btn-gold hidden" id="pago-stripe-video" href="https://buy.stripe.com/test_7sYdRagy97qJcQj1Sx3ks0a" target="_blank" rel="noopener">💳 Pagar $600 con tarjeta · PDF + video animado 2 min</a>
@@ -1690,23 +1711,23 @@ function renderOracle(){
    +'<div class="natal-grid">'
    +'<div class="natal-card nc-sun"><div class="big">☀</div><div class="sign">'+GLY[sol]+' '+sol+'</div><div class="lbl">Sol · Tu esencia</div><p>Elemento '+ELEM[sol]+'</p></div>'
    +'<div class="natal-card nc-moon"><div class="big">☾</div><div class="sign">'+GLY[luna]+' '+luna+'</div><div class="lbl">Luna · Tu emoción</div><p>Elemento '+ELEM[luna]+'</p></div>'
-   +'<div class="natal-card nc-asc"><div class="big">↑</div><div class="sign">'+GLY[asc]+' '+asc+'</div><div class="lbl">Ascendente · Tu camino</div><p>Elemento '+ELEM[asc]+'</p></div>'
+   +(asc?'<div class="natal-card nc-asc"><div class="big">↑</div><div class="sign">'+GLY[asc]+' '+asc+'</div><div class="lbl">Ascendente · Tu camino</div><p>Elemento '+ELEM[asc]+'</p></div>':'<div class="natal-card nc-asc"><div class="big">↑</div><div class="sign">—</div><div class="lbl">Ascendente · Tu camino</div><p>Sin hora de nacimiento no se puede calcular</p></div>')
    +'</div>'
-   +'<p class="oracle-synth">El Oráculo lee tu cielo junto a tus cartas: tu <strong>Sol en '+sol+'</strong> ('+ELEM[sol]+') marca tu esencia, tu <strong>Luna en '+luna+'</strong> ('+ELEM[luna]+') tu mundo emocional y tu <strong>Ascendente en '+asc+'</strong> ('+ELEM[asc]+') la puerta de tu camino. Tu <strong>número de vida '+lp+'</strong> suma el tema de <strong>'+TEMAS[lp]+'</strong>: tenlo presente al interpretar cada carta de tu tirada.</p>'
+   +'<p class="oracle-synth">El Oráculo lee tu cielo junto a tus cartas: tu <strong>Sol en '+sol+'</strong> ('+ELEM[sol]+') marca tu esencia, tu <strong>Luna en '+luna+'</strong> ('+ELEM[luna]+') tu mundo emocional'+(asc?' y tu <strong>Ascendente en '+asc+'</strong> ('+ELEM[asc]+') la puerta de tu camino':'')+'. Tu <strong>número de vida '+lp+'</strong> suma el tema de <strong>'+TEMAS[lp]+'</strong>: tenlo presente al interpretar cada carta de tu tirada.</p>'
    +'<span class="life-pill">✦ Número de vida · '+lp+' · '+TEMAS[lp]+'</span></div>';
   $("oracle-panel").classList.remove("hidden");
 }
 if($("btn-natal"))$("btn-natal").addEventListener("click",function(){
   var err=$("form-error"); err.classList.remove("show"); err.textContent="";
   var name=$("f-name").value.trim(), dv=$("f-date").value, tv=$("f-time").value, place=$("f-place").value.trim(), topic=$("f-topic").value.trim();
-  if(!name||!dv||!tv||!place){err.textContent="Por favor completa todos los campos marcados con *: nombre completo, fecha, hora y lugar de nacimiento.";err.classList.add("show");return;}
+  if(!name||!dv){err.textContent="Por favor completa los campos obligatorios: nombre completo y fecha de nacimiento.";err.classList.add("show");return;}
   var parts=dv.split("-"), birth=new Date(+parts[0],+parts[1]-1,+parts[2]);
   var age=ageOf(birth);
   if(isNaN(birth.getTime())||birth>new Date()){err.textContent="La fecha de nacimiento no es válida. Revisa el día, mes y año.";err.classList.add("show");return;}
   if(age<18){err.textContent="Lo sentimos: esta consulta es solo para mayores de 18 años. Según la fecha indicada, la persona consultante tiene "+age+" años.";err.classList.add("show");return;}
-  var tp=tv.split(":"), sol=sunSign(+parts[1],+parts[2]);
+  var tp=tv?tv.split(":"):[12,0], sol=sunSign(+parts[1],+parts[2]);
   var utc=new Date(Date.UTC(+parts[0],+parts[1]-1,+parts[2],+tp[0],+tp[1]));
-  var luna=moonSign(utc), asc=ascSign(sol,+tp[0],+tp[1]);
+  var luna=moonSign(utc), asc=tv?ascSign(sol,+tp[0],+tp[1]):"";
   state.person={nombre:name,fecha:dv,hora:tv,lugar:place,tema:topic,edad:age};
   state.natal={sol:sol,luna:luna,ascendente:asc};
   var lp=(function(){var s=dv.replace(/-/g,""),t=0,ii;for(ii=0;ii<s.length;ii++)t+=+s[ii];while(t>9&&t!==11&&t!==22){var u=0;while(t>0){u+=t%10;t=Math.floor(t/10);}t=u;}return t;})();
@@ -1728,20 +1749,20 @@ function restoreNatal(){
   var raw=null;try{raw=localStorage.getItem("syl-natal");}catch(e){}
   if(!raw)return;
   var d=null;try{d=JSON.parse(raw);}catch(e){return;}
-  if(!d||!d.nombre||!d.fecha||!d.hora||!d.lugar)return;
+  if(!d||!d.nombre||!d.fecha)return;
   var parts=String(d.fecha).split("-");if(parts.length!==3)return;
   var birth=new Date(+parts[0],+parts[1]-1,+parts[2]);
   if(isNaN(birth.getTime())||birth>new Date())return;
   var age=ageOf(birth);if(age<18)return;
-  var tp=String(d.hora).split(":"),sol=sunSign(+parts[1],+parts[2]);
+  var tp=d.hora?String(d.hora).split(":"):[12,0],sol=sunSign(+parts[1],+parts[2]);
   var utc=new Date(Date.UTC(+parts[0],+parts[1]-1,+parts[2],+tp[0],+tp[1]));
-  var luna=moonSign(utc),asc=ascSign(sol,+tp[0],+tp[1]);
-  state.person={nombre:d.nombre,fecha:d.fecha,hora:d.hora,lugar:d.lugar,tema:d.tema||"",edad:age};
+  var luna=moonSign(utc),asc=d.hora?ascSign(sol,+tp[0],+tp[1]):"";
+  state.person={nombre:d.nombre,fecha:d.fecha,hora:d.hora||"",lugar:d.lugar||"",tema:d.tema||"",edad:age};
   state.natal={sol:sol,luna:luna,ascendente:asc};
   var lp=(function(){var s=String(d.fecha).replace(/-/g,""),t=0,ii;for(ii=0;ii<s.length;ii++)t+=+s[ii];while(t>9&&t!==11&&t!==22){var u=0;while(t>0){u+=t%10;t=Math.floor(t/10);}t=u;}return t;})();
   state.numerologia=lp;
   var fn=$("f-name"),fd=$("f-date"),ft=$("f-time"),fp=$("f-place"),fq=$("f-topic");
-  if(fn)fn.value=d.nombre;if(fd)fd.value=d.fecha;if(ft)ft.value=d.hora;if(fp)fp.value=d.lugar;if(fq)fq.value=d.tema||"";
+  if(fn)fn.value=d.nombre;if(fd)fd.value=d.fecha;if(ft)ft.value=d.hora||"";if(fp)fp.value=d.lugar||"";if(fq)fq.value=d.tema||"";
   var pd=$("place-detected");if(pd&&typeof placeKnown!=="undefined"&&placeKnown[d.lugar])pd.textContent="✓ Lugar detectado: "+d.lugar;
   try{renderOracle();}catch(e){}
   var dok=$("data-ok");if(dok)dok.classList.remove("hidden");
@@ -2479,7 +2500,7 @@ function resultDoc(){
    +'<h1>Tu Tirada Completa</h1>'
    +'<p class="who">Resultado para <strong>'+esc(p.nombre)+'</strong></p>'
    +(p.tema?'<p class="who">Tema de tu consulta: <strong>'+esc(p.tema)+'</strong></p>':'')
-   +'<div class="natal"><span>☀ Sol · <strong>'+esc(n.sol)+'</strong></span><span>☾ Luna · <strong>'+esc(n.luna)+'</strong></span><span>↑ Ascendente · <strong>'+esc(n.ascendente)+'</strong></span></div>'
+    +'<div class="natal"><span>☀ Sol · <strong>'+esc(n.sol)+'</strong></span><span>☾ Luna · <strong>'+esc(n.luna)+'</strong></span>'+(n.ascendente?'<span>↑ Ascendente · <strong>'+esc(n.ascendente)+'</strong></span>':'')+'</div>'
    +'<p class="who" style="margin-top:12px">22 cartas elegidas al azar de tu mazo barajado de 78 arcanos, cada una con la posición (derecha o invertida) que le tocó en la barajada y su interpretación.</p>'
    +'</header>'
    +'<button type="button" class="voice-btn" id="btn-voice-result-r">✧ Escuchar mi Tirada Completa · Voz del narrador</button>'
@@ -2525,6 +2546,7 @@ function sylPagoLimpiar(){
 function sylMostrarPago(){
   var v=$("view-pago");if(!v)return;
   show("view-pago");
+  try{sylPagoPintarOpcion();}catch(e){}
   try{window.scrollTo({top:0,behavior:"smooth"});}catch(e){}
 }
 function sylPagoVolver(){
@@ -2542,6 +2564,26 @@ function sylPagoMP(url){
   }catch(e){}
 }
 
+/* ---- Opciones de pago: historieta (PDF $420) o video ($630) ---- */
+var SYL_MP_COMPLETA_PDF="https://mpago.la/1UPJtoy";
+var SYL_MP_COMPLETA_VIDEO=""; /* PENDIENTE: Leonardo crea este link en su teléfono (Mercado Pago $600 -> $630 con 5% de servicio). */
+function sylPagoOpcion(){
+  try{var o=sessionStorage.getItem("syl-pago-entrega");if(o==="video"||o==="pdf")return o;}catch(e){}
+  return "pdf";
+}
+function sylPagoPintarOpcion(){
+  var op=sylPagoOpcion();
+  var opts=document.querySelectorAll(".pago-opcion"),i;
+  for(i=0;i<opts.length;i++){var on=opts[i].getAttribute("data-pago")===op;opts[i].classList.toggle("on",on);opts[i].setAttribute("aria-checked",on?"true":"false");}
+  var pr=$("pago-precio");if(pr)pr.textContent=(op==="video"?"$630 MXN":"$420 MXN");
+}
+function sylPagoElegir(op){
+  try{sessionStorage.setItem("syl-pago-entrega",op);}catch(e){}
+  sylPagoPintarOpcion();
+}
+function sylPagoURL(){
+  return sylPagoOpcion()==="video"?SYL_MP_COMPLETA_VIDEO:SYL_MP_COMPLETA_PDF;
+}
 function sylPagoGuardarCompleta(){
   try{
     var pool=state.deck.slice(), pick=[], k;
@@ -2568,12 +2610,10 @@ function sylPagoRestaurarCompleta(){
 if($("btn-draw"))$("btn-draw").addEventListener("click",function(){
   if(!state.deck){toast("Primero baraja el mazo en el paso 2.");show("view-shuffle");return;}
   if(state.mode!=="completa"){enterPick();return;}
-  /* PAGO: la Tirada Completa cuesta $400 ($600 con video). Si es la sesion gratis del dueno o ya se pago, se revela directo. */
+  /* PAGO: la Tirada Completa cuesta $420 con historieta ($630 con video). Si es la sesion gratis del dueno o ya se pago, se revela directo. */
   if(!sylPagoLibre() && !sylPagoHecho()){
     sylPagoGuardarCompleta();
-    /* SOLO Mercado Pago por el momento: el botón manda directo al link de Mercado Pago (pestaña nueva). */
-    try{window.open("https://mpago.la/1UPJtoy","_blank");}catch(e){}
-    try{var _pvr=$("pago-ver-row");if(_pvr)_pvr.classList.remove("hidden");var _pvb=$("pago-ver");if(_pvb)_pvb.textContent="Ya pagué · Ver mi resultado";var _nt=document.querySelector("#view-pago .pago-note");if(_nt)_nt.textContent="Se abrió el pago de Mercado Pago en una pestaña nueva. Al terminar, vuelve aquí y toca 'Ya pagué · Ver mi resultado'.";}catch(e){}
+    /* SOLO Mercado Pago por el momento: primero elige historieta ($420) o video ($630); el botón de pago abre el link elegido. */
     sylMostrarPago();
     return;
   }
@@ -2626,6 +2666,7 @@ if($("btn-draw"))$("btn-draw").addEventListener("click",function(){
     var _eb2=$("entrega-block");
     if(_eb2){_eb2.classList.remove("hidden");var _cw=$("entrega-contacto-wrap");if(_cw)_cw.classList.add("hidden");var _ok=$("entrega-ok");if(_ok)_ok.classList.add("hidden");var _opts=document.querySelectorAll(".entrega-opt");for(var _oi=0;_oi<_opts.length;_oi++){_opts[_oi].classList.remove("on");_opts[_oi].setAttribute("aria-checked","false");}}
     var _ec2=$("entrega-celta");if(_ec2)_ec2.classList.add("hidden");state.entrega=null;state.entregaContacto="";state._entregaSent=false;state.entregaPrecio=null;
+    try{var _pe=sylPagoOpcion();if(_pe==="video"||_pe==="pdf"){selectEntrega(_pe);}}catch(e){}
     $("btn-draw").disabled=false; $("btn-draw").textContent="✦ Elegir otra Tirada Completa";
   },1100);
 });
@@ -2642,6 +2683,7 @@ if($("btn-draw"))$("btn-draw").addEventListener("click",function(){
           var pb=$("pago-stripe");if(pb)pb.classList.add("hidden");
           var pv2=$("pago-stripe-video");if(pv2)pv2.classList.add("hidden");
           var pm=$("pago-mp");if(pm)pm.classList.add("hidden");
+          var po=$("pago-opciones");if(po)po.classList.add("hidden");
           var pv=$("pago-volver");if(pv)pv.classList.add("hidden");
           var nt=document.querySelector("#view-pago .pago-note");
           if(nt)nt.textContent="Tu pago fue recibido. Toca el botón para ver tu resultado.";
@@ -2657,7 +2699,12 @@ if($("btn-draw"))$("btn-draw").addEventListener("click",function(){
     }catch(e){}
   })();
   var _pv=$("pago-volver");if(_pv)_pv.addEventListener("click",function(){try{show("view-shuffle");}catch(e){}});
-  var _pm=$("pago-mp");if(_pm)_pm.addEventListener("click",function(){sylPagoMP("https://mpago.la/1UPJtoy");});
+  var _pm=$("pago-mp");if(_pm)_pm.addEventListener("click",function(){
+    if(sylPagoOpcion()==="video"&&!SYL_MP_COMPLETA_VIDEO){toast("El pago con video aún no está disponible: el enlace se está preparando. Puedes pagar la opción con historieta o volver más tarde.");return;}
+    sylPagoMP(sylPagoURL());
+  });
+  var _po=document.querySelectorAll(".pago-opcion"),_pi;
+  for(_pi=0;_pi<_po.length;_pi++){(function(el){el.addEventListener("click",function(){sylPagoElegir(el.getAttribute("data-pago"));});})(_po[_pi]);}
   var _pver=$("pago-ver");
   if(_pver)_pver.addEventListener("click",function(){
     sylPagoMarcar();
